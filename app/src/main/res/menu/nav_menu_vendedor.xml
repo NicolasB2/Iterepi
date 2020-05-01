@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/ic_creditcard"
+        android:title="@string/accounts" />
+
+    <item
+        android:icon="@drawable/ic_cash"
+        android:title="@string/my_sales" />
+
+    <item
+        android:icon="@drawable/ic_location"
+        android:title="@string/my_places" />
+
+    <item
+        android:icon="@drawable/ic_doubt"
+        android:title="@string/doubts_frequent" />
+
+    <item
+        android:icon="@drawable/ic_info"
+        android:title="@string/terms_and_conditions" />
+
+    <item
+        android:icon="@drawable/ic_logout"
+        android:title="@string/logout" />
+
+</menu>

@@ -1,8 +1,10 @@
-package com.example.iterepi;
+package com.example.iterepi.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.iterepi.R;
 
 public class MainActivity extends AppCompatActivity {
 

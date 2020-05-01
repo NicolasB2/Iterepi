@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "689800102571",
+    "firebase_url": "https://iterepi.firebaseio.com",
+    "project_id": "iterepi",
+    "storage_bucket": "iterepi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:689800102571:android:4fa1ed398c812d3069edee",
+        "android_client_info": {
+          "package_name": "com.example.iterepi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "689800102571-hsetusct9sg41bum68gdd4ral7rpl9nk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_3iFLsuM8YJIzMhfKf4eJPylXOJNu7Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "689800102571-hsetusct9sg41bum68gdd4ral7rpl9nk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

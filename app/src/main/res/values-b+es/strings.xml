@@ -5,7 +5,7 @@
     <string name="continue_as">Continuar como</string>
     <string name="log_in_with">Ingresar con</string>
     <string name="no_account">¿Todavía no tienes una cuenta?</string>
-    <string name="register_here">Registrate aqui</string>
+    <string name="register_here">Registrate aquí</string>
     <string name="login">Iniciar sesión</string>
     <string name="password">Contraseña</string>
     <string name="forgot_pass">¿Olvidaste la contraseña?</string>
@@ -22,9 +22,9 @@
     <string name="phone_number">Número Celular</string>
     <string name="nit">NIT Tienda</string>
     <string name="shop_no_account">¿No tiene cuenta tu tienda?</string>
-    <string name="register_shop">Registra tu tienda aqui</string>
+    <string name="register_shop">Registra tu tienda aquí</string>
     <string name="register">Registrar</string>
-    <string name="category">Categoria</string>
+    <string name="category">Categoría</string>
     <string name="accept_terms">Acepto Términos y Condiciones</string>
     <string name="confirm_email">Confirmar correo</string>
     <string name="current_pass">Contraseña actual</string>
@@ -64,7 +64,7 @@
     <string name="add_to_basket">Agregar a la canasta</string>
     <string name="state">Estado</string>
     <string name="add_product">Agregar Producto</string>
-    <string name="add_category">Agregar Categoria</string>
+    <string name="add_category">Agregar Categoría</string>
     <string name="add_place">Agregar Sede</string>
     <string name="update_data">Actualizar datos</string>
     <string name="description">Descripción</string>
@@ -90,6 +90,5 @@
     <string name="to_deliver">Por entregar</string>
     <string name="delivered">Entregado</string>
     <string name="confirm">Confirmar</string>
-
 
 </resources>
