@@ -27,7 +27,7 @@
         app:srcCompat="@drawable/alt_iterepi" />
 
     <Spinner
-        android:id="@+id/prefijoSP"
+        android:id="@+id/prefixSP"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
@@ -37,18 +37,18 @@
         app:layout_constraintTop_toBottomOf="@+id/nameIV" />
 
     <EditText
-        android:id="@+id/nameET"
+        android:id="@+id/phoneNumberET"
         style="@style/app_editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:hint="Celular"
+        android:hint="@string/phone_number"
         android:inputType="text"
         android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/prefijoSP"
+        app:layout_constraintStart_toEndOf="@+id/prefixSP"
         app:layout_constraintTop_toBottomOf="@+id/nameIV" />
 
     <EditText
@@ -60,20 +60,20 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameET" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberET" />
 
     <Button
-        android:id="@+id/registerBtn"
+        android:id="@+id/loginBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="64dp"
-        android:text="Iniciar Sesión"
+        android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordET" />
@@ -83,11 +83,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="¿Olvidaste la contraseña?"
+        android:text="@string/forgot_pass"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
     <ImageButton
         android:id="@+id/backBtn"

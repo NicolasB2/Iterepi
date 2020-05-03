@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
-        android:text="Registrate con Google"
+        android:text="@string/register_with_google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/googleIV"
         app:layout_constraintTop_toBottomOf="@+id/facebookBtn" />
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Crea tu cuenta:"
+        android:text="@string/create_account"
         android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="64dp"
-        android:text="Registrate con Facebook"
+        android:text="@string/register_with_facebook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/facebookIV"
         app:layout_constraintTop_toBottomOf="@+id/registerTV" />
@@ -85,11 +85,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
-        android:text="Button"
+        android:text="@string/register_with_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/emailIV"
-        app:layout_constraintTop_toBottomOf="@+id/googleBtn"
-        tools:text="Registrate con Correo" />
+        app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
 
     <ImageView
         android:id="@+id/emailIV"
