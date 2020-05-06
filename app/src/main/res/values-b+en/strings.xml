@@ -28,7 +28,7 @@
     <string name="register_shop">Sign in your shop here</string>
     <string name="register">Register</string>
     <string name="category">Category</string>
-    <string name="accept_terms">Agree Term and conditions</string>
+    <string name="accept_terms">Agree Terms and conditions</string>
     <string name="confirm_email">Confirm email</string>
     <string name="current_pass">Current password</string>
     <string name="recover_pass">Recover password</string>

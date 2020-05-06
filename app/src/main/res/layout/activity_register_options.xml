@@ -8,13 +8,16 @@
 
     <Button
         android:id="@+id/googleBtn"
+        style="@style/iconButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="84dp"
         android:text="@string/register_with_google"
+        app:icon="@drawable/ic_google"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/googleIV"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/facebookBtn" />
 
     <ImageView
@@ -50,55 +53,31 @@
 
     <Button
         android:id="@+id/facebookBtn"
+        style="@style/iconButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="84dp"
         android:text="@string/register_with_facebook"
+        app:icon="@drawable/ic_facebook"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/facebookIV"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerTV" />
-
-    <ImageView
-        android:id="@+id/facebookIV"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTV"
-        app:srcCompat="@drawable/ic_facebook" />
-
-    <ImageView
-        android:id="@+id/googleIV"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facebookIV"
-        app:srcCompat="@drawable/ic_google" />
 
     <Button
         android:id="@+id/emailBtn"
+        style="@style/iconButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="84dp"
         android:text="@string/register_with_email"
+        app:icon="@drawable/ic_email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/emailIV"
-        app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
-
-    <ImageView
-        android:id="@+id/emailIV"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/googleIV"
-        app:srcCompat="@drawable/ic_email" />
+        app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
 
     <ImageButton
         android:id="@+id/backBtn3"

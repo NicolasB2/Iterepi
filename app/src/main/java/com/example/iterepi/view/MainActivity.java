@@ -15,9 +15,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_launch_screen);
-
-        logoIV = findViewById(R.id.logoIV);
-        nameIV = findViewById(R.id.nameIV);
+        setContentView(R.layout.activity_store_register);
     }
 }
