@@ -1,20 +1,16 @@
 package com.example.iterepi.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView logoIV;
-    private ImageView nameIV;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store_register);
+        setContentView(R.layout.activity_login_as);
     }
 }
