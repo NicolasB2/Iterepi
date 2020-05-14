@@ -93,5 +93,7 @@
     <string name="to_deliver">To deliver</string>
     <string name="delivered">Delivered</string>
     <string name="confirm">Confirm</string>
+    <string name="purchase_value">Purchase value</string>
+
 
 </resources>
