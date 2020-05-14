@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
     <TextView
-        android:id="@+id/nameTV"
+        android:id="@+id/quantityTV"
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
@@ -72,7 +72,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/birth"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTV" />
+        app:layout_constraintTop_toBottomOf="@+id/quantityTV" />
 
     <TextView
         android:id="@+id/BirthTV"
@@ -93,7 +93,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/gender"
         app:layout_constraintStart_toStartOf="@+id/genderTV"
-        app:layout_constraintTop_toBottomOf="@+id/nameTV" />
+        app:layout_constraintTop_toBottomOf="@+id/quantityTV" />
 
     <TextView
         android:id="@+id/genderTV"
@@ -190,10 +190,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changePassBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/addProductBtn" />
 
     <Button
-        android:id="@+id/changePassBtn"
+        android:id="@+id/addProductBtn"
         style="@style/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView91" />
 
     <TextView
-        android:id="@+id/nameTV2"
+        android:id="@+id/priceTV"
         android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginTop="24dp"
@@ -52,10 +52,10 @@
         android:background="@drawable/edit_text"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/nameTV" />
+        app:layout_constraintTop_toBottomOf="@+id/quantityTV" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/productImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -86,10 +86,10 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/productImg" />
 
     <TextView
-        android:id="@+id/nameTV"
+        android:id="@+id/quantityTV"
         android:layout_width="100dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
@@ -97,10 +97,10 @@
         android:background="@drawable/edit_text"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/productImg" />
 
     <Button
-        android:id="@+id/changePassBtn"
+        android:id="@+id/addProductBtn"
         style="@style/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -111,6 +111,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTV2" />
+        app:layout_constraintTop_toBottomOf="@+id/priceTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

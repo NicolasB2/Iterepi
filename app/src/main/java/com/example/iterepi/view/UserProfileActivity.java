@@ -35,14 +35,14 @@ public class UserProfileActivity extends AppCompatActivity {
         backBtn  = findViewById(R.id.backBtn);
         setImageBtn  = findViewById(R.id.setImageBtn);
 
-        nameTV  = findViewById(R.id.nameTV);
+        nameTV  = findViewById(R.id.quantityTV);
         BirthTV  = findViewById(R.id.BirthTV);
         genderTV  = findViewById(R.id.genderTV);
         idTV  = findViewById(R.id.idTV);
         phoneNumberTV  = findViewById(R.id.phoneNumberTV);
         emailTV  = findViewById(R.id.emailTV);
 
-        changePassBtn  = findViewById(R.id.changePassBtn);
+        changePassBtn  = findViewById(R.id.addProductBtn);
         update_dataBtn  = findViewById(R.id.update_dataBtn);
     }
 
