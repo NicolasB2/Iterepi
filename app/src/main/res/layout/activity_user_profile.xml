@@ -29,7 +29,7 @@
         app:srcCompat="@drawable/ic_user" />
 
     <ImageButton
-        android:id="@+id/setImage"
+        android:id="@+id/setImageBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="80dp"
@@ -179,7 +179,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/update_data"
+        android:id="@+id/update_dataBtn"
         style="@style/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
