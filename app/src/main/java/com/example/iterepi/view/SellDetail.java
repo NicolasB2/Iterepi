@@ -1,0 +1,101 @@
+package com.example.iterepi.view;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.iterepi.R;
+
+public class SellDetail extends AppCompatActivity {
+
+    private TextView idSellTV;
+    private TextView nameClientTV;
+    private TextView idClientTV;
+    private TextView sellValueTV;
+    private TextView showDateHourSaleTV;
+    private TextView showDateHourDeliveredTV;
+    private TextView showPlaceStoreTV;
+    private ListView listProductsSellLV;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sell_detail);
+
+        idSellTV = findViewById(R.id.idSellTV);
+        nameClientTV = findViewById(R.id.nameClientTV);
+        idClientTV = findViewById(R.id.idclientTV);
+        sellValueTV = findViewById(R.id.sellValueTV);
+        showDateHourSaleTV = findViewById(R.id.showDateHourSaleTV);
+        showDateHourDeliveredTV = findViewById(R.id.showDateHourDelivered);
+        showPlaceStoreTV = findViewById(R.id.showPlaceStoreTV);
+        listProductsSellLV = findViewById(R.id.listProductsSellLV);
+    }
+
+    public TextView getIdSellTV() {
+        return idSellTV;
+    }
+
+    public void setIdSellTV(TextView idSellTV) {
+        this.idSellTV = idSellTV;
+    }
+
+    public TextView getNameClientTV() {
+        return nameClientTV;
+    }
+
+    public void setNameClientTV(TextView nameClientTV) {
+        this.nameClientTV = nameClientTV;
+    }
+
+    public TextView getIdClientTV() {
+        return idClientTV;
+    }
+
+    public void setIdClientTV(TextView idClientTV) {
+        this.idClientTV = idClientTV;
+    }
+
+    public TextView getSellValueTV() {
+        return sellValueTV;
+    }
+
+    public void setSellValueTV(TextView sellValueTV) {
+        this.sellValueTV = sellValueTV;
+    }
+
+    public TextView getShowDateHourSaleTV() {
+        return showDateHourSaleTV;
+    }
+
+    public void setShowDateHourSaleTV(TextView showDateHourSaleTV) {
+        this.showDateHourSaleTV = showDateHourSaleTV;
+    }
+
+    public TextView getShowDateHourDeliveredTV() {
+        return showDateHourDeliveredTV;
+    }
+
+    public void setShowDateHourDeliveredTV(TextView showDateHourDeliveredTV) {
+        this.showDateHourDeliveredTV = showDateHourDeliveredTV;
+    }
+
+    public TextView getShowPlaceStoreTV() {
+        return showPlaceStoreTV;
+    }
+
+    public void setShowPlaceStoreTV(TextView showPlaceStoreTV) {
+        this.showPlaceStoreTV = showPlaceStoreTV;
+    }
+
+    public ListView getListProductsSellLV() {
+        return listProductsSellLV;
+    }
+
+    public void setListProductsSellLV(ListView listProductsSellLV) {
+        this.listProductsSellLV = listProductsSellLV;
+    }
+}
