@@ -93,5 +93,7 @@
     <string name="to_deliver">Por entregar</string>
     <string name="delivered">Entregado</string>
     <string name="confirm">Confirmar</string>
+    <string name="purchase_value">Valor compra</string>
+
 
 </resources>
