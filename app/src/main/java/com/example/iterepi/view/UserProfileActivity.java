@@ -17,7 +17,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private ImageButton setImageBtn;
 
     private TextView nameTV;
-    private TextView BirthTV;
+    private TextView birthTV;
     private TextView genderTV;
     private TextView idTV;
     private TextView phoneNumberTV;
@@ -36,7 +36,7 @@ public class UserProfileActivity extends AppCompatActivity {
         setImageBtn  = findViewById(R.id.setImageBtn);
 
         nameTV  = findViewById(R.id.quantityTV);
-        BirthTV  = findViewById(R.id.BirthTV);
+        birthTV  = findViewById(R.id.birthTV);
         genderTV  = findViewById(R.id.genderTV);
         idTV  = findViewById(R.id.idTV);
         phoneNumberTV  = findViewById(R.id.phoneNumberTV);
@@ -63,7 +63,7 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     public TextView getBirthTV() {
-        return BirthTV;
+        return birthTV;
     }
 
     public TextView getGenderTV() {

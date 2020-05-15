@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.iterepi.R;
 
-public class addToCartActivity extends AppCompatActivity {
+public class AddToCartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

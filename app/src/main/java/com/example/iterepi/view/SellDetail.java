@@ -19,7 +19,6 @@ public class SellDetail extends AppCompatActivity {
     private TextView showPlaceStoreTV;
     private ListView listProductsSellLV;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

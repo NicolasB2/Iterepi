@@ -19,7 +19,6 @@ public class PurchaseDetailActivity extends AppCompatActivity {
     private TextView showPlaceTV;
     private ListView listProductsLV;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +31,6 @@ public class PurchaseDetailActivity extends AppCompatActivity {
         showDateHourReceivedTV = findViewById(R.id.showDateHourReceivedTV);
         showPlaceTV = findViewById(R.id.showPlaceTV);
         listProductsLV = findViewById(R.id.listProductsLV);
-
-
     }
 
     public TextView getIdPurchaseTV() {

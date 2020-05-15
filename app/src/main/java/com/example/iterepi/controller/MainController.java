@@ -20,17 +20,14 @@ public class MainController implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View view) {
-        Log.i(">>>>>>>>>>>", "onClick: 1");
+    public void onClick(View v) {
         Intent i;
-        switch (view.getId()) {
+        switch (v.getId()) {
             case R.id.buyerBtn:
-                Log.i(">>>>>>>>>>>", "onClick: 2");
                 i = new Intent(activity, LoginUserActivity.class);
                 activity.startActivity(i);
                 break;
             default:
-                Log.i(">>>>>>>>>>>", "onClick: 3");
                 i = new Intent(activity, LoginStoreActivity.class);
                 activity.startActivity(i);
                 break;

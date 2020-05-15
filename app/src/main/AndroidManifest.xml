@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.UserFeedActivity"></activity>
-        <activity android:name=".view.addToCartActivity" />
+        <activity android:name=".view.AddToCartActivity" />
         <activity android:name=".view.SellDetail"></activity>
         <activity android:name=".view.UserProfileActivity" />
         <activity android:name=".view.ItemProductUser" />
