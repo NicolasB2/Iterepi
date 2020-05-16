@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.StoreHomeActivity"></activity>
+        <activity android:name=".view.SectionStoreUser"></activity>
+        <activity android:name=".view.StoreHomeActivity" />
         <activity android:name=".view.UserFeedActivity" />
         <activity android:name=".view.AddToCartDialog" />
         <activity android:name=".view.SellDetailDialog" />
