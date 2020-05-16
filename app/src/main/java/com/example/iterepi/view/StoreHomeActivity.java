@@ -1,16 +1,16 @@
 package com.example.iterepi.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
 
-public class AddToCartActivity extends AppCompatActivity {
+public class StoreHomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_to_cart);
+        setContentView(R.layout.activity_store_home);
     }
 }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/alt_background"
-    tools:context=".view.PurchaseDetailActivity">
+    tools:context=".view.PurchaseDetailDialog">
 
     <TextView
         android:id="@+id/textView"

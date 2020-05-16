@@ -1,14 +1,14 @@
 package com.example.iterepi.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.iterepi.R;
 
-public class SellDetail extends AppCompatActivity {
+public class SellDetailDialog extends AppCompatActivity {
 
     private TextView idSellTV;
     private TextView nameClientTV;
@@ -22,7 +22,7 @@ public class SellDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sell_detail);
+        setContentView(R.layout.dialog_sell_detail);
 
         idSellTV = findViewById(R.id.idSellTV);
         nameClientTV = findViewById(R.id.nameClientTV);
