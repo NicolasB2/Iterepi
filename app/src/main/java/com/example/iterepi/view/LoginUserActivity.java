@@ -2,6 +2,7 @@ package com.example.iterepi.view;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +12,9 @@ import com.example.iterepi.controller.LoginUserController;
 public class LoginUserActivity extends AppCompatActivity {
 
     private LoginUserController controller;
-    private Button facebookBtn;
-    private Button googleBtn;
-    private Button emailBtn;
+    private ImageButton facebookBtn;
+    private ImageButton googleBtn;
+    private ImageButton emailBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +32,15 @@ public class LoginUserActivity extends AppCompatActivity {
         return controller;
     }
 
-    public Button getFacebookBtn() {
+    public ImageButton getFacebookBtn() {
         return facebookBtn;
     }
 
-    public Button getGoogleBtn() {
+    public ImageButton getGoogleBtn() {
         return googleBtn;
     }
 
-    public Button getEmailBtn() {
+    public ImageButton getEmailBtn() {
         return emailBtn;
     }
 }
