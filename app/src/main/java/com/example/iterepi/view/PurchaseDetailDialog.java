@@ -5,6 +5,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iterepi.R;
 
@@ -17,7 +18,7 @@ public class PurchaseDetailDialog extends AppCompatActivity {
     private TextView showDateHourPurchaseTV;
     private TextView showDateHourReceivedTV;
     private TextView showPlaceTV;
-    private ListView listProductsLV;
+    private RecyclerView listProductsRV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class PurchaseDetailDialog extends AppCompatActivity {
         showDateHourPurchaseTV = findViewById(R.id.showDateHourPurchaseTV);
         showDateHourReceivedTV = findViewById(R.id.showDateHourReceivedTV);
         showPlaceTV = findViewById(R.id.showPlaceTV);
-        listProductsLV = findViewById(R.id.listProductsLV);
+        listProductsRV = findViewById(R.id.listProductsRV);
     }
 
     public TextView getIdPurchaseTV() {
@@ -81,11 +82,11 @@ public class PurchaseDetailDialog extends AppCompatActivity {
         this.showPlaceTV = showPlaceTV;
     }
 
-    public ListView getListProductsLV() {
-        return listProductsLV;
+    public RecyclerView getListProductsRV() {
+        return listProductsRV;
     }
 
-    public void setListProductsLV(ListView listProductsLV) {
-        this.listProductsLV = listProductsLV;
+    public void setListProductsRV(RecyclerView listProductsRV) {
+        this.listProductsRV = listProductsRV;
     }
 }
