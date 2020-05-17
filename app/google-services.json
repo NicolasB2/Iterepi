@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "689800102571-ivcbe7ip8h532d71hbhdo9umbo3q4fd7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.iterepi",
+            "certificate_hash": "c85db71438528a7074420bce415162c84dcd65f3"
+          }
+        },
+        {
           "client_id": "689800102571-hsetusct9sg41bum68gdd4ral7rpl9nk.apps.googleusercontent.com",
           "client_type": 3
         }
