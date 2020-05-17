@@ -103,5 +103,6 @@
     <string name="must_accept_terms">Debes aceptar los términos y condiciones para el registro</string>
     <string name="empty_field">Este campo no puede estar vacío</string>
     <string name="select_gender">Por favor seleccione su género</string>
+    <string name="location">Ubicación</string>
 
 </resources>
