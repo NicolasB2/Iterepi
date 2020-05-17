@@ -7,7 +7,7 @@
     android:background="@drawable/alt_background">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameTF"
+        android:id="@+id/nitTF"
         style="@style/textFieldNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTF">
+        app:layout_constraintTop_toBottomOf="@+id/nitTF">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputPassTF"

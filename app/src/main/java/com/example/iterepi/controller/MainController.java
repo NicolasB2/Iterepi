@@ -1,13 +1,12 @@
 package com.example.iterepi.controller;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 
 import com.example.iterepi.R;
 import com.example.iterepi.view.LoginStoreActivity;
 import com.example.iterepi.view.MainActivity;
-import com.example.iterepi.view.LoginUserActivity;
+import com.example.iterepi.view.RegisterMenuActivity;
 
 public class MainController implements View.OnClickListener {
 
@@ -24,7 +23,7 @@ public class MainController implements View.OnClickListener {
         Intent i;
         switch (v.getId()) {
             case R.id.buyerBtn:
-                i = new Intent(activity, LoginUserActivity.class);
+                i = new Intent(activity, RegisterMenuActivity.class);
                 activity.startActivity(i);
                 break;
             default:

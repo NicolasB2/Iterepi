@@ -7,15 +7,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.LoginStoreController;
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginStoreActivity extends AppCompatActivity {
 
     private LoginStoreController controller;
     private Button forgotPassBtn;
     private Button registerHereBtn;
-    private TextInputEditText nit;
-    private TextInputEditText pass;
+    private TextInputLayout nit;
+    private TextInputLayout pass;
     private Button updateDataBtn;
 
 
@@ -26,8 +26,8 @@ public class LoginStoreActivity extends AppCompatActivity {
 
         forgotPassBtn = findViewById(R.id.forgotPass);
         registerHereBtn = findViewById(R.id.registerHereStore);
-        nit = findViewById(R.id.inputNitTF);
-        pass = findViewById(R.id.inputPassTF);
+        nit = findViewById(R.id.nitTF);
+        pass = findViewById(R.id.passwordTF);
         updateDataBtn = findViewById(R.id.update_dataBtn);
 
         controller = new LoginStoreController(this);
@@ -43,11 +43,11 @@ public class LoginStoreActivity extends AppCompatActivity {
         return registerHereBtn;
     }
 
-    public TextInputEditText getNit() {
+    public TextInputLayout getNit() {
         return nit;
     }
 
-    public TextInputEditText getPass() {
+    public TextInputLayout getPass() {
         return pass;
     }
 

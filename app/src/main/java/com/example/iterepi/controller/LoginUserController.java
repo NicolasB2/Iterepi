@@ -16,6 +16,7 @@ public class LoginUserController implements View.OnClickListener {
         activity.getFacebookBtn().setOnClickListener(this);
         activity.getGoogleBtn().setOnClickListener(this);
         activity.getEmailBtn().setOnClickListener(this);
+
     }
 
     @Override
@@ -24,12 +25,17 @@ public class LoginUserController implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.facebookBtn:
                 break;
+
             case R.id.googleBtn:
+
                 break;
-            default:
+
+            case R.id.emailBtn:
                 i = new Intent(activity, LoginUserEmailActivity.class);
                 activity.startActivity(i);
                 break;
+
+
         }
     }
 }

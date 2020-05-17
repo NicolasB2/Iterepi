@@ -94,6 +94,15 @@
     <string name="delivered">Delivered</string>
     <string name="confirm">Confirm</string>
     <string name="purchase_value">Purchase value</string>
+    <string name="number_id">ID Number</string>
+    <string name="select_birthday">Select your birthday</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="login_here">Log in here</string>
+    <string name="pass_dont_match">Passwords don\'t match</string>
+    <string name="pass_must_contain">Password must contain letters and numbers</string>
+    <string name="must_accept_terms">You must accept terms and conditions to register.</string>
+    <string name="empty_field">This field cannot be empty</string>
+    <string name="select_gender">Please select your gender</string>
 
 
 </resources>

@@ -94,6 +94,14 @@
     <string name="delivered">Entregado</string>
     <string name="confirm">Confirmar</string>
     <string name="purchase_value">Valor compra</string>
-
+    <string name="number_id">Número de identificación</string>
+    <string name="select_birthday">Seleccione su fecha de nacimiento</string>
+    <string name="have_account">¿Ya tienes una cuenta?</string>
+    <string name="login_here">Ingresa aquí</string>
+    <string name="pass_dont_match">Las contraseñas no coinciden</string>
+    <string name="pass_must_contain">La contraseña debe contener letras y números</string>
+    <string name="must_accept_terms">Debes aceptar los términos y condiciones para el registro</string>
+    <string name="empty_field">Este campo no puede estar vacío</string>
+    <string name="select_gender">Por favor seleccione su género</string>
 
 </resources>

@@ -1,7 +1,6 @@
 package com.example.iterepi.view;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +24,7 @@ public class LoginUserActivity extends AppCompatActivity {
         googleBtn = findViewById(R.id.googleBtn);
         emailBtn = findViewById(R.id.emailBtn);
 
+
         controller = new LoginUserController(this);
     }
 
@@ -43,4 +43,5 @@ public class LoginUserActivity extends AppCompatActivity {
     public ImageButton getEmailBtn() {
         return emailBtn;
     }
+
 }
