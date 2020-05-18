@@ -21,7 +21,7 @@
         tools:text="@string/add_place" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/categoryName"
+        android:id="@+id/categoryNameTF"
         style="@style/textFieldNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
 
 
     <Button
-        android:id="@+id/addBtn"
+        android:id="@+id/addPlaceBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -52,7 +52,7 @@
         android:text="@string/add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/placeLocationTF" />
 
     <ImageButton
         android:id="@+id/closeBtn"
@@ -66,7 +66,7 @@
         app:srcCompat="@drawable/ic_close" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/placeLocation"
+        android:id="@+id/placeLocationTF"
         style="@style/textFieldNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
         android:hint="@string/location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryName">
+        app:layout_constraintTop_toBottomOf="@+id/categoryNameTF">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -84,7 +84,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/mapLocationPlaceBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="10dp"
@@ -92,8 +92,8 @@
         android:layout_marginEnd="36dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/placeLocation"
-        app:layout_constraintTop_toBottomOf="@+id/categoryName"
+        app:layout_constraintStart_toEndOf="@+id/placeLocationTF"
+        app:layout_constraintTop_toBottomOf="@+id/categoryNameTF"
         app:srcCompat="@android:drawable/ic_dialog_map" />
 
 
