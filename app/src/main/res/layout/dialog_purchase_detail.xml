@@ -15,7 +15,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/purchase_id"
         android:textColor="@android:color/white"
-        android:textSize="20"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

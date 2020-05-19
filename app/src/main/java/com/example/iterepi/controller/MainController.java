@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.example.iterepi.R;
 import com.example.iterepi.view.login.LoginStoreActivity;
+import com.example.iterepi.view.login.LoginUserActivity;
 import com.example.iterepi.view.login.MainActivity;
 import com.example.iterepi.view.login.RegisterMenuActivity;
 
@@ -23,7 +24,7 @@ public class MainController implements View.OnClickListener {
         Intent i;
         switch (v.getId()) {
             case R.id.buyerBtn:
-                i = new Intent(activity, RegisterMenuActivity.class);
+                i = new Intent(activity, LoginUserActivity.class);
                 activity.startActivity(i);
                 break;
             default:

@@ -6,6 +6,29 @@
     android:layout_height="match_parent"
     android:background="@drawable/alt_background">
 
+    <Button
+        android:id="@+id/noAccountTV"
+        style="@style/textButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/no_account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
+
+    <Button
+        android:id="@+id/registerTV"
+        style="@style/textButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/register_here"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noAccountTV" />
+
     <ImageView
         android:id="@+id/logoIV4"
         android:layout_width="120dp"
@@ -27,7 +50,7 @@
         app:srcCompat="@drawable/alt_iterepi" />
 
     <TextView
-        android:id="@+id/registerTV"
+        android:id="@+id/loginWith"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -57,7 +80,7 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTV"
+        app:layout_constraintTop_toBottomOf="@+id/loginWith"
         app:srcCompat="@drawable/ic_facebook" />
 
     <ImageButton
@@ -68,7 +91,7 @@
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toStartOf="@+id/emailBtn"
         app:layout_constraintStart_toEndOf="@+id/facebookBtn"
-        app:layout_constraintTop_toBottomOf="@+id/registerTV"
+        app:layout_constraintTop_toBottomOf="@+id/loginWith"
         app:srcCompat="@drawable/ic_google" />
 
     <ImageButton
@@ -79,7 +102,7 @@
         android:layout_marginEnd="100dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTV"
+        app:layout_constraintTop_toBottomOf="@+id/loginWith"
         app:srcCompat="@drawable/ic_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

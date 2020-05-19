@@ -40,7 +40,7 @@
         app:srcCompat="@drawable/alt_iterepi" />
 
     <TextView
-        android:id="@+id/registerTV"
+        android:id="@+id/loginWith"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -62,7 +62,7 @@
         app:icon="@drawable/ic_facebook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTV" />
+        app:layout_constraintTop_toBottomOf="@+id/loginWith" />
 
     <Button
         android:id="@+id/emailBtn"
