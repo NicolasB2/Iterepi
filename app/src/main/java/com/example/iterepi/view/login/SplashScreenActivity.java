@@ -1,11 +1,10 @@
-package com.example.iterepi.view;
+package com.example.iterepi.view.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ImageView;
 
 import com.example.iterepi.R;
 

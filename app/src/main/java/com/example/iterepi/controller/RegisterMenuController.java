@@ -3,17 +3,13 @@ package com.example.iterepi.controller;
 import android.content.Intent;
 import android.view.View;
 
-import androidx.annotation.Nullable;
-
 import com.example.iterepi.R;
-import com.example.iterepi.view.LoginUserActivity;
-import com.example.iterepi.view.RegisterMenuActivity;
-import com.example.iterepi.view.RegisterUserEmailActivity;
+import com.example.iterepi.view.login.LoginUserActivity;
+import com.example.iterepi.view.login.RegisterMenuActivity;
+import com.example.iterepi.view.login.RegisterUserEmailActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterMenuController implements View.OnClickListener {

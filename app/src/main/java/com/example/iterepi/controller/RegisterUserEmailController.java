@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
-import com.example.iterepi.view.RegisterUserEmailActivity;
+import com.example.iterepi.view.login.RegisterUserEmailActivity;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;

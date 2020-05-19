@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.view.View;
 
 import com.example.iterepi.R;
-import com.example.iterepi.view.LoginStoreActivity;
-import com.example.iterepi.view.StoreHomeActivity;
+import com.example.iterepi.view.login.LoginStoreActivity;
+import com.example.iterepi.view.store.StoreHomeActivity;
 
 public class LoginStoreController implements View.OnClickListener {
 

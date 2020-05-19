@@ -1,4 +1,4 @@
-package com.example.iterepi.view;
+package com.example.iterepi.view.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.view.View;
 
 import com.example.iterepi.R;
-import com.example.iterepi.view.LoginUserActivity;
-import com.example.iterepi.view.LoginUserEmailActivity;
+import com.example.iterepi.view.login.LoginUserActivity;
+import com.example.iterepi.view.login.LoginUserEmailActivity;
 
 public class LoginUserController implements View.OnClickListener {
 

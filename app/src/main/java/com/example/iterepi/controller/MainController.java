@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.view.View;
 
 import com.example.iterepi.R;
-import com.example.iterepi.view.LoginStoreActivity;
-import com.example.iterepi.view.MainActivity;
-import com.example.iterepi.view.RegisterMenuActivity;
+import com.example.iterepi.view.login.LoginStoreActivity;
+import com.example.iterepi.view.login.MainActivity;
+import com.example.iterepi.view.login.RegisterMenuActivity;
 
 public class MainController implements View.OnClickListener {
 

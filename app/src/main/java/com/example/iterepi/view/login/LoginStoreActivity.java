@@ -1,4 +1,4 @@
-package com.example.iterepi.view;
+package com.example.iterepi.view.login;
 
 import android.os.Bundle;
 import android.widget.Button;
