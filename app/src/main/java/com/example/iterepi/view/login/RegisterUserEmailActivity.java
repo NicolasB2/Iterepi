@@ -45,6 +45,8 @@ public class RegisterUserEmailActivity extends AppCompatActivity {
         checkTerms = findViewById(R.id.checkTerms);
         registerBtn = findViewById(R.id.registerUserBtn);
 
+        passwordTF.setHelperText(getString(R.string.helper_pass));
+
         controller = new RegisterUserEmailController(this);
 
     }

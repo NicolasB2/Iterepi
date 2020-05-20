@@ -50,6 +50,7 @@
             android:id="@+id/identificationEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="358dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -115,6 +116,7 @@
             android:id="@+id/emailUserEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="358dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -171,6 +173,7 @@
             android:id="@+id/nameUserEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="358dp" />
     </com.google.android.material.textfield.TextInputLayout>

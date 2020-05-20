@@ -104,6 +104,8 @@
     <string name="empty_field">Este campo no puede estar vacío</string>
     <string name="select_gender">Por favor seleccione su género</string>
     <string name="location">Ubicación</string>
+    <string name="min_six_characters">La contraseña debe contener al menos 6 carácteres </string>
+    <string name="helper_pass">Debe contener al menos 6 caracteres. Letras y números</string>
     <string name="deafault_web_client_id" translatable="false">689800102571-hsetusct9sg41bum68gdd4ral7rpl9nk.apps.googleusercontent.com</string>
 
 </resources>

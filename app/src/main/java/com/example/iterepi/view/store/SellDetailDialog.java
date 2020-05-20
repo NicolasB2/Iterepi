@@ -1,7 +1,6 @@
-package com.example.iterepi.view;
+package com.example.iterepi.view.store;
 
 import android.os.Bundle;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;

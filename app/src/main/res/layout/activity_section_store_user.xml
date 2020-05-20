@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/alt_background"
-    tools:context=".view.SectionStoreUser">
+    tools:context=".view.user.SectionStoreUser">
 
     <ImageButton
         android:id="@+id/backBtn"

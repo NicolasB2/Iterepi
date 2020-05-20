@@ -13,13 +13,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.login.RegisterMenuActivity"></activity>
         <activity android:name=".view.login.RegisterUserEmailActivity" />
-        <activity android:name=".view.SectionStoreUser" />
+        <activity android:name=".view.user.SectionStoreUser" />
         <activity android:name=".view.store.StoreHomeActivity" />
         <activity android:name=".view.user.UserFeedActivity" />
-        <activity android:name=".view.AddToCartDialog" />
-        <activity android:name=".view.SellDetailDialog" />
+        <activity android:name=".view.user.AddToCartDialog" />
+        <activity android:name=".view.store.SellDetailDialog" />
         <activity android:name=".view.user.UserProfileActivity" />
-        <activity android:name=".view.PurchaseDetailDialog" />
+        <activity android:name=".view.user.PurchaseDetailDialog" />
         <activity android:name=".view.login.MainActivity" />
         <activity android:name=".view.login.LoginStoreActivity" />
         <activity android:name=".view.login.LoginUserActivity" />
