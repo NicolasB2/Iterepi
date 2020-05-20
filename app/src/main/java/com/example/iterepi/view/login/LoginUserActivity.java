@@ -50,55 +50,11 @@ public class LoginUserActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RegisterMenuController.RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
+            controller.handleSignInResult(task);
         }
     }
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-        try {
-            GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
-            Toast.makeText(LoginUserActivity.this, "Signed In Successfully", Toast.LENGTH_SHORT).show();
-            FireBaseGoogleAuth(acc);
-        } catch (ApiException e) {
-            Toast.makeText(LoginUserActivity.this, "Signed In Failed", Toast.LENGTH_SHORT).show();
-            FireBaseGoogleAuth(null);
-        }
-    }
 
-    private void FireBaseGoogleAuth(GoogleSignInAccount acc) {
-        AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
-        controller.getmAuth().signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser user = controller.getmAuth().getCurrentUser();
-                    updateUI(user);
-                } else {
-                    Toast.makeText(LoginUserActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                    updateUI(null);
-                }
-            }
-        });
-    }
-
-    private void updateUI(FirebaseUser fUser) {
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if (account != null) {
-
-            String personName = account.getDisplayName();
-            String personGivenName = account.getGivenName();
-            String personFamilyName = account.getFamilyName();
-            String personEmail = account.getEmail();
-            String personId = account.getId();
-            Uri personPhoto = account.getPhotoUrl();
-
-            Toast.makeText(LoginUserActivity.this, "Welcome " + personName + " !",
-                    Toast.LENGTH_SHORT).show();
-
-            //TODO: Update UI with user settings
-
-        }
-    }
 
     public LoginUserController getController() {
         return controller;
