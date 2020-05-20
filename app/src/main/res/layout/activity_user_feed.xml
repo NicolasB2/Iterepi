@@ -39,10 +39,6 @@
 
     </androidx.drawerlayout.widget.DrawerLayout>
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        app:menu="@menu/menu_bottom_nav" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
