@@ -92,19 +92,21 @@ public class RegisterMenuController implements View.OnClickListener {
     }
 
     private void FireBaseGoogleAuth(GoogleSignInAccount acc) {
-        AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
-        mAuth.signInWithCredential(authCredential).addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    updateUI(user);
-                } else {
-                    Toast.makeText(activity, "Failed", Toast.LENGTH_SHORT).show();
-                    updateUI(null);
+        if(acc != null){
+            AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
+            mAuth.signInWithCredential(authCredential).addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
+                    } else {
+                        Toast.makeText(activity, "Failed", Toast.LENGTH_SHORT).show();
+                        updateUI(null);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     private void updateUI(FirebaseUser fUser) {
