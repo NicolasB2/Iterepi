@@ -13,4 +13,7 @@
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#386fa5</color>
     <color name="thirdTextColor">#47525E</color>
+
+    <color name="card_bg_color">#f6f6f6</color>
+    <color name="card_content_text">#999da4</color>
 </resources>
