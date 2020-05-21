@@ -10,10 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme" >
-        <activity android:name=".aqsadsadd" >
-        </activity>
         <activity android:name=".view.user.CartActivity" />
+        <activity android:name=".view.store.OrderDetailDialog"></activity>
+        <activity android:name=".view.user.MakePurchaseActivity" />
+        <activity android:name=".view.store.SeeCategoryDialog"></activity>
+        <activity android:name=".view.store.SeeProductDialog" />
         <activity android:name=".view.login.RegisterMenuActivity" />
         <activity android:name=".view.login.RegisterUserEmailActivity" />
         <activity android:name=".view.user.SectionStoreUser" />

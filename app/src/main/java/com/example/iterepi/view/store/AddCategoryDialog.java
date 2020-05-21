@@ -26,7 +26,7 @@ public class AddCategoryDialog extends AppCompatActivity {
         closeBtn = findViewById(R.id.closeBtn);
         categoryNameTF = findViewById(R.id.categoryNameTF);
         placeSP = findViewById(R.id.placeSP);
-        addPlaceBtn = findViewById(R.id.addPlaceBtn);
+        addPlaceBtn = findViewById(R.id.updateDataBtn);
 
     }
 

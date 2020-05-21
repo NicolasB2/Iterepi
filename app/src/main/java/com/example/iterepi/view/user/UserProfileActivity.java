@@ -43,7 +43,7 @@ public class UserProfileActivity extends AppCompatActivity {
         emailTV  = findViewById(R.id.emailTV);
 
         changePassBtn  = findViewById(R.id.addProductBtn);
-        update_dataBtn  = findViewById(R.id.update_dataBtn);
+        update_dataBtn  = findViewById(R.id.updateDataBtn);
     }
 
     public ImageView getProfileImage() {

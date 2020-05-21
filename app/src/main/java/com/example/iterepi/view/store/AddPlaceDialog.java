@@ -25,7 +25,7 @@ public class AddPlaceDialog extends AppCompatActivity {
         placeNameTF = findViewById(R.id.categoryNameTF);
         placeLocationTF = findViewById(R.id.placeLocationTF);
         mapLocationPlaceBtn = findViewById(R.id.mapLocationPlaceBtn);
-        addPlaceBtn = findViewById(R.id.addPlaceBtn);
+        addPlaceBtn = findViewById(R.id.updateDataBtn);
 
 
     }

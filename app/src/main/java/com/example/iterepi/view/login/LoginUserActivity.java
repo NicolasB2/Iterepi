@@ -30,6 +30,7 @@ public class LoginUserActivity extends AppCompatActivity {
     private ImageButton facebookBtn;
     private ImageButton googleBtn;
     private ImageButton emailBtn;
+    private ImageButton backBtn;
     private TextView registerTV;
 
     @Override
@@ -41,6 +42,7 @@ public class LoginUserActivity extends AppCompatActivity {
         googleBtn = findViewById(R.id.googleBtn);
         emailBtn = findViewById(R.id.emailBtn);
         registerTV = findViewById(R.id.registerTV);
+        backBtn = findViewById(R.id.backBtn);
 
         controller = new LoginUserController(this);
     }
@@ -70,6 +72,10 @@ public class LoginUserActivity extends AppCompatActivity {
 
     public ImageButton getEmailBtn() {
         return emailBtn;
+    }
+
+    public ImageButton getBackBtn() {
+        return backBtn;
     }
 
     public TextView getRegisterTV() {
