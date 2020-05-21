@@ -25,11 +25,11 @@ public class PurchaseDetailDialog extends AppCompatActivity {
         setContentView(R.layout.dialog_purchase_detail);
 
         idPurchaseTV = findViewById(R.id.idPurchaseTV);
-        showPurchaseTV = findViewById(R.id.showPurchaseTV);
-        showStateTV = findViewById(R.id.showStateTV);
-        showDateHourPurchaseTV = findViewById(R.id.showDateHourPurchaseTV);
-        showDateHourReceivedTV = findViewById(R.id.showDateHourReceivedTV);
-        showPlaceTV = findViewById(R.id.showPlaceTV);
+        showPurchaseTV = findViewById(R.id.purchaseNameTV);
+        showStateTV = findViewById(R.id.purchasePriceTV);
+        showDateHourPurchaseTV = findViewById(R.id.purchaseQuantityTV);
+        showDateHourReceivedTV = findViewById(R.id.purchaseDescriptionTV);
+        showPlaceTV = findViewById(R.id.CategoryTV);
         listProductsRV = findViewById(R.id.listProductsRV);
     }
 

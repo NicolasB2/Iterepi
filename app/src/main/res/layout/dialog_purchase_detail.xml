@@ -9,7 +9,7 @@
     tools:context=".view.user.PurchaseDetailDialog">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/purchaseNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -29,7 +29,7 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/purchaseNameTV" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -51,7 +51,7 @@
             android:src="@drawable/alt_logo" />
 
         <ImageView
-            android:id="@+id/enterpriseIV"
+            android:id="@+id/purchaseImageIV"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showPurchaseTV" />
+        app:layout_constraintTop_toBottomOf="@+id/purchaseNameTV" />
 
     <TextView
         android:id="@+id/textView6"
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showDateHourPurchaseTV" />
+        app:layout_constraintTop_toBottomOf="@+id/purchaseQuantityTV" />
 
     <TextView
         android:id="@+id/textView7"
@@ -104,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showDateHourReceivedTV" />
+        app:layout_constraintTop_toBottomOf="@+id/purchaseDescriptionTV" />
 
     <TextView
         android:id="@+id/textView8"
@@ -116,7 +116,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showStateTV" />
+        app:layout_constraintTop_toBottomOf="@+id/purchasePriceTV" />
 
     <TextView
         android:id="@+id/textView9"
@@ -142,10 +142,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showPlaceTV" />
+        app:layout_constraintTop_toBottomOf="@+id/CategoryTV" />
 
     <TextView
-        android:id="@+id/showPurchaseTV"
+        android:id="@+id/purchaseNameTV"
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginStart="30dp"
@@ -157,7 +157,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/showStateTV"
+        android:id="@+id/purchasePriceTV"
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="30dp"
@@ -169,7 +169,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/showDateHourPurchaseTV"
+        android:id="@+id/purchaseQuantityTV"
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="30dp"
@@ -182,7 +182,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
-        android:id="@+id/showDateHourReceivedTV"
+        android:id="@+id/purchaseDescriptionTV"
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="30dp"
@@ -194,7 +194,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
-        android:id="@+id/showPlaceTV"
+        android:id="@+id/CategoryTV"
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="30dp"

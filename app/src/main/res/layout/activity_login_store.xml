@@ -73,7 +73,7 @@
         app:srcCompat="@drawable/alt_iterepi" />
 
     <Button
-        android:id="@+id/update_dataBtn"
+        android:id="@+id/updateDataBtn"
         style="@style/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
         android:text="@string/forgot_pass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_dataBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/updateDataBtn" />
 
     <Button
         android:id="@+id/registerHereStore"

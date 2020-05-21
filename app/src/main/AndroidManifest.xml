@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.user.MakePurchase"></activity>
+        <activity android:name=".view.seeCategoryDialog"></activity>
         <activity android:name=".view.login.RegisterMenuActivity" />
         <activity android:name=".view.login.RegisterUserEmailActivity" />
         <activity android:name=".view.user.SectionStoreUser" />
