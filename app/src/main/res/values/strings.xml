@@ -49,7 +49,7 @@
     <string name="secure_code">Código de seguridad</string>
     <string name="owner_card">Persona titular de la tarjeta</string>
     <string name="add_card">Agregar tarjeta</string>
-    <string name="basket">Canasta</string>
+    <string name="cart">Canasta</string>
     <string name="purchases_history">Historial compras</string>
     <string name="products">Productos</string>
     <string name="price">Precio</string>

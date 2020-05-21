@@ -30,6 +30,7 @@
         <activity android:name=".view.login.LoginStoreActivity" />
         <activity android:name=".view.login.LoginUserActivity" />
         <activity android:name=".view.login.LoginUserEmailActivity" />
+
         <activity android:name=".view.login.SplashScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/productsVP"
@@ -12,26 +12,37 @@
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/primaryColor" />
+        android:background="@color/primaryColor"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/cartTL"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:text="@string/cart" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tuesday" />
+            android:text="@string/purchases_history" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wednesday" />
     </com.google.android.material.tabs.TabLayout>
 
-</LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/cartVP"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cartTL" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

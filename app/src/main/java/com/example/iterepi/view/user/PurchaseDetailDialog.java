@@ -29,7 +29,7 @@ public class PurchaseDetailDialog extends AppCompatActivity {
         showStateTV = findViewById(R.id.purchasePriceTV);
         showDateHourPurchaseTV = findViewById(R.id.purchaseQuantityTV);
         showDateHourReceivedTV = findViewById(R.id.purchaseDescriptionTV);
-        showPlaceTV = findViewById(R.id.CategoryTV);
+        showPlaceTV = findViewById(R.id.showPlaceTV);
         listProductsRV = findViewById(R.id.listProductsRV);
     }
 

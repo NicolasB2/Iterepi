@@ -11,14 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.iterepi.R;
 
-public class CartHistoryFragment extends Fragment {
+public class PurchaseHistoryFragment extends Fragment {
 
     private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_cart_history,container,false);
+        view = inflater.inflate(R.layout.fragment_pruchase_history,container,false);
         return view;
     }
 }

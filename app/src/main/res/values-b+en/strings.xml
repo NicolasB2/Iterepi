@@ -49,7 +49,7 @@
     <string name="secure_code">Secure code</string>
     <string name="owner_card">Owner name</string>
     <string name="add_card">Add card</string>
-    <string name="basket">Basket</string>
+    <string name="cart">Cart</string>
     <string name="purchases_history">Purchases history</string>
     <string name="products">Products</string>
     <string name="price">Price</string>
