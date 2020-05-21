@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.user.MakePurchase"></activity>
-        <activity android:name=".view.seeCategoryDialog"></activity>
+        <activity android:name=".OrderDetailDialog"></activity>
+        <activity android:name=".view.user.MakePurchaseActivity" />
+        <activity android:name=".view.seeCategoryDialog" />
         <activity android:name=".view.login.RegisterMenuActivity" />
         <activity android:name=".view.login.RegisterUserEmailActivity" />
         <activity android:name=".view.user.SectionStoreUser" />

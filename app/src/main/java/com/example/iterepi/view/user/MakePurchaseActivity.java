@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.iterepi.R;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class MakePurchase extends AppCompatActivity {
+public class MakePurchaseActivity extends AppCompatActivity {
 
     private ImageView imageStoreIV;
     private TextView storeNameTV;
