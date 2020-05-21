@@ -58,7 +58,9 @@ public class LoginUserController implements View.OnClickListener {
             case R.id.googleBtn:
                 signIn();
                 break;
-
+            case R.id.backBtn:
+                activity.finish();
+                break;
             case R.id.emailBtn:
                 i = new Intent(activity, LoginUserEmailActivity.class);
                 activity.startActivity(i);

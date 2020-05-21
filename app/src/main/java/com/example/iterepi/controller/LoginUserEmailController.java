@@ -28,7 +28,7 @@ public class LoginUserEmailController implements View.OnClickListener {
 
         switch (v.getId()) {
 
-            case R.id.update_dataBtn:
+            case R.id.updateDataBtn:
 
                 String email = activity.getEmailLoginUserTF().getEditText().getText().toString();
                 String password = activity.getPassLoginUserTF().getEditText().getText().toString();

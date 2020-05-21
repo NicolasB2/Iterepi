@@ -24,7 +24,7 @@ public class LoginStoreController implements View.OnClickListener {
         Intent i;
         switch (v.getId()) {
 
-            case R.id.update_dataBtn:
+            case R.id.updateDataBtn:
 
                 i = new Intent(activity, StoreHomeActivity.class);
                 activity.startActivity(i);

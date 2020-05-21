@@ -28,7 +28,7 @@ public class LoginStoreActivity extends AppCompatActivity {
         registerHereBtn = findViewById(R.id.registerHereStore);
         nit = findViewById(R.id.nitTF);
         pass = findViewById(R.id.passwordTF);
-        updateDataBtn = findViewById(R.id.update_dataBtn);
+        updateDataBtn = findViewById(R.id.updateDataBtn);
 
         controller = new LoginStoreController(this);
 

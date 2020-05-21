@@ -24,7 +24,7 @@ public class LoginUserEmailActivity extends AppCompatActivity {
 
         passLoginUserTF = findViewById(R.id.passLoginUserTF);
         emailLoginUserTF = findViewById(R.id.emailLoginUserTF);
-        update_DataBtn = findViewById(R.id.update_dataBtn);
+        update_DataBtn = findViewById(R.id.updateDataBtn);
         forgotPassUser = findViewById(R.id.forgotPassUser);
 
         controller = new LoginUserEmailController(this);
