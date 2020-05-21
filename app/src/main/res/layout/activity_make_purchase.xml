@@ -172,7 +172,7 @@
         app:layout_constraintTop_toBottomOf="@+id/observationsTF" />
 
     <TextView
-        android:id="@+id/textView31"
+        android:id="@+id/purchaseValueTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -184,7 +184,7 @@
         app:layout_constraintTop_toBottomOf="@+id/observationsTF" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/payBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="157dp"
@@ -195,7 +195,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView31" />
+        app:layout_constraintTop_toBottomOf="@+id/purchaseValueTV" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
