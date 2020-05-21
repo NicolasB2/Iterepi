@@ -24,7 +24,7 @@ public class PurchaseDetailDialog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_purchase_detail);
 
-        idPurchaseTV = findViewById(R.id.idPurchaseTV);
+        idPurchaseTV = findViewById(R.id.idOrderTV);
         showPurchaseTV = findViewById(R.id.purchaseNameTV);
         showStateTV = findViewById(R.id.purchasePriceTV);
         showDateHourPurchaseTV = findViewById(R.id.purchaseQuantityTV);
