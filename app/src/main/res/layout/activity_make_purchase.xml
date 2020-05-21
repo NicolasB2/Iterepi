@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/alt_background"
+    tools:context=".view.user.MakePurchase">
+
+
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
+
+    <ImageView
+        android:id="@+id/logoIV"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/alt_logo" />
+
+    <ImageView
+        android:id="@+id/nameIV"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoIV"
+        app:srcCompat="@drawable/alt_iterepi" />
+
+    <ImageView
+        android:id="@+id/imageStoreIV"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_doubt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameIV" />
+
+    <TextView
+        android:id="@+id/showStoreNameTV"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/edit_text"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageStoreIV"
+        app:layout_constraintTop_toBottomOf="@+id/nameIV" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/payment_methods"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageStoreIV" />
+
+    <Spinner
+        android:id="@+id/paymentMethodsSP"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView28"
+        app:layout_constraintTop_toBottomOf="@+id/showStoreNameTV" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/pick_up_on"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+    <Spinner
+        android:id="@+id/pickUpSP"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView29"
+        app:layout_constraintTop_toBottomOf="@+id/paymentMethodsSP" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dateTF"
+        style="@style/textFieldNormal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pickUpSP">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/hourTF"
+        style="@style/textFieldNormal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/hour"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateTF">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/observationsTF"
+        style="@style/textFieldNormal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/observations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hourTF">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/value_to_pay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/observationsTF" />
+
+    <TextView
+        android:id="@+id/purchaseValueTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView30"
+        app:layout_constraintTop_toBottomOf="@+id/observationsTF" />
+
+    <Button
+        android:id="@+id/payBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/pay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/purchaseValueTV" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

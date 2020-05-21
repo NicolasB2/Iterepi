@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SeeCategoryDialog"></activity>
         <activity android:name=".view.SeeProductDialog" />
+        <activity android:name=".view.user.MakePurchase"></activity>
         <activity android:name=".view.login.RegisterMenuActivity" />
         <activity android:name=".view.login.RegisterUserEmailActivity" />
         <activity android:name=".view.user.SectionStoreUser" />
