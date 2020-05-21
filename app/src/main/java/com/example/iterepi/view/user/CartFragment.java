@@ -11,14 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.iterepi.R;
 
-public class CestFragment extends Fragment {
+public class CartFragment extends Fragment {
 
     private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_cest,container,false);
+        view = inflater.inflate(R.layout.fragment_cart,container,false);
         return view;
     }
 }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.user.CestActivity">
+    tools:context=".view.user.CartActivity">
 
     <View
         android:id="@+id/view2"
