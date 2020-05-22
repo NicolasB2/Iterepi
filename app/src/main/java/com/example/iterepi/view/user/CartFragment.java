@@ -41,7 +41,7 @@ public class CartFragment extends Fragment {
     public void loadItems() {
 
         cartItems = new ArrayList<>();
-        
+
         //TODO: load item list from DB
 
         /* For testing
