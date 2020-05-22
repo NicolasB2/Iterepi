@@ -1,7 +1,6 @@
 package com.example.iterepi.view.store;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,14 +11,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.iterepi.R;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class SeeCategoryDialog extends AppCompatActivity {
 
     private ImageButton backBtn3;
     private TextView categoryName;
     private ImageView purchaseImageIV;
-    private TextView purchaseNameTV;
+    private TextView categoryNameTV;
     private Spinner placeNameSpinner;
     private Spinner productsSpinner;
     private ListView listItems;
@@ -31,9 +29,9 @@ public class SeeCategoryDialog extends AppCompatActivity {
         setContentView(R.layout.dialog_see_category);
 
         backBtn3 = findViewById(R.id.backBtn3);
-        categoryName = findViewById(R.id.categoryName);
+        categoryName = findViewById(R.id.itemName);
         purchaseImageIV = findViewById(R.id.purchaseImageIV);
-        purchaseNameTV = findViewById(R.id.purchaseNameTV);
+        categoryNameTV = findViewById(R.id.itemNameTV);
         placeNameSpinner = findViewById(R.id.placeNameSpinner);
         productsSpinner = findViewById(R.id.productsSpinner);
         listItems = findViewById(R.id.listItems);
