@@ -91,19 +91,8 @@ tools:context=".view.store.SeeCategoryDialog">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/placeNameSpinner" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/products"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeNameSpinner2" />
-
     <Spinner
-        android:id="@+id/placeNameSpinner2"
+        android:id="@+id/productsSpinner"
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="30dp"
@@ -119,10 +108,10 @@ tools:context=".view.store.SeeCategoryDialog">
         android:layout_width="0dp"
         android:layout_height="110dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/productsSpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
