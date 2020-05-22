@@ -26,18 +26,17 @@ public class UserFeedActivity extends AppCompatActivity {
             public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.feed:
-
+                        break;
                     case R.id.location:
                         startActivity(new Intent(getApplicationContext(),LocationActivity.class));
                         finish();
                         overridePendingTransition(0,0);
-                        return;
-
+                        break;
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(),SearchActivity.class));
                         finish();
                         overridePendingTransition(0,0);
-                        return;
+                        break;
                 }
             }
         });

@@ -28,15 +28,15 @@ public class LocationActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), UserFeedActivity.class));
                         finish();
                         overridePendingTransition(0, 0);
-                        return;
+                        break;
 
                     case R.id.location:
-
+                        break;
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                         finish();
                         overridePendingTransition(0, 0);
-                        return;
+                        break;
                 }
             }
         });
