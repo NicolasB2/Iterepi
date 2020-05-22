@@ -6,8 +6,29 @@
     android:layout_height="match_parent"
     android:background="@drawable/alt_background">
 
+
+    <ImageView
+        android:id="@+id/nameIV7"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoIV6"
+        app:srcCompat="@drawable/alt_iterepi" />
+
+    <ImageView
+        android:id="@+id/logoIV6"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/alt_logo" />
+
     <ImageButton
-        android:id="@+id/backBtn"
+        android:id="@+id/backBtn6"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -18,50 +39,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
-    <ImageView
-        android:id="@+id/logoIV"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/alt_logo" />
-
-    <ImageView
-        android:id="@+id/nameIV"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoIV"
-        app:srcCompat="@drawable/alt_iterepi" />
-
     <TextView
-        android:id="@+id/restorePassTV"
+        android:id="@+id/changePassTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="@string/recover_pass"
+        android:text="@string/change_pass"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameIV" />
+        app:layout_constraintTop_toBottomOf="@+id/nameIV7" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/newPassTV"
+        android:id="@+id/currentPassTV"
         style="@style/textFieldNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="36dp"
-        android:hint="@string/new_pass"
+        android:hint="@string/current_pass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restorePassTV">
+        app:layout_constraintTop_toBottomOf="@+id/changePassTV">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -72,7 +73,28 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/confirmPassTV"
+        android:id="@+id/newPassTV"
+        style="@style/textFieldNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
+        android:hint="@string/new_pass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentPassTV">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            tools:layout_editor_absoluteX="-1dp"
+            tools:layout_editor_absoluteY="358dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirmNewPassTV"
         style="@style/textFieldNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,16 +115,15 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/change_pass"
+        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPassTV" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmNewPassTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

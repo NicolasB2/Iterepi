@@ -18,7 +18,7 @@ public class PurchaseHistoryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_pruchase_history,container,false);
+        view = inflater.inflate(R.layout.fragment_purchase_history,container,false);
         return view;
     }
 }
