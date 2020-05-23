@@ -29,10 +29,10 @@ public class SeeCategoryDialog extends AppCompatActivity {
         setContentView(R.layout.dialog_see_category);
 
         backBtn3 = findViewById(R.id.backBtn3);
-        categoryName = findViewById(R.id.itemName);
+        categoryName = findViewById(R.id.placeName);
         purchaseImageIV = findViewById(R.id.purchaseImageIV);
-        categoryNameTV = findViewById(R.id.itemNameTV);
-        placeNameSpinner = findViewById(R.id.placeNameSpinner);
+        categoryNameTV = findViewById(R.id.locationTV);
+        placeNameSpinner = findViewById(R.id.categoriesSpinner);
         productsSpinner = findViewById(R.id.productsSpinner);
         listItems = findViewById(R.id.listItems);
         updateDataBtn = findViewById(R.id.updateDataBtn);

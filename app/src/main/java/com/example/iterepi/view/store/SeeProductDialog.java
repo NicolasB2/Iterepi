@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -31,10 +30,10 @@ public class SeeProductDialog extends AppCompatActivity {
         setContentView(R.layout.dialog_see_product);
 
         backBtn3 = findViewById(R.id.backBtn3);
-        itemName = findViewById(R.id.itemName);
+        itemName = findViewById(R.id.placeName);
         purchaseImageIV = findViewById(R.id.purchaseImageIV);
-        itemNameTV = findViewById(R.id.itemNameTV);
-        placeNameSpinner = findViewById(R.id.placeNameSpinner);
+        itemNameTV = findViewById(R.id.locationTV);
+        placeNameSpinner = findViewById(R.id.categoriesSpinner);
         placeLocationSpinner = findViewById(R.id.placeLocationSpinner);
         purchasePriceTV = findViewById(R.id.purchasePriceTV);
         purchaseQuantityTV = findViewById(R.id.purchaseQuantityTV);

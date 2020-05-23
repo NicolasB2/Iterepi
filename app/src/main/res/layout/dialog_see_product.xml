@@ -20,7 +20,7 @@ tools:context=".view.store.SeeProductDialog">
     app:srcCompat="@drawable/ic_back" />
 
     <TextView
-        android:id="@+id/itemName"
+        android:id="@+id/placeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -42,10 +42,10 @@ tools:context=".view.store.SeeProductDialog">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+        app:layout_constraintTop_toBottomOf="@+id/placeName" />
 
     <TextView
-        android:id="@+id/itemNameTV"
+        android:id="@+id/locationTV"
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_marginStart="30dp"
@@ -116,10 +116,10 @@ tools:context=".view.store.SeeProductDialog">
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeNameSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/categoriesSpinner" />
 
     <Spinner
-        android:id="@+id/placeNameSpinner"
+        android:id="@+id/categoriesSpinner"
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="30dp"
@@ -127,6 +127,6 @@ tools:context=".view.store.SeeProductDialog">
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemNameTV" />
+        app:layout_constraintTop_toBottomOf="@+id/locationTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
