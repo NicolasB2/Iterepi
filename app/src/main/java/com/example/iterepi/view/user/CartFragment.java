@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.adapter.CartItemAdapter;
-import com.example.iterepi.controller.CartController;
 import com.example.iterepi.model.Item;
 
 import java.util.ArrayList;

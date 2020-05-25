@@ -6,7 +6,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
-import com.example.iterepi.controller.LoginUserEmailController;
+import com.example.iterepi.controller.login.LoginUserEmailController;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginUserEmailActivity extends AppCompatActivity {

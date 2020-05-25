@@ -7,7 +7,7 @@ import android.widget.CheckBox;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
-import com.example.iterepi.controller.RegisterStoreController;
+import com.example.iterepi.controller.login.RegisterStoreController;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class RegisterStoreActivity extends AppCompatActivity {

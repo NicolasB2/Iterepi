@@ -1,4 +1,4 @@
-package com.example.iterepi.controller;
+package com.example.iterepi.controller.login;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.example.iterepi.controller;
+package com.example.iterepi.controller.login;
 
 import android.content.Intent;
 import android.util.Log;

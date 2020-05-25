@@ -1,4 +1,4 @@
-package com.example.iterepi.controller;
+package com.example.iterepi.controller.user;
 
 import com.example.iterepi.adapter.CartPagerAdapter;
 import com.example.iterepi.view.user.CartActivity;

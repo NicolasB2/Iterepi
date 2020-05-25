@@ -6,7 +6,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
-import com.example.iterepi.controller.MainController;
+import com.example.iterepi.controller.login.MainController;
 
 public class MainActivity extends AppCompatActivity {
 

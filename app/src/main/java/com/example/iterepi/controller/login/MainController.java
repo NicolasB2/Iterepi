@@ -1,4 +1,4 @@
-package com.example.iterepi.controller;
+package com.example.iterepi.controller.login;
 
 import android.content.Intent;
 import android.view.View;
@@ -7,7 +7,6 @@ import com.example.iterepi.R;
 import com.example.iterepi.view.login.LoginStoreActivity;
 import com.example.iterepi.view.login.LoginUserActivity;
 import com.example.iterepi.view.login.MainActivity;
-import com.example.iterepi.view.login.RegisterMenuActivity;
 
 public class MainController implements View.OnClickListener {
 

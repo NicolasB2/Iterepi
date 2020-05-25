@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
-import com.example.iterepi.controller.RegisterUserEmailController;
+import com.example.iterepi.controller.login.RegisterUserEmailController;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputLayout;
 
