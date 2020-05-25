@@ -2,7 +2,6 @@ package com.example.iterepi.view.login;
 
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
@@ -16,7 +15,6 @@ import com.google.android.material.textfield.TextInputLayout;
 public class RegisterUserEmailActivity extends AppCompatActivity {
 
     private ImageView profileImage;
-    private ImageButton setImageBtn;
     private TextInputLayout nameTF;
     private TextInputLayout birthdayTF;
     private TextInputLayout emailTF;
@@ -34,7 +32,6 @@ public class RegisterUserEmailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_user_email);
 
         profileImage = findViewById(R.id.profileImage2);
-        setImageBtn = findViewById(R.id.setImageBtn2);
         nameTF = findViewById(R.id.nameUserTF);
         birthdayTF = findViewById(R.id.birthdayTF);
         emailTF = findViewById(R.id.userEmailTF);
@@ -53,10 +50,6 @@ public class RegisterUserEmailActivity extends AppCompatActivity {
 
     public ImageView getProfileImage() {
         return profileImage;
-    }
-
-    public ImageButton getSetImageBtn() {
-        return setImageBtn;
     }
 
     public TextInputLayout getNameTF() {

@@ -112,7 +112,7 @@ public class RegisterStoreController implements View.OnClickListener {
 
                 Intent i = new Intent(activity, StoreHomeActivity.class);
                 activity.startActivity(i);
-                activity.finish();
+                activity.finishAffinity();
 
 
             }).addOnFailureListener(f -> {
