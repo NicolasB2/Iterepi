@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.model.Seller;
+import com.example.iterepi.view.store.AddCategoryDialog;
 import com.example.iterepi.view.store.AddPlaceDialog;
 import com.example.iterepi.view.store.StoreHomeActivity;
 import com.example.iterepi.view.user.UserFeedActivity;
@@ -85,7 +86,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                                 Log.e("SELLER", "IT'S SELLER");
-                                Intent s = new Intent(SplashScreenActivity.this, AddPlaceDialog.class);
+                                Intent s = new Intent(SplashScreenActivity.this, AddCategoryDialog.class);
                                 startActivity(s);
                                 finish();
                         }
