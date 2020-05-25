@@ -7,19 +7,23 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.user.AddPaymentMethodController;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class AddPaymentMethod extends AppCompatActivity {
+public class AddPaymentMethodActivity extends AppCompatActivity {
 
     private ImageButton backBtn;
 
     private TextInputLayout cardNumberTF;
-    private TextInputLayout expirationDate;
+    private TextInputLayout expirationDateTF;
     private TextInputLayout securityCodTF;
     private TextInputLayout nameTF;
     private TextInputLayout lastNameTF;
 
     private Button addCardBtn;
+
+    private AddPaymentMethodController controller;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +33,14 @@ public class AddPaymentMethod extends AppCompatActivity {
         backBtn = findViewById(R.id.backBtn);
 
         cardNumberTF = findViewById(R.id.cardNumberTF);
-        expirationDate = findViewById(R.id.expirationDateTF);
+        expirationDateTF = findViewById(R.id.expirationDateTF);
         securityCodTF = findViewById(R.id.securityCodTF);
         nameTF = findViewById(R.id.nameTF);
         lastNameTF = findViewById(R.id.lastNameTF);
 
         addCardBtn = findViewById(R.id.addCardBtn);
+
+        controller = new AddPaymentMethodController(this);
 
     }
 
@@ -54,12 +60,12 @@ public class AddPaymentMethod extends AppCompatActivity {
         this.cardNumberTF = cardNumberTF;
     }
 
-    public TextInputLayout getExpirationDate() {
-        return expirationDate;
+    public TextInputLayout getExpirationDateTF() {
+        return expirationDateTF;
     }
 
-    public void setExpirationDate(TextInputLayout expirationDate) {
-        this.expirationDate = expirationDate;
+    public void setExpirationDateTF(TextInputLayout expirationDateTF) {
+        this.expirationDateTF = expirationDateTF;
     }
 
     public TextInputLayout getSecurityCodTF() {

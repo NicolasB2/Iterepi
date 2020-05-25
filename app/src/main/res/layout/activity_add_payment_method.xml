@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/alt_background"
-    tools:context=".view.user.AddPaymentMethod">
+    tools:context=".view.user.AddPaymentMethodActivity">
 
 
     <ImageButton
@@ -72,13 +72,20 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:hint="@string/expiration_date"
+        app:endIconDrawable="@drawable/ic_calendar"
+        app:endIconMode="custom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardNumberTF">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:inputType="none"
+            android:textColor="#FFFFFF"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

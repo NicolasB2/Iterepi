@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.login.RegisterStoreActivity"></activity>
         <activity android:name=".view.user.PaymentMethodsActivity" />
-        <activity android:name=".view.user.AddPaymentMethod" />
+        <activity android:name=".view.user.AddPaymentMethodActivity" />
         <activity android:name=".view.store.SeePlaceDialog" />
         <activity android:name=".view.user.LocationActivity" />
         <activity android:name=".view.user.SearchActivity" />
