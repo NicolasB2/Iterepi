@@ -15,13 +15,13 @@ import com.google.gson.Gson;
 
 public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
 
-    private AddPlaceDialog addPlaceDialog;
+    private AddPlaceDialog activity;
     private HTTPSWebUtilDomi utilDomi;
 
-    public AddPlaceController(AddPlaceDialog addPlaceDialog) {
-        this.addPlaceDialog = addPlaceDialog;
+    public AddPlaceController(AddPlaceDialog activity) {
+        this.activity = activity;
         this.utilDomi = new HTTPSWebUtilDomi();
-        addPlaceDialog.getAddPlaceBtn().setOnClickListener(this);
+        activity.getAddPlaceBtn().setOnClickListener(this);
     }
 
 
@@ -37,8 +37,8 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
 
                 String user_id = FirebaseAuth.getInstance().getUid();
                 String id = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").push().getKey();;
-                String name = addPlaceDialog.getPlaceNameTF().getEditText().getText().toString();
-                String location = addPlaceDialog.getPlaceLocationTF().getEditText().getText().toString();
+                String name = activity.getPlaceNameTF().getEditText().getText().toString();
+                String location = activity.getPlaceLocationTF().getEditText().getText().toString();
 
                 place.setId(id);
                 place.setLocation(location);
@@ -53,11 +53,11 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
 
                 ).start();
 
-                addPlaceDialog.finish();
+                activity.finish();
                 break;
 
             case R.id.closeBtn:
-                addPlaceDialog.finish();
+                activity.finish();
                 break;
         }
     }

@@ -20,6 +20,7 @@
         <activity android:name=".view.user.SearchActivity" />
         <activity android:name=".view.store.OrderDetailDialog" />
         <activity android:name=".view.store.AddPlaceDialog" />
+        <activity android:name=".view.store.AddCategoryDialog" />
         <activity android:name=".view.user.MakePurchaseActivity" />
         <activity android:name=".view.store.SeeCategoryDialog" />
         <activity android:name=".view.store.SeeProductDialog" />
