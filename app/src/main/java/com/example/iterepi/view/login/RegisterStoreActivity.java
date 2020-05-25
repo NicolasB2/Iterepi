@@ -36,6 +36,10 @@ public class RegisterStoreActivity extends AppCompatActivity {
         nitStoreRegTF = findViewById(R.id.nitStoreRegTF);
         registerBtn = findViewById(R.id.registerBtn);
         termsCB = findViewById(R.id.termsCB);
+
+        passwordStoreRegTF.setHelperText(getString(R.string.pass_must_contain));
+
+
         controller = new RegisterStoreController(this);
 
 

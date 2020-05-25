@@ -96,18 +96,18 @@ public class RegisterUserEmailController implements View.OnClickListener {
             checkGender = true;
         }
 
-        if (name.equals("") || name == null) {
+        if (name.isEmpty()) {
             putError(activity.getNameTF(), activity.getText(R.string.empty_field).toString());
             checkName = false;
         }
 
-        if (birthday.equals("") || birthday == null) {
+        if (birthday.isEmpty()) {
             activity.getBirthdayTF().setHelperText(activity.getString(R.string.empty_field));
             Snackbar.make(activity.getRegisterBtn(), activity.getString(R.string.select_birthday), Snackbar.LENGTH_SHORT).show();
             checkBirthday = false;
         }
 
-        if (cedula.equals("") || cedula == null) {
+        if (cedula.isEmpty()) {
             putError(activity.getIdentificationTF(), activity.getString(R.string.empty_field));
             checkIdentification = false;
         }
@@ -126,7 +126,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
             checkTerms = true;
         }
 
-        if (email.equals("") || email == null) {
+        if (email.isEmpty()) {
 
             putError(activity.getEmailTF(), activity.getString(R.string.empty_field));
             checkEmail = false;
@@ -189,6 +189,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
                 if (!passTF.equals(confPassTF)) {
 
                     putError(activity.getConfPasswordTF(), activity.getString(R.string.pass_dont_match));
+                    checkPass = false;
 
                 } else {
                     removeError(activity.getConfPasswordTF());
@@ -200,10 +201,12 @@ public class RegisterUserEmailController implements View.OnClickListener {
             } else {
 
                 putError(activity.getPasswordTF(), activity.getString(R.string.pass_must_contain));
+                checkPass = false;
 
             }
         } else {
             putError(activity.getPasswordTF(), activity.getString(R.string.min_six_characters));
+            checkPass = false;
         }
 
         return password;
@@ -233,7 +236,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s) {
                 String t = activity.getBirthdayTF().getEditText().getText().toString();
-                if (!t.equals("") && t != null) {
+                if (!t.isEmpty()) {
                     activity.getBirthdayTF().setHelperText("");
                     checkBirthday = true;
                 }
@@ -254,7 +257,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s) {
                 String t = activity.getNameTF().getEditText().getText().toString();
-                if (!t.equals("") && t != null) {
+                if (!t.isEmpty()) {
                     removeError(activity.getNameTF());
                     checkName = true;
                 }
@@ -275,7 +278,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s) {
                 String t = activity.getIdentificationTF().getEditText().getText().toString();
-                if (!t.equals("") && t != null) {
+                if (!t.isEmpty()) {
 
                     removeError(activity.getIdentificationTF());
                     checkIdentification = true;
@@ -298,7 +301,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s) {
                 String t = activity.getEmailTF().getEditText().getText().toString();
-                if (!t.equals("") && t != null) {
+                if (!t.isEmpty()) {
 
                     removeError(activity.getEmailTF());
                     checkEmail = true;
@@ -324,7 +327,51 @@ public class RegisterUserEmailController implements View.OnClickListener {
                 if (activity.getPasswordTF().getEditText().getText().toString().length() >= 6) {
                     removeError(activity.getPasswordTF());
                 }
+
+                String x = activity.getPasswordTF().getEditText().getText().toString();
+
+                if (!x.equals(activity.getConfPasswordTF().getEditText().getText().toString())) {
+
+                    putError(activity.getConfPasswordTF(), activity.getString(R.string.pass_dont_match));
+
+                } else {
+
+                    removeError(activity.getConfPasswordTF());
+
+                }
+
             }
+        });
+
+        activity.getConfPasswordTF().getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                String t = activity.getConfPasswordTF().getEditText().getText().toString();
+
+                if (t.equals(activity.getPasswordTF().getEditText().getText().toString())) {
+
+                    removeError(activity.getConfPasswordTF());
+
+                } else {
+
+                    putError(activity.getConfPasswordTF(), activity.getString(R.string.pass_dont_match));
+
+                }
+
+            }
+
+
         });
 
 

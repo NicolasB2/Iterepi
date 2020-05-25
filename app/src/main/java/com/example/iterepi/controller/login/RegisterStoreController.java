@@ -55,7 +55,30 @@ public class RegisterStoreController implements View.OnClickListener {
         String confEmail = activity.getConfEmailStoreRegTF().getEditText().getText().toString();
         String email = activity.getEmailStoreRegTF().getEditText().getText().toString();
         String pass = checkPassword();
-        String nit = activity.getNitStoreRegTF().getEditText().toString();
+        String nit = activity.getNitStoreRegTF().getEditText().getText().toString();
+
+        if (name.isEmpty()) {
+            putError(activity.getNameStoreTF(), activity.getText(R.string.empty_field).toString());
+            checkName = false;
+        }
+
+        if (nit.isEmpty()) {
+            putError(activity.getNitStoreRegTF(), activity.getString(R.string.empty_field));
+            checkNit = false;
+        }
+
+        if (email.isEmpty()) {
+
+            putError(activity.getEmailStoreRegTF(), activity.getString(R.string.empty_field));
+            checkEmail = false;
+
+        }
+        if (confEmail.isEmpty()) {
+
+            putError(activity.getConfEmailStoreRegTF(), activity.getString(R.string.empty_field));
+            checkConfEmail = false;
+
+        }
 
         boolean checkTerms;
         if (!activity.getTermsCB().isChecked()) {
@@ -64,29 +87,6 @@ public class RegisterStoreController implements View.OnClickListener {
             checkTerms = false;
         } else {
             checkTerms = true;
-        }
-
-        if (name.equals("") || name == null) {
-            putError(activity.getNameStoreTF(), activity.getText(R.string.empty_field).toString());
-            checkName = false;
-        }
-
-        if (nit.equals("") || nit == null) {
-            putError(activity.getNitStoreRegTF(), activity.getString(R.string.empty_field));
-            checkNit = false;
-        }
-
-        if (email.equals("") || email == null) {
-
-            putError(activity.getEmailStoreRegTF(), activity.getString(R.string.empty_field));
-            checkEmail = false;
-
-        }
-        if (confEmail.equals("") || confEmail == null) {
-
-            putError(activity.getConfEmailStoreRegTF(), activity.getString(R.string.empty_field));
-            checkConfEmail = false;
-
         }
 
         // Register a store with all data validated.
@@ -144,6 +144,7 @@ public class RegisterStoreController implements View.OnClickListener {
                 if (!passTF.equals(confPassTF)) {
 
                     putError(activity.getConfPasswordStoreRegTF(), activity.getString(R.string.pass_dont_match));
+                    checkPass = false;
 
                 } else {
                     removeError(activity.getConfPasswordStoreRegTF());
@@ -155,10 +156,12 @@ public class RegisterStoreController implements View.OnClickListener {
             } else {
 
                 putError(activity.getPasswordStoreRegTF(), activity.getString(R.string.pass_must_contain));
+                checkPass = false;
 
             }
         } else {
             putError(activity.getPasswordStoreRegTF(), activity.getString(R.string.min_six_characters));
+            checkPass = false;
         }
 
         return password;
@@ -181,7 +184,7 @@ public class RegisterStoreController implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s) {
                 String t = activity.getNameStoreTF().getEditText().getText().toString();
-                if (!t.equals("") && t != null) {
+                if (!t.isEmpty()) {
                     removeError(activity.getNameStoreTF());
                     checkName = true;
                 }
@@ -202,7 +205,7 @@ public class RegisterStoreController implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s) {
                 String t = activity.getNitStoreRegTF().getEditText().getText().toString();
-                if (!t.equals("") && t != null) {
+                if (!t.isEmpty()) {
 
                     removeError(activity.getNitStoreRegTF());
                     checkNit = true;
@@ -225,12 +228,23 @@ public class RegisterStoreController implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s) {
                 String t = activity.getEmailStoreRegTF().getEditText().getText().toString();
-                if (!t.equals("") && t != null) {
+                if (!t.isEmpty()) {
 
                     removeError(activity.getEmailStoreRegTF());
                     checkEmail = true;
 
                 }
+
+                if (!t.equals(activity.getConfEmailStoreRegTF().getEditText().getText().toString())) {
+
+                    putError(activity.getConfEmailStoreRegTF(), activity.getString(R.string.email_dont_match));
+
+                } else {
+
+                    removeError(activity.getConfEmailStoreRegTF());
+
+                }
+
             }
         });
 
@@ -248,7 +262,7 @@ public class RegisterStoreController implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s) {
                 String t = activity.getConfEmailStoreRegTF().getEditText().getText().toString();
-                if (!t.equals("") && t != null) {
+                if (!t.isEmpty()) {
 
                     if (t.equals(activity.getEmailStoreRegTF().getEditText().getText().toString())) {
                         removeError(activity.getConfEmailStoreRegTF());
@@ -280,6 +294,47 @@ public class RegisterStoreController implements View.OnClickListener {
                 if (activity.getPasswordStoreRegTF().getEditText().getText().toString().length() >= 6) {
                     removeError(activity.getPasswordStoreRegTF());
                 }
+
+                String x = activity.getPasswordStoreRegTF().getEditText().getText().toString();
+
+                if (!x.equals(activity.getConfPasswordStoreRegTF().getEditText().getText().toString())) {
+
+                    putError(activity.getConfPasswordStoreRegTF(), activity.getString(R.string.pass_dont_match));
+
+                } else {
+
+                    removeError(activity.getConfPasswordStoreRegTF());
+
+                }
+            }
+        });
+
+        activity.getConfPasswordStoreRegTF().getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                String p = activity.getConfPasswordStoreRegTF().getEditText().getText().toString();
+
+                if (p.equals(activity.getPasswordStoreRegTF().getEditText().getText().toString())) {
+
+                    removeError(activity.getConfPasswordStoreRegTF());
+
+                } else {
+
+                    putError(activity.getConfPasswordStoreRegTF(), activity.getString(R.string.pass_dont_match));
+
+                }
+
             }
         });
 
