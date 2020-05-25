@@ -10,10 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.login.LoginUserController;
-import com.example.iterepi.controller.login.RegisterMenuController;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.tasks.Task;
 
 public class LoginUserActivity extends AppCompatActivity {
 
@@ -37,18 +33,6 @@ public class LoginUserActivity extends AppCompatActivity {
 
         controller = new LoginUserController(this);
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RegisterMenuController.RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            controller.handleSignInResult(task);
-        }
-    }
-
-
-
     public LoginUserController getController() {
         return controller;
     }
@@ -71,5 +55,11 @@ public class LoginUserActivity extends AppCompatActivity {
 
     public TextView getRegisterTV() {
         return registerTV;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        controller.onActivityResult(requestCode, resultCode, data);
     }
 }

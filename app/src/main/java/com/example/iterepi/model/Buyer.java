@@ -9,7 +9,7 @@ public class Buyer implements Serializable {
 
     private String id;
     private String name;
-    private String cedula;
+    private String identification;
     private String email;
     private String password;
     private String photo;
@@ -21,10 +21,10 @@ public class Buyer implements Serializable {
     public Buyer() {
     }
 
-    public Buyer(String id, String name, String cedula, String email, String password, String photo, int gender, String birthday, String[] purchasesID, Cart cart) {
+    public Buyer(String id, String name, String identification, String email, String password, String photo, int gender, String birthday, String[] purchasesID, Cart cart) {
         this.id = id;
         this.name = name;
-        this.cedula = cedula;
+        this.identification = identification;
         this.email = email;
         this.password = password;
         this.photo = photo;
@@ -50,12 +50,12 @@ public class Buyer implements Serializable {
         this.name = name;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getIdentification() {
+        return identification;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setIdentification(String identification) {
+        this.identification = identification;
     }
 
     public String getEmail() {

@@ -6,11 +6,13 @@ import android.text.TextWatcher;
 import android.view.View;
 
 import com.example.iterepi.R;
+import com.example.iterepi.model.Seller;
 import com.example.iterepi.view.login.RegisterStoreActivity;
 import com.example.iterepi.view.store.StoreHomeActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterStoreController implements View.OnClickListener {
 
@@ -92,10 +94,19 @@ public class RegisterStoreController implements View.OnClickListener {
         // Register a store with all data validated.
         if (checkTerms && checkNit && checkName && checkPass && checkEmail && checkConfEmail) {
 
+            String sName = name;
+            String sEmail = email;
+            String sPassword = pass;
+            String sNit = nit;
+            String logo = null;
+
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass).addOnSuccessListener(authResult -> {
 
                 // Add to database code.
 
+                String id = FirebaseAuth.getInstance().getUid();
+                Seller seller = new Seller(id, sName, sNit, sEmail, sPassword, logo, null, null);
+                FirebaseDatabase.getInstance().getReference().child("sellers").child(id).setValue(seller);
 
                 // Start StoreHomeActivity
 
@@ -293,6 +304,10 @@ public class RegisterStoreController implements View.OnClickListener {
 
                 if (activity.getPasswordStoreRegTF().getEditText().getText().toString().length() >= 6) {
                     removeError(activity.getPasswordStoreRegTF());
+                } else {
+
+                    putError(activity.getPasswordStoreRegTF(), activity.getString(R.string.min_six_characters));
+
                 }
 
                 String x = activity.getPasswordStoreRegTF().getEditText().getText().toString();

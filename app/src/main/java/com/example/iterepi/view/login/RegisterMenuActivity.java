@@ -9,9 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.login.RegisterMenuController;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.tasks.Task;
 
 public class RegisterMenuActivity extends AppCompatActivity {
 
@@ -37,12 +34,11 @@ public class RegisterMenuActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RegisterMenuController.RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            controller.handleSignInResult(task);
-        }
-    }
 
+        controller.onActivityResult(requestCode, resultCode, data);
+
+
+    }
 
     public Button getFacebookBtn() {
         return facebookBtn;

@@ -14,6 +14,7 @@ import com.example.iterepi.view.user.UserFeedActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -84,7 +85,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
         String name = activity.getNameTF().getEditText().getText().toString();
         String birthday = activity.getBirthdayTF().getEditText().getText().toString();
         String email = activity.getEmailTF().getEditText().getText().toString();
-        String cedula = activity.getIdentificationTF().getEditText().getText().toString();
+        String identification = activity.getIdentificationTF().getEditText().getText().toString();
         String password = checkPassword();
         int gender = -1;
 
@@ -107,7 +108,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
             checkBirthday = false;
         }
 
-        if (cedula.isEmpty()) {
+        if (identification.isEmpty()) {
             putError(activity.getIdentificationTF(), activity.getString(R.string.empty_field));
             checkIdentification = false;
         }
@@ -136,10 +137,21 @@ public class RegisterUserEmailController implements View.OnClickListener {
         // User Register with all data validated.
         if (checkTerms && checkGender && checkIdentification && checkBirthday && checkName && checkPass && checkEmail) {
 
+            String bName = name;
+            String bCedula = identification;
+            String bEmail = email;
+            String bPassword = password;
+            String bPhoto = null;
+            int bGender = gender;
+            String bBirthday = birthday;
+
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
 
                 // Add to database code.
 
+                String id = FirebaseAuth.getInstance().getUid();
+                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null);
+                FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                 // Start UserFeedActivity
 
@@ -326,6 +338,10 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
                 if (activity.getPasswordTF().getEditText().getText().toString().length() >= 6) {
                     removeError(activity.getPasswordTF());
+                } else {
+
+                    putError(activity.getPasswordTF(), activity.getString(R.string.min_six_characters));
+
                 }
 
                 String x = activity.getPasswordTF().getEditText().getText().toString();
