@@ -108,5 +108,6 @@
     <string name="min_six_characters">La contraseña debe contener al menos 6 carácteres </string>
     <string name="helper_pass">Debe contener al menos 6 caracteres. Letras y números</string>
     <string name="pay">Pagar</string>
+    <string name="email_dont_match">Los correos no coinciden</string>
 
 </resources>

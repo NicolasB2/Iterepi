@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
+            android:inputType="number"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="358dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -64,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
+            android:inputType="textEmailAddress"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="358dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -78,18 +80,19 @@
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameProductTF">
+        app:layout_constraintTop_toBottomOf="@+id/nameStoreTF">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
+            android:inputType="textEmailAddress"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="358dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameProductTF"
+        android:id="@+id/nameStoreTF"
         style="@style/textFieldNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -177,26 +180,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
-    <Spinner
-        android:id="@+id/placeOfProductSP"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nitStoreRegTF" />
-
     <CheckBox
         android:id="@+id/termsCB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:text="@string/accept_terms"
         android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeOfProductSP" />
+        app:layout_constraintTop_toBottomOf="@+id/nitStoreRegTF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

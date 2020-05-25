@@ -108,6 +108,7 @@
     <string name="min_six_characters">Password must have at least 6 characters. </string>
     <string name="helper_pass">Must have at least 6 characters. Letters and numbers.</string>
     <string name="pay">Pay</string>
+    <string name="email_dont_match">Emails don\'t match</string>
 
 
 </resources>

@@ -14,7 +14,7 @@ public class LoginStoreActivity extends AppCompatActivity {
     private LoginStoreController controller;
     private Button forgotPassBtn;
     private Button registerHereBtn;
-    private TextInputLayout nit;
+    private TextInputLayout email;
     private TextInputLayout pass;
     private Button updateDataBtn;
 
@@ -26,7 +26,7 @@ public class LoginStoreActivity extends AppCompatActivity {
 
         forgotPassBtn = findViewById(R.id.forgotPass);
         registerHereBtn = findViewById(R.id.registerHereStore);
-        nit = findViewById(R.id.nitTF);
+        email = findViewById(R.id.emailStore);
         pass = findViewById(R.id.passwordTF);
         updateDataBtn = findViewById(R.id.updateDataBtn);
 
@@ -43,8 +43,8 @@ public class LoginStoreActivity extends AppCompatActivity {
         return registerHereBtn;
     }
 
-    public TextInputLayout getNit() {
-        return nit;
+    public TextInputLayout getEmail() {
+        return email;
     }
 
     public TextInputLayout getPass() {
