@@ -28,8 +28,6 @@ public class RegisterStoreController implements View.OnClickListener {
         this.activity = activity;
 
         activity.getRegisterBtn().setOnClickListener(this);
-
-
         listeners();
 
     }
@@ -84,7 +82,6 @@ public class RegisterStoreController implements View.OnClickListener {
 
         boolean checkTerms;
         if (!activity.getTermsCB().isChecked()) {
-
             Snackbar.make(activity.getRegisterBtn(), activity.getText(R.string.must_accept_terms), Snackbar.LENGTH_LONG).show();
             checkTerms = false;
         } else {

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.model.Seller;
+import com.example.iterepi.view.store.AddPlaceDialog;
 import com.example.iterepi.view.store.StoreHomeActivity;
 import com.example.iterepi.view.user.UserFeedActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,16 +83,11 @@ public class SplashScreenActivity extends AppCompatActivity {
                     queryS.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            Seller seller = dataSnapshot.getValue(Seller.class);
-
-                            if (seller != null) {
 
                                 Log.e("SELLER", "IT'S SELLER");
-                                Intent s = new Intent(SplashScreenActivity.this, StoreHomeActivity.class);
+                                Intent s = new Intent(SplashScreenActivity.this, AddPlaceDialog.class);
                                 startActivity(s);
                                 finish();
-
-                            }
                         }
 
                         @Override
