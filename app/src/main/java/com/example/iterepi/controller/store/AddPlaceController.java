@@ -3,6 +3,7 @@ package com.example.iterepi.controller.store;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Category;
@@ -40,20 +41,35 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
                 String name = activity.getPlaceNameTF().getEditText().getText().toString();
                 String location = activity.getPlaceLocationTF().getEditText().getText().toString();
 
-                place.setId(id);
-                place.setLocation(location);
-                place.setName(name);
+                if(id!=null){
 
-                new Thread(
-                        ()->{
-                            Gson gson = new Gson();
-                            String json = gson.toJson(place);
-                            utilDomi.POSTrequest(1,"https://iterepi.firebaseio.com/sellers/"+user_id+"/places/.json",json);
-                        }
+                    if(location.equals("")){
+                        Toast.makeText(activity,activity.getString(R.string.forgot_something)+" "+activity.getString(R.string.location),Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                    if(name.equals("") ){
+                        Toast.makeText(activity,activity.getString(R.string.forgot_something)+" "+activity.getString(R.string.name),Toast.LENGTH_LONG).show();
+                        break;
+                    }
 
-                ).start();
+                    else{
 
-                activity.finish();
+                        place.setId(id);
+                        place.setLocation(location);
+                        place.setName(name);
+
+                        new Thread(
+                                ()->{
+                                    Gson gson = new Gson();
+                                    String json = gson.toJson(place);
+                                    utilDomi.POSTrequest(1,"https://iterepi.firebaseio.com/sellers/"+user_id+"/places/.json",json);
+                                }
+
+                        ).start();
+
+                        activity.finish();
+                    }
+                }
                 break;
 
             case R.id.closeBtn:

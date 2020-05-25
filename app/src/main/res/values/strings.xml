@@ -111,6 +111,7 @@
     <string name="email_dont_match">Los correos no coinciden</string>
     <string name="welcome_back">Bienvenido de nuevo</string>
     <string name="welcome">Bienvenido</string>
+    <string name="forgot_something">olvidaste</string>
     <string name="deafault_web_client_id" translatable="false">689800102571-hsetusct9sg41bum68gdd4ral7rpl9nk.apps.googleusercontent.com</string>
 
 </resources>
