@@ -11,6 +11,8 @@ import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.view.login.RegisterUserEmailActivity;
 import com.example.iterepi.view.user.UserFeedActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -145,11 +147,40 @@ public class RegisterUserEmailController implements View.OnClickListener {
             int bGender = gender;
             String bBirthday = birthday;
 
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
+            GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(activity);
+
+            if (acct == null) {
+                String finalBPhoto = bPhoto;
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
+
+                    // Add to database code.
+
+                    String id = FirebaseAuth.getInstance().getUid();
+                    Buyer buyer = new Buyer(id, bName, bCedula, email, password, finalBPhoto, bGender, bBirthday, null, null);
+                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                    // Start UserFeedActivity
+
+                    Snackbar.make(activity.getRegisterBtn(), activity.getString(R.string.welcome), Snackbar.LENGTH_SHORT).show();
+                    Intent i = new Intent(activity, UserFeedActivity.class);
+                    activity.startActivity(i);
+                    activity.finish();
+
+
+                }).addOnFailureListener(f -> {
+
+                    // If create user fails
+                    Snackbar.make(activity.getRegisterBtn(), f.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
+
+                });
+
+            } else {
 
                 // Add to database code.
 
                 String id = FirebaseAuth.getInstance().getUid();
+                bPhoto = acct.getPhotoUrl().toString();
+                bPhoto.replace("/s96-c/", "/s800-c/");
                 Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null);
                 FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
@@ -160,12 +191,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
                 activity.finish();
 
 
-            }).addOnFailureListener(f -> {
-
-                // If create user fails
-                Snackbar.make(activity.getRegisterBtn(), f.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
-
-            });
+            }
 
         }
 

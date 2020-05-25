@@ -85,7 +85,7 @@ public class LoginStoreController implements View.OnClickListener {
 
                 Intent x = new Intent(activity, StoreHomeActivity.class);
                 activity.startActivity(x);
-                activity.finish();
+                activity.finishAffinity();
 
 
             }).addOnFailureListener(f -> {

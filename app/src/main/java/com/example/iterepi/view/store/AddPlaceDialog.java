@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.store.AddPlaceController;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class AddPlaceDialog extends AppCompatActivity {
@@ -16,6 +17,8 @@ public class AddPlaceDialog extends AppCompatActivity {
 
     private ImageButton mapLocationPlaceBtn;
     private Button addPlaceBtn;
+
+    private AddPlaceController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,7 @@ public class AddPlaceDialog extends AppCompatActivity {
         mapLocationPlaceBtn = findViewById(R.id.mapLocationPlaceBtn);
         addPlaceBtn = findViewById(R.id.updateDataBtn);
 
-
+        controller = new AddPlaceController(this);
     }
 
     public TextInputLayout getPlaceNameTF() {

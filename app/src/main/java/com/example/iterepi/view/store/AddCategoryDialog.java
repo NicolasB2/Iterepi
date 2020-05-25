@@ -8,6 +8,7 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.store.AddCategoryController;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class AddCategoryDialog extends AppCompatActivity {
@@ -16,7 +17,8 @@ public class AddCategoryDialog extends AppCompatActivity {
     private ImageButton closeBtn;
     private TextInputLayout categoryNameTF;
     private Spinner placeSP;
-    private Button addPlaceBtn;
+    private Button addCategoryBtn;
+    private AddCategoryController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,9 @@ public class AddCategoryDialog extends AppCompatActivity {
         closeBtn = findViewById(R.id.closeBtn);
         categoryNameTF = findViewById(R.id.categoryNameTF);
         placeSP = findViewById(R.id.placeSP);
-        addPlaceBtn = findViewById(R.id.updateDataBtn);
+        addCategoryBtn = findViewById(R.id.updateDataBtn);
+
+        this.controller = new AddCategoryController(this);
 
     }
 
@@ -54,11 +58,11 @@ public class AddCategoryDialog extends AppCompatActivity {
         this.placeSP = placeSP;
     }
 
-    public Button getAddPlaceBtn() {
-        return addPlaceBtn;
+    public Button getAddCategoryBtn() {
+        return addCategoryBtn;
     }
 
-    public void setAddPlaceBtn(Button addPlaceBtn) {
-        this.addPlaceBtn = addPlaceBtn;
+    public void setAddCategoryBtn(Button addPlaceBtn) {
+        this.addCategoryBtn = addPlaceBtn;
     }
 }

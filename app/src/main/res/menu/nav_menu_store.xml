@@ -2,26 +2,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/store_item_accounts"
         android:icon="@drawable/ic_creditcard"
         android:title="@string/accounts" />
 
     <item
+        android:id="@+id/store_item_my_sales"
         android:icon="@drawable/ic_cash"
         android:title="@string/my_sales" />
 
     <item
+        android:id="@+id/store_item_my_places"
         android:icon="@drawable/ic_location"
         android:title="@string/my_places" />
 
     <item
+        android:id="@+id/store_item_doubts_frequent"
         android:icon="@drawable/ic_doubt"
         android:title="@string/doubts_frequent" />
 
     <item
+        android:id="@+id/store_item_terms_and_conditions"
         android:icon="@drawable/ic_info"
         android:title="@string/terms_and_conditions" />
 
     <item
+        android:id="@+id/store_item_logout"
         android:icon="@drawable/ic_logout"
         android:title="@string/logout" />
 

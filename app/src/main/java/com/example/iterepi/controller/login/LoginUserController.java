@@ -7,9 +7,12 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.example.iterepi.R;
+import com.example.iterepi.model.Buyer;
+import com.example.iterepi.view.login.CompleteRegisterActivity;
 import com.example.iterepi.view.login.LoginUserActivity;
 import com.example.iterepi.view.login.LoginUserEmailActivity;
 import com.example.iterepi.view.login.RegisterMenuActivity;
+import com.example.iterepi.view.user.UserFeedActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -23,6 +26,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginUserController implements View.OnClickListener {
 
@@ -120,8 +124,35 @@ public class LoginUserController implements View.OnClickListener {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("GOOGLE AUTH", "signInWithCredential:success");
-                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
 
+                                if (isNew) {
+
+                                    Log.e("GOOGLE AUTH", "I'm a new user.");
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                    GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(activity);
+
+                                    String id = user.getUid();
+                                    String name = acct.getDisplayName();
+                                    String email = acct.getEmail();
+                                    String photo = acct.getPhotoUrl().toString();
+                                    photo.replace("/s96-c/", "/s800-c/");
+
+                                    Buyer buyer = new Buyer(id, name, null, email, null, photo, -1, null, null, null);
+
+                                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                                    Intent c = new Intent(activity, CompleteRegisterActivity.class);
+                                    activity.startActivity(c);
+
+
+                                } else {
+
+                                    Log.e("GOOGLE AUTH", "I'm an old user.");
+                                    Intent c = new Intent(activity, UserFeedActivity.class);
+                                    activity.startActivity(c);
+
+                                }
 
                             } else {
                                 // If sign in fails, display a message to the user.
