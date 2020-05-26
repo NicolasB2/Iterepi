@@ -11,35 +11,33 @@ import android.widget.TextView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.store.MyCategoriesActivity;
-import com.example.iterepi.model.Place;
-import com.example.iterepi.view.store.MyPlacesActivity;
+import com.example.iterepi.model.Category;
+import com.example.iterepi.view.store.StoreHomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlacesAdapter extends BaseAdapter {
+public class CategoriesAdapter extends BaseAdapter {
 
-    private List<Place> places;
-    private MyPlacesActivity activity;
+    private List<Category> categories;
 
-    public PlacesAdapter(MyPlacesActivity activity) {
-        this.activity = activity;
-        places = new ArrayList<>();
+    public CategoriesAdapter() {
+        this.categories = new ArrayList<>();
     }
 
-    public void addPlace(Place place){
-        places.add(place);
+    public void addCategory(Category category){
+        categories.add(category);
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return places.size();
+        return categories.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return places.get(position);
+        return categories.get(position);
     }
 
     @Override
@@ -50,20 +48,20 @@ public class PlacesAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View row = inflater.inflate(R.layout.place_row,null,false);
+        View row = inflater.inflate(R.layout.category_row,null,false);
 
         try {
-            TextView placeNameTV = row.findViewById(R.id.PlaceNameTV);
-            TextView placeLocationTV = row.findViewById(R.id.PlaceLocationTV);
+            TextView categoryNameTV = row.findViewById(R.id.categoryNameTV);
+            TextView categoryItemsTV = row.findViewById(R.id.categoryItemsTV);
 
-            placeNameTV.setText(places.get(position).getName());
-            placeLocationTV.setText(places.get(position).getLocation());
+            categoryNameTV.setText(categories.get(position).getName());
+            categoryItemsTV.setText(categories.get(position).getItems().length);
 
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(row.getContext(), MyCategoriesActivity.class);
-                    i.putExtra("place",places.get(position));
+                    Intent i = new Intent(row.getContext(), StoreHomeActivity.class);
+                    i.putExtra("category",categories.get(position));
                     row.getContext().startActivity(i);
                     ((Activity) row.getContext()).finish();
                 }
@@ -74,7 +72,7 @@ public class PlacesAdapter extends BaseAdapter {
         return row;
     }
 
-    public List<Place> getPlaces() {
-        return places;
+    public List<Category> getCategories() {
+        return categories;
     }
 }

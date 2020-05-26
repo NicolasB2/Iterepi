@@ -76,6 +76,8 @@
     <string name="accounts">Accounts</string>
     <string name="my_sales">My sales</string>
     <string name="my_places">My places</string>
+    <string name="my_categories">My categories</string>
+    <string name="my_items">My items</string>
     <string name="orders">Orders</string>
     <string name="order_id">Order ID</string>
     <string name="sale_id">Sale ID</string>

@@ -23,7 +23,7 @@ public class MyPlacesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_places);
 
-        this.myPlacesList = findViewById(R.id.myPlacesList);
+        this.myPlacesList = findViewById(R.id.myCategoriesList);
         this.addMethodBtn = findViewById(R.id.addMethodBtn);
         this.backBtn = findViewById(R.id.backBtn);
 
@@ -47,4 +47,6 @@ public class MyPlacesActivity extends AppCompatActivity {
     public ImageButton getBackBtn() {
         return backBtn;
     }
+
+
 }

@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/playListLayout"
+    android:id="@+id/PlacesLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:ignore="MissingDefaultResource"
@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/placeNameTV"
+        android:id="@+id/PlaceNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/placeLocationTV"
+        android:id="@+id/PlaceLocationTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -35,7 +35,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView39"
-        app:layout_constraintTop_toBottomOf="@+id/placeNameTV" />
+        app:layout_constraintTop_toBottomOf="@+id/PlaceNameTV" />
 
     <TextView
         android:id="@+id/textView37"

@@ -12,6 +12,7 @@ import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddCategoryDialog;
 import com.example.iterepi.view.store.AddPlaceDialog;
+import com.example.iterepi.view.store.MyPlacesActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
@@ -30,7 +31,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
     public static final int SEARCH_CALLBACK = 1;
     public static final int SEND_CALLBACK = 2;
 
-    private List<Place> places = new ArrayList<Place>();
+    private Place[]  places = new Place[0];
 
     public AddCategoryController(AddCategoryDialog activity) {
         this.activity = activity;
@@ -53,7 +54,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                 String user_id = FirebaseAuth.getInstance().getUid();
                 String id = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").push().getKey();
                 String name = activity.getCategoryNameTF().getEditText().getText().toString();
-                Place place = places.get(activity.getPlaceSP().getSelectedItemPosition());
+                Place place = places[activity.getPlaceSP().getSelectedItemPosition()];
 
 
                 if(id != null){
@@ -78,12 +79,13 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                                     Gson gson = new Gson();
                                     String json = gson.toJson(category);
                                     utilDomi.PUTrequest(SEND_CALLBACK,"https://iterepi.firebaseio.com/sellers/"+user_id
-                                            +"/places/"+place.getId()+"/categories/"+(place.getCategories().length-1)+".json",json);
+                                            +"/places/"+activity.getPlacePosition()+"/categories/"+(place.getCategories().length-1)+".json",json);
                                 }
 
                         ).start();
+                        Intent s = new Intent(activity, MyCategoriesActivity.class);
+                        activity.startActivity(s);
                         activity.finish();
-
                         break;
                     }
                 }
@@ -103,7 +105,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
             case SEARCH_CALLBACK:
                 Gson g = new Gson();
                 Gson gson = new Gson();
-                Place[] places = gson.fromJson(response, Place[].class);
+                this.places = gson.fromJson(response, Place[].class);
 
                 activity.runOnUiThread(
                         ()->{

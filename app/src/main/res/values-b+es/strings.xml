@@ -76,6 +76,8 @@
     <string name="accounts">Cuentas</string>
     <string name="my_sales">Mis ventas</string>
     <string name="my_places">Mis sedes</string>
+    <string name="my_categories">Mis categorias</string>
+    <string name="my_items">Mis items</string>
     <string name="orders">Pedidos</string>
     <string name="order_id">Pedido ID</string>
     <string name="sale_id">Venta ID</string>

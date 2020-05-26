@@ -24,7 +24,7 @@ public class SeePlaceDialog extends AppCompatActivity {
         setContentView(R.layout.dialog_see_place);
 
         backBtn3 = findViewById(R.id.backBtn);
-        placeNameTV = findViewById(R.id.placeNameTV);
+        placeNameTV = findViewById(R.id.PlaceNameTV);
         locationTV = findViewById(R.id.locationTV);
         categoriesSpinner = findViewById(R.id.categoriesSpinner);
         updateDataBtn = findViewById(R.id.updateDataBtn);
