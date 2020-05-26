@@ -116,6 +116,7 @@
     <string name="welcome_back">Bienvenido de nuevo</string>
     <string name="welcome">Bienvenido</string>
     <string name="forgot_something">olvidaste</string>
+    <string name="restore_pass_sent">Se han enviado instrucciones a tu correo para restablecer la contraseña</string>
     <string name="Open_Nav" translatable="false">Open Nav Drawer</string>
     <string name="Close_Nav" translatable="false">Close Nav Drawer</string>
     <string name="deafault_web_client_id" translatable="false">689800102571-hsetusct9sg41bum68gdd4ral7rpl9nk.apps.googleusercontent.com</string>

@@ -8,7 +8,6 @@ public class Seller implements Serializable {
     private String name;
     private String nit;
     private String email;
-    private String password;
     private String logo;
     private String[] salesID;
     private Place[] places;
@@ -17,12 +16,11 @@ public class Seller implements Serializable {
     public Seller() {
     }
 
-    public Seller(String id, String name, String nit, String email, String password, String logo, String[] salesID, Place[] places, Card[] cards) {
+    public Seller(String id, String name, String nit, String email, String logo, String[] salesID, Place[] places, Card[] cards) {
         this.id = id;
         this.name = name;
         this.nit = nit;
         this.email = email;
-        this.password = password;
         this.logo = logo;
         this.salesID = salesID;
         this.places = places;
@@ -67,14 +65,6 @@ public class Seller implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getLogo() {

@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.login.RestorePasswordActivity"></activity>
+        <activity android:name=".view.user.NavigationViewActivity" />
+        <activity android:name=".controller.store.MyCategoriesActivity" />
+        <activity android:name=".view.user.NavigationViewActivity"></activity>
         <activity android:name=".view.store.SeeCategoryActivity"></activity>
         <activity android:name=".view.user.NavigationViewActivity" />
         <activity android:name=".view.store.SeePlaceActivity" />

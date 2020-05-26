@@ -11,7 +11,6 @@ public class Buyer implements Serializable {
     private String name;
     private String identification;
     private String email;
-    private String password;
     private String photo;
     private int gender;
     private String birthday;
@@ -22,12 +21,11 @@ public class Buyer implements Serializable {
     public Buyer() {
     }
 
-    public Buyer(String id, String name, String identification, String email, String password, String photo, int gender, String birthday, String[] purchasesID, Cart cart, Card[] cards) {
+    public Buyer(String id, String name, String identification, String email, String photo, int gender, String birthday, String[] purchasesID, Cart cart, Card[] cards) {
         this.id = id;
         this.name = name;
         this.identification = identification;
         this.email = email;
-        this.password = password;
         this.photo = photo;
         this.gender = gender;
         this.birthday = birthday;
@@ -74,14 +72,6 @@ public class Buyer implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getPhoto() {

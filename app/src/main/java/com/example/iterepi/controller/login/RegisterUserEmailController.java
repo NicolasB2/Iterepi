@@ -50,7 +50,6 @@ public class RegisterUserEmailController implements View.OnClickListener {
         switch (v.getId()) {
 
             case R.id.registerUserBtn:
-
                 userRegister();
 
                 break;
@@ -154,43 +153,45 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (activity.getIntent().hasExtra("PROVIDER")) {
 
-            String provider = (String)activity.getIntent().getExtras().get("PROVIDER");
+                String provider = (String)activity.getIntent().getExtras().get("PROVIDER");
 
-            Log.e("PROVIDER",provider);
+                Log.e("PROVIDER",provider);
 
-            if (provider.equals("GOOGLE")) {
+                if (provider.equals("GOOGLE")) {
 
-                // Add to database code.
+                    // Add to database code.
 
-                String id = FirebaseAuth.getInstance().getUid();
-                bPhoto = user.getPhotoUrl().toString();
-                bPhoto.replace("/s96-c/", "/s800-c/");
-                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null,null);
-                FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+                    String id = FirebaseAuth.getInstance().getUid();
+                    bPhoto = user.getPhotoUrl().toString();
+                    bPhoto.replace("/s96-c/", "/s800-c/");
+                    Buyer buyer = new Buyer(id, bName, bCedula, email, bPhoto, bGender, bBirthday, null, null, null);
+                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
-                // Start UserFeedActivity
+                    // Start UserFeedActivity
 
-                Intent i = new Intent(activity, UserFeedActivity.class);
-                activity.startActivity(i);
-                activity.finishAffinity();
+                    Intent i = new Intent(activity, UserFeedActivity.class);
+                    activity.startActivity(i);
+                    activity.finishAffinity();
 
-            }else if(provider.equals("FACEBOOK")){
+                } else if (provider.equals("FACEBOOK")) {
 
-                // Add to database code.
+                    // Add to database code.
 
-                String id = FirebaseAuth.getInstance().getUid();
-                bPhoto = user.getPhotoUrl().toString();
-                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null,null);
-                FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+                    String id = FirebaseAuth.getInstance().getUid();
+                    bPhoto = user.getPhotoUrl().toString();
+                    Buyer buyer = new Buyer(id, bName, bCedula, email, bPhoto, bGender, bBirthday, null, null, null);
+                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
-                // Start UserFeedActivity
+                    // Start UserFeedActivity
 
-                Intent i = new Intent(activity, UserFeedActivity.class);
-                activity.startActivity(i);
-                activity.finishAffinity();
+                    Intent i = new Intent(activity, UserFeedActivity.class);
+                    activity.startActivity(i);
+                    activity.finishAffinity();
 
 
+                }
             } else {
 
                 String finalBPhoto = bPhoto;
@@ -201,7 +202,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
                     // Add to database code.
 
                     String id = FirebaseAuth.getInstance().getUid();
-                    Buyer buyer = new Buyer(id, bName, bCedula, email, password, finalBPhoto, bGender, bBirthday, null, null,null);
+                    Buyer buyer = new Buyer(id, bName, bCedula, email, finalBPhoto, bGender, bBirthday, null, null, null);
                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                     // Start UserFeedActivity
