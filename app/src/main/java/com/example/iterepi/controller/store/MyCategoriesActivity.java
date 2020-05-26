@@ -24,6 +24,8 @@ public class MyCategoriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_categories);
 
+        placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
+
         this.myCategoriesList = findViewById(R.id.myCategoriesList);
         this.addMethodBtn = findViewById(R.id.addMethodBtn);
         this.backBtn = findViewById(R.id.backBtn);

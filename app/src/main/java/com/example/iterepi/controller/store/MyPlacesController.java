@@ -53,7 +53,6 @@ public class MyPlacesController implements View.OnClickListener, HTTPSWebUtilDom
 
         switch (v.getId()) {
             case R.id.backBtn:
-                Log.e(">>>","close");
                 activity.finish();
                 break;
             case R.id.addMethodBtn:

@@ -47,7 +47,6 @@ class MyCategoriesController implements View.OnClickListener, HTTPSWebUtilDomi.O
 
         switch (v.getId()) {
             case R.id.backBtn:
-                Log.e(">>>","close");
                 activity.finish();
                 break;
             case R.id.addMethodBtn:

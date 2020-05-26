@@ -63,7 +63,6 @@ public class CategoriesAdapter extends BaseAdapter {
                     Intent i = new Intent(row.getContext(), StoreHomeActivity.class);
                     i.putExtra("category",categories.get(position));
                     row.getContext().startActivity(i);
-                    ((Activity) row.getContext()).finish();
                 }
             });
         }catch (Exception e){
