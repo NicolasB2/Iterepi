@@ -29,14 +29,12 @@ public class RegisterMenuActivity extends AppCompatActivity {
         googleBtn = findViewById(R.id.googleBtn);
         emailBtn = findViewById(R.id.emailBtn);
         loginBtn = findViewById(R.id.loginBtn);
-        backBtn = findViewById(R.id.backBtn);
+        backBtn = findViewById(R.id.backBtnMain);
 
         controller = new RegisterMenuController(this);
     }
 
-    public ImageButton getBackBtn() {
-        return backBtn;
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -47,6 +45,10 @@ public class RegisterMenuActivity extends AppCompatActivity {
         controller.getmCallbackManager().onActivityResult(requestCode,resultCode,data);
 
 
+    }
+
+    public ImageButton getBackBtn() {
+        return backBtn;
     }
 
     public Button getFacebookBtn() {

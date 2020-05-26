@@ -80,7 +80,7 @@ public class LoginUserController implements View.OnClickListener {
             case R.id.googleBtn:
                 signIn();
                 break;
-            case R.id.backBtn:
+            case R.id.backBtn4:
                 activity.onBackPressed();
                 break;
             case R.id.emailBtn:

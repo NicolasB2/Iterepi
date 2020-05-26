@@ -76,6 +76,10 @@ public class RegisterMenuController implements View.OnClickListener {
         Intent i;
         switch (v.getId()) {
 
+            case R.id.backBtnMain:
+                activity.onBackPressed();
+                break;
+
             case R.id.emailBtn:
                 i = new Intent(activity, RegisterUserEmailActivity.class);
                 activity.startActivity(i);
@@ -94,9 +98,6 @@ public class RegisterMenuController implements View.OnClickListener {
                 activity.startActivity(i);
                 break;
 
-            case R.id.backBtn:
-                activity.onBackPressed();
-                break;
 
         }
     }
