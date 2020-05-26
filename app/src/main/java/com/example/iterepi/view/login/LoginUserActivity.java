@@ -29,7 +29,7 @@ public class LoginUserActivity extends AppCompatActivity {
         googleBtn = findViewById(R.id.googleBtn);
         emailBtn = findViewById(R.id.emailBtn);
         registerTV = findViewById(R.id.registerTV);
-        backBtn = findViewById(R.id.backBtn);
+        backBtn = findViewById(R.id.backBtn4);
 
         controller = new LoginUserController(this);
     }
@@ -61,5 +61,6 @@ public class LoginUserActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         controller.onActivityResult(requestCode, resultCode, data);
+        controller.getmCallbackManager().onActivityResult(requestCode,resultCode,data);
     }
 }

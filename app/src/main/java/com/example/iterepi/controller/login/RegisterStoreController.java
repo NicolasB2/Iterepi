@@ -28,6 +28,7 @@ public class RegisterStoreController implements View.OnClickListener {
         this.activity = activity;
 
         activity.getRegisterBtn().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
         listeners();
 
     }
@@ -40,6 +41,10 @@ public class RegisterStoreController implements View.OnClickListener {
 
             case R.id.registerBtn:
                 storeRegister();
+                break;
+
+            case R.id.backBtn:
+                activity.onBackPressed();
                 break;
 
 

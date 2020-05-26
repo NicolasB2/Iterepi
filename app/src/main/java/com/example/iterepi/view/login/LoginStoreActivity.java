@@ -2,6 +2,7 @@ package com.example.iterepi.view.login;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,7 @@ public class LoginStoreActivity extends AppCompatActivity {
     private TextInputLayout email;
     private TextInputLayout pass;
     private Button updateDataBtn;
+    private ImageButton backBtn;
 
 
     @Override
@@ -29,10 +31,15 @@ public class LoginStoreActivity extends AppCompatActivity {
         email = findViewById(R.id.emailStore);
         pass = findViewById(R.id.passwordTF);
         updateDataBtn = findViewById(R.id.updateDataBtn);
+        backBtn = findViewById(R.id.backBtn2);
 
         controller = new LoginStoreController(this);
 
 
+    }
+
+    public ImageButton getBackBtn() {
+        return backBtn;
     }
 
     public Button getForgotPassBtn() {
