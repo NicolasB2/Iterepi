@@ -77,9 +77,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
 
                         ).start();
 
-                        place.addCategory(category);
                         Intent s = new Intent(activity, MyCategoriesActivity.class);
-                        s.putExtra("place",place);
                         s.putExtra("placePosition",activity.getPlacePosition());
                         activity.startActivity(s);
                         activity.finish();

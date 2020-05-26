@@ -32,7 +32,6 @@ public class MyCategoriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_categories);
 
-        this.place = (Place) getIntent().getExtras().getSerializable("place");
         this.placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
 
         this.myCategoriesList = findViewById(R.id.myCategoriesList);
@@ -42,13 +41,8 @@ public class MyCategoriesActivity extends AppCompatActivity {
         this.placeNameTF = findViewById(R.id.placeNameTF);
         this.placeLocationTF = findViewById(R.id.placeLocationTF);
 
-        this.placeNameTV.setText(place.getName());
-        this.placeNameTF.getEditText().setText(place.getName());
-        this.placeLocationTF.getEditText().setText(place.getLocation());
-
         this.controller = new MyCategoriesController(this);
-        this.adapter = new CategoriesAdapter(place.getCategories());
-        this.myCategoriesList.setAdapter(adapter);
+
     }
 
     public ListView getMyCategoriesList() {
@@ -85,6 +79,8 @@ public class MyCategoriesActivity extends AppCompatActivity {
 
     public void setPlace(Place place) {
         this.place = place;
+        this.adapter = new CategoriesAdapter(place.getCategories());
+        this.myCategoriesList.setAdapter(adapter);
     }
 
     public int getPlacePosition() {

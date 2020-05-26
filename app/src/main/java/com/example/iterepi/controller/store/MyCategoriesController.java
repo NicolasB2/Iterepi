@@ -73,6 +73,9 @@ public class MyCategoriesController implements View.OnClickListener, HTTPSWebUti
                         ()->{
                             if(place!=null){
                                 activity.setPlace(place);
+                                activity.getPlaceNameTV().setText(place.getName());
+                                activity.getPlaceNameTF().getEditText().setText(place.getName());
+                                activity.getPlaceLocationTF().getEditText().setText(place.getLocation());
                             }
                         }
                 );
