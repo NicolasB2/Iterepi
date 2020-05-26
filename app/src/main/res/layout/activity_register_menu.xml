@@ -18,7 +18,7 @@
         app:icon="@drawable/ic_google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FrameLayout1" />
+        app:layout_constraintTop_toBottomOf="@+id/facebookBtn" />
 
     <ImageView
         android:id="@+id/logoIV3"
@@ -103,33 +103,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
-    <FrameLayout
-        android:id="@+id/FrameLayout1"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/facebookBtn"
+        style="@style/iconButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/register_with_facebook"
+        app:icon="@drawable/ic_facebook"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginWith">
+        app:layout_constraintTop_toBottomOf="@+id/loginWith" />
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/loginFb"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="84dp"
-            android:visibility="gone"
-            />
-
-        <Button
-            android:id="@+id/facebookBtn"
-            style="@style/iconButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="84dp"
-            android:text="@string/register_with_facebook"
-            app:icon="@drawable/ic_facebook" />
-    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
