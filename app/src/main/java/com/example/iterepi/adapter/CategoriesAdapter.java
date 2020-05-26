@@ -20,8 +20,12 @@ public class CategoriesAdapter extends BaseAdapter {
     private Category[] categories;
 
     public CategoriesAdapter(Category[] categories) {
+        if(categories == null){
+            this.categories = new Category[0];
+        }else{
+            this.categories = categories;
+        }
 
-        this.categories = categories;
     }
 
     @Override
@@ -48,17 +52,22 @@ public class CategoriesAdapter extends BaseAdapter {
             TextView categoryNameTV = row.findViewById(R.id.categoryNameTV);
             TextView categoryItemsTV = row.findViewById(R.id.categoryItemsTV);
 
-            categoryNameTV.setText(categories[position].getName());
-            categoryItemsTV.setText(categories[position].getItems().length+"");
+            Category category = categories[position];
+            if(category!=null){
 
-            row.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(row.getContext(), StoreHomeActivity.class);
-                    i.putExtra("category",categories[position]);
-                    row.getContext().startActivity(i);
-                }
-            });
+                categoryNameTV.setText(category.getName());
+                categoryItemsTV.setText(category.getItems().length+"");
+
+                row.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(row.getContext(), StoreHomeActivity.class);
+                        i.putExtra("category",categories[position]);
+                        row.getContext().startActivity(i);
+                    }
+                });
+            }
+
         }catch (Exception e){
             Log.e(">>>","error in trackAdapter");
         }

@@ -91,7 +91,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                                 //if(seller != null) {
                                     Log.e("SELLER", "IT'S SELLER");
-                                    Intent s = new Intent(SplashScreenActivity.this, MyPlacesActivity.class);
+                                    Intent s = new Intent(SplashScreenActivity.this, StoreHomeActivity.class);
                                     startActivity(s);
                                     finish();
                                 //}

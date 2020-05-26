@@ -2,7 +2,10 @@ package com.example.iterepi.view.store;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -10,7 +13,7 @@ import com.example.iterepi.R;
 import com.example.iterepi.adapter.PlacesAdapter;
 import com.example.iterepi.controller.store.MyPlacesController;
 
-public class MyPlacesActivity extends AppCompatActivity {
+public class MyPlacesActivity extends SellerNavigationDrawerActivity {
 
     private MyPlacesController controller;
     private ListView myPlacesList;
@@ -21,7 +24,10 @@ public class MyPlacesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_places);
+
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentView = inflater.inflate(R.layout.activity_my_places, null, false);
+        getDrawerLayout().addView(contentView, 0);
 
         this.myPlacesList = findViewById(R.id.myCategoriesList);
         this.addMethodBtn = findViewById(R.id.addMethodBtn);

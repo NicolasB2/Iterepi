@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.iterepi.R;
-import com.example.iterepi.view.store.MyCategoriesActivity;
+import com.example.iterepi.view.store.SeePlaceActivity;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.view.store.MyPlacesActivity;
 
@@ -61,10 +61,11 @@ public class PlacesAdapter extends BaseAdapter {
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(row.getContext(), MyCategoriesActivity.class);
+                    Intent i = new Intent(row.getContext(), SeePlaceActivity.class);
                     i.putExtra("place",places.get(position));
                     i.putExtra("placePosition",position);
                     row.getContext().startActivity(i);
+                    activity.finish();
                 }
             });
         }catch (Exception e){
