@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.user.NavigationViewActivity"></activity>
-        <activity android:name=".view.store.MyCategoriesActivity" />
+        <activity android:name=".view.store.SeePlaceActivity" />
         <activity android:name=".view.user.CartActivity" />
         <activity android:name=".view.store.MyPlacesActivity" />
         <activity android:name=".view.login.CompleteRegisterActivity" />
@@ -25,7 +25,6 @@
         <activity android:name=".view.store.AddPlaceDialog" />
         <activity android:name=".view.store.AddCategoryDialog" />
         <activity android:name=".view.user.MakePurchaseActivity" />
-        <activity android:name=".view.store.SeeCategoryDialog" />
         <activity android:name=".view.store.SeeProductDialog" />
         <activity android:name=".view.login.RegisterMenuActivity" />
         <activity android:name=".view.login.RegisterUserEmailActivity" />

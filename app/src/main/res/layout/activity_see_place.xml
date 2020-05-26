@@ -5,7 +5,7 @@ style="@style/textFieldNormal"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@drawable/alt_background"
-    tools:context=".view.store.MyCategoriesActivity">
+    tools:context=".view.store.SeePlaceActivity">
 
 <ImageButton
     android:id="@+id/backBtn"
@@ -85,7 +85,7 @@ android:background="@drawable/alt_background"
         app:layout_constraintBottom_toTopOf="@+id/updateDataBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeLocationTF" />
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
     <Button
         android:id="@+id/updateDataBtn"
@@ -111,6 +111,19 @@ android:background="@drawable/alt_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/my_categories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeLocationTF" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

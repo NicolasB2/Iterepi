@@ -1,9 +1,7 @@
 package com.example.iterepi.controller.store;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.iterepi.R;
@@ -11,7 +9,7 @@ import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddCategoryDialog;
-import com.example.iterepi.view.store.MyCategoriesActivity;
+import com.example.iterepi.view.store.SeePlaceActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
@@ -77,7 +75,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
 
                         ).start();
 
-                        Intent s = new Intent(activity, MyCategoriesActivity.class);
+                        Intent s = new Intent(activity, SeePlaceActivity.class);
                         s.putExtra("placePosition",activity.getPlacePosition());
                         activity.startActivity(s);
                         activity.finish();
@@ -86,7 +84,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                 }
 
             case R.id.closeBtn:
-                Intent s = new Intent(activity, MyCategoriesActivity.class);
+                Intent s = new Intent(activity, SeePlaceActivity.class);
                 s.putExtra("place",activity.getPlace());
                 s.putExtra("placePosition",activity.getPlacePosition());
                 activity.startActivity(s);

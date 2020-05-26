@@ -5,22 +5,21 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.iterepi.R;
-import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddCategoryDialog;
-import com.example.iterepi.view.store.MyCategoriesActivity;
+import com.example.iterepi.view.store.SeePlaceActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
 
-public class MyCategoriesController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
+public class seePlaceController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
 
-    private MyCategoriesActivity activity;
+    private SeePlaceActivity activity;
     private HTTPSWebUtilDomi utilDomi;
 
-    public MyCategoriesController(MyCategoriesActivity activity) {
+    public seePlaceController(SeePlaceActivity activity) {
         this.activity = activity;
         this.utilDomi = new HTTPSWebUtilDomi();
         this.utilDomi.setListener(this);

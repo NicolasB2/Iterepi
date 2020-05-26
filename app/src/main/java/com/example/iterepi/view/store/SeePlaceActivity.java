@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.adapter.CategoriesAdapter;
-import com.example.iterepi.controller.store.MyCategoriesController;
+import com.example.iterepi.controller.store.seePlaceController;
 import com.example.iterepi.model.Place;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class MyCategoriesActivity extends AppCompatActivity {
+public class SeePlaceActivity extends AppCompatActivity {
 
-    private MyCategoriesController controller;
+    private seePlaceController controller;
 
     private TextView placeNameTV;
     private TextInputLayout placeNameTF;
@@ -32,7 +32,7 @@ public class MyCategoriesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_categories);
+        setContentView(R.layout.activity_see_place);
 
         this.placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
 
@@ -44,7 +44,7 @@ public class MyCategoriesActivity extends AppCompatActivity {
         this.placeNameTF = findViewById(R.id.placeNameTF);
         this.placeLocationTF = findViewById(R.id.placeLocationTF);
 
-        this.controller = new MyCategoriesController(this);
+        this.controller = new seePlaceController(this);
 
     }
 
