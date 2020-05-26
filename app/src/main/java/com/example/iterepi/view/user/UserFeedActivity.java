@@ -42,7 +42,7 @@ public class UserFeedActivity extends NavigationViewActivity {
                         overridePendingTransition(0,0);
                         break;
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                        startActivity(new Intent(getApplicationContext(), CartActivity.class));
                         finish();
                         overridePendingTransition(0,0);
                         break;
