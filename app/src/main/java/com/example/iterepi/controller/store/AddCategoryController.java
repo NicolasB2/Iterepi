@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.example.iterepi.R;
+import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddCategoryDialog;
@@ -35,6 +37,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
         this.utilDomi = new HTTPSWebUtilDomi();
         utilDomi.setListener(this);
         activity.getAddCategoryBtn().setOnClickListener(this);
+        activity.getCloseBtn().setOnClickListener(this);
         loadPlaces();
     }
 
@@ -49,12 +52,44 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
 
                 String user_id = FirebaseAuth.getInstance().getUid();
                 String id = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").push().getKey();
+                String name = activity.getCategoryNameTF().getEditText().getText().toString();
+                Place place = places.get(activity.getPlaceSP().getSelectedItemPosition());
 
 
-                activity.finish();
-                break;
+                if(id != null){
+                    if (name.equals("")){
+                        Toast.makeText(activity,activity.getString(R.string.forgot_something)+" "+activity.getString(R.string.name),Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                    if(place==null){
+                        Toast.makeText(activity,activity.getString(R.string.forgot_something)+" "+activity.getString(R.string.place),Toast.LENGTH_LONG).show();
+                        break;
+                    }
+
+                    else{
+
+                        Category category = new Category();
+                        category.setId(id);
+                        category.setName(name);
+
+
+                        new Thread(
+                                ()->{
+                                    Gson gson = new Gson();
+                                    String json = gson.toJson(category);
+                                    utilDomi.PUTrequest(SEND_CALLBACK,"https://iterepi.firebaseio.com/sellers/"+user_id
+                                            +"/places/"+place.getId()+"/categories/"+(place.getCategories().length-1)+".json",json);
+                                }
+
+                        ).start();
+                        activity.finish();
+
+                        break;
+                    }
+                }
 
             case R.id.closeBtn:
+                Log.e(">>>","close");
                 activity.finish();
                 break;
 
@@ -70,17 +105,15 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                 Type type = new TypeToken<HashMap<String,Place>>(){}.getType();
                 HashMap<String,Place> myPlace = g.fromJson(response,type);
 
-                List<String> placesName = new ArrayList<String>();
 
                 for (String key: myPlace.keySet()){
                     Place p = myPlace.get(key);
                     places.add(p);
-                    placesName.add(p.getName());
                 }
 
                 activity.runOnUiThread(
                         ()->{
-                            ArrayAdapter<String> adp1 = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, placesName);
+                            ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(activity, android.R.layout.simple_spinner_item, places);
                             activity.getPlaceSP().setAdapter(adp1);
                         }
                 );

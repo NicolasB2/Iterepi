@@ -7,8 +7,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.user.UserProfileController;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -25,6 +28,8 @@ public class UserProfileActivity extends AppCompatActivity {
 
     private Button changePassBtn;
     private Button update_dataBtn;
+
+    private UserProfileController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,8 @@ public class UserProfileActivity extends AppCompatActivity {
 
         changePassBtn  = findViewById(R.id.addProductBtn);
         update_dataBtn  = findViewById(R.id.updateDataBtn);
+
+        controller = new UserProfileController(this);
     }
 
     public ImageView getProfileImage() {

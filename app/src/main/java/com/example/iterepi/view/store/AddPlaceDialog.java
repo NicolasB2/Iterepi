@@ -16,6 +16,7 @@ public class AddPlaceDialog extends AppCompatActivity {
     private TextInputLayout placeLocationTF;
 
     private ImageButton mapLocationPlaceBtn;
+    private ImageButton closeBtn;
     private Button addPlaceBtn;
 
     private AddPlaceController controller;
@@ -29,6 +30,7 @@ public class AddPlaceDialog extends AppCompatActivity {
         placeLocationTF = findViewById(R.id.placeLocationTF);
         mapLocationPlaceBtn = findViewById(R.id.mapLocationPlaceBtn);
         addPlaceBtn = findViewById(R.id.updateDataBtn);
+        closeBtn = findViewById(R.id.closeBtn);
 
         controller = new AddPlaceController(this);
     }
@@ -63,5 +65,13 @@ public class AddPlaceDialog extends AppCompatActivity {
 
     public void setAddPlaceBtn(Button addPlaceBtn) {
         this.addPlaceBtn = addPlaceBtn;
+    }
+
+    public ImageButton getCloseBtn() {
+        return closeBtn;
+    }
+
+    public void setCloseBtn(ImageButton closeBtn) {
+        this.closeBtn = closeBtn;
     }
 }

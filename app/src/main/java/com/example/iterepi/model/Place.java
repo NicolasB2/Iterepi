@@ -1,5 +1,7 @@
 package com.example.iterepi.model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Place implements Serializable {
@@ -10,6 +12,7 @@ public class Place implements Serializable {
     private Category[] categories;
 
     public Place() {
+        categories = new Category[1];
     }
 
     public Place(String id, String name, String location, Category[] categories) {
@@ -49,5 +52,11 @@ public class Place implements Serializable {
 
     public void setCategories(Category[] categories) {
         this.categories = categories;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return this.getName()+": "+this.getLocation();
     }
 }

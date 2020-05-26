@@ -38,16 +38,11 @@ public class LoginUserEmailController implements View.OnClickListener {
             case R.id.updateDataBtn:
 
                 login();
-
                 break;
 
             case R.id.forgotPassUser:
-
-
                 break;
-
         }
-
     }
 
     public void login() {
@@ -72,12 +67,10 @@ public class LoginUserEmailController implements View.OnClickListener {
 
         if (checkEmail && checkPass) {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnSuccessListener(s -> {
-
-
+                String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Intent i = new Intent(activity, UserFeedActivity.class);
                 activity.startActivity(i);
                 activity.finish();
-
 
             }).addOnFailureListener(f -> {
 
@@ -86,8 +79,6 @@ public class LoginUserEmailController implements View.OnClickListener {
 
             });
         }
-
-
     }
 
     public void putError(TextInputLayout txtLay, String error) {
