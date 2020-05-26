@@ -145,8 +145,6 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
             String bName = name;
             String bCedula = identification;
-            String bEmail = email;
-            String bPassword = password;
             String bPhoto = null;
             int bGender = gender;
             String bBirthday = birthday;
