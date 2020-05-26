@@ -1,4 +1,5 @@
 <resources>
+    <string name="empty_cart">Tu carrito está vacío!</string>
     <string name="app_name">Iterepi</string>
     <string name="create_account">Crea una cuenta:</string>
     <string name="buyer">Comprador</string>
