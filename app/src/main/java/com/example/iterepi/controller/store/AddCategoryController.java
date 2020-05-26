@@ -37,6 +37,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
         this.utilDomi = new HTTPSWebUtilDomi();
         utilDomi.setListener(this);
         activity.getAddCategoryBtn().setOnClickListener(this);
+        activity.getCloseBtn().setOnClickListener(this);
         loadPlaces();
     }
 
@@ -88,6 +89,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                 }
 
             case R.id.closeBtn:
+                Log.e(">>>","close");
                 activity.finish();
                 break;
 
