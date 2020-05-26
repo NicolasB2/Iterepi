@@ -20,7 +20,7 @@ tools:context=".view.store.SeeCategoryDialog">
     app:srcCompat="@drawable/ic_back" />
 
     <TextView
-        android:id="@+id/placeName"
+        android:id="@+id/placeNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -42,7 +42,7 @@ tools:context=".view.store.SeeCategoryDialog">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.532"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/placeName" />
+    app:layout_constraintTop_toBottomOf="@+id/placeNameTV" />
 
     <TextView
         android:id="@+id/locationTV"

@@ -79,8 +79,6 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
 
                         place.addCategory(category);
                         Intent s = new Intent(activity, MyCategoriesActivity.class);
-
-
                         s.putExtra("place",place);
                         s.putExtra("placePosition",activity.getPlacePosition());
                         activity.startActivity(s);
@@ -90,7 +88,10 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                 }
 
             case R.id.closeBtn:
-                Log.e(">>>","close");
+                Intent s = new Intent(activity, MyCategoriesActivity.class);
+                s.putExtra("place",activity.getPlace());
+                s.putExtra("placePosition",activity.getPlacePosition());
+                activity.startActivity(s);
                 activity.finish();
                 break;
 
@@ -101,19 +102,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
     @Override
     public void onResponse(int callbackID, String response) {
         switch (callbackID) {
-            /*
-            case SEARCH_CALLBACK:
-                Gson g = new Gson();
-                Gson gson = new Gson();
-                this.places = gson.fromJson(response, Place[].class);
 
-                activity.runOnUiThread(
-                        ()->{
-                            ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(activity, android.R.layout.simple_spinner_item, places);
-                            activity.getPlaceSP().setAdapter(adp1);
-                        }
-                );
-                break;*/
         }
     }
 

@@ -5,16 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.adapter.CategoriesAdapter;
-import com.example.iterepi.adapter.PlacesAdapter;
 import com.example.iterepi.controller.store.MyCategoriesController;
 import com.example.iterepi.model.Place;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class MyCategoriesActivity extends AppCompatActivity {
 
     private MyCategoriesController controller;
+
+    private TextView placeNameTV;
+    private TextInputLayout placeNameTF;
+    private TextInputLayout placeLocationTF;
     private ListView myCategoriesList;
     private CategoriesAdapter adapter;
     private ImageButton addMethodBtn;
@@ -33,6 +38,13 @@ public class MyCategoriesActivity extends AppCompatActivity {
         this.myCategoriesList = findViewById(R.id.myCategoriesList);
         this.addMethodBtn = findViewById(R.id.addMethodBtn);
         this.backBtn = findViewById(R.id.backBtn);
+        this.placeNameTV = findViewById(R.id.placeNameTV);
+        this.placeNameTF = findViewById(R.id.placeNameTF);
+        this.placeLocationTF = findViewById(R.id.placeLocationTF);
+
+        this.placeNameTV.setText(place.getName());
+        this.placeNameTF.getEditText().setText(place.getName());
+        this.placeLocationTF.getEditText().setText(place.getLocation());
 
         this.controller = new MyCategoriesController(this);
         this.adapter = new CategoriesAdapter(place.getCategories());
@@ -53,6 +65,18 @@ public class MyCategoriesActivity extends AppCompatActivity {
 
     public ImageButton getBackBtn() {
         return backBtn;
+    }
+
+    public TextView getPlaceNameTV() {
+        return placeNameTV;
+    }
+
+    public TextInputLayout getPlaceNameTF() {
+        return placeNameTF;
+    }
+
+    public TextInputLayout getPlaceLocationTF() {
+        return placeLocationTF;
     }
 
     public Place getPlace() {

@@ -20,6 +20,7 @@ public class CategoriesAdapter extends BaseAdapter {
     private Category[] categories;
 
     public CategoriesAdapter(Category[] categories) {
+
         this.categories = categories;
     }
 

@@ -77,6 +77,8 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
                 break;
 
             case R.id.closeBtn:
+                Intent s = new Intent(activity, MyPlacesActivity.class);
+                activity.startActivity(s);
                 activity.finish();
                 break;
         }
