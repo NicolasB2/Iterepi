@@ -21,6 +21,7 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
         this.activity = activity;
         this.utilDomi = new HTTPSWebUtilDomi();
         activity.getAddPlaceBtn().setOnClickListener(this);
+        activity.getCloseBtn().setOnClickListener(this);
     }
 
 
