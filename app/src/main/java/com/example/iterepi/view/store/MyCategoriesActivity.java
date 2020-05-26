@@ -3,6 +3,7 @@ package com.example.iterepi.view.store;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,7 +23,8 @@ public class MyCategoriesActivity extends AppCompatActivity {
     private TextInputLayout placeLocationTF;
     private ListView myCategoriesList;
     private CategoriesAdapter adapter;
-    private ImageButton addMethodBtn;
+    private Button addMethodBtn;
+    private Button updateDataBtn;
     private ImageButton backBtn;
     private Place place;
     private int placePosition;
@@ -36,6 +38,7 @@ public class MyCategoriesActivity extends AppCompatActivity {
 
         this.myCategoriesList = findViewById(R.id.myCategoriesList);
         this.addMethodBtn = findViewById(R.id.addMethodBtn);
+        this.updateDataBtn = findViewById(R.id.updateDataBtn);
         this.backBtn = findViewById(R.id.backBtn);
         this.placeNameTV = findViewById(R.id.placeNameTV);
         this.placeNameTF = findViewById(R.id.placeNameTF);
@@ -53,8 +56,12 @@ public class MyCategoriesActivity extends AppCompatActivity {
         return adapter;
     }
 
-    public ImageButton getAddMethodBtn() {
+    public Button getAddMethodBtn() {
         return addMethodBtn;
+    }
+
+    public Button getUpdateDataBtn() {
+        return updateDataBtn;
     }
 
     public ImageButton getBackBtn() {

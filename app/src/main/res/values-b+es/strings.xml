@@ -72,6 +72,7 @@
     <string name="add_category">Agregar Categoría</string>
     <string name="add_place">Agregar Sede</string>
     <string name="update_data">Actualizar datos</string>
+    <string name="update_successful">actualizacion exitosa !</string>
     <string name="description">Descripción</string>
     <string name="inventory_quantity">Cantidad de inventario</string>
     <string name="accounts">Cuentas</string>

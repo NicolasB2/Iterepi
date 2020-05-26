@@ -2,6 +2,7 @@ package com.example.iterepi.controller.store;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Category;
@@ -25,6 +26,7 @@ public class MyCategoriesController implements View.OnClickListener, HTTPSWebUti
         this.utilDomi.setListener(this);
         activity.getAddMethodBtn().setOnClickListener(this);
         activity.getBackBtn().setOnClickListener(this);
+        activity.getUpdateDataBtn().setOnClickListener(this);
 
         if(activity.getPlace() == null){
             loadPlace();
@@ -51,12 +53,17 @@ public class MyCategoriesController implements View.OnClickListener, HTTPSWebUti
             case R.id.backBtn:
                 activity.finish();
                 break;
+
             case R.id.addMethodBtn:
                 i = new Intent(activity, AddCategoryDialog.class);
                 i.putExtra("place", (Serializable) activity.getPlace());
                 i.putExtra("placePosition",activity.getPlacePosition());
-
                 activity.startActivity(i);
+                activity.finish();
+                break;
+
+            case R.id.updateDataBtn:
+                Toast.makeText(activity,activity.getString(R.string.update_successful),Toast.LENGTH_LONG).show();
                 activity.finish();
                 break;
         }
