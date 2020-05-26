@@ -20,9 +20,6 @@ public class UserProfileController {
 
     public UserProfileController(UserProfileActivity activity) {
         this.activity = activity;
-
-        activity.getNameTV().setText(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
-
         Query query = FirebaseDatabase.getInstance().getReference()
                 .child("buyers")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());

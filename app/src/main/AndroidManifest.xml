@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.user.CartActivity"></activity>
         <activity android:name=".view.store.MyPlacesActivity"></activity>
         <activity android:name=".view.login.CompleteRegisterActivity" />
         <activity android:name=".view.login.RegisterStoreActivity" />
