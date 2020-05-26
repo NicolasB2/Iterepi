@@ -9,12 +9,14 @@ import android.widget.DatePicker;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Card;
+import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.user.AddPaymentMethodActivity;
 import com.example.iterepi.view.user.PaymentMethodsActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,17 +25,17 @@ import java.util.List;
 public class AddPaymentMethodController implements View.OnClickListener {
 
     private AddPaymentMethodActivity activity;
+    private HTTPSWebUtilDomi utilDomi;
     private boolean checkCardNumber;
     private boolean checkExpirationDate;
     private boolean checkSecurityCode;
     private boolean checkNameUser;
     private boolean checkLastName;
 
-    private List<Card> cards = new ArrayList<Card>();
-
 
     public AddPaymentMethodController( AddPaymentMethodActivity activity){
         this.activity = activity;
+        this.utilDomi = new HTTPSWebUtilDomi();
         activity.getAddCardBtn().setOnClickListener(this);
         listeners();
     }
@@ -42,13 +44,14 @@ public class AddPaymentMethodController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
+        Intent i;
         switch (v.getId()){
             case R.id.addCardBtn:
                 addCard();
                 break;
-
-
+            case R.id.closeBtn:
+                activity.finish();
+                break;
         }
     }
 
@@ -112,20 +115,31 @@ public class AddPaymentMethodController implements View.OnClickListener {
         //All data validated
         if(checkCardNumber && checkExpirationDate && checkSecurityCode && checkNameUser && checkLastName){
 
-            String bNumberCard = numberCard;
-            String bExpirationDate = expirationDate;
-            String bSecurityCode = securityCode;
-            String bNameUser = nameUser;
-            String bLastNameUser = lastNameUser;
-
             //Id del comprador
             String id = FirebaseAuth.getInstance().getUid();
+            String idCard = FirebaseDatabase.getInstance().getReference().child("buyers").child(id).child("cards").push().getKey();
+
+            Card card = new Card();
+            card.setIdCard(idCard);
+            card.setCardNumber(numberCard);
+            card.setExpirationDate(expirationDate);
+            card.setSecurityCode(securityCode);
+            card.setNameUser(nameUser);
+            card.setLastNameUser(lastNameUser);
 
 
-            //Add to databese code
-            FirebaseDatabase.getInstance().getReference().child("buyers").child(id).child("cards").push().getDatabase();
 
-            // Go back to lists of payment methods
+            new Thread(
+                    ()->{
+                        Gson gson = new Gson();
+                        String json = gson.toJson(card);
+                        utilDomi.PUTrequest(1,"https://iterepi.firebaseio.com/buyers/"+id+"/cards/"+idCard+"/.json",json);
+                    }
+
+            ).start();
+
+            //FirebaseDatabase.getInstance().getReference().child("buyers").child(id).child("cards").push().getKey();
+
             activity.finish();
         }
 
