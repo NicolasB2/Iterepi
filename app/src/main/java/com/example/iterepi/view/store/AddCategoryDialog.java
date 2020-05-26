@@ -9,7 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.store.AddCategoryController;
+import com.example.iterepi.model.Category;
+import com.example.iterepi.model.Place;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.List;
 
 public class AddCategoryDialog extends AppCompatActivity {
 
@@ -20,10 +24,17 @@ public class AddCategoryDialog extends AppCompatActivity {
     private Button addCategoryBtn;
     private AddCategoryController controller;
 
+    private Place place;
+    private int placePosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_add_category);
+        this.place = (Place) getIntent().getExtras().getSerializable("place");
+        placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
+
+
 
         closeBtn = findViewById(R.id.closeBtn);
         categoryNameTF = findViewById(R.id.categoryNameTF);
@@ -64,5 +75,13 @@ public class AddCategoryDialog extends AppCompatActivity {
 
     public void setAddCategoryBtn(Button addPlaceBtn) {
         this.addCategoryBtn = addPlaceBtn;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public int getPlacePosition() {
+        return placePosition;
     }
 }

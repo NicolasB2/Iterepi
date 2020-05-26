@@ -27,6 +27,7 @@ public class LoginStoreController implements View.OnClickListener {
         activity.getUpdateDataBtn().setOnClickListener(this);
         activity.getRegisterHereBtn().setOnClickListener(this);
         activity.getForgotPassBtn().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
 
         listeners();
 
@@ -52,6 +53,10 @@ public class LoginStoreController implements View.OnClickListener {
 
             case R.id.forgotPass:
 
+                break;
+
+            case R.id.backBtn2:
+                activity.onBackPressed();
                 break;
 
 

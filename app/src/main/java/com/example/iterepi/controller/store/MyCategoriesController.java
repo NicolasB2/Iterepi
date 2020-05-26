@@ -1,44 +1,47 @@
 package com.example.iterepi.controller.store;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 
 import com.example.iterepi.R;
+import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
-import com.example.iterepi.view.store.AddPlaceDialog;
-import com.example.iterepi.view.store.MyPlacesActivity;
+import com.example.iterepi.view.store.AddCategoryDialog;
+import com.example.iterepi.view.store.MyCategoriesActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
 
-public class MyPlacesController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
+public class MyCategoriesController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
 
-    private MyPlacesActivity activity;
+    private MyCategoriesActivity activity;
     private HTTPSWebUtilDomi utilDomi;
 
-
-    public MyPlacesController(MyPlacesActivity activity) {
+    public MyCategoriesController(MyCategoriesActivity activity) {
         this.activity = activity;
-        utilDomi = new HTTPSWebUtilDomi();
-        utilDomi.setListener(this);
+        this.utilDomi = new HTTPSWebUtilDomi();
+        this.utilDomi.setListener(this);
         activity.getAddMethodBtn().setOnClickListener(this);
         activity.getBackBtn().setOnClickListener(this);
-        loadPlaces();
+
+        if(activity.getPlace() == null){
+            loadPlace();
+        }
     }
 
-    public void loadPlaces(){
+    private void loadPlace() {
         String user_id = FirebaseAuth.getInstance().getUid();
 
         new Thread(
                 ()->{
-                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id+"/places/.json";
+                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id+"/places/"+activity.getPlacePosition()+".json";
                     utilDomi.GETrequest(1,request);
                 }
         ).start();
     }
+
 
     @Override
     public void onClick(View v) {
@@ -49,8 +52,10 @@ public class MyPlacesController implements View.OnClickListener, HTTPSWebUtilDom
                 activity.finish();
                 break;
             case R.id.addMethodBtn:
-                i = new Intent(activity, AddPlaceDialog.class);
-                i.putExtra("places", (Serializable) activity.getAdapter().getPlaces());
+                i = new Intent(activity, AddCategoryDialog.class);
+                i.putExtra("place", (Serializable) activity.getPlace());
+                i.putExtra("placePosition",activity.getPlacePosition());
+
                 activity.startActivity(i);
                 activity.finish();
                 break;
@@ -62,19 +67,17 @@ public class MyPlacesController implements View.OnClickListener, HTTPSWebUtilDom
         switch (callbackID) {
             case 1:
                 Gson gson = new Gson();
-                Place[] places = gson.fromJson(response, Place[].class);
+                Place place = gson.fromJson(response, Place.class);
 
                 activity.runOnUiThread(
                         ()->{
-                            if(places!=null){
-                                for (int i = 0;i < places.length;i++){
-                                    Place p = places[i];
-                                    activity.getAdapter().addPlace(p);
-                                }
+                            if(place!=null){
+                                activity.setPlace(place);
                             }
                         }
                 );
                 break;
         }
     }
+
 }

@@ -2,6 +2,7 @@ package com.example.iterepi.view.login;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
@@ -24,6 +25,7 @@ public class RegisterUserEmailActivity extends AppCompatActivity {
     private MaterialCheckBox checkTerms;
     private RadioGroup radioGroup;
     private Button registerBtn;
+    private ImageButton backBtn;
     private RegisterUserEmailController controller;
 
     @Override
@@ -41,11 +43,16 @@ public class RegisterUserEmailActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.radioGroup);
         checkTerms = findViewById(R.id.checkTerms);
         registerBtn = findViewById(R.id.registerUserBtn);
+        backBtn = findViewById(R.id.backBtn5);
 
         passwordTF.setHelperText(getString(R.string.helper_pass));
 
         controller = new RegisterUserEmailController(this);
 
+    }
+
+    public ImageButton getBackBtn() {
+        return backBtn;
     }
 
     public ImageView getProfileImage() {

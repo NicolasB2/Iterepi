@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.iterepi.R;
+import com.example.iterepi.view.store.MyCategoriesActivity;
 import com.example.iterepi.model.Place;
-import com.example.iterepi.view.store.AddCategoryDialog;
 import com.example.iterepi.view.store.MyPlacesActivity;
 
 import java.util.ArrayList;
@@ -52,8 +52,8 @@ public class PlacesAdapter extends BaseAdapter {
         View row = inflater.inflate(R.layout.place_row,null,false);
 
         try {
-            TextView placeNameTV = row.findViewById(R.id.placeNameTV);
-            TextView placeLocationTV = row.findViewById(R.id.placeLocationTV);
+            TextView placeNameTV = row.findViewById(R.id.PlaceNameTV);
+            TextView placeLocationTV = row.findViewById(R.id.PlaceLocationTV);
 
             placeNameTV.setText(places.get(position).getName());
             placeLocationTV.setText(places.get(position).getLocation());
@@ -61,10 +61,10 @@ public class PlacesAdapter extends BaseAdapter {
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(row.getContext(), AddCategoryDialog.class);
+                    Intent i = new Intent(row.getContext(), MyCategoriesActivity.class);
                     i.putExtra("place",places.get(position));
+                    i.putExtra("placePosition",position);
                     row.getContext().startActivity(i);
-                    activity.finish();
                 }
             });
         }catch (Exception e){

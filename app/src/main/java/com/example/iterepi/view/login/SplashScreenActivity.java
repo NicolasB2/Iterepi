@@ -87,10 +87,14 @@ public class SplashScreenActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                Log.e("SELLER", "IT'S SELLER");
-                                Intent s = new Intent(SplashScreenActivity.this, MyPlacesActivity.class);
-                                startActivity(s);
-                                finish();
+                                //Seller seller = dataSnapshot.getValue(Seller.class);
+
+                                //if(seller != null) {
+                                    Log.e("SELLER", "IT'S SELLER");
+                                    Intent s = new Intent(SplashScreenActivity.this, MyPlacesActivity.class);
+                                    startActivity(s);
+                                    finish();
+                                //}
                         }
 
                         @Override

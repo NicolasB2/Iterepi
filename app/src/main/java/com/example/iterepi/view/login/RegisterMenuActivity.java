@@ -3,6 +3,7 @@ package com.example.iterepi.view.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ public class RegisterMenuActivity extends AppCompatActivity {
     private Button googleBtn;
     private Button emailBtn;
     private Button loginBtn;
+    private ImageButton backBtn;
     private RegisterMenuController controller;
 
     @Override
@@ -27,9 +29,12 @@ public class RegisterMenuActivity extends AppCompatActivity {
         googleBtn = findViewById(R.id.googleBtn);
         emailBtn = findViewById(R.id.emailBtn);
         loginBtn = findViewById(R.id.loginBtn);
+        backBtn = findViewById(R.id.backBtnMain);
 
         controller = new RegisterMenuController(this);
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -37,7 +42,13 @@ public class RegisterMenuActivity extends AppCompatActivity {
 
         controller.onActivityResult(requestCode, resultCode, data);
 
+        controller.getmCallbackManager().onActivityResult(requestCode,resultCode,data);
 
+
+    }
+
+    public ImageButton getBackBtn() {
+        return backBtn;
     }
 
     public Button getFacebookBtn() {

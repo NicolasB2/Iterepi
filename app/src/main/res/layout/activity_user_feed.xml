@@ -7,37 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".view.user.UserFeedActivity">
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:background="@color/secondaryLightColor"
+        android:layout_height="?attr/actionBarSize"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize" />
-
-            </com.google.android.material.appbar.AppBarLayout>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-        <com.google.android.material.navigation.NavigationView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:menu="@menu/nav_menu_buyer" />
-
-    </androidx.drawerlayout.widget.DrawerLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -49,8 +25,9 @@
         app:itemBackground="@color/primaryDarkColor"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
-        app:layout_constraintBottom_toBottomOf="@+id/drawerLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/buttom_nav_menu" />
 

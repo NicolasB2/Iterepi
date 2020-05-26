@@ -22,6 +22,7 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
     public AddPlaceController(AddPlaceDialog activity) {
         this.activity = activity;
         this.utilDomi = new HTTPSWebUtilDomi();
+        this.utilDomi.setListener(this);
         activity.getAddPlaceBtn().setOnClickListener(this);
         activity.getCloseBtn().setOnClickListener(this);
     }
@@ -76,6 +77,8 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
                 break;
 
             case R.id.closeBtn:
+                Intent s = new Intent(activity, MyPlacesActivity.class);
+                activity.startActivity(s);
                 activity.finish();
                 break;
         }
