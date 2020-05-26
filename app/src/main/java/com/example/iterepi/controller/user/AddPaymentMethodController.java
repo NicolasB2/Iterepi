@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.DatePicker;
 
 import com.example.iterepi.R;
+import com.example.iterepi.model.Card;
 import com.example.iterepi.view.user.AddPaymentMethodActivity;
 import com.example.iterepi.view.user.PaymentMethodsActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -15,7 +16,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class AddPaymentMethodController implements View.OnClickListener {
 
@@ -25,6 +28,9 @@ public class AddPaymentMethodController implements View.OnClickListener {
     private boolean checkSecurityCode;
     private boolean checkNameUser;
     private boolean checkLastName;
+
+    private List<Card> cards = new ArrayList<Card>();
+
 
     public AddPaymentMethodController( AddPaymentMethodActivity activity){
         this.activity = activity;
@@ -117,11 +123,9 @@ public class AddPaymentMethodController implements View.OnClickListener {
 
 
             //Add to databese code
-            FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(null);
+            FirebaseDatabase.getInstance().getReference().child("buyers").child(id).child("cards").push().getDatabase();
 
-            // Go back to payment methods
-            Intent i = new Intent(activity, PaymentMethodsActivity.class);
-            activity.startActivity(i);
+            // Go back to lists of payment methods
             activity.finish();
         }
 
