@@ -28,6 +28,7 @@ public class RegisterStoreController implements View.OnClickListener {
         this.activity = activity;
 
         activity.getRegisterBtn().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
         listeners();
 
     }
@@ -40,6 +41,10 @@ public class RegisterStoreController implements View.OnClickListener {
 
             case R.id.registerBtn:
                 storeRegister();
+                break;
+
+            case R.id.backBtn:
+                activity.onBackPressed();
                 break;
 
 
@@ -102,7 +107,7 @@ public class RegisterStoreController implements View.OnClickListener {
                 // Add to database code.
 
                 String id = FirebaseAuth.getInstance().getUid();
-                Seller seller = new Seller(id, sName, sNit, sEmail, sPassword, logo, null, null,null);
+                Seller seller = new Seller(id, sName, sNit, sEmail, logo, null, null, null);
                 FirebaseDatabase.getInstance().getReference().child("sellers").child(id).setValue(seller);
 
                 // Start StoreHomeActivity

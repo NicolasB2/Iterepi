@@ -29,7 +29,7 @@ public class LoginUserActivity extends AppCompatActivity {
         googleBtn = findViewById(R.id.googleBtn);
         emailBtn = findViewById(R.id.emailBtn);
         registerTV = findViewById(R.id.registerTV);
-        backBtn = findViewById(R.id.backBtn);
+        backBtn = findViewById(R.id.backBtn4);
 
         controller = new LoginUserController(this);
     }

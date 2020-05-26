@@ -2,26 +2,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/op_payment_methods"
         android:icon="@drawable/ic_creditcard"
         android:title="@string/payment_methods" />
 
     <item
+        android:id="@+id/op_my_purchases"
         android:icon="@drawable/ic_business"
         android:title="@string/my_purchases" />
 
     <item
+        android:id="@+id/op_recommend"
         android:icon="@drawable/ic_megaphone"
         android:title="@string/recommend_to_friends" />
 
     <item
+        android:id="@+id/op_doubts"
         android:icon="@drawable/ic_doubt"
         android:title="@string/doubts_frequent" />
 
     <item
+        android:id="@+id/op_terms"
         android:icon="@drawable/ic_info"
         android:title="@string/terms_and_conditions" />
 
     <item
+        android:id="@+id/op_logout"
         android:icon="@drawable/ic_logout"
         android:title="@string/logout" />
 

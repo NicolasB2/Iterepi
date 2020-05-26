@@ -20,7 +20,7 @@ tools:context=".view.store.MyPlacesActivity">
     app:srcCompat="@drawable/ic_back" />
 
 <TextView
-    android:id="@+id/placeName"
+    android:id="@+id/placeNameTV"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"

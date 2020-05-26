@@ -12,8 +12,6 @@ import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.view.login.RegisterUserEmailActivity;
 import com.example.iterepi.view.user.UserFeedActivity;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +36,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
         this.activity = activity;
 
         activity.getRegisterBtn().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
 
 
         listeners();
@@ -51,9 +50,12 @@ public class RegisterUserEmailController implements View.OnClickListener {
         switch (v.getId()) {
 
             case R.id.registerUserBtn:
-
                 userRegister();
 
+                break;
+
+            case R.id.backBtn5:
+                activity.onBackPressed();
                 break;
 
 
@@ -143,51 +145,51 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
             String bName = name;
             String bCedula = identification;
-            String bEmail = email;
-            String bPassword = password;
             String bPhoto = null;
             int bGender = gender;
             String bBirthday = birthday;
 
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (activity.getIntent().hasExtra("PROVIDER")) {
 
-            String provider = (String)activity.getIntent().getExtras().get("PROVIDER");
+                String provider = (String)activity.getIntent().getExtras().get("PROVIDER");
 
-            Log.e("PROVIDER",provider);
+                Log.e("PROVIDER",provider);
 
-            if (provider.equals("GOOGLE")) {
+                if (provider.equals("GOOGLE")) {
 
-                // Add to database code.
+                    // Add to database code.
 
-                String id = FirebaseAuth.getInstance().getUid();
-                bPhoto = user.getPhotoUrl().toString();
-                bPhoto.replace("/s96-c/", "/s800-c/");
-                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null,null);
-                FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+                    String id = FirebaseAuth.getInstance().getUid();
+                    bPhoto = user.getPhotoUrl().toString();
+                    bPhoto.replace("/s96-c/", "/s800-c/");
+                    Buyer buyer = new Buyer(id, bName, bCedula, email, bPhoto, bGender, bBirthday, null, null, null);
+                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
-                // Start UserFeedActivity
+                    // Start UserFeedActivity
 
-                Intent i = new Intent(activity, UserFeedActivity.class);
-                activity.startActivity(i);
-                activity.finish();
+                    Intent i = new Intent(activity, UserFeedActivity.class);
+                    activity.startActivity(i);
+                    activity.finishAffinity();
 
-            }else if(provider.equals("FACEBOOK")){
+                } else if (provider.equals("FACEBOOK")) {
 
-                // Add to database code.
+                    // Add to database code.
 
-                String id = FirebaseAuth.getInstance().getUid();
-                bPhoto = user.getPhotoUrl().toString();
-                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null,null);
-                FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+                    String id = FirebaseAuth.getInstance().getUid();
+                    bPhoto = user.getPhotoUrl().toString();
+                    Buyer buyer = new Buyer(id, bName, bCedula, email, bPhoto, bGender, bBirthday, null, null, null);
+                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
-                // Start UserFeedActivity
+                    // Start UserFeedActivity
 
-                Intent i = new Intent(activity, UserFeedActivity.class);
-                activity.startActivity(i);
-                activity.finish();
+                    Intent i = new Intent(activity, UserFeedActivity.class);
+                    activity.startActivity(i);
+                    activity.finishAffinity();
 
 
+                }
             } else {
 
                 String finalBPhoto = bPhoto;
@@ -198,7 +200,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
                     // Add to database code.
 
                     String id = FirebaseAuth.getInstance().getUid();
-                    Buyer buyer = new Buyer(id, bName, bCedula, email, password, finalBPhoto, bGender, bBirthday, null, null,null);
+                    Buyer buyer = new Buyer(id, bName, bCedula, email, finalBPhoto, bGender, bBirthday, null, null, null);
                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                     // Start UserFeedActivity
@@ -206,7 +208,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
                     Snackbar.make(activity.getRegisterBtn(), activity.getString(R.string.welcome), Snackbar.LENGTH_SHORT).show();
                     Intent i = new Intent(activity, UserFeedActivity.class);
                     activity.startActivity(i);
-                    activity.finish();
+                    activity.finishAffinity();
 
 
                 }).addOnFailureListener(f -> {

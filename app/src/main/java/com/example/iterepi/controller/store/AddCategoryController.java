@@ -1,9 +1,7 @@
 package com.example.iterepi.controller.store;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.iterepi.R;
@@ -11,17 +9,10 @@ import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddCategoryDialog;
-import com.example.iterepi.view.store.AddPlaceDialog;
-import com.example.iterepi.view.store.MyPlacesActivity;
+import com.example.iterepi.view.store.SeePlaceActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class AddCategoryController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
 
@@ -31,7 +22,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
     public static final int SEARCH_CALLBACK = 1;
     public static final int SEND_CALLBACK = 2;
 
-    private Place[]  places = new Place[0];
+    //private Place[]  places = new Place[0];
 
     public AddCategoryController(AddCategoryDialog activity) {
         this.activity = activity;
@@ -39,7 +30,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
         utilDomi.setListener(this);
         activity.getAddCategoryBtn().setOnClickListener(this);
         activity.getCloseBtn().setOnClickListener(this);
-        loadPlaces();
+        //loadPlaces();
     }
 
 
@@ -54,8 +45,8 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                 String user_id = FirebaseAuth.getInstance().getUid();
                 String id = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").push().getKey();
                 String name = activity.getCategoryNameTF().getEditText().getText().toString();
-                Place place = places[activity.getPlaceSP().getSelectedItemPosition()];
-
+                //Place place = places[activity.getPlaceSP().getSelectedItemPosition()];
+                Place place = activity.getPlace();
 
                 if(id != null){
                     if (name.equals("")){
@@ -79,11 +70,12 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                                     Gson gson = new Gson();
                                     String json = gson.toJson(category);
                                     utilDomi.PUTrequest(SEND_CALLBACK,"https://iterepi.firebaseio.com/sellers/"+user_id
-                                            +"/places/"+activity.getPlacePosition()+"/categories/"+activity.getCategories().size()+".json",json);
+                                            +"/places/"+activity.getPlacePosition()+"/categories/"+activity.getPlace().getCategories().length+".json",json);
                                 }
 
                         ).start();
-                        Intent s = new Intent(activity, MyCategoriesActivity.class);
+
+                        Intent s = new Intent(activity, SeePlaceActivity.class);
                         s.putExtra("placePosition",activity.getPlacePosition());
                         activity.startActivity(s);
                         activity.finish();
@@ -92,7 +84,10 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                 }
 
             case R.id.closeBtn:
-                Log.e(">>>","close");
+                Intent s = new Intent(activity, SeePlaceActivity.class);
+                s.putExtra("place",activity.getPlace());
+                s.putExtra("placePosition",activity.getPlacePosition());
+                activity.startActivity(s);
                 activity.finish();
                 break;
 
@@ -103,20 +98,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
     @Override
     public void onResponse(int callbackID, String response) {
         switch (callbackID) {
-            case SEARCH_CALLBACK:
-                Gson g = new Gson();
-                Gson gson = new Gson();
-                this.places = gson.fromJson(response, Place[].class);
 
-                activity.runOnUiThread(
-                        ()->{
-                            ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(activity, android.R.layout.simple_spinner_item, places);
-                            activity.getPlaceSP().setAdapter(adp1);
-                        }
-                );
-
-
-                break;
         }
     }
 

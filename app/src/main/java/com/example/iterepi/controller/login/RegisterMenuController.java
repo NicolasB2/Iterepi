@@ -55,6 +55,7 @@ public class RegisterMenuController implements View.OnClickListener {
         activity.getEmailBtn().setOnClickListener(this);
         activity.getGoogleBtn().setOnClickListener(this);
         activity.getLoginBtn().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(activity.getString(R.string.default_web_client_id))
@@ -75,6 +76,10 @@ public class RegisterMenuController implements View.OnClickListener {
         Intent i;
         switch (v.getId()) {
 
+            case R.id.backBtnMain:
+                activity.onBackPressed();
+                break;
+
             case R.id.emailBtn:
                 i = new Intent(activity, RegisterUserEmailActivity.class);
                 activity.startActivity(i);
@@ -92,6 +97,7 @@ public class RegisterMenuController implements View.OnClickListener {
                 i = new Intent(activity, LoginUserActivity.class);
                 activity.startActivity(i);
                 break;
+
 
         }
     }
@@ -143,7 +149,7 @@ public class RegisterMenuController implements View.OnClickListener {
                         String photo = user.getPhotoUrl().toString();
                         String email = user.getEmail();
 
-                        Buyer buyer = new Buyer(id, name, null, email, null, photo, -1, null, null, null, null);
+                        Buyer buyer = new Buyer(id, name, null, email, photo, -1, null, null, null, null);
 
                         FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
@@ -156,6 +162,7 @@ public class RegisterMenuController implements View.OnClickListener {
                         Log.e("FACEBOOK", "I'm a old user");
                         Intent c = new Intent(activity, UserFeedActivity.class);
                         activity.startActivity(c);
+                        activity.finishAffinity();
 
 
                     }
@@ -235,7 +242,7 @@ public class RegisterMenuController implements View.OnClickListener {
                                     // Better resolution.
                                     photo.replace("/s96-c/", "/s800-c/");
 
-                                    Buyer buyer = new Buyer(id, name, null, email, null, photo, -1, null, null, null,null);
+                                    Buyer buyer = new Buyer(id, name, null, email, photo, -1, null, null, null, null);
 
                                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
@@ -249,6 +256,7 @@ public class RegisterMenuController implements View.OnClickListener {
                                     Log.e("GOOGLE AUTH", "I'm an old user.");
                                     Intent c = new Intent(activity, UserFeedActivity.class);
                                     activity.startActivity(c);
+                                    activity.finishAffinity();
 
                                 }
 

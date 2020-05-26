@@ -3,6 +3,7 @@ package com.example.iterepi.view.login;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +22,7 @@ public class RegisterStoreActivity extends AppCompatActivity {
     private Button registerBtn;
     private CheckBox termsCB;
     private RegisterStoreController controller;
+    private ImageButton backBtn;
 
 
     @Override
@@ -36,6 +38,7 @@ public class RegisterStoreActivity extends AppCompatActivity {
         nitStoreRegTF = findViewById(R.id.nitStoreRegTF);
         registerBtn = findViewById(R.id.registerBtn);
         termsCB = findViewById(R.id.termsCB);
+        backBtn = findViewById(R.id.backBtn);
 
         passwordStoreRegTF.setHelperText(getString(R.string.pass_must_contain));
 
@@ -43,6 +46,10 @@ public class RegisterStoreActivity extends AppCompatActivity {
         controller = new RegisterStoreController(this);
 
 
+    }
+
+    public ImageButton getBackBtn() {
+        return backBtn;
     }
 
     public TextInputLayout getNameStoreTF() {

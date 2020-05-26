@@ -3,23 +3,16 @@ package com.example.iterepi.controller.store;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
-import com.example.iterepi.view.store.AddCategoryDialog;
 import com.example.iterepi.view.store.AddPlaceDialog;
 import com.example.iterepi.view.store.MyPlacesActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.Serializable;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class MyPlacesController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
 

@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.iterepi.R;
 import com.example.iterepi.view.login.LoginStoreActivity;
 import com.example.iterepi.view.login.RegisterStoreActivity;
+import com.example.iterepi.view.login.RestorePasswordActivity;
 import com.example.iterepi.view.store.StoreHomeActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
@@ -27,6 +28,7 @@ public class LoginStoreController implements View.OnClickListener {
         activity.getUpdateDataBtn().setOnClickListener(this);
         activity.getRegisterHereBtn().setOnClickListener(this);
         activity.getForgotPassBtn().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
 
         listeners();
 
@@ -51,7 +53,13 @@ public class LoginStoreController implements View.OnClickListener {
                 break;
 
             case R.id.forgotPass:
+                i = new Intent(activity, RestorePasswordActivity.class);
+                activity.startActivity(i);
 
+                break;
+
+            case R.id.backBtn2:
+                activity.onBackPressed();
                 break;
 
 

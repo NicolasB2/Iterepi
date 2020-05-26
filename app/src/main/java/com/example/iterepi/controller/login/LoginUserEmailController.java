@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.iterepi.R;
 import com.example.iterepi.view.login.LoginUserEmailActivity;
+import com.example.iterepi.view.login.RestorePasswordActivity;
 import com.example.iterepi.view.user.UserFeedActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
@@ -25,6 +26,7 @@ public class LoginUserEmailController implements View.OnClickListener {
 
         activity.getUpdate_DataBtn().setOnClickListener(this);
         activity.getForgotPassUser().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
 
         listeners();
 
@@ -41,6 +43,12 @@ public class LoginUserEmailController implements View.OnClickListener {
                 break;
 
             case R.id.forgotPassUser:
+                Intent i = new Intent(activity, RestorePasswordActivity.class);
+                activity.startActivity(i);
+                break;
+
+            case R.id.backBtn:
+                activity.onBackPressed();
                 break;
         }
     }
