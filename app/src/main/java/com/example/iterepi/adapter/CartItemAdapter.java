@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,8 +20,6 @@ import java.util.ArrayList;
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHolder> implements View.OnClickListener {
 
     private ArrayList<Item> cartItems;
-
-    //Listener
     private View.OnClickListener listener;
 
     public CartItemAdapter(ArrayList<Item> cartItems) {
@@ -68,7 +67,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
 
     //-----------------------------------------------------------------------------------------------------------------------------------
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView nameProductTV, priceTV, quantityTV;
         private ImageButton closeBtn, plusBtn, minusBtn;
@@ -84,6 +83,27 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             plusBtn = itemView.findViewById(R.id.plusBtn);
             minusBtn = itemView.findViewById(R.id.minusBtn);
             productIV = itemView.findViewById(R.id.productIV);
+
+            closeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(itemView.getContext(),"CLOSE",Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            plusBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+            minusBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
 
         }
     }

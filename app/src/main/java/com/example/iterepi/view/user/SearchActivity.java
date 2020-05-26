@@ -25,14 +25,14 @@ public class SearchActivity extends AppCompatActivity {
             public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.feed:
-                        startActivity(new Intent(getApplicationContext(), CartActivity.class));
+                        startActivity(new Intent(getApplicationContext(), UserFeedActivity.class));
                         finish();
                         overridePendingTransition(0, 0);
                         break;
 
                     case R.id.location:
 
-                        startActivity(new Intent(getApplicationContext(), LocationActivity.class));
+                        startActivity(new Intent(getApplicationContext(), CartActivity.class));
                         finish();
                         overridePendingTransition(0, 0);
                         break;
