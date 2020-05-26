@@ -39,7 +39,7 @@ public class UserFeedActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         break;
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(), CartActivity.class));
+                        startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
                         finish();
                         overridePendingTransition(0,0);
                         break;

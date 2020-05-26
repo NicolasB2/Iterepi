@@ -33,7 +33,7 @@ public class LocationActivity extends AppCompatActivity {
                     case R.id.location:
                         break;
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(), CartActivity.class));
+                        startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
                         finish();
                         overridePendingTransition(0, 0);
                         break;
