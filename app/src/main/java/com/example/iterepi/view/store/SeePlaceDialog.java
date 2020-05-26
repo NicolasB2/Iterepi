@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,7 +23,7 @@ public class SeePlaceDialog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_see_place);
 
-        backBtn3 = findViewById(R.id.backBtn3);
+        backBtn3 = findViewById(R.id.backBtn);
         placeNameTV = findViewById(R.id.placeNameTV);
         locationTV = findViewById(R.id.locationTV);
         categoriesSpinner = findViewById(R.id.categoriesSpinner);

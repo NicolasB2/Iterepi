@@ -3,17 +3,20 @@ package com.example.iterepi.view.store;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.adapter.PlacesAdapter;
-import com.example.iterepi.controller.MyPlacesController;
+import com.example.iterepi.controller.store.MyPlacesController;
 
 public class MyPlacesActivity extends AppCompatActivity {
 
-    private MyPlacesController myPlacesController;
+    private MyPlacesController controller;
     private ListView myPlacesList;
     private PlacesAdapter adapter;
+    private ImageButton addMethodBtn;
+    private ImageButton backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +24,11 @@ public class MyPlacesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_places);
 
         this.myPlacesList = findViewById(R.id.myPlacesList);
-        this.myPlacesController = new MyPlacesController(this);
-        this.adapter = new PlacesAdapter();
+        this.addMethodBtn = findViewById(R.id.addMethodBtn);
+        this.backBtn = findViewById(R.id.backBtn);
+
+        this.controller = new MyPlacesController(this);
+        this.adapter = new PlacesAdapter(this);
         this.myPlacesList.setAdapter(adapter);
     }
 
@@ -32,5 +38,13 @@ public class MyPlacesActivity extends AppCompatActivity {
 
     public PlacesAdapter getAdapter() {
         return adapter;
+    }
+
+    public ImageButton getAddMethodBtn() {
+        return addMethodBtn;
+    }
+
+    public ImageButton getBackBtn() {
+        return backBtn;
     }
 }

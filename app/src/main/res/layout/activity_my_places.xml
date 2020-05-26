@@ -8,7 +8,7 @@ android:background="@drawable/alt_background"
 tools:context=".view.store.MyPlacesActivity">
 
 <ImageButton
-    android:id="@+id/backBtn3"
+    android:id="@+id/backBtn"
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:layout_marginStart="16dp"
@@ -29,7 +29,7 @@ tools:context=".view.store.MyPlacesActivity">
     android:textColor="@android:color/white"
     android:textSize="30sp"
     android:textStyle="bold"
-    app:layout_constraintStart_toEndOf="@+id/backBtn3"
+    app:layout_constraintStart_toEndOf="@+id/backBtn"
     app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
@@ -40,9 +40,20 @@ tools:context=".view.store.MyPlacesActivity">
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/addMethodBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backBtn3" />
+        app:layout_constraintTop_toBottomOf="@+id/backBtn" />
+
+    <ImageButton
+        android:id="@+id/addMethodBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_plus_color" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@ android:background="@drawable/alt_background"
 tools:context=".view.store.SeeCategoryDialog">
 
 <ImageButton
-    android:id="@+id/backBtn3"
+    android:id="@+id/backBtn"
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:layout_marginStart="16dp"
@@ -29,7 +29,7 @@ tools:context=".view.store.SeeCategoryDialog">
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/backBtn3"
+        app:layout_constraintStart_toEndOf="@+id/backBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
 <ImageView

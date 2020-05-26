@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Card implements Serializable {
 
+    private String idCard;
     private String cardNumber;
     private String expirationDate;
     private String securityCode;
@@ -13,12 +14,21 @@ public class Card implements Serializable {
     public Card() {
     }
 
-    public Card(String cardNumber, String expirationDate, String securityCode, String nameUser, String lastNameUser) {
+    public Card(String idCard, String cardNumber, String expirationDate, String securityCode, String nameUser, String lastNameUser) {
+        this.idCard = idCard;
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
         this.securityCode = securityCode;
         this.nameUser = nameUser;
         this.lastNameUser = lastNameUser;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
     public String getCardNumber() {

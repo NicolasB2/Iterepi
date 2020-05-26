@@ -138,7 +138,7 @@ public class LoginUserController implements View.OnClickListener {
                                     String photo = acct.getPhotoUrl().toString();
                                     photo.replace("/s96-c/", "/s800-c/");
 
-                                    Buyer buyer = new Buyer(id, name, null, email, null, photo, -1, null, null, null);
+                                    Buyer buyer = new Buyer(id, name, null, email, null, photo, -1, null, null, null,null);
 
                                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 

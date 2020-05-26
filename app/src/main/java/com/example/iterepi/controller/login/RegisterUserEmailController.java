@@ -157,7 +157,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
                     // Add to database code.
 
                     String id = FirebaseAuth.getInstance().getUid();
-                    Buyer buyer = new Buyer(id, bName, bCedula, email, password, finalBPhoto, bGender, bBirthday, null, null);
+                    Buyer buyer = new Buyer(id, bName, bCedula, email, password, finalBPhoto, bGender, bBirthday, null, null,null);
                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                     // Start UserFeedActivity
@@ -182,7 +182,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
                 String id = FirebaseAuth.getInstance().getUid();
                 bPhoto = acct.getPhotoUrl().toString();
                 bPhoto.replace("/s96-c/", "/s800-c/");
-                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null);
+                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null,null);
                 FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                 // Start UserFeedActivity

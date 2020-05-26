@@ -12,11 +12,12 @@ public class Seller implements Serializable {
     private String logo;
     private String[] salesID;
     private Place[] places;
+    private Card[] cards;
 
     public Seller() {
     }
 
-    public Seller(String id, String name, String nit, String email, String password, String logo, String[] salesID, Place[] places) {
+    public Seller(String id, String name, String nit, String email, String password, String logo, String[] salesID, Place[] places, Card[] cards) {
         this.id = id;
         this.name = name;
         this.nit = nit;
@@ -25,6 +26,15 @@ public class Seller implements Serializable {
         this.logo = logo;
         this.salesID = salesID;
         this.places = places;
+        this.cards = cards;
+    }
+
+    public Card[] getCards() {
+        return cards;
+    }
+
+    public void setCards(Card[] cards) {
+        this.cards = cards;
     }
 
     public String getId() {
