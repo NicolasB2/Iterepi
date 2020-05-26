@@ -12,8 +12,6 @@ import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.view.login.RegisterUserEmailActivity;
 import com.example.iterepi.view.user.UserFeedActivity;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +36,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
         this.activity = activity;
 
         activity.getRegisterBtn().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
 
 
         listeners();
@@ -54,6 +53,10 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
                 userRegister();
 
+                break;
+
+            case R.id.backBtn5:
+                activity.onBackPressed();
                 break;
 
 
@@ -170,7 +173,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
                 Intent i = new Intent(activity, UserFeedActivity.class);
                 activity.startActivity(i);
-                activity.finish();
+                activity.finishAffinity();
 
             }else if(provider.equals("FACEBOOK")){
 
@@ -185,7 +188,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
                 Intent i = new Intent(activity, UserFeedActivity.class);
                 activity.startActivity(i);
-                activity.finish();
+                activity.finishAffinity();
 
 
             } else {
@@ -206,7 +209,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
                     Snackbar.make(activity.getRegisterBtn(), activity.getString(R.string.welcome), Snackbar.LENGTH_SHORT).show();
                     Intent i = new Intent(activity, UserFeedActivity.class);
                     activity.startActivity(i);
-                    activity.finish();
+                    activity.finishAffinity();
 
 
                 }).addOnFailureListener(f -> {

@@ -25,6 +25,7 @@ public class LoginUserEmailController implements View.OnClickListener {
 
         activity.getUpdate_DataBtn().setOnClickListener(this);
         activity.getForgotPassUser().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
 
         listeners();
 
@@ -41,6 +42,10 @@ public class LoginUserEmailController implements View.OnClickListener {
                 break;
 
             case R.id.forgotPassUser:
+                break;
+
+            case R.id.backBtn:
+                activity.onBackPressed();
                 break;
         }
     }

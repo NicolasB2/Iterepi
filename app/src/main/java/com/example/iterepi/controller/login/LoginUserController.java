@@ -51,6 +51,7 @@ public class LoginUserController implements View.OnClickListener {
         activity.getGoogleBtn().setOnClickListener(this);
         activity.getEmailBtn().setOnClickListener(this);
         activity.getRegisterTV().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(activity.getString(R.string.default_web_client_id))
@@ -80,7 +81,7 @@ public class LoginUserController implements View.OnClickListener {
                 signIn();
                 break;
             case R.id.backBtn:
-                activity.finish();
+                activity.onBackPressed();
                 break;
             case R.id.emailBtn:
                 i = new Intent(activity, LoginUserEmailActivity.class);
@@ -153,6 +154,7 @@ public class LoginUserController implements View.OnClickListener {
                         Log.e("FACEBOOK", "I'm a old user");
                         Intent c = new Intent(activity, UserFeedActivity.class);
                         activity.startActivity(c);
+                        activity.finishAffinity();
 
 
                     }
@@ -245,6 +247,7 @@ public class LoginUserController implements View.OnClickListener {
                                     Log.e("GOOGLE AUTH", "I'm an old user.");
                                     Intent c = new Intent(activity, UserFeedActivity.class);
                                     activity.startActivity(c);
+                                    activity.finishAffinity();
 
                                 }
 

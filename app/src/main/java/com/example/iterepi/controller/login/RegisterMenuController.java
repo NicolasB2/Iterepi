@@ -55,6 +55,7 @@ public class RegisterMenuController implements View.OnClickListener {
         activity.getEmailBtn().setOnClickListener(this);
         activity.getGoogleBtn().setOnClickListener(this);
         activity.getLoginBtn().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(activity.getString(R.string.default_web_client_id))
@@ -91,6 +92,10 @@ public class RegisterMenuController implements View.OnClickListener {
             case R.id.loginBtn:
                 i = new Intent(activity, LoginUserActivity.class);
                 activity.startActivity(i);
+                break;
+
+            case R.id.backBtn:
+                activity.onBackPressed();
                 break;
 
         }
@@ -156,6 +161,7 @@ public class RegisterMenuController implements View.OnClickListener {
                         Log.e("FACEBOOK", "I'm a old user");
                         Intent c = new Intent(activity, UserFeedActivity.class);
                         activity.startActivity(c);
+                        activity.finishAffinity();
 
 
                     }
@@ -249,6 +255,7 @@ public class RegisterMenuController implements View.OnClickListener {
                                     Log.e("GOOGLE AUTH", "I'm an old user.");
                                     Intent c = new Intent(activity, UserFeedActivity.class);
                                     activity.startActivity(c);
+                                    activity.finishAffinity();
 
                                 }
 

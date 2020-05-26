@@ -3,13 +3,13 @@ package com.example.iterepi.view.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.login.RegisterMenuController;
-import com.facebook.login.widget.LoginButton;
 
 public class RegisterMenuActivity extends AppCompatActivity {
 
@@ -17,6 +17,7 @@ public class RegisterMenuActivity extends AppCompatActivity {
     private Button googleBtn;
     private Button emailBtn;
     private Button loginBtn;
+    private ImageButton backBtn;
     private RegisterMenuController controller;
 
     @Override
@@ -28,8 +29,13 @@ public class RegisterMenuActivity extends AppCompatActivity {
         googleBtn = findViewById(R.id.googleBtn);
         emailBtn = findViewById(R.id.emailBtn);
         loginBtn = findViewById(R.id.loginBtn);
+        backBtn = findViewById(R.id.backBtn);
 
         controller = new RegisterMenuController(this);
+    }
+
+    public ImageButton getBackBtn() {
+        return backBtn;
     }
 
     @Override
