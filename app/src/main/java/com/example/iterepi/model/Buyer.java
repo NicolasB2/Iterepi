@@ -17,11 +17,12 @@ public class Buyer implements Serializable {
     private String birthday;
     private String[] purchasesID;
     private Cart cart;
+    private Card[] cards;
 
     public Buyer() {
     }
 
-    public Buyer(String id, String name, String identification, String email, String password, String photo, int gender, String birthday, String[] purchasesID, Cart cart) {
+    public Buyer(String id, String name, String identification, String email, String password, String photo, int gender, String birthday, String[] purchasesID, Cart cart, Card[] cards) {
         this.id = id;
         this.name = name;
         this.identification = identification;
@@ -32,6 +33,15 @@ public class Buyer implements Serializable {
         this.birthday = birthday;
         this.purchasesID = purchasesID;
         this.cart = cart;
+        this.cards = cards;
+    }
+
+    public Card[] getCards() {
+        return cards;
+    }
+
+    public void setCards(Card[] cards) {
+        this.cards = cards;
     }
 
     public String getId() {

@@ -102,7 +102,7 @@ public class RegisterStoreController implements View.OnClickListener {
                 // Add to database code.
 
                 String id = FirebaseAuth.getInstance().getUid();
-                Seller seller = new Seller(id, sName, sNit, sEmail, sPassword, logo, null, null);
+                Seller seller = new Seller(id, sName, sNit, sEmail, sPassword, logo, null, null,null);
                 FirebaseDatabase.getInstance().getReference().child("sellers").child(id).setValue(seller);
 
                 // Start StoreHomeActivity
