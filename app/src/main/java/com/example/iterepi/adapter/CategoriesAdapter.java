@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Category;
+import com.example.iterepi.view.store.SeeCategoryActivity;
+import com.example.iterepi.view.store.SeePlaceActivity;
 import com.example.iterepi.view.store.StoreHomeActivity;
 
 import java.util.ArrayList;
@@ -18,8 +20,10 @@ import java.util.List;
 public class CategoriesAdapter extends BaseAdapter {
 
     private Category[] categories;
+    private SeePlaceActivity activity;
 
-    public CategoriesAdapter(Category[] categories) {
+    public CategoriesAdapter(SeePlaceActivity activity, Category[] categories) {
+        this.activity = activity;
         if(categories == null){
             this.categories = new Category[0];
         }else{
@@ -61,8 +65,9 @@ public class CategoriesAdapter extends BaseAdapter {
                 row.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(row.getContext(), StoreHomeActivity.class);
-                        i.putExtra("category",categories[position]);
+                        Intent i = new Intent(row.getContext(), SeeCategoryActivity.class);
+                        i.putExtra("placePosition",activity.getPlacePosition());
+                        i.putExtra("categoryPosition",position);
                         row.getContext().startActivity(i);
                     }
                 });
