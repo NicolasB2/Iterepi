@@ -55,7 +55,7 @@ public class CategoriesAdapter extends BaseAdapter {
             TextView categoryItemsTV = row.findViewById(R.id.categoryItemsTV);
 
             categoryNameTV.setText(categories.get(position).getName());
-            categoryItemsTV.setText(categories.get(position).getItems().length);
+            categoryItemsTV.setText(categories.get(position).getItems().length+"");
 
             row.setOnClickListener(new View.OnClickListener() {
                 @Override

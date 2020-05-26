@@ -9,6 +9,7 @@ public class Category implements Serializable {
     private Item[] items;
 
     public Category() {
+        items = new Item[0];
     }
 
     public Category(String id, String name, Item[] items) {

@@ -79,7 +79,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                                     Gson gson = new Gson();
                                     String json = gson.toJson(category);
                                     utilDomi.PUTrequest(SEND_CALLBACK,"https://iterepi.firebaseio.com/sellers/"+user_id
-                                            +"/places/"+activity.getPlacePosition()+"/categories/"+(place.getCategories().length-1)+".json",json);
+                                            +"/places/"+activity.getPlacePosition()+"/categories/"+activity.getCategories().size()+".json",json);
                                 }
 
                         ).start();

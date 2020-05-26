@@ -75,6 +75,10 @@ public class AddCategoryDialog extends AppCompatActivity {
         this.addCategoryBtn = addPlaceBtn;
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
     public int getPlacePosition() {
         return placePosition;
     }
