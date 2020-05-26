@@ -1,12 +1,10 @@
 package com.example.iterepi.controller.store;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.iterepi.R;
-import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddPlaceDialog;
@@ -34,8 +32,6 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
 
             case R.id.updateDataBtn:
 
-                Place place = new Place();
-
                 String user_id = FirebaseAuth.getInstance().getUid();
                 String id = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").push().getKey();;
                 String name = activity.getPlaceNameTF().getEditText().getText().toString();
@@ -54,6 +50,8 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
 
                     else{
 
+                        Place place = new Place();
+
                         place.setId(id);
                         place.setLocation(location);
                         place.setName(name);
@@ -62,7 +60,7 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
                                 ()->{
                                     Gson gson = new Gson();
                                     String json = gson.toJson(place);
-                                    utilDomi.POSTrequest(1,"https://iterepi.firebaseio.com/sellers/"+user_id+"/places/.json",json);
+                                    utilDomi.PUTrequest(1,"https://iterepi.firebaseio.com/sellers/"+user_id+"/places/"+id+".json",json);
                                 }
 
                         ).start();

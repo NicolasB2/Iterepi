@@ -87,7 +87,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                                 Log.e("SELLER", "IT'S SELLER");
-                                Intent s = new Intent(SplashScreenActivity.this, AddPlaceDialog.class);
+                                Intent s = new Intent(SplashScreenActivity.this, AddCategoryDialog.class);
                                 startActivity(s);
                                 finish();
                         }
