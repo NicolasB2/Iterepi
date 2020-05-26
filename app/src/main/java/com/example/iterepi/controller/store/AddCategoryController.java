@@ -102,14 +102,8 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
         switch (callbackID) {
             case SEARCH_CALLBACK:
                 Gson g = new Gson();
-                Type type = new TypeToken<HashMap<String,Place>>(){}.getType();
-                HashMap<String,Place> myPlace = g.fromJson(response,type);
-
-
-                for (String key: myPlace.keySet()){
-                    Place p = myPlace.get(key);
-                    places.add(p);
-                }
+                Gson gson = new Gson();
+                Place[] places = gson.fromJson(response, Place[].class);
 
                 activity.runOnUiThread(
                         ()->{

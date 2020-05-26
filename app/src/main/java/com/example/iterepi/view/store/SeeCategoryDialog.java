@@ -28,7 +28,7 @@ public class SeeCategoryDialog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_see_category);
 
-        backBtn3 = findViewById(R.id.backBtn3);
+        backBtn3 = findViewById(R.id.backBtn);
         categoryName = findViewById(R.id.placeName);
         purchaseImageIV = findViewById(R.id.purchaseImageIV);
         categoryNameTV = findViewById(R.id.locationTV);

@@ -29,7 +29,7 @@ public class SeeProductDialog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_see_product);
 
-        backBtn3 = findViewById(R.id.backBtn3);
+        backBtn3 = findViewById(R.id.backBtn);
         itemName = findViewById(R.id.placeName);
         purchaseImageIV = findViewById(R.id.purchaseImageIV);
         itemNameTV = findViewById(R.id.locationTV);

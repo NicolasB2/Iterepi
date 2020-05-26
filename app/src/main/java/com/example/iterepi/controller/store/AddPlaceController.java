@@ -7,7 +7,9 @@ import android.widget.Toast;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
+import com.example.iterepi.view.login.SplashScreenActivity;
 import com.example.iterepi.view.store.AddPlaceDialog;
+import com.example.iterepi.view.store.MyPlacesActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
@@ -61,11 +63,13 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
                                 ()->{
                                     Gson gson = new Gson();
                                     String json = gson.toJson(place);
-                                    utilDomi.PUTrequest(1,"https://iterepi.firebaseio.com/sellers/"+user_id+"/places/"+id+".json",json);
+                                    utilDomi.PUTrequest(1,"https://iterepi.firebaseio.com/sellers/"+user_id+"/places/"
+                                            +activity.getPlaces().size()+".json",json);
                                 }
 
                         ).start();
-
+                        Intent s = new Intent(activity, MyPlacesActivity.class);
+                        activity.startActivity(s);
                         activity.finish();
                     }
                 }

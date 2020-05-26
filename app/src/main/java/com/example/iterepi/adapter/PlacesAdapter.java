@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.view.store.AddCategoryDialog;
+import com.example.iterepi.view.store.MyPlacesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +19,10 @@ import java.util.List;
 public class PlacesAdapter extends BaseAdapter {
 
     private List<Place> places;
+    private MyPlacesActivity activity;
 
-    public PlacesAdapter() {
+    public PlacesAdapter(MyPlacesActivity activity) {
+        this.activity = activity;
         places = new ArrayList<>();
     }
 
@@ -61,11 +64,16 @@ public class PlacesAdapter extends BaseAdapter {
                     Intent i = new Intent(row.getContext(), AddCategoryDialog.class);
                     i.putExtra("place",places.get(position));
                     row.getContext().startActivity(i);
+                    activity.finish();
                 }
             });
         }catch (Exception e){
             Log.e(">>>","error in trackAdapter");
         }
         return row;
+    }
+
+    public List<Place> getPlaces() {
+        return places;
     }
 }
