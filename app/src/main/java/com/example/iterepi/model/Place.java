@@ -12,7 +12,7 @@ public class Place implements Serializable {
     private Category[] categories;
 
     public Place() {
-        categories = new Category[1];
+        categories = new Category[0];
     }
 
     public Place(String id, String name, String location, Category[] categories) {
@@ -58,5 +58,16 @@ public class Place implements Serializable {
     @Override
     public String toString() {
         return this.getName()+": "+this.getLocation();
+    }
+
+    public void addCategory(Category category) {
+        Category[] c = new Category[categories.length+1];
+
+        for (int i = 0; i< categories.length;i++){
+            c[i]=categories[i];
+        }
+        c[categories.length]=category;
+
+        this.categories = c;
     }
 }

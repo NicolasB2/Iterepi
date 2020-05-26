@@ -23,15 +23,17 @@ public class AddCategoryDialog extends AppCompatActivity {
     private Spinner placeSP;
     private Button addCategoryBtn;
     private AddCategoryController controller;
-    private List<Category> categories;
+
+    private Place place;
     private int placePosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_add_category);
-        categories = (List<Category>) getIntent().getExtras().getSerializable("categories");
+        this.place = (Place) getIntent().getExtras().getSerializable("place");
         placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
+
 
 
         closeBtn = findViewById(R.id.closeBtn);
@@ -75,8 +77,8 @@ public class AddCategoryDialog extends AppCompatActivity {
         this.addCategoryBtn = addPlaceBtn;
     }
 
-    public List<Category> getCategories() {
-        return categories;
+    public Place getPlace() {
+        return place;
     }
 
     public int getPlacePosition() {

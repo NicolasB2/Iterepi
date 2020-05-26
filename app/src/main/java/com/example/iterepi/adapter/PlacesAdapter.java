@@ -1,6 +1,5 @@
 package com.example.iterepi.adapter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.iterepi.R;
-import com.example.iterepi.controller.store.MyCategoriesActivity;
+import com.example.iterepi.view.store.MyCategoriesActivity;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.view.store.MyPlacesActivity;
 

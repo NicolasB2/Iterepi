@@ -5,7 +5,7 @@ style="@style/textFieldNormal"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@drawable/alt_background"
-    tools:context=".controller.store.MyCategoriesActivity">
+    tools:context=".view.store.MyCategoriesActivity">
 
 <ImageButton
     android:id="@+id/backBtn"
