@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
@@ -148,10 +149,50 @@ public class RegisterUserEmailController implements View.OnClickListener {
             int bGender = gender;
             String bBirthday = birthday;
 
-            GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(activity);
 
-            if (acct == null) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            String provider = (String)activity.getIntent().getExtras().get("PROVIDER");
+
+            Log.e("PROVIDER",provider);
+
+            if (provider.equals("GOOGLE")) {
+
+                // Add to database code.
+
+                String id = FirebaseAuth.getInstance().getUid();
+                bPhoto = user.getPhotoUrl().toString();
+                bPhoto.replace("/s96-c/", "/s800-c/");
+                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null,null);
+                FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                // Start UserFeedActivity
+
+                Intent i = new Intent(activity, UserFeedActivity.class);
+                activity.startActivity(i);
+                activity.finish();
+
+            }else if(provider.equals("FACEBOOK")){
+
+                // Add to database code.
+
+                String id = FirebaseAuth.getInstance().getUid();
+                bPhoto = user.getPhotoUrl().toString();
+                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null,null);
+                FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                // Start UserFeedActivity
+
+                Intent i = new Intent(activity, UserFeedActivity.class);
+                activity.startActivity(i);
+                activity.finish();
+
+
+            } else {
+
                 String finalBPhoto = bPhoto;
+
+                // With email and password way
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
 
                     // Add to database code.
@@ -174,22 +215,6 @@ public class RegisterUserEmailController implements View.OnClickListener {
                     Snackbar.make(activity.getRegisterBtn(), f.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
 
                 });
-
-            } else {
-
-                // Add to database code.
-
-                String id = FirebaseAuth.getInstance().getUid();
-                bPhoto = acct.getPhotoUrl().toString();
-                bPhoto.replace("/s96-c/", "/s800-c/");
-                Buyer buyer = new Buyer(id, bName, bCedula, email, password, bPhoto, bGender, bBirthday, null, null,null);
-                FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
-
-                // Start UserFeedActivity
-
-                Intent i = new Intent(activity, UserFeedActivity.class);
-                activity.startActivity(i);
-                activity.finish();
 
 
             }

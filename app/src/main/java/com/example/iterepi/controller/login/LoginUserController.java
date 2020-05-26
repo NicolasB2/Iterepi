@@ -13,6 +13,12 @@ import com.example.iterepi.view.login.LoginUserActivity;
 import com.example.iterepi.view.login.LoginUserEmailActivity;
 import com.example.iterepi.view.login.RegisterMenuActivity;
 import com.example.iterepi.view.user.UserFeedActivity;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -23,10 +29,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Arrays;
 
 public class LoginUserController implements View.OnClickListener {
 
@@ -34,6 +43,7 @@ public class LoginUserController implements View.OnClickListener {
     private LoginUserActivity activity;
     private GoogleSignInClient mGoogleSignInClient;
 
+    private CallbackManager mCallbackManager;
 
     public LoginUserController(LoginUserActivity activity) {
         this.activity = activity;
@@ -49,7 +59,13 @@ public class LoginUserController implements View.OnClickListener {
 
         mGoogleSignInClient = GoogleSignIn.getClient(activity, gso);
 
+        mCallbackManager = CallbackManager.Factory.create();
 
+
+    }
+
+    public CallbackManager getmCallbackManager() {
+        return mCallbackManager;
     }
 
     @Override
@@ -57,6 +73,7 @@ public class LoginUserController implements View.OnClickListener {
         Intent i;
         switch (v.getId()) {
             case R.id.facebookBtn:
+                signInFb();
                 break;
 
             case R.id.googleBtn:
@@ -74,6 +91,82 @@ public class LoginUserController implements View.OnClickListener {
                 activity.startActivity(i);
                 break;
         }
+    }
+
+    public void signInFb(){
+
+        LoginManager.getInstance().logInWithReadPermissions(activity, Arrays.asList("email","public_profile"));
+        LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+                handleFbToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+                Log.e("FACEBOOK", ""+error);
+
+            }
+        });
+
+    }
+
+    private void handleFbToken(AccessToken accessToken) {
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
+        FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if(task.isSuccessful()){
+
+                    Log.e("FACEBOOK", "SUCCESSFUL");
+                    boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if(isNew) {
+
+                        Log.e("FACEBOOK","I'm a new user");
+                        String id = user.getUid();
+                        String name = user.getDisplayName();
+                        String photo = user.getPhotoUrl().toString();
+                        String email = user.getEmail();
+
+                        Buyer buyer = new Buyer(id, name, null, email, null, photo, -1, null, null, null, null);
+
+                        FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                        Intent c = new Intent(activity, CompleteRegisterActivity.class);
+                        c.putExtra("PROVIDER", "FACEBOOK");
+                        activity.startActivity(c);
+                    }else{
+
+
+                        Log.e("FACEBOOK", "I'm a old user");
+                        Intent c = new Intent(activity, UserFeedActivity.class);
+                        activity.startActivity(c);
+
+
+                    }
+
+
+                }else{
+
+                    Log.e("FACEBOOK","ERROR:" + task.getException());
+
+                }
+
+            }
+        });
+
     }
 
     private void signIn() {
@@ -143,6 +236,7 @@ public class LoginUserController implements View.OnClickListener {
                                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                                     Intent c = new Intent(activity, CompleteRegisterActivity.class);
+                                    c.putExtra("PROVIDER","GOOGLE");
                                     activity.startActivity(c);
 
 

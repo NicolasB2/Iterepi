@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.login.RegisterMenuController;
+import com.facebook.login.widget.LoginButton;
 
 public class RegisterMenuActivity extends AppCompatActivity {
 
@@ -36,6 +37,8 @@ public class RegisterMenuActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         controller.onActivityResult(requestCode, resultCode, data);
+
+        controller.getmCallbackManager().onActivityResult(requestCode,resultCode,data);
 
 
     }
