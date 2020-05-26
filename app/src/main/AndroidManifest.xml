@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.store.MyCategoriesActivity"></activity>
-        <activity android:name=".view.user.CartActivity"></activity>
-        <activity android:name=".view.store.MyPlacesActivity"></activity>
+        <activity android:name=".view.user.NavigationViewActivity"></activity>
+        <activity android:name=".controller.store.MyCategoriesActivity" />
+        <activity android:name=".view.user.CartActivity" />
+        <activity android:name=".view.store.MyPlacesActivity" />
         <activity android:name=".view.login.CompleteRegisterActivity" />
         <activity android:name=".view.login.RegisterStoreActivity" />
         <activity android:name=".view.user.PaymentMethodsActivity" />
@@ -51,10 +52,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
-
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>
