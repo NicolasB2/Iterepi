@@ -22,10 +22,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class AddPaymentMethodController implements View.OnClickListener {
+public class AddPaymentMethodController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener {
 
     private AddPaymentMethodActivity activity;
     private HTTPSWebUtilDomi utilDomi;
+
     private boolean checkCardNumber;
     private boolean checkExpirationDate;
     private boolean checkSecurityCode;
@@ -37,6 +38,8 @@ public class AddPaymentMethodController implements View.OnClickListener {
         this.activity = activity;
         this.utilDomi = new HTTPSWebUtilDomi();
         activity.getAddCardBtn().setOnClickListener(this);
+        activity.getBackBtn().setOnClickListener(this);
+
         listeners();
     }
 
@@ -49,33 +52,10 @@ public class AddPaymentMethodController implements View.OnClickListener {
             case R.id.addCardBtn:
                 addCard();
                 break;
-            case R.id.closeBtn:
+            case R.id.backBtn:
                 activity.finish();
                 break;
         }
-    }
-
-
-    public void openCalendar() {
-
-        Calendar cal = Calendar.getInstance();
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        int month = cal.get(Calendar.MONTH);
-        int year = cal.get(Calendar.YEAR);
-
-        DatePickerDialog dpd = new DatePickerDialog(activity.getAddCardBtn().getContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                int fixedMonth = month + 1;
-                String dateSelected = dayOfMonth + "/" + fixedMonth + "/" + year;
-                activity.getExpirationDateTF().getEditText().setText(dateSelected);
-
-            }
-        }, year, month, day);
-
-        dpd.show();
-
     }
 
     public void addCard(){
@@ -133,20 +113,40 @@ public class AddPaymentMethodController implements View.OnClickListener {
                     ()->{
                         Gson gson = new Gson();
                         String json = gson.toJson(card);
-                        utilDomi.PUTrequest(1,"https://iterepi.firebaseio.com/buyers/"+id+"/cards/"+idCard+"/.json",json);
+                        utilDomi.PUTrequest(1,"https://iterepi.firebaseio.com/buyers/"+id+"/cards/"+activity.getCards().size()+"/.json",json);
                     }
 
             ).start();
-
-            //FirebaseDatabase.getInstance().getReference().child("buyers").child(id).child("cards").push().getKey();
-
+            Intent a = new Intent(activity, PaymentMethodsActivity.class);
+            a.putExtra("cardPosition",activity.getCards().size());
+            activity.startActivity(a);
             activity.finish();
         }
 
 
     }
 
+    public void openCalendar() {
 
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+
+        DatePickerDialog dpd = new DatePickerDialog(activity.getAddCardBtn().getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                int fixedMonth = month + 1;
+                String dateSelected = dayOfMonth + "/" + fixedMonth + "/" + year;
+                activity.getExpirationDateTF().getEditText().setText(dateSelected);
+
+            }
+        }, year, month, day);
+
+        dpd.show();
+
+    }
 
     public void putError(TextInputLayout txtLay, String error) {
         txtLay.setError(error);
@@ -272,4 +272,8 @@ public class AddPaymentMethodController implements View.OnClickListener {
     }
 
 
+    @Override
+    public void onResponse(int callbackID, String response) {
+
+    }
 }

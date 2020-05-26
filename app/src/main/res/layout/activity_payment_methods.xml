@@ -44,14 +44,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listPaymentMethodsRV"
-        android:layout_width="0dp"
-        android:layout_height="380dp"
+    <ListView
+        android:id="@+id/listMethodsLV"
+        android:layout_width="358dp"
+        android:layout_height="422dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -59,13 +60,16 @@
         android:id="@+id/addMethodBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listPaymentMethodsRV"
+        app:layout_constraintTop_toBottomOf="@+id/listMethodsLV"
         app:srcCompat="@drawable/ic_plus_color" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

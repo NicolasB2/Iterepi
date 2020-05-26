@@ -5,15 +5,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import com.example.iterepi.R;
+import com.example.iterepi.adapter.MethodsListAdapter;
+import com.example.iterepi.controller.login.MainController;
+import com.example.iterepi.controller.user.PaymentMethodsController;
 
 public class PaymentMethodsActivity extends AppCompatActivity {
 
     private ImageButton backBtn;
-    private RecyclerView listMethods;
+    private ListView listMethodsLV;
     private ImageButton addMethodBtn;
 
+    private PaymentMethodsController controller;
+    private MethodsListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +27,16 @@ public class PaymentMethodsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment_methods);
 
         backBtn = findViewById(R.id.backBtn);
-        listMethods = findViewById(R.id.listProductsRV);
+        listMethodsLV = findViewById(R.id.listMethodsLV);
         addMethodBtn = findViewById(R.id.addMethodBtn);
 
+        controller = new PaymentMethodsController(this);
+        adapter = new MethodsListAdapter(this);
+        listMethodsLV.setAdapter(adapter);
+    }
+
+    public MethodsListAdapter getAdapter() {
+        return adapter;
     }
 
     public ImageButton getBackBtn() {
@@ -34,12 +47,12 @@ public class PaymentMethodsActivity extends AppCompatActivity {
         this.backBtn = backBtn;
     }
 
-    public RecyclerView getListMethods() {
-        return listMethods;
+    public ListView getListMethodsLV() {
+        return listMethodsLV;
     }
 
-    public void setListMethods(RecyclerView listMethods) {
-        this.listMethods = listMethods;
+    public void setListMethodsLV(ListView listMethodsLV) {
+        this.listMethodsLV = listMethodsLV;
     }
 
     public ImageButton getAddMethodBtn() {
