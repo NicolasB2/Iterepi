@@ -65,6 +65,7 @@ public class PlacesAdapter extends BaseAdapter {
                     i.putExtra("place",places.get(position));
                     i.putExtra("placePosition",position);
                     row.getContext().startActivity(i);
+                    activity.finish();
                 }
             });
         }catch (Exception e){

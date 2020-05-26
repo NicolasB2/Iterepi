@@ -8,8 +8,10 @@ import com.example.iterepi.R;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddCategoryDialog;
+import com.example.iterepi.view.store.MyPlacesActivity;
 import com.example.iterepi.view.store.SeePlaceActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
@@ -62,8 +64,43 @@ public class seePlaceController implements View.OnClickListener, HTTPSWebUtilDom
                 break;
 
             case R.id.updateDataBtn:
-                Toast.makeText(activity,activity.getString(R.string.update_successful),Toast.LENGTH_LONG).show();
-                activity.finish();
+
+                String user_id = FirebaseAuth.getInstance().getUid();
+                String name = activity.getPlaceNameTF().getEditText().getText().toString();
+                String location = activity.getPlaceLocationTF().getEditText().getText().toString();
+
+                if(user_id!=null){
+
+                    if(location.equals("")){
+                        Toast.makeText(activity,activity.getString(R.string.forgot_something)+" "+activity.getString(R.string.location),Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                    if(name.equals("") ){
+                        Toast.makeText(activity,activity.getString(R.string.forgot_something)+" "+activity.getString(R.string.name),Toast.LENGTH_LONG).show();
+                        break;
+                    }
+
+                    else {
+
+                        activity.getPlace().setLocation(location);
+                        activity.getPlace().setName(name);
+
+                        new Thread(
+                                ()->{
+                                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id+"/places/"+activity.getPlacePosition()+".json";
+                                    Gson gson = new Gson();
+                                    String json = gson.toJson(activity.getPlace());
+                                    utilDomi.PUTrequest(1,request,json);
+                                }
+                        ).start();
+
+                        Toast.makeText(activity,activity.getString(R.string.update_successful),Toast.LENGTH_LONG).show();
+                        Intent s = new Intent(activity, MyPlacesActivity.class);
+                        activity.startActivity(s);
+                        activity.finish();
+                    }
+
+                }
                 break;
         }
     }

@@ -2,7 +2,10 @@ package com.example.iterepi.view.store;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -14,7 +17,7 @@ import com.example.iterepi.controller.store.seePlaceController;
 import com.example.iterepi.model.Place;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class SeePlaceActivity extends AppCompatActivity {
+public class SeePlaceActivity extends SellerNavigationDrawerActivity{
 
     private seePlaceController controller;
 
@@ -32,7 +35,10 @@ public class SeePlaceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_see_place);
+
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentView = inflater.inflate(R.layout.activity_see_place, null, false);
+        getDrawerLayout().addView(contentView, 0);
 
         this.placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
 
