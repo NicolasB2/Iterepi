@@ -2,17 +2,22 @@ package com.example.iterepi.view.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.user.UserFeedController;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UserFeedActivity extends AppCompatActivity {
 
-
+    private UserFeedController controller;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +25,7 @@ public class UserFeedActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
         bottomNavigationView.setSelectedItemId(R.id.feed);
+        controller = new UserFeedController(this);
 
         bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
@@ -33,7 +39,7 @@ public class UserFeedActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         break;
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+                        startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
                         finish();
                         overridePendingTransition(0,0);
                         break;
@@ -44,9 +50,7 @@ public class UserFeedActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         // To clear history of previous activities as login activities.
         finishAffinity();
-
     }
 }

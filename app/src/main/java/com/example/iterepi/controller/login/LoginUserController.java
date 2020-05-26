@@ -126,10 +126,10 @@ public class LoginUserController implements View.OnClickListener {
                                 Log.d("GOOGLE AUTH", "signInWithCredential:success");
                                 boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
 
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 if (isNew) {
 
                                     Log.e("GOOGLE AUTH", "I'm a new user.");
-                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                     GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(activity);
 
                                     String id = user.getUid();

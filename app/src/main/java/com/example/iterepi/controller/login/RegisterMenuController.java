@@ -86,10 +86,7 @@ public class RegisterMenuController implements View.OnClickListener {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
@@ -132,10 +129,10 @@ public class RegisterMenuController implements View.OnClickListener {
 
                                 boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
 
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 if (isNew) {
 
                                     Log.e("GOOGLE AUTH", "I'm a new user.");
-                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                     GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(activity);
 
                                     String id = user.getUid();
