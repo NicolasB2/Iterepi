@@ -49,4 +49,11 @@ public class UserFeedActivity extends NavigationViewActivity {
     public SellerAdapter getAdapter() {
         return adapter;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
 }

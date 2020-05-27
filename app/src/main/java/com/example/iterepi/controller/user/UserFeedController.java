@@ -26,6 +26,8 @@ public class UserFeedController implements View.OnClickListener {
     public UserFeedController(UserFeedActivity activity) {
         this.activity = activity;
 
+        updateSellers();
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) activity.findViewById(R.id.navigation);
         bottomNavigationView.setSelectedItemId(R.id.feed);
 
@@ -57,7 +59,7 @@ public class UserFeedController implements View.OnClickListener {
         });
 
 
-        updateSellers();
+
 
 
     }
@@ -75,6 +77,8 @@ public class UserFeedController implements View.OnClickListener {
                     Seller seller = child.getValue(Seller.class);
 
                     activity.getAdapter().getSellers().add(seller);
+
+                    activity.getAdapter().notifyDataSetChanged();
 
                 }
 
