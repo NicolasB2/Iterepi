@@ -48,9 +48,10 @@
         <TextView
             android:id="@+id/restorePassTV"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_marginTop="64dp"
             android:text="@string/recover_pass"
+            android:autoSizeTextType="uniform"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"

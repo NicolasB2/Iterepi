@@ -181,10 +181,15 @@
         <CheckBox
             android:id="@+id/termsCB"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="24dp"
+            android:autoSizeTextType="uniform"
             android:text="@string/accept_terms"
             android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/registerBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nitStoreRegTF" />

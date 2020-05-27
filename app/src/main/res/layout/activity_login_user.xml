@@ -12,28 +12,34 @@
     android:layout_height="match_parent"
     android:background="@drawable/alt_background">
 
-    <Button
-        android:id="@+id/noAccountTV"
-        style="@style/textButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/no_account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
+        <Button
+            android:id="@+id/noAccountTV"
+            style="@style/textButton"
+            android:layout_width="306dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="84dp"
+            android:autoSizeTextType="uniform"
+            android:text="@string/no_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/googleBtn" />
 
-    <Button
-        android:id="@+id/registerTV"
-        style="@style/textButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/register_here"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noAccountTV" />
+        <Button
+            android:id="@+id/registerTV"
+            style="@style/textButton"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginEnd="84dp"
+            android:autoSizeTextType="uniform"
+            android:text="@string/register_here"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/noAccountTV" />
 
     <ImageView
         android:id="@+id/logoIV4"
@@ -55,16 +61,17 @@
         app:layout_constraintTop_toBottomOf="@+id/logoIV4"
         app:srcCompat="@drawable/alt_iterepi" />
 
-    <TextView
-        android:id="@+id/loginWith"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/log_in_with"
-        android:textColor="@color/primaryTextColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameIV4" />
+        <TextView
+            android:id="@+id/loginWith"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/log_in_with"
+            android:textColor="@color/primaryTextColor"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameIV4" />
 
     <ImageButton
         android:id="@+id/backBtn4"
