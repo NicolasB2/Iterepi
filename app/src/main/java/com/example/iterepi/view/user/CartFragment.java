@@ -67,13 +67,10 @@ public class CartFragment extends Fragment implements View.OnClickListener {
 
             }
         });
-
-
         return view;
     }
 
     public void loadItems(Buyer b) {
-
         if (b != null) {
             //For testing
             /*Item[] /*testItems = null;
@@ -82,29 +79,35 @@ public class CartFragment extends Fragment implements View.OnClickListener {
                     new Item("id2", "name2", "description2", 20, 2, "")};
            b.setCart(new Cart("cartId",testItems));*/
             if (b.getCart() != null) {
+                Log.e(">>>>>", "AQUI-1");
                 if (b.getCart().getItems() != null) {
+                    Log.e(">>>>>", "AQUI-2");
                     if (b.getCart().getItems().size() > 0) {
+                        Log.e(">>>>>", "AQUI-3");
                         emptyCartIV.setVisibility(View.GONE);
                         emptyCartTV.setVisibility(View.GONE);
 
                         for(Map.Entry<String, Item> entry : b.getCart().getItems().entrySet()){
                             Item i = entry.getValue();
                             cartItems.add(i);
-                            cartItemAdapter = new CartItemAdapter(cartItems);
+                            cartItemAdapter = new CartItemAdapter(cartItems, this);
                             listCartRV.setAdapter(cartItemAdapter);
                         }
                     } else {
+                        Log.e(">>>>>", "AQUI-4");
                         emptyCartIV.setVisibility(View.VISIBLE);
                         emptyCartTV.setVisibility(View.VISIBLE);
                     }
                 } else {
+                    Log.e(">>>>>", "AQUI-5");
                     emptyCartIV.setVisibility(View.VISIBLE);
                     emptyCartTV.setVisibility(View.VISIBLE);
                 }
 
             } else {
+                Log.e(">>>>>", "AQUI-6");
                 Buyer bCart = b;
-                b.setCart(new Cart("cartId",null));
+                b.setCart(new Cart("cart",null));
                 FirebaseDatabase.getInstance().getReference()
                         .child("buyers")
                         .child(b.getId())
