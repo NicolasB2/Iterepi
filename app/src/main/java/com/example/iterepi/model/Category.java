@@ -1,5 +1,7 @@
 package com.example.iterepi.model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Category implements Serializable {
@@ -48,5 +50,11 @@ public class Category implements Serializable {
         }else{
             return items.length;
         }
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }

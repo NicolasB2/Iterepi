@@ -101,8 +101,6 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
             case R.id.closeBtn:
                 activity.finish();
                 break;
-
-
         }
     }
 

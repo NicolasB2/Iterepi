@@ -36,6 +36,7 @@ public class AddProductDialog extends AppCompatActivity {
         closeBtn = findViewById(R.id.closeBtn);
         addImageProductBtn = findViewById(R.id.addImageProductBtn);
 
+        nameProductTF = findViewById(R.id.nameProductTF);
         priceProductTF = findViewById(R.id.priceProductTF);
         inventoryQualityTF = findViewById(R.id.inventoryQualityTF);
         descriptionProductTF = findViewById(R.id.descriptionProduCtTF);

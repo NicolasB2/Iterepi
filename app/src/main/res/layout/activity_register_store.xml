@@ -80,7 +80,7 @@
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameStoreTF">
+        app:layout_constraintTop_toBottomOf="@+id/nameProductTF">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -92,7 +92,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameStoreTF"
+        android:id="@+id/nameProductTF"
         style="@style/textFieldNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

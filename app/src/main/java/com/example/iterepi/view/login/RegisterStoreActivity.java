@@ -30,7 +30,7 @@ public class RegisterStoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_store);
 
-        nameStoreTF = findViewById(R.id.nameStoreTF);
+        nameStoreTF = findViewById(R.id.nameProductTF);
         emailStoreRegTF = findViewById(R.id.emailStoreRegTF);
         confEmailStoreRegTF = findViewById(R.id.confEmailStoreRegTF);
         passwordStoreRegTF = findViewById(R.id.passwordStoreRegTF);
