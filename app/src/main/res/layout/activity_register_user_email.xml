@@ -231,8 +231,9 @@
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/checkTerms"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_marginBottom="2dp"
+            android:autoSizeTextType="uniform"
             android:text="@string/accept_terms"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/registerUserBtn"
