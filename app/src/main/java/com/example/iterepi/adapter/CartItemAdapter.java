@@ -12,8 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iterepi.R;
+import com.example.iterepi.model.Buyer;
+import com.example.iterepi.model.Cart;
 import com.example.iterepi.model.Item;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -56,18 +63,18 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
 
     @Override
     public void onClick(View v) {
-        if(listener != null){
+        if (listener != null) {
             listener.onClick(v);
         }
     }
 
-    public void setOnClickListener(View.OnClickListener listener){
+    public void setOnClickListener(View.OnClickListener listener) {
         this.listener = listener;
     }
 
     //-----------------------------------------------------------------------------------------------------------------------------------
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView nameProductTV, priceTV, quantityTV;
         private ImageButton closeBtn, plusBtn, minusBtn;
@@ -84,26 +91,50 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             minusBtn = itemView.findViewById(R.id.minusBtn);
             productIV = itemView.findViewById(R.id.productIV);
 
-            closeBtn.setOnClickListener(new View.OnClickListener() {
+            Query query = FirebaseDatabase.getInstance().getReference()
+                    .child("buyers")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
+
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(),"CLOSE",Toast.LENGTH_SHORT).show();
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Buyer b = dataSnapshot.getValue(Buyer.class);
+                    closeBtn.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(itemView.getContext(), "CLOSE", Toast.LENGTH_SHORT).show();
+
+                            if (b != null) {
+                                Toast.makeText(itemView.getContext(), b.getName(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                    plusBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("buyers")
+                                    .child(b.getId())
+                                    .setValue(new Cart("cartId", null));
+                        }
+                    });
+
+                    minusBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
                 }
             });
 
-            plusBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            minusBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
 
         }
     }

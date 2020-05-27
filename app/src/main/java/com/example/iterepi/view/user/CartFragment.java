@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,27 +74,38 @@ public class CartFragment extends Fragment implements View.OnClickListener {
 
         if (b != null) {
             //For testing
-
-            Item[] testItems = null;
-            /*testItems = new Item[]{
+            /*Item[] /*testItems = null;
+            testItems = new Item[]{
                     new Item("id1", "name", "description", 10, 1, ""),
-                    new Item("id2", "name2", "description2", 20, 2, "")};*/
-
-            b.setCart(new Cart("cartId", testItems));
-            if (b.getCart().getItems() != null) {
-                if (b.getCart().getItems().length > 0) {
-                    emptyCartIV.setVisibility(View.GONE);
-                    emptyCartTV.setVisibility(View.GONE);
-                    for (Item i : b.getCart().getItems()) {
-                        cartItems.add(i);
-                        cartItemAdapter = new CartItemAdapter(cartItems);
-                        listCartRV.setAdapter(cartItemAdapter);
+                    new Item("id2", "name2", "description2", 20, 2, "")};
+           b.setCart(new Cart("cartId",testItems));*/
+            if (b.getCart() != null) {
+                if (b.getCart().getItems() != null) {
+                    if (b.getCart().getItems().length > 0) {
+                        emptyCartIV.setVisibility(View.GONE);
+                        emptyCartTV.setVisibility(View.GONE);
+                        for (Item i : b.getCart().getItems()) {
+                            cartItems.add(i);
+                            cartItemAdapter = new CartItemAdapter(cartItems);
+                            listCartRV.setAdapter(cartItemAdapter);
+                        }
+                    } else {
+                        emptyCartIV.setVisibility(View.VISIBLE);
+                        emptyCartTV.setVisibility(View.VISIBLE);
                     }
                 } else {
                     emptyCartIV.setVisibility(View.VISIBLE);
                     emptyCartTV.setVisibility(View.VISIBLE);
                 }
+
             } else {
+                Buyer bCart = b;
+                b.setCart(new Cart("cartId",null));
+                FirebaseDatabase.getInstance().getReference()
+                        .child("buyers")
+                        .child(b.getId())
+                        .setValue(bCart);
+
                 emptyCartIV.setVisibility(View.VISIBLE);
                 emptyCartTV.setVisibility(View.VISIBLE);
             }

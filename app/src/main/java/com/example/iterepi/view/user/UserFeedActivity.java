@@ -29,7 +29,6 @@ public class UserFeedActivity extends NavigationViewActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
         bottomNavigationView.setSelectedItemId(R.id.feed);
 
-
         bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
@@ -37,13 +36,11 @@ public class UserFeedActivity extends NavigationViewActivity {
                     case R.id.feed:
                         break;
                     case R.id.location:
-                        startActivity(new Intent(getApplicationContext(),LocationActivity.class));
-                        finish();
+                        startActivity(new Intent(getApplicationContext(),CartActivity.class));
                         overridePendingTransition(0,0);
                         break;
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(), CartActivity.class));
-                        finish();
+                        startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
                         overridePendingTransition(0,0);
                         break;
                 }
