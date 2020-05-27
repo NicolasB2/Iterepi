@@ -7,16 +7,16 @@
     android:background="@drawable/alt_background">
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/logoIV"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="48dp"
         android:scaleType="centerCrop"
+        android:src="@drawable/ic_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_user" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nitStoreRegTF"

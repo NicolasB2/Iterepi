@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.iterepi.R;
 import com.example.iterepi.controller.login.RegisterStoreController;
 import com.google.android.material.textfield.TextInputLayout;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegisterStoreActivity extends AppCompatActivity {
 
@@ -26,7 +27,7 @@ public class RegisterStoreActivity extends AppCompatActivity {
     private CheckBox termsCB;
     private RegisterStoreController controller;
     private ImageButton backBtn;
-    private ImageView logoIV;
+    private CircleImageView logoIV;
 
 
     @Override
@@ -59,7 +60,7 @@ public class RegisterStoreActivity extends AppCompatActivity {
         controller.onActivityResult(requestCode, resultCode, data);
     }
 
-    public ImageView getLogoIV() {
+    public CircleImageView getLogoIV() {
         return logoIV;
     }
 
