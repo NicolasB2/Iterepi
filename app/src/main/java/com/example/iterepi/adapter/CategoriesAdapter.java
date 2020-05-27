@@ -52,7 +52,6 @@ public class CategoriesAdapter extends BaseAdapter {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.category_row,null,false);
 
-        try {
             TextView categoryNameTV = row.findViewById(R.id.categoryNameTV);
             TextView categoryItemsTV = row.findViewById(R.id.categoryItemsTV);
 
@@ -60,7 +59,7 @@ public class CategoriesAdapter extends BaseAdapter {
             if(category!=null){
 
                 categoryNameTV.setText(category.getName());
-                categoryItemsTV.setText(category.numItems());
+                categoryItemsTV.setText(category.numItems()+"");
 
                 row.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -73,9 +72,6 @@ public class CategoriesAdapter extends BaseAdapter {
                 });
             }
 
-        }catch (Exception e){
-            Log.e(">>>","error in trackAdapter");
-        }
         return row;
     }
 

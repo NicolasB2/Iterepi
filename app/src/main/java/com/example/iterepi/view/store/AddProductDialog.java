@@ -8,6 +8,7 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.store.AddProductController;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class AddProductDialog extends AppCompatActivity {
@@ -25,6 +26,8 @@ public class AddProductDialog extends AppCompatActivity {
 
     private Button addProductBtn;
 
+    private AddProductController controller;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,8 @@ public class AddProductDialog extends AppCompatActivity {
         categoryOfProductSP = findViewById(R.id.categoryOfProductSP);
 
         addProductBtn = findViewById(R.id.addProductBtn);
+
+        controller = new AddProductController(this);
 
     }
 

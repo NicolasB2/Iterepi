@@ -83,14 +83,14 @@ public class SplashScreenActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                            Seller seller = dataSnapshot.getValue(Seller.class);
+                            //Seller seller = dataSnapshot.getValue(Seller.class);
 
-                            if (seller != null) {
+                            //if (seller != null) {
                                     Log.e("SELLER", "IT'S SELLER");
                                     Intent s = new Intent(SplashScreenActivity.this, StoreHomeActivity.class);
                                     startActivity(s);
                                     finish();
-                            }
+                            //}
                         }
 
                         @Override
