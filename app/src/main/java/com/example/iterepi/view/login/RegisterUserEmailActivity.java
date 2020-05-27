@@ -1,11 +1,12 @@
 package com.example.iterepi.view.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
@@ -13,9 +14,11 @@ import com.example.iterepi.controller.login.RegisterUserEmailController;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputLayout;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class RegisterUserEmailActivity extends AppCompatActivity {
 
-    private ImageView profileImage;
+    private CircleImageView profileImage;
     private TextInputLayout nameTF;
     private TextInputLayout birthdayTF;
     private TextInputLayout emailTF;
@@ -51,11 +54,19 @@ public class RegisterUserEmailActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        controller.onActivityResult(requestCode, resultCode, data);
+
+    }
+
     public ImageButton getBackBtn() {
         return backBtn;
     }
 
-    public ImageView getProfileImage() {
+    public CircleImageView getProfileImage() {
         return profileImage;
     }
 

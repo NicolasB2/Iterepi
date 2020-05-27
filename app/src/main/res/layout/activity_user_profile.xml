@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/alt_background">
@@ -22,7 +21,7 @@
         android:id="@+id/profileImage"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,33 +31,36 @@
         android:id="@+id/setImageBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="86dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="@+id/profileImage"
         app:layout_constraintTop_toTopOf="@+id/profileImage"
-        app:srcCompat="@drawable/ic_doubt" />
+        app:srcCompat="@drawable/ic_plus_color" />
 
     <TextView
         android:id="@+id/textView91"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/name"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
     <TextView
         android:id="@+id/quantityTV"
         android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/edit_text"
-        android:textSize="18sp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,17 +73,19 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="@string/birth"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quantityTV" />
 
     <TextView
         android:id="@+id/birthTV"
-        android:layout_width="200dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/edit_text"
-        android:textSize="18sp"
+        android:gravity="center"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -92,18 +96,21 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/gender"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/genderTV"
         app:layout_constraintTop_toBottomOf="@+id/quantityTV" />
 
     <TextView
         android:id="@+id/genderTV"
         android:layout_width="150dp"
-        android:layout_height="32dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/edit_text"
-        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
@@ -113,21 +120,24 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="@string/id"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/genderTV" />
 
     <TextView
         android:id="@+id/idTV"
         android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/edit_text"
-        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
@@ -137,21 +147,24 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="@string/email"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idTV" />
 
     <TextView
         android:id="@+id/emailTV"
         android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/edit_text"
-        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
@@ -161,18 +174,21 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="@string/phone_number"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumberTV" />
 
     <TextView
         android:id="@+id/phoneNumberTV"
         android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/edit_text"
-        android:textSize="18sp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +200,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="64dp"
         android:text="@string/update_data"
         app:layout_constraintEnd_toEndOf="parent"
@@ -198,7 +214,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="64dp"
         android:text="@string/change_pass"
         app:layout_constraintEnd_toEndOf="parent"

@@ -29,24 +29,30 @@ public class UserFeedActivity extends NavigationViewActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
         bottomNavigationView.setSelectedItemId(R.id.feed);
 
-
-        bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.feed:
-                        break;
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+
                     case R.id.location:
-                        startActivity(new Intent(getApplicationContext(),LocationActivity.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        break;
-                    case R.id.search:
+                        startActivity(new Intent(getApplicationContext(), LocationActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.feed:
+                        startActivity(new Intent(getApplicationContext(), UserFeedActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.cart:
                         startActivity(new Intent(getApplicationContext(), CartActivity.class));
-                        finish();
                         overridePendingTransition(0,0);
-                        break;
+                        return true;
                 }
+
+
+                return false;
             }
         });
 

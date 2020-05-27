@@ -1,6 +1,7 @@
 package com.example.iterepi.controller.login;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 
@@ -46,6 +47,7 @@ public class RegisterMenuController implements View.OnClickListener {
     private GoogleSignInClient mGoogleSignInClient;
 
     private CallbackManager mCallbackManager;
+    private String photo;
 
     public RegisterMenuController(RegisterMenuActivity activity) {
 
@@ -146,7 +148,9 @@ public class RegisterMenuController implements View.OnClickListener {
                         Log.e("FACEBOOK","I'm a new user");
                         String id = user.getUid();
                         String name = user.getDisplayName();
-                        String photo = user.getPhotoUrl().toString();
+                        photo = user.getPhotoUrl().toString();
+                        photo += "?height=500";
+                        Uri tempUri = Uri.parse(photo);
                         String email = user.getEmail();
 
                         Buyer buyer = new Buyer(id, name, null, email, photo, -1, null, null, null, null);
@@ -237,14 +241,13 @@ public class RegisterMenuController implements View.OnClickListener {
                                     String id = user.getUid();
                                     String name = acct.getDisplayName();
                                     String email = acct.getEmail();
-                                    String photo = acct.getPhotoUrl().toString();
+                                    photo = acct.getPhotoUrl().toString();
 
                                     // Better resolution.
                                     photo.replace("/s96-c/", "/s800-c/");
-
                                     Buyer buyer = new Buyer(id, name, null, email, photo, -1, null, null, null, null);
-
                                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
 
                                     Intent c = new Intent(activity, CompleteRegisterActivity.class);
                                     c.putExtra("PROVIDER","GOOGLE");

@@ -2,6 +2,9 @@ package com.example.iterepi.controller.login;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,10 +20,18 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
+import java.io.IOException;
 import java.util.Calendar;
 
+import static android.app.Activity.RESULT_OK;
+
+
 public class RegisterUserEmailController implements View.OnClickListener {
+
+    public static final int GALLERY_CALLBACK = 2;
+
 
     private RegisterUserEmailActivity activity;
     private boolean checkName;
@@ -29,6 +40,10 @@ public class RegisterUserEmailController implements View.OnClickListener {
     private boolean checkPass;
     private boolean checkIdentification;
     private boolean checkGender;
+    private Uri tempUri;
+    private String photo;
+    private boolean toStorage = true;
+    private boolean toLogin = true;
 
 
     public RegisterUserEmailController(RegisterUserEmailActivity activity) {
@@ -37,6 +52,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
         activity.getRegisterBtn().setOnClickListener(this);
         activity.getBackBtn().setOnClickListener(this);
+        activity.getProfileImage().setOnClickListener(this);
 
 
         listeners();
@@ -56,6 +72,12 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
             case R.id.backBtn5:
                 activity.onBackPressed();
+                break;
+
+            case R.id.profileImage2:
+                Intent gal = new Intent(Intent.ACTION_GET_CONTENT);
+                gal.setType("image/*");
+                activity.startActivityForResult(gal, GALLERY_CALLBACK);
                 break;
 
 
@@ -145,12 +167,12 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
             String bName = name;
             String bCedula = identification;
-            String bPhoto = null;
             int bGender = gender;
             String bBirthday = birthday;
 
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
             if (activity.getIntent().hasExtra("PROVIDER")) {
 
                 String provider = (String)activity.getIntent().getExtras().get("PROVIDER");
@@ -160,39 +182,71 @@ public class RegisterUserEmailController implements View.OnClickListener {
                 if (provider.equals("GOOGLE")) {
 
                     // Add to database code.
+                    String id = user.getUid();
+                    if (tempUri != null) {
 
-                    String id = FirebaseAuth.getInstance().getUid();
-                    bPhoto = user.getPhotoUrl().toString();
-                    bPhoto.replace("/s96-c/", "/s800-c/");
-                    Buyer buyer = new Buyer(id, bName, bCedula, email, bPhoto, bGender, bBirthday, null, null, null);
-                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+                        FirebaseStorage storage = FirebaseStorage.getInstance();
 
-                    // Start UserFeedActivity
+                        storage.getReference().child("buyers").child(id).child("photo").putFile(tempUri).addOnCompleteListener(task -> {
 
-                    Intent i = new Intent(activity, UserFeedActivity.class);
-                    activity.startActivity(i);
-                    activity.finishAffinity();
+                            if (task.isSuccessful()) {
+
+                                storage.getReference().child("buyers").child(id).child("photo").getDownloadUrl().addOnSuccessListener(uri -> {
+                                    photo = uri.toString();
+                                    Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
+                                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                                    goToFeed();
+
+                                });
+                            }
+                        });
+                    } else {
+                        photo = user.getPhotoUrl().toString();
+                        photo.replace("/s96-c/", "/s800-c/");
+                        Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
+                        FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                        goToFeed();
+                    }
 
                 } else if (provider.equals("FACEBOOK")) {
 
                     // Add to database code.
 
-                    String id = FirebaseAuth.getInstance().getUid();
-                    bPhoto = user.getPhotoUrl().toString();
-                    Buyer buyer = new Buyer(id, bName, bCedula, email, bPhoto, bGender, bBirthday, null, null, null);
-                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
-
-                    // Start UserFeedActivity
-
-                    Intent i = new Intent(activity, UserFeedActivity.class);
-                    activity.startActivity(i);
-                    activity.finishAffinity();
+                    String id = user.getUid();
 
 
+                    if (tempUri != null) {
+
+                        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+                        storage.getReference().child("buyers").child(id).child("photo").putFile(tempUri).addOnCompleteListener(task -> {
+
+                            if (task.isSuccessful()) {
+
+                                storage.getReference().child("buyers").child(id).child("photo").getDownloadUrl().addOnSuccessListener(uri -> {
+
+                                    photo = uri.toString();
+                                    Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
+                                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                                    goToFeed();
+
+                                });
+                            }
+
+                        });
+
+                    } else {
+                        photo = user.getPhotoUrl().toString() + "?height=500";
+                        Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
+                        FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                        goToFeed();
+                    }
                 }
             } else {
-
-                String finalBPhoto = bPhoto;
 
                 // With email and password way
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnSuccessListener(authResult -> {
@@ -200,31 +254,53 @@ public class RegisterUserEmailController implements View.OnClickListener {
                     // Add to database code.
 
                     String id = FirebaseAuth.getInstance().getUid();
-                    Buyer buyer = new Buyer(id, bName, bCedula, email, finalBPhoto, bGender, bBirthday, null, null, null);
-                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
-                    // Start UserFeedActivity
+                    if (tempUri != null) {
 
-                    Snackbar.make(activity.getRegisterBtn(), activity.getString(R.string.welcome), Snackbar.LENGTH_SHORT).show();
-                    Intent i = new Intent(activity, UserFeedActivity.class);
-                    activity.startActivity(i);
-                    activity.finishAffinity();
+                        FirebaseStorage storage = FirebaseStorage.getInstance();
 
+                        storage.getReference().child("buyers").child(id).child("photo").putFile(tempUri).addOnCompleteListener(task -> {
 
+                            if (task.isSuccessful()) {
+
+                                storage.getReference().child("buyers").child(id).child("photo").getDownloadUrl().addOnSuccessListener(uri -> {
+
+                                    photo = uri.toString();
+                                    Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
+                                    FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+
+                                    goToFeed();
+
+                                });
+
+                            }
+
+                        });
+
+                    } else {
+
+                        Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
+                        FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
+                        goToFeed();
+
+                    }
                 }).addOnFailureListener(f -> {
-
                     // If create user fails
                     Snackbar.make(activity.getRegisterBtn(), f.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
-
                 });
-
-
             }
-
         }
+    }
 
+
+    public void goToFeed() {
+
+        Intent i = new Intent(activity, UserFeedActivity.class);
+        activity.startActivity(i);
+        activity.finishAffinity();
 
     }
+
 
     public void putError(TextInputLayout txtLay, String error) {
 
@@ -443,6 +519,33 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
 
         });
+
+
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+
+            switch (requestCode) {
+
+                case GALLERY_CALLBACK:
+                    tempUri = data.getData();
+
+                    try {
+                        Bitmap image = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), tempUri);
+                        activity.getProfileImage().setImageBitmap(image);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    break;
+
+            }
+
+
+        }
 
 
     }

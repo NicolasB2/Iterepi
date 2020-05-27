@@ -1,5 +1,7 @@
 package com.example.iterepi.controller.user;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.example.iterepi.model.Buyer;
@@ -20,15 +22,15 @@ public class UserProfileController {
 
     public UserProfileController(UserProfileActivity activity) {
         this.activity = activity;
+
         Query query = FirebaseDatabase.getInstance().getReference()
                 .child("buyers")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Buyer b = dataSnapshot.getValue(Buyer.class);
-                setUserInfo(b);
             }
 
             @Override
@@ -38,11 +40,11 @@ public class UserProfileController {
         });
     }
 
-    private void setUserInfo(Buyer buyer){
+    private void setUserInfo(Buyer buyer) {
         activity.getNameTV().setText(buyer.getName());
         activity.getBirthTV().setText(buyer.getBirthday());
         activity.getEmailTV().setText(buyer.getEmail());
-        activity.getGenderTV().setText(buyer.getGender()==0 ? "Femenino" : "Masculino");
+        activity.getGenderTV().setText(buyer.getGender() == 0 ? "Femenino" : "Masculino");
         activity.getIdTV().setText(buyer.getIdentification());
         activity.getPhoneNumberTV().setText("N/A");
     }

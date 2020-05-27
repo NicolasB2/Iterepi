@@ -1,127 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/alt_background">
+    android:layout_weight="1"
+    android:fillViewport="true">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailStore"
-        style="@style/textFieldNormal"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
-        android:hint="@string/email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameIV4">
+        android:layout_height="match_parent"
+        android:background="@drawable/alt_background">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputEmailTF"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailStore"
+            style="@style/textFieldNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:inputType="textEmailAddress"
-            tools:layout_editor_absoluteX="-1dp"
-            tools:layout_editor_absoluteY="358dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="36dp"
+            android:hint="@string/email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameIV4">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordTF"
-        style="@style/textFieldNormal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
-        android:hint="@string/password"
-        app:endIconMode="password_toggle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailStore">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputEmailTF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:inputType="textEmailAddress"
+                tools:layout_editor_absoluteX="-1dp"
+                tools:layout_editor_absoluteY="358dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputPassTF"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTF"
+            style="@style/textFieldNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            tools:layout_editor_absoluteX="-1dp"
-            tools:layout_editor_absoluteY="358dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="36dp"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailStore">
 
-    <ImageView
-        android:id="@+id/logoIV4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="150dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/alt_logo" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPassTF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF"
+                tools:layout_editor_absoluteX="-1dp"
+                tools:layout_editor_absoluteY="358dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/nameIV4"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoIV4"
-        app:srcCompat="@drawable/alt_iterepi" />
+        <ImageView
+            android:id="@+id/logoIV4"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/alt_logo" />
 
-    <Button
-        android:id="@+id/updateDataBtn"
-        style="@style/button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="64dp"
-        android:text="@string/login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTF" />
+        <ImageView
+            android:id="@+id/nameIV4"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoIV4"
+            app:srcCompat="@drawable/alt_iterepi" />
 
-    <ImageButton
-        android:id="@+id/backBtn2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back" />
+        <Button
+            android:id="@+id/updateDataBtn"
+            style="@style/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
+            android:text="@string/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordTF" />
 
-    <Button
-        android:id="@+id/forgotPass"
-        style="@style/textButton"
-        android:layout_width="182dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/forgot_pass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateDataBtn" />
+        <ImageButton
+            android:id="@+id/backBtn2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
 
-    <Button
-        android:id="@+id/registerHereStore"
-        style="@style/textButton"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginEnd="124dp"
-        android:text="@string/register_here"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPass" />
+        <Button
+            android:id="@+id/forgotPass"
+            style="@style/textButton"
+            android:layout_width="182dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/forgot_pass"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateDataBtn" />
+
+        <Button
+            android:id="@+id/registerHereStore"
+            style="@style/textButton"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="124dp"
+            android:layout_marginEnd="124dp"
+            android:text="@string/register_here"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forgotPass" />
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

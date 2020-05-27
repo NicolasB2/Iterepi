@@ -39,7 +39,7 @@ public class CompleteRegisterActivity extends RegisterUserEmailActivity {
             getEmailTF().getEditText().setText("" + user.getEmail());
             getEmailTF().setEnabled(false);
 
-            String url = user.getPhotoUrl().toString();
+            String url = user.getPhotoUrl().toString() + "?height=500";
             Glide.with(this).load(url).into(getProfileImage());
 
 

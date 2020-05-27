@@ -116,6 +116,8 @@
     <string name="welcome_back">Welcome back</string>
     <string name="welcome">Welcome</string>
     <string name="forgot_something">you forgot the</string>
+    <string name="sales">Sales</string>
+    <string name="empty_order">No orders</string>
     <string name="restore_pass_sent">It has sent instructions to your email to restore your password</string>
 
 
