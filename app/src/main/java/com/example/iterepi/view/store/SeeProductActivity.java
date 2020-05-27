@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.store.SeeProductController;
-import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Item;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -27,9 +25,9 @@ public class SeeProductActivity extends AppCompatActivity {
     private TextInputLayout inventoryQualityTF;
     private TextInputLayout descriptionProductTF;
 
-    private int placePosition;
-    private int categoryPosition;
-    private int itemPosition;
+    private String placeId;
+    private String categoryId;
+    private String itemId;
 
     private Item item;
 
@@ -50,9 +48,9 @@ public class SeeProductActivity extends AppCompatActivity {
         inventoryQualityTF = findViewById(R.id.inventoryQualityTF);
         descriptionProductTF = findViewById(R.id.descriptionProduCtTF);
 
-        this.placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
-        this.categoryPosition = (Integer) getIntent().getExtras().getSerializable("categoryPosition");
-        this.itemPosition = (Integer) getIntent().getExtras().getSerializable("itemPosition");
+        this.placeId = (String) getIntent().getExtras().getSerializable("placeId");
+        this.categoryId = (String) getIntent().getExtras().getSerializable("categoryId");
+        this.itemId = (String) getIntent().getExtras().getSerializable("itemId");
 
         controller = new SeeProductController(this);
     }
@@ -89,16 +87,16 @@ public class SeeProductActivity extends AppCompatActivity {
         return descriptionProductTF;
     }
 
-    public int getPlacePosition() {
-        return placePosition;
+    public String getPlaceId() {
+        return placeId;
     }
 
-    public int getCategoryPosition() {
-        return categoryPosition;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public int getItemPosition() {
-        return itemPosition;
+    public String getItemId() {
+        return itemId;
     }
 
     public Item getItem() {

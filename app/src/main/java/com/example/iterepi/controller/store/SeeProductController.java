@@ -4,23 +4,29 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.iterepi.R;
+import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Item;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.SeeCategoryActivity;
 import com.example.iterepi.view.store.SeeProductActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-public class SeeProductController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
+public class SeeProductController implements View.OnClickListener{
 
     private SeeProductActivity activity;
     private HTTPSWebUtilDomi utilDomi;
 
     public SeeProductController(SeeProductActivity activity) {
         this.activity = activity;
-        this.utilDomi = new HTTPSWebUtilDomi();
-        this.utilDomi.setListener(this);
         this.activity.getBackBtn3().setOnClickListener(this);
         this.activity.getUpdateDataBtn().setOnClickListener(this);
 
@@ -31,16 +37,35 @@ public class SeeProductController implements View.OnClickListener, HTTPSWebUtilD
 
     private void loadItem() {
         String user_id = FirebaseAuth.getInstance().getUid();
+        Query query = FirebaseDatabase.getInstance().getReference()
+                .child("sellers").child(user_id)
+                .child("places").child(activity.getPlaceId())
+                .child("categories").child(activity.getCategoryId())
+                .child("items").child(activity.getItemId());
 
-        new Thread(
-                ()->{
-                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id
-                            +"/places/"+activity.getPlacePosition()
-                            +"/categories/"+activity.getCategoryPosition()
-                            +"/items/"+activity.getItemPosition()+".json";
-                    utilDomi.GETrequest(1,request);
-                }
-        ).start();
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Item item =  dataSnapshot.getValue(Item.class);
+
+                activity.runOnUiThread(
+                        ()->{
+                            if(item!=null){
+                                activity.setItem(item);
+                                activity.getItemName().setText(item.getName());
+                                activity.getNameProductTF().getEditText().setText(item.getName());
+                                activity.getPriceProductTF().getEditText().setText(item.getPrice()+"");
+                                activity.getInventoryQualityTF().getEditText().setText(item.getQuantity()+"");
+                                activity.getDescriptionProductTF().getEditText().setText(item.getDescription());
+                            }
+                        }
+                );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     @Override
@@ -94,22 +119,16 @@ public class SeeProductController implements View.OnClickListener, HTTPSWebUtilD
                         break;
                     }
 
-                    new Thread(
-                            () -> {
-                                String request = "https://iterepi.firebaseio.com/sellers/" + user_id
-                                        + "/places/" + activity.getPlacePosition()
-                                        + "/categories/" + activity.getCategoryPosition()
-                                        + "/items/" + activity.getItemPosition() + ".json";
-                                Gson gson = new Gson();
-                                String json = gson.toJson(activity.getItem());
-                                utilDomi.PUTrequest(1, request, json);
-                            }
-                    ).start();
+                    FirebaseDatabase.getInstance().getReference()
+                            .child("sellers").child(user_id)
+                            .child("places").child(activity.getPlaceId())
+                            .child("categories").child(activity.getCategoryId())
+                            .child("items").child(activity.getItemId()).setValue(activity.getItem());
 
                     Toast.makeText(activity, activity.getString(R.string.update_successful), Toast.LENGTH_LONG).show();
                     Intent s = new Intent(activity, SeeCategoryActivity.class);
-                    s.putExtra("placePosition", activity.getPlacePosition());
-                    s.putExtra("categoryPosition", activity.getCategoryPosition());
+                    s.putExtra("placeId", activity.getPlaceId());
+                    s.putExtra("categoryId", activity.getCategoryId());
                     activity.startActivity(s);
                     activity.finish();
 
@@ -117,28 +136,5 @@ public class SeeProductController implements View.OnClickListener, HTTPSWebUtilD
                 break;
         }
 
-    }
-
-    @Override
-    public void onResponse(int callbackID, String response) {
-        switch (callbackID) {
-            case 1:
-                Gson gson = new Gson();
-                Item item = gson.fromJson(response, Item.class);
-
-                activity.runOnUiThread(
-                        ()->{
-                            if(item!=null){
-                                activity.setItem(item);
-                                activity.getItemName().setText(item.getName());
-                                activity.getNameProductTF().getEditText().setText(item.getName());
-                                activity.getPriceProductTF().getEditText().setText(item.getPrice()+"");
-                                activity.getInventoryQualityTF().getEditText().setText(item.getQuantity()+"");
-                                activity.getDescriptionProductTF().getEditText().setText(item.getDescription());
-                            }
-                        }
-                );
-                break;
-        }
     }
 }
