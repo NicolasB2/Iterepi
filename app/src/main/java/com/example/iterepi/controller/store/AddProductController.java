@@ -13,8 +13,8 @@ import com.example.iterepi.model.Place;
 import com.example.iterepi.model.Seller;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddProductDialog;
+import com.example.iterepi.view.store.SeeCategoryActivity;
 import com.example.iterepi.view.store.SeePlaceActivity;
-import com.example.iterepi.view.store.SeeProductDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
@@ -120,6 +120,7 @@ public class AddProductController implements View.OnClickListener, HTTPSWebUtilD
 
                         Item item = new Item();
                         item.setId(id);
+                        item.setName(name);
                         item.setDescription(description);
 
                         try {
@@ -148,8 +149,9 @@ public class AddProductController implements View.OnClickListener, HTTPSWebUtilD
 
                         ).start();
 
-                        Intent s = new Intent(activity, SeeProductDialog.class);
-                        s.putExtra("placePosition",0);
+                        Intent s = new Intent(activity, SeeCategoryActivity.class);
+                        s.putExtra("placePosition",activity.getPlaceOfProductSP().getSelectedItemPosition());
+                        s.putExtra("categoryPosition",activity.getCategoryOfProductSP().getSelectedItemPosition());
                         activity.startActivity(s);
                         activity.finish();
                         break;

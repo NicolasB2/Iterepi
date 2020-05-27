@@ -1,7 +1,6 @@
 package com.example.iterepi.adapter;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,6 @@ import com.example.iterepi.R;
 import com.example.iterepi.model.Category;
 import com.example.iterepi.view.store.SeeCategoryActivity;
 import com.example.iterepi.view.store.SeePlaceActivity;
-import com.example.iterepi.view.store.StoreHomeActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CategoriesAdapter extends BaseAdapter {
 
@@ -53,7 +48,7 @@ public class CategoriesAdapter extends BaseAdapter {
         View row = inflater.inflate(R.layout.category_row,null,false);
 
             TextView categoryNameTV = row.findViewById(R.id.categoryNameTV);
-            TextView categoryItemsTV = row.findViewById(R.id.categoryItemsTV);
+            TextView categoryItemsTV = row.findViewById(R.id.itemPriceTV);
 
             Category category = categories[position];
             if(category!=null){

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.adapter.CategoriesAdapter;
+import com.example.iterepi.adapter.ItemsAdapter;
 import com.example.iterepi.controller.store.seeCategoryController;
 import com.example.iterepi.controller.store.seePlaceController;
 import com.example.iterepi.model.Category;
@@ -33,6 +34,8 @@ public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
     private Category category;
     private int placePosition;
     private int categoryPosition;
+
+    private ItemsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,5 +91,7 @@ public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
 
     public void setCategory(Category category) {
         this.category=category;
+        this.adapter = new ItemsAdapter(this,category.getItems());
+        this.myItemsList.setAdapter(adapter);
     }
 }
