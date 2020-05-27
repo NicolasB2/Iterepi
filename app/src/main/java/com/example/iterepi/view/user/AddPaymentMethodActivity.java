@@ -8,7 +8,11 @@ import android.widget.ImageButton;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.user.AddPaymentMethodController;
+import com.example.iterepi.model.Card;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddPaymentMethodActivity extends AppCompatActivity {
 
@@ -22,8 +26,10 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
 
     private Button addCardBtn;
 
+
     private AddPaymentMethodController controller;
 
+    private List<Card> cards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,11 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
         lastNameTF = findViewById(R.id.lastNameTF);
 
         addCardBtn = findViewById(R.id.addCardBtn);
+
+        cards = (List<Card>) getIntent().getExtras().getSerializable("cards");
+        if(cards==null){
+            cards = new ArrayList<>();
+        }
 
         controller = new AddPaymentMethodController(this);
 
@@ -98,5 +109,13 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
 
     public void setAddCardBtn(Button addCardBtn) {
         this.addCardBtn = addCardBtn;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
     }
 }

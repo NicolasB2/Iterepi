@@ -105,9 +105,11 @@
     <Button
         android:id="@+id/facebookBtn"
         style="@style/iconButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="84dp"
         android:text="@string/register_with_facebook"
         app:icon="@drawable/ic_facebook"
         app:layout_constraintEnd_toEndOf="parent"

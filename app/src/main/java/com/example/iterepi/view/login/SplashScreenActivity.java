@@ -9,12 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
-import com.example.iterepi.controller.store.AddPlaceController;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.model.Seller;
-import com.example.iterepi.view.store.AddCategoryDialog;
-import com.example.iterepi.view.store.AddPlaceDialog;
-import com.example.iterepi.view.store.MyPlacesActivity;
 import com.example.iterepi.view.store.StoreHomeActivity;
 import com.example.iterepi.view.user.UserFeedActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -87,14 +83,14 @@ public class SplashScreenActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                //Seller seller = dataSnapshot.getValue(Seller.class);
+                            Seller seller = dataSnapshot.getValue(Seller.class);
 
-                                //if(seller != null) {
+                            if (seller != null) {
                                     Log.e("SELLER", "IT'S SELLER");
                                     Intent s = new Intent(SplashScreenActivity.this, StoreHomeActivity.class);
                                     startActivity(s);
                                     finish();
-                                //}
+                            }
                         }
 
                         @Override

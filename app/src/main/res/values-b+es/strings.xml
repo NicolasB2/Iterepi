@@ -116,5 +116,6 @@
     <string name="welcome_back">Bienvenido de nuevo</string>
     <string name="welcome">Bienvenido</string>
     <string name="forgot_something">olvidaste</string>
+    <string name="restore_pass_sent">Se han enviado instrucciones a tu correo para restablecer la contraseña.</string>
 
 </resources>
