@@ -62,7 +62,8 @@ public class ItemsAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     Intent i = new Intent(row.getContext(), SeeProductDialog.class);
                     i.putExtra("placePosition",activity.getPlacePosition());
-                    i.putExtra("categoryPosition",position);
+                    i.putExtra("categoryPosition",activity.getCategoryPosition());
+                    i.putExtra("itemPosition",position);
                     row.getContext().startActivity(i);
                 }
             });
