@@ -12,28 +12,34 @@ import com.example.iterepi.model.Item;
 import com.example.iterepi.view.store.SeeCategoryActivity;
 import com.example.iterepi.view.store.SeeProductActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ItemsAdapter extends BaseAdapter {
 
-    private Item[] items;
+    private ArrayList<Item> items;
     private SeeCategoryActivity activity;
 
-    public ItemsAdapter(SeeCategoryActivity activity, Item[] items) {
+    public ItemsAdapter(SeeCategoryActivity activity, HashMap<String, Item> items) {
         this.activity = activity;
-        if(items == null){
-            this.items = new Item[0];
-        }else{
-            this.items = items;
+        this.items = new ArrayList<>();
+
+        if(items!=null){
+            for (String id:items.keySet()){
+                this.items.add(items.get(id));
+            }
         }
+
     }
 
     @Override
     public int getCount() {
-        return items.length;
+        return items.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return items[position];
+        return items.get(position);
     }
 
     @Override
@@ -50,7 +56,7 @@ public class ItemsAdapter extends BaseAdapter {
         TextView itemPriceTV = row.findViewById(R.id.itemPriceTV);
         TextView itemInventoryTV = row.findViewById(R.id.itemInventoryTV);
 
-        Item item = items[position];
+        Item item = items.get(position);
         if(item!=null){
 
             itemNameTV.setText(item.getName());
@@ -61,9 +67,9 @@ public class ItemsAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(row.getContext(), SeeProductActivity.class);
-                    i.putExtra("placePosition",activity.getPlaceId());
-                    i.putExtra("categoryPosition",activity.getCategoryId());
-                    i.putExtra("itemPosition",position);
+                    i.putExtra("placeId",activity.getPlaceId());
+                    i.putExtra("categoryId",activity.getCategoryId());
+                    i.putExtra("itemId",item.getId());
                     row.getContext().startActivity(i);
                 }
             });

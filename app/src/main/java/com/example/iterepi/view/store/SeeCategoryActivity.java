@@ -86,7 +86,7 @@ public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
 
     public void setCategory(Category category) {
         this.category=category;
-        //this.adapter = new ItemsAdapter(this,category.getItems().values().);
+        this.adapter = new ItemsAdapter(this,category.getItems());
         this.myItemsList.setAdapter(adapter);
     }
 }

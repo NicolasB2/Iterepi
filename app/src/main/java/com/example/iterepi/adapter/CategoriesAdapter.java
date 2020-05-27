@@ -25,10 +25,11 @@ public class CategoriesAdapter extends BaseAdapter {
         this.activity = activity;
         this.categories = new ArrayList<>();
 
-        for (String id:categories.keySet()){
-            this.categories.add(categories.get(id));
+        if(categories!=null){
+            for (String id:categories.keySet()){
+                this.categories.add(categories.get(id));
+            }
         }
-
     }
 
     @Override
@@ -61,7 +62,7 @@ public class CategoriesAdapter extends BaseAdapter {
                 if(category.getItems()==null){
                     categoryItemsTV.setText(0+"");
                 }else{
-                    categoryItemsTV.setText(category.getItems().size());
+                    categoryItemsTV.setText(category.getItems().size()+"");
                 }
 
 
