@@ -26,7 +26,6 @@ import java.util.HashMap;
 public class AddPlaceController implements View.OnClickListener{
 
     private AddPlaceDialog activity;
-    private HTTPSWebUtilDomi utilDomi;
 
     public static final int SEARCH_CALLBACK = 1;
     public static final int SEND_CALLBACK = 2;
@@ -35,7 +34,6 @@ public class AddPlaceController implements View.OnClickListener{
 
     public AddPlaceController(AddPlaceDialog activity) {
         this.activity = activity;
-        this.utilDomi = new HTTPSWebUtilDomi();
         activity.getAddPlaceBtn().setOnClickListener(this);
         activity.getCloseBtn().setOnClickListener(this);
 
@@ -97,18 +95,12 @@ public class AddPlaceController implements View.OnClickListener{
                         place.setLocation(location);
                         place.setName(name);
 
-                        new Thread(
-                                ()->{
-                                    Gson gson = new Gson();
-                                    String json = gson.toJson(place);
-                                    utilDomi.PUTrequest(SEND_CALLBACK,"https://iterepi.firebaseio.com/sellers/"+user_id+"/places/"
-                                            +place.getId()+".json",json);
+                        FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").child(place.getId()).setValue(place);
 
-                                    Intent s = new Intent(activity, MyPlacesActivity.class);
-                                    activity.startActivity(s);
-                                    activity.finish();
-                                }
-                        ).start();
+                        Intent s = new Intent(activity, MyPlacesActivity.class);
+                        activity.startActivity(s);
+                        activity.finish();
+
                     }
                 }
                 break;

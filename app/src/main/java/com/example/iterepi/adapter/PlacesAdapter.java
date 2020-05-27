@@ -62,7 +62,7 @@ public class PlacesAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(row.getContext(), SeePlaceActivity.class);
-                    i.putExtra("placePosition",position);
+                    i.putExtra("placeId",places.get(position).getId());
                     row.getContext().startActivity(i);
                     activity.finish();
                 }

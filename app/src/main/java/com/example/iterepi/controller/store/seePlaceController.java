@@ -1,30 +1,34 @@
 package com.example.iterepi.controller.store;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.iterepi.R;
 import com.example.iterepi.model.Place;
+import com.example.iterepi.model.Seller;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
-import com.example.iterepi.view.store.AddCategoryDialog;
 import com.example.iterepi.view.store.MyPlacesActivity;
 import com.example.iterepi.view.store.SeePlaceActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-import java.io.Serializable;
+import java.util.HashMap;
 
-public class seePlaceController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
+public class seePlaceController implements View.OnClickListener{
 
     private SeePlaceActivity activity;
-    private HTTPSWebUtilDomi utilDomi;
 
     public seePlaceController(SeePlaceActivity activity) {
         this.activity = activity;
-        this.utilDomi = new HTTPSWebUtilDomi();
-        this.utilDomi.setListener(this);
 
         this.activity.getBackBtn().setOnClickListener(this);
         this.activity.getUpdateDataBtn().setOnClickListener(this);
@@ -34,13 +38,35 @@ public class seePlaceController implements View.OnClickListener, HTTPSWebUtilDom
         }
     }
 
-    private void loadPlace() {
+    public void loadPlace(){
         String user_id = FirebaseAuth.getInstance().getUid();
 
         new Thread(
                 ()->{
-                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id+"/places/"+activity.getPlacePosition()+".json";
-                    utilDomi.GETrequest(1,request);
+                    Query query = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").child(activity.getPlaceId());
+
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                           Place place =  dataSnapshot.getValue(Place.class);
+
+                            activity.runOnUiThread(
+                                    ()->{
+                                        if(place!=null){
+                                            activity.setPlace(place);
+                                            activity.getPlaceNameTV().setText(place.getName());
+                                            activity.getPlaceNameTF().getEditText().setText(place.getName());
+                                            activity.getPlaceLocationTF().getEditText().setText(place.getLocation());
+                                        }
+                                    }
+                            );
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
         ).start();
     }
@@ -74,46 +100,21 @@ public class seePlaceController implements View.OnClickListener, HTTPSWebUtilDom
 
                     else {
 
-                        activity.getPlace().setLocation(location);
-                        activity.getPlace().setName(name);
+                        Place p = new Place();
+                        p.setId(activity.getPlaceId());
+                        p.setLocation(location);
+                        p.setName(name);
 
-                        new Thread(
-                                ()->{
-                                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id+"/places/"+activity.getPlacePosition()+".json";
-                                    Gson gson = new Gson();
-                                    String json = gson.toJson(activity.getPlace());
-                                    utilDomi.PUTrequest(1,request,json);
-                                }
-                        ).start();
+                        FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").child(p.getId()).setValue(p);
 
-                        Toast.makeText(activity,activity.getString(R.string.update_successful),Toast.LENGTH_LONG).show();
                         Intent s = new Intent(activity, MyPlacesActivity.class);
                         activity.startActivity(s);
                         activity.finish();
+
+                        Toast.makeText(activity,activity.getString(R.string.update_successful),Toast.LENGTH_LONG).show();
                     }
 
                 }
-                break;
-        }
-    }
-
-    @Override
-    public void onResponse(int callbackID, String response) {
-        switch (callbackID) {
-            case 1:
-                Gson gson = new Gson();
-                Place place = gson.fromJson(response, Place.class);
-
-                activity.runOnUiThread(
-                        ()->{
-                            if(place!=null){
-                                activity.setPlace(place);
-                                activity.getPlaceNameTV().setText(place.getName());
-                                activity.getPlaceNameTF().getEditText().setText(place.getName());
-                                activity.getPlaceLocationTF().getEditText().setText(place.getLocation());
-                            }
-                        }
-                );
                 break;
         }
     }

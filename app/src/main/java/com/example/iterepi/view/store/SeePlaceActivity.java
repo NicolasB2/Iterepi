@@ -1,7 +1,5 @@
 package com.example.iterepi.view.store;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,7 +27,7 @@ public class SeePlaceActivity extends SellerNavigationDrawerActivity{
     private Button updateDataBtn;
     private ImageButton backBtn;
     private Place place;
-    private int placePosition;
+    private String placeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,7 @@ public class SeePlaceActivity extends SellerNavigationDrawerActivity{
         View contentView = inflater.inflate(R.layout.activity_see_place, null, false);
         getDrawerLayout().addView(contentView, 0);
 
-        this.placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
+        this.placeId = (String) getIntent().getExtras().getSerializable("placeId");
 
         this.myCategoriesList = findViewById(R.id.myCategoriesList);
         this.updateDataBtn = findViewById(R.id.updateDataBtn);
@@ -73,8 +71,8 @@ public class SeePlaceActivity extends SellerNavigationDrawerActivity{
         return placeLocationTF;
     }
 
-    public int getPlacePosition() {
-        return placePosition;
+    public String getPlaceId() {
+        return placeId;
     }
 
     public Place getPlace() {
@@ -83,7 +81,7 @@ public class SeePlaceActivity extends SellerNavigationDrawerActivity{
 
     public void setPlace(Place place) {
         this.place = place;
-        this.adapter = new CategoriesAdapter(this,place.getCategories());
+        //this.adapter = new CategoriesAdapter(this,place.getCategories());
         this.myCategoriesList.setAdapter(adapter);
     }
 

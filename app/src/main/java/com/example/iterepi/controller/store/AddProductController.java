@@ -49,7 +49,7 @@ public class AddProductController implements View.OnClickListener, HTTPSWebUtilD
                 activity.runOnUiThread(
                         ()->{
                             if(seller!=null){
-                                ArrayAdapter<Category> adp1 = new ArrayAdapter<Category>(activity, android.R.layout.simple_list_item_1, seller.getPlaces().get(position).getCategories());
+                                ArrayAdapter<Category> adp1 = new ArrayAdapter<Category>(activity, android.R.layout.simple_list_item_1, (List<Category>) seller.getPlaces().get(position).getCategories().values());
                                 adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 activity.getCategoryOfProductSP().setAdapter(adp1);
                             }

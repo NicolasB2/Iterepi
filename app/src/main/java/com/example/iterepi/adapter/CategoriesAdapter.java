@@ -60,7 +60,7 @@ public class CategoriesAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(row.getContext(), SeeCategoryActivity.class);
-                        i.putExtra("placePosition",activity.getPlacePosition());
+                        i.putExtra("placePosition",activity.getPlaceId());
                         i.putExtra("categoryPosition",position);
                         row.getContext().startActivity(i);
                     }
