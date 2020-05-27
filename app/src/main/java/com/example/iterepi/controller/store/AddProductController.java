@@ -146,7 +146,7 @@ public class AddProductController implements View.OnClickListener, HTTPSWebUtilD
                                     utilDomi.PUTrequest(SEND_CALLBACK,"https://iterepi.firebaseio.com/sellers/"+user_id
                                             +"/places/"+activity.getPlaceOfProductSP().getSelectedItemPosition()
                                             +"/categories/"+activity.getCategoryOfProductSP().getSelectedItemPosition()
-                                            +"/items/"+category.numItems()+".json",json);
+                                            +"/items/"+category.getItems()+".json",json);
                                 }
 
                         ).start();

@@ -3,18 +3,19 @@ package com.example.iterepi.model;
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Category implements Serializable {
 
     private String id;
     private String name;
-    private Item[] items;
+    private HashMap<String,Item> items;
 
     public Category() {
-        items = new Item[0];
+
     }
 
-    public Category(String id, String name, Item[] items) {
+    public Category(String id, String name,HashMap<String,Item> items) {
         this.id = id;
         this.name = name;
         this.items = items;
@@ -36,21 +37,14 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public Item[] getItems() {
+    public HashMap<String,Item> getItems() {
         return items;
     }
 
-    public void setItems(Item[] items) {
+    public void setItems(HashMap<String,Item> items) {
         this.items = items;
     }
 
-    public int numItems(){
-        if(items==null){
-            return 0;
-        }else{
-            return items.length;
-        }
-    }
 
     @NonNull
     @Override

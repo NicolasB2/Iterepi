@@ -95,7 +95,9 @@ public class AddPlaceController implements View.OnClickListener{
                         place.setLocation(location);
                         place.setName(name);
 
-                        FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").child(place.getId()).setValue(place);
+                        FirebaseDatabase.getInstance().getReference()
+                                .child("sellers").child(user_id)
+                                .child("places").child(place.getId()).setValue(place);
 
                         Intent s = new Intent(activity, MyPlacesActivity.class);
                         activity.startActivity(s);

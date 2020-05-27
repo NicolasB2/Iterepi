@@ -54,7 +54,7 @@ public class CategoriesAdapter extends BaseAdapter {
             if(category!=null){
 
                 categoryNameTV.setText(category.getName());
-                categoryItemsTV.setText(category.numItems()+"");
+                categoryItemsTV.setText(category.getId()+"");
 
                 row.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.iterepi.R;
 import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Place;
@@ -13,15 +15,21 @@ import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddCategoryDialog;
 import com.example.iterepi.view.store.SeePlaceActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
-public class AddCategoryController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
+public class AddCategoryController implements View.OnClickListener{
 
     private AddCategoryDialog activity;
-    private HTTPSWebUtilDomi utilDomi;
 
     public static final int SEARCH_CALLBACK = 1;
     public static final int SEND_CALLBACK = 2;
@@ -30,23 +38,40 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
 
     public AddCategoryController(AddCategoryDialog activity) {
         this.activity = activity;
-        this.utilDomi = new HTTPSWebUtilDomi();
-        utilDomi.setListener(this);
         activity.getAddCategoryBtn().setOnClickListener(this);
         activity.getCloseBtn().setOnClickListener(this);
 
         loadSeller();
     }
 
-    private void loadSeller() {
+    public void loadSeller(){
         String user_id = FirebaseAuth.getInstance().getUid();
 
-        new Thread(
-                ()->{
-                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id+"/.json";
-                    utilDomi.GETrequest(SEARCH_CALLBACK,request);
-                }
-        ).start();
+        Query query = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                seller = dataSnapshot.getValue(Seller.class);
+
+                activity.runOnUiThread(
+                        ()->{
+                            ArrayList<Place> places = new ArrayList<>();
+                            HashMap<String,Place> ps = seller.getPlaces();
+                            for (String id:ps.keySet()){
+                                places.add(ps.get(id));
+                            }
+                            ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(activity, android.R.layout.simple_list_item_1, (List<Place>) places);
+                            adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            activity.getPlaceOfProductSP().setAdapter(adp1);
+                        });
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
     }
 
 
@@ -59,12 +84,11 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
             case R.id.updateDataBtn:
 
                 String user_id = FirebaseAuth.getInstance().getUid();
-                String id = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").push().getKey();
                 String name = activity.getCategoryNameTF().getEditText().getText().toString();
                 Place place = (Place) activity.getPlaceOfProductSP().getSelectedItem();
 
 
-                if(id != null){
+                if(user_id != null){
                     if (name.equals("")){
                         Toast.makeText(activity,activity.getString(R.string.forgot_something)+" "+activity.getString(R.string.name),Toast.LENGTH_LONG).show();
                         break;
@@ -76,24 +100,23 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
 
                     else{
 
+                        String id = FirebaseDatabase.getInstance().getReference()
+                                .child("sellers").child(user_id)
+                                .child("places").child(place.getId())
+                                .child("categories").push().getKey();
+
                         Category category = new Category();
                         category.setId(id);
                         category.setName(name);
 
 
-                        new Thread(
-                                ()->{
-                                    Gson gson = new Gson();
-                                    String json = gson.toJson(category);
-                                    utilDomi.PUTrequest(SEND_CALLBACK,"https://iterepi.firebaseio.com/sellers/"+user_id
-                                            +"/places/"+activity.getPlaceOfProductSP().getSelectedItemPosition()+"/categories/"
-                                            +place.getId()+".json",json);
-                                }
-
-                        ).start();
+                        FirebaseDatabase.getInstance().getReference()
+                                .child("sellers").child(user_id)
+                                .child("places").child(place.getId())
+                                .child("categories").child(category.getId()).setValue(category);
 
                         Intent s = new Intent(activity, SeePlaceActivity.class);
-                        s.putExtra("placePosition",0);
+                        s.putExtra("placeId",place.getId());
                         activity.startActivity(s);
                         activity.finish();
                         break;
@@ -102,29 +125,6 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
 
             case R.id.closeBtn:
                 activity.finish();
-                break;
-        }
-    }
-
-    @Override
-    public void onResponse(int callbackID, String response) {
-        switch (callbackID){
-            case SEND_CALLBACK:
-                break;
-            case SEARCH_CALLBACK:
-                Gson gson = new Gson();
-                this.seller = gson.fromJson(response, Seller.class);
-
-                activity.runOnUiThread(
-                        ()->{
-                            if(seller!=null){
-                                ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(this.activity, android.R.layout.simple_list_item_1, (List<Place>) seller.getPlaces().values());
-                                adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                this.activity.getPlaceOfProductSP().setAdapter(adp1);
-                            }
-                        }
-                );
-
                 break;
         }
     }
