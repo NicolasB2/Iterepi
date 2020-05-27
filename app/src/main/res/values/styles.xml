@@ -45,5 +45,10 @@
         <item name="boxStrokeColor">@color/primaryDarkColor</item>
     </style>
 
+    <style name="CircleButton" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 
 </resources>

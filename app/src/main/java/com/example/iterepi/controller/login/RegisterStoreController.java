@@ -1,8 +1,12 @@
 package com.example.iterepi.controller.login;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 
 import com.example.iterepi.R;
@@ -13,8 +17,15 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+
+import java.io.IOException;
+
+import static android.app.Activity.RESULT_OK;
 
 public class RegisterStoreController implements View.OnClickListener {
+
+    public static final int GALLERY_CALLBACK = 2;
 
     private RegisterStoreActivity activity;
     private boolean checkName;
@@ -22,13 +33,17 @@ public class RegisterStoreController implements View.OnClickListener {
     private boolean checkEmail;
     private boolean checkPass;
     private boolean checkNit;
+    private Uri tempUri;
+    private String logo;
 
     public RegisterStoreController(RegisterStoreActivity activity) {
 
         this.activity = activity;
+        tempUri = null;
 
         activity.getRegisterBtn().setOnClickListener(this);
         activity.getBackBtn().setOnClickListener(this);
+        activity.getLogoIV().setOnClickListener(this);
         listeners();
 
     }
@@ -45,6 +60,12 @@ public class RegisterStoreController implements View.OnClickListener {
 
             case R.id.backBtn:
                 activity.onBackPressed();
+                break;
+
+            case R.id.logoIV:
+                Intent gal = new Intent(Intent.ACTION_GET_CONTENT);
+                gal.setType("image/*");
+                activity.startActivityForResult(gal, GALLERY_CALLBACK);
                 break;
 
 
@@ -100,15 +121,36 @@ public class RegisterStoreController implements View.OnClickListener {
             String sEmail = email;
             String sPassword = pass;
             String sNit = nit;
-            String logo = null;
+
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass).addOnSuccessListener(authResult -> {
 
                 // Add to database code.
 
                 String id = FirebaseAuth.getInstance().getUid();
-                Seller seller = new Seller(id, sName, sNit, sEmail, logo, null, null, null);
-                FirebaseDatabase.getInstance().getReference().child("sellers").child(id).setValue(seller);
+
+                if (tempUri != null) {
+                    FirebaseStorage storage = FirebaseStorage.getInstance();
+
+                    storage.getReference().child("sellers").child(id).child("logo").putFile(tempUri).addOnCompleteListener(task -> {
+
+                        if (task.isSuccessful()) {
+
+                            Log.e("STORAGE", "LOGO SELLER ON STORAGE.");
+
+                            storage.getReference().child("sellers").child(id).child("logo").getDownloadUrl().addOnSuccessListener(uri -> {
+
+                                logo = uri.toString();
+
+                                Seller seller = new Seller(id, sName, sNit, sEmail, logo, null, null, null);
+                                FirebaseDatabase.getInstance().getReference().child("sellers").child(id).setValue(seller);
+
+                            });
+
+                        }
+
+                    });
+                }
 
                 // Start StoreHomeActivity
 
@@ -178,6 +220,30 @@ public class RegisterStoreController implements View.OnClickListener {
         }
 
         return password;
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+
+            switch (requestCode) {
+
+                case GALLERY_CALLBACK:
+                    tempUri = data.getData();
+
+                    try {
+                        Bitmap image = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), tempUri);
+                        activity.getLogoIV().setImageBitmap(image);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    break;
+
+            }
+        }
+
     }
 
     // Listeners of all TextInputLayouts for a responsive interface.
