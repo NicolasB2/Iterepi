@@ -2,20 +2,23 @@ package com.example.iterepi.view.user;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.user.SectionStoreUserController;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SectionStoreUser extends AppCompatActivity {
 
     private TextView nameStoreTV;
     private ImageButton backBtn;
-    private ImageView imageLogoStoreIV;
+    private CircleImageView imageLogoStoreIV;
     private RecyclerView listProductsRV;
+    private SectionStoreUserController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,37 +30,23 @@ public class SectionStoreUser extends AppCompatActivity {
         imageLogoStoreIV = findViewById(R.id.imageLogoStoreIV);
         listProductsRV = findViewById(R.id.listProductsRV);
 
+        controller = new SectionStoreUserController(this);
+
     }
 
     public TextView getNameStoreTV() {
         return nameStoreTV;
     }
 
-    public void setNameStoreTV(TextView nameStoreTV) {
-        this.nameStoreTV = nameStoreTV;
-    }
-
     public ImageButton getBackBtn() {
         return backBtn;
     }
 
-    public void setBackBtn(ImageButton backBtn) {
-        this.backBtn = backBtn;
-    }
-
-    public ImageView getImageLogoStoreIV() {
+    public CircleImageView getImageLogoStoreIV() {
         return imageLogoStoreIV;
-    }
-
-    public void setImageLogoStoreIV(ImageView imageLogoStoreIV) {
-        this.imageLogoStoreIV = imageLogoStoreIV;
     }
 
     public RecyclerView getListProductsRV() {
         return listProductsRV;
-    }
-
-    public void setListProductsRV(RecyclerView listProductsRV) {
-        this.listProductsRV = listProductsRV;
     }
 }

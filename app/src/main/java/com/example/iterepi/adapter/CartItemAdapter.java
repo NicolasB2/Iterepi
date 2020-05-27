@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
-import com.example.iterepi.model.Cart;
 import com.example.iterepi.model.Item;
 import com.example.iterepi.view.user.CartFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,9 +26,9 @@ import java.util.ArrayList;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHolder> implements View.OnClickListener {
 
+    CartFragment fragment;
     private ArrayList<Item> cartItems;
     private View.OnClickListener listener;
-    CartFragment fragment;
 
     public CartItemAdapter(ArrayList<Item> cartItems, CartFragment fragment) {
         this.cartItems = cartItems;
@@ -58,7 +57,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
         holder.quantityTV.setText(quantity);
         //TODO: Image missing
 
-
         Query query = FirebaseDatabase.getInstance().getReference()
                 .child("buyers")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
@@ -67,14 +65,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Buyer b = dataSnapshot.getValue(Buyer.class);
+
                 holder.closeBtn.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(holder.itemView.getContext(), b.getName(), Toast.LENGTH_SHORT).show();
-
                         if (b != null) {
-                            Toast.makeText(holder.itemView.getContext(), b.getName(), Toast.LENGTH_SHORT).show();
                             String id = cartItems.get(position).getId();
                             b.getCart().getItems().remove(id);
                             FirebaseDatabase.getInstance().getReference()
@@ -82,24 +78,47 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
                                     .setValue(b);
                         }
-                        fragment.getFragmentManager().beginTransaction().detach(fragment).attach(fragment) .commit();
+                        fragment.getFragmentManager().beginTransaction().detach(fragment).attach(fragment).commit();
                     }
                 });
 
                 holder.plusBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        FirebaseDatabase.getInstance().getReference()
-                                .child("buyers")
-                                .child(b.getId())
-                                .setValue(new Cart("cartId", null));
+                        if (b != null) {
+                            String id = cartItems.get(position).getId();
+                            Item i = b.getCart().getItems().get(id);
+                            int newQuantity = i.getQuantity() + 1;
+                            i.setQuantity(newQuantity);
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("buyers")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                                    .setValue(b);
+                            holder.quantityTV.setText("Cantidad: " + newQuantity);
+                        }
                     }
                 });
+
 
                 holder.minusBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if (b != null) {
+                            Toast.makeText(holder.itemView.getContext(), b.getName(), Toast.LENGTH_SHORT).show();
+                            String id = cartItems.get(position).getId();
+                            Item i = b.getCart().getItems().get(id);
 
+                            int newQuantity = i.getQuantity() - 1;
+                            if(newQuantity < 0 ){
+                                newQuantity = 0;
+                            }
+                            i.setQuantity(newQuantity);
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("buyers")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                                    .setValue(b);
+                            holder.quantityTV.setText("Cantidad: " + newQuantity);
+                        }
                     }
                 });
             }
@@ -109,10 +128,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
 
             }
         });
-
-
-
-
     }
 
     @Override
