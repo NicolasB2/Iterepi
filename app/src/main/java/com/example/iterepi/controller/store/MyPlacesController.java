@@ -4,17 +4,26 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.example.iterepi.R;
 import com.example.iterepi.model.Place;
+import com.example.iterepi.model.Seller;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddPlaceDialog;
 import com.example.iterepi.view.store.MyPlacesActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
-public class MyPlacesController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
+public class MyPlacesController implements View.OnClickListener{
 
     private MyPlacesActivity activity;
     private HTTPSWebUtilDomi utilDomi;
@@ -23,7 +32,6 @@ public class MyPlacesController implements View.OnClickListener, HTTPSWebUtilDom
     public MyPlacesController(MyPlacesActivity activity) {
         this.activity = activity;
         utilDomi = new HTTPSWebUtilDomi();
-        utilDomi.setListener(this);
         activity.getAddMethodBtn().setOnClickListener(this);
         activity.getBackBtn().setOnClickListener(this);
         loadPlaces();
@@ -34,8 +42,30 @@ public class MyPlacesController implements View.OnClickListener, HTTPSWebUtilDom
 
         new Thread(
                 ()->{
-                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id+"/places/.json";
-                    utilDomi.GETrequest(1,request);
+                    Query query = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id);
+
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Seller seller = dataSnapshot.getValue(Seller.class);
+                            HashMap<String,Place> places = seller.getPlaces();
+                            activity.runOnUiThread(
+                                    ()->{
+                                        if(places!=null){
+                                            for(String id : places.keySet()){
+                                                Place p = places.get(id);
+                                                activity.getAdapter().addPlace(p);
+                                            }
+                                        }
+                                    }
+                            );
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
         ).start();
     }
@@ -50,31 +80,10 @@ public class MyPlacesController implements View.OnClickListener, HTTPSWebUtilDom
                 break;
             case R.id.addMethodBtn:
                 i = new Intent(activity, AddPlaceDialog.class);
-                i.putExtra("places", (Serializable) activity.getAdapter().getPlaces());
                 activity.startActivity(i);
                 activity.finish();
                 break;
         }
     }
 
-    @Override
-    public void onResponse(int callbackID, String response) {
-        switch (callbackID) {
-            case 1:
-                Gson gson = new Gson();
-                Place[] places = gson.fromJson(response, Place[].class);
-
-                activity.runOnUiThread(
-                        ()->{
-                            if(places!=null){
-                                for (int i = 0;i < places.length;i++){
-                                    Place p = places[i];
-                                    activity.getAdapter().addPlace(p);
-                                }
-                            }
-                        }
-                );
-                break;
-        }
-    }
 }

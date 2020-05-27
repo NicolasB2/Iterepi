@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.iterepi.R;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.model.Seller;
@@ -12,10 +14,16 @@ import com.example.iterepi.view.login.SplashScreenActivity;
 import com.example.iterepi.view.store.AddPlaceDialog;
 import com.example.iterepi.view.store.MyPlacesActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
+import java.util.HashMap;
+
+public class AddPlaceController implements View.OnClickListener{
 
     private AddPlaceDialog activity;
     private HTTPSWebUtilDomi utilDomi;
@@ -28,20 +36,30 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
     public AddPlaceController(AddPlaceDialog activity) {
         this.activity = activity;
         this.utilDomi = new HTTPSWebUtilDomi();
-        this.utilDomi.setListener(this);
         activity.getAddPlaceBtn().setOnClickListener(this);
         activity.getCloseBtn().setOnClickListener(this);
 
         loadSeller();
     }
 
-    private void loadSeller() {
+    public void loadSeller(){
         String user_id = FirebaseAuth.getInstance().getUid();
 
         new Thread(
                 ()->{
-                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id+"/.json";
-                    utilDomi.GETrequest(SEARCH_CALLBACK,request);
+                    Query query = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id);
+
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            seller = dataSnapshot.getValue(Seller.class);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
         ).start();
     }
@@ -84,13 +102,13 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
                                     Gson gson = new Gson();
                                     String json = gson.toJson(place);
                                     utilDomi.PUTrequest(SEND_CALLBACK,"https://iterepi.firebaseio.com/sellers/"+user_id+"/places/"
-                                            +seller.numPlaces()+".json",json);
-                                }
+                                            +place.getId()+".json",json);
 
+                                    Intent s = new Intent(activity, MyPlacesActivity.class);
+                                    activity.startActivity(s);
+                                    activity.finish();
+                                }
                         ).start();
-                        Intent s = new Intent(activity, MyPlacesActivity.class);
-                        activity.startActivity(s);
-                        activity.finish();
                     }
                 }
                 break;
@@ -101,15 +119,4 @@ public class AddPlaceController implements View.OnClickListener, HTTPSWebUtilDom
         }
     }
 
-    @Override
-    public void onResponse(int callbackID, String response) {
-        switch (callbackID){
-            case SEND_CALLBACK:
-                break;
-            case SEARCH_CALLBACK:
-                Gson gson = new Gson();
-                this.seller = gson.fromJson(response, Seller.class);
-                break;
-        }
-    }
 }

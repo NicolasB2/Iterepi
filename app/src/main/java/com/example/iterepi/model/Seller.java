@@ -1,6 +1,7 @@
 package com.example.iterepi.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Seller implements Serializable {
 
@@ -10,13 +11,13 @@ public class Seller implements Serializable {
     private String email;
     private String logo;
     private String[] salesID;
-    private Place[] places;
+    private HashMap<String,Place> places;
     private Card[] cards;
 
     public Seller() {
     }
 
-    public Seller(String id, String name, String nit, String email, String logo, String[] salesID, Place[] places, Card[] cards) {
+    public Seller(String id, String name, String nit, String email, String logo, String[] salesID, HashMap<String,Place> places, Card[] cards) {
         this.id = id;
         this.name = name;
         this.nit = nit;
@@ -83,11 +84,11 @@ public class Seller implements Serializable {
         this.salesID = salesID;
     }
 
-    public Place[] getPlaces() {
+    public HashMap<String,Place>getPlaces() {
         return places;
     }
 
-    public void setPlaces(Place[] places) {
+    public void setPlaces(HashMap<String,Place> places) {
         this.places = places;
     }
 
@@ -95,7 +96,7 @@ public class Seller implements Serializable {
         if(places==null){
             return 0;
         }else{
-            return places.length;
+            return places.keySet().size();
         }
     }
 }

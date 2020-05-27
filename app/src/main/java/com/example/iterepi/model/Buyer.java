@@ -15,14 +15,14 @@ public class Buyer implements Serializable {
     private String photo;
     private int gender;
     private String birthday;
-    private HashMap<String, Item> purchasesID;
+    private HashMap<String, String> purchasesID;
     private Cart cart;
     private HashMap<String, Card> cards;
 
     public Buyer() {
     }
 
-    public Buyer(String id, String name, String identification, String email, String photo, int gender, String birthday, HashMap<String, Item> purchasesID, Cart cart, HashMap<String, Card> cards) {
+    public Buyer(String id, String name, String identification, String email, String photo, int gender, String birthday, HashMap<String, String> purchasesID, Cart cart, HashMap<String, Card> cards) {
         this.id = id;
         this.name = name;
         this.identification = identification;
@@ -99,11 +99,11 @@ public class Buyer implements Serializable {
         this.birthday = birthday;
     }
 
-    public HashMap<String, Item> getPurchasesID() {
+    public HashMap<String, String> getPurchasesID() {
         return purchasesID;
     }
 
-    public void setPurchasesID(HashMap<String, Item> purchasesID) {
+    public void setPurchasesID(HashMap<String, String> purchasesID) {
         this.purchasesID = purchasesID;
     }
 

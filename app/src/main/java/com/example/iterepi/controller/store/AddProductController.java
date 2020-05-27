@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 public class AddProductController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener {
 
     private AddProductDialog activity;
@@ -47,7 +49,7 @@ public class AddProductController implements View.OnClickListener, HTTPSWebUtilD
                 activity.runOnUiThread(
                         ()->{
                             if(seller!=null){
-                                ArrayAdapter<Category> adp1 = new ArrayAdapter<Category>(activity, android.R.layout.simple_list_item_1, seller.getPlaces()[position].getCategories());
+                                ArrayAdapter<Category> adp1 = new ArrayAdapter<Category>(activity, android.R.layout.simple_list_item_1, seller.getPlaces().get(position).getCategories());
                                 adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 activity.getCategoryOfProductSP().setAdapter(adp1);
                             }
@@ -87,8 +89,8 @@ public class AddProductController implements View.OnClickListener, HTTPSWebUtilD
                 String price = activity.getPriceProductTF().getEditText().getText().toString();
                 String inventory = activity.getInventoryQualityTF().getEditText().getText().toString();
                 String description = activity.getDescriptionProductTF().getEditText().getText().toString();
-                Place place = seller.getPlaces()[activity.getPlaceOfProductSP().getSelectedItemPosition()];
-                Category category = place.getCategories()[activity.getCategoryOfProductSP().getSelectedItemPosition()];
+                Place place = (Place) activity.getPlaceOfProductSP().getSelectedItem();
+                Category category = (Category) activity.getCategoryOfProductSP().getSelectedItem();
 
                 if(id != null){
                     if (name.equals("")){
@@ -176,7 +178,7 @@ public class AddProductController implements View.OnClickListener, HTTPSWebUtilD
                 activity.runOnUiThread(
                         ()->{
                             if(seller!=null){
-                                ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(this.activity, android.R.layout.simple_list_item_1, seller.getPlaces());
+                                ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(this.activity, android.R.layout.simple_list_item_1, (List<Place>) seller.getPlaces().values());
                                 adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 this.activity.getPlaceOfProductSP().setAdapter(adp1);
                             }

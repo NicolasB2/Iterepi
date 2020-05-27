@@ -33,9 +33,10 @@ public class MyPlacesActivity extends SellerNavigationDrawerActivity {
         this.addMethodBtn = findViewById(R.id.addMethodBtn);
         this.backBtn = findViewById(R.id.backBtn);
 
-        this.controller = new MyPlacesController(this);
         this.adapter = new PlacesAdapter(this);
         this.myPlacesList.setAdapter(adapter);
+
+        this.controller = new MyPlacesController(this);
     }
 
     public ListView getMyPlacesList() {
