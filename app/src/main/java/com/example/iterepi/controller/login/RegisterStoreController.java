@@ -130,6 +130,9 @@ public class RegisterStoreController implements View.OnClickListener {
                 String id = FirebaseAuth.getInstance().getUid();
 
                 if (tempUri != null) {
+                    Seller sellerx = new Seller(id, sName, sNit, sEmail, logo, null, null, null);
+                    FirebaseDatabase.getInstance().getReference().child("sellers").child(id).setValue(sellerx);
+
                     FirebaseStorage storage = FirebaseStorage.getInstance();
 
                     storage.getReference().child("sellers").child(id).child("logo").putFile(tempUri).addOnCompleteListener(task -> {
@@ -145,19 +148,29 @@ public class RegisterStoreController implements View.OnClickListener {
                                 Seller seller = new Seller(id, sName, sNit, sEmail, logo, null, null, null);
                                 FirebaseDatabase.getInstance().getReference().child("sellers").child(id).setValue(seller);
 
+                                // Start StoreHomeActivity
+
+                                Intent i = new Intent(activity, StoreHomeActivity.class);
+                                activity.startActivity(i);
+                                activity.finishAffinity();
+
                             });
 
                         }
 
                     });
+                } else {
+
+                    Seller seller = new Seller(id, sName, sNit, sEmail, logo, null, null, null);
+                    FirebaseDatabase.getInstance().getReference().child("sellers").child(id).setValue(seller);
+
+                    // Start StoreHomeActivity
+
+                    Intent i = new Intent(activity, StoreHomeActivity.class);
+                    activity.startActivity(i);
+                    activity.finishAffinity();
+
                 }
-
-                // Start StoreHomeActivity
-
-                Intent i = new Intent(activity, StoreHomeActivity.class);
-                activity.startActivity(i);
-                activity.finishAffinity();
-
 
             }).addOnFailureListener(f -> {
 

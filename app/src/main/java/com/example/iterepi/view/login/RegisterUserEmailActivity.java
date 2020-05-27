@@ -1,11 +1,13 @@
 package com.example.iterepi.view.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
@@ -48,6 +50,14 @@ public class RegisterUserEmailActivity extends AppCompatActivity {
         passwordTF.setHelperText(getString(R.string.helper_pass));
 
         controller = new RegisterUserEmailController(this);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        controller.onActivityResult(requestCode, resultCode, data);
 
     }
 
