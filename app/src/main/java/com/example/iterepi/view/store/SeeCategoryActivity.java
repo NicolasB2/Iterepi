@@ -27,7 +27,6 @@ public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
     private TextInputLayout categoryNameTF;
     private ListView myItemsList;
 
-    private Button addMethodBtn;
     private Button updateDataBtn;
     private ImageButton backBtn;
 
@@ -47,7 +46,6 @@ public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
         this.categoryPosition = (Integer) getIntent().getExtras().getSerializable("categoryPosition");
 
         this.myItemsList = findViewById(R.id.myItemsList);
-        this.addMethodBtn = findViewById(R.id.addMethodBtn);
         this.updateDataBtn = findViewById(R.id.updateDataBtn);
         this.backBtn = findViewById(R.id.backBtn);
         this.categoryNameTV = findViewById(R.id.categoryNameTV);
@@ -66,10 +64,6 @@ public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
 
     public ListView getMyItemsList() {
         return myItemsList;
-    }
-
-    public Button getAddMethodBtn() {
-        return addMethodBtn;
     }
 
     public Button getUpdateDataBtn() {

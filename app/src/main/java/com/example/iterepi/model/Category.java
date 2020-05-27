@@ -41,4 +41,12 @@ public class Category implements Serializable {
     public void setItems(Item[] items) {
         this.items = items;
     }
+
+    public int numItems(){
+        if(items==null){
+            return 0;
+        }else{
+            return items.length;
+        }
+    }
 }

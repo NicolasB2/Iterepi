@@ -25,6 +25,7 @@
         <activity android:name=".view.store.OrderDetailDialog" />
         <activity android:name=".view.store.AddPlaceDialog" />
         <activity android:name=".view.store.AddCategoryDialog" />
+        <activity android:name=".view.store.AddProductDialog" />
         <activity android:name=".view.user.MakePurchaseActivity" />
         <activity android:name=".view.store.SeeProductDialog" />
         <activity android:name=".view.login.RegisterMenuActivity" />

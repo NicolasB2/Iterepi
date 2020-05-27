@@ -27,7 +27,7 @@ public class SeeProductDialog extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_see_product);
+        setContentView(R.layout.activity_see_product);
 
         backBtn3 = findViewById(R.id.backBtn);
         itemName = findViewById(R.id.placeNameTV);

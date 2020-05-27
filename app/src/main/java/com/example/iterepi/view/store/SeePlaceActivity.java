@@ -26,7 +26,6 @@ public class SeePlaceActivity extends SellerNavigationDrawerActivity{
     private TextInputLayout placeLocationTF;
     private ListView myCategoriesList;
     private CategoriesAdapter adapter;
-    private Button addMethodBtn;
     private Button updateDataBtn;
     private ImageButton backBtn;
     private Place place;
@@ -43,7 +42,6 @@ public class SeePlaceActivity extends SellerNavigationDrawerActivity{
         this.placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
 
         this.myCategoriesList = findViewById(R.id.myCategoriesList);
-        this.addMethodBtn = findViewById(R.id.addMethodBtn);
         this.updateDataBtn = findViewById(R.id.updateDataBtn);
         this.backBtn = findViewById(R.id.backBtn);
         this.placeNameTV = findViewById(R.id.placeNameTV);
@@ -54,17 +52,6 @@ public class SeePlaceActivity extends SellerNavigationDrawerActivity{
 
     }
 
-    public ListView getMyCategoriesList() {
-        return myCategoriesList;
-    }
-
-    public CategoriesAdapter getAdapter() {
-        return adapter;
-    }
-
-    public Button getAddMethodBtn() {
-        return addMethodBtn;
-    }
 
     public Button getUpdateDataBtn() {
         return updateDataBtn;

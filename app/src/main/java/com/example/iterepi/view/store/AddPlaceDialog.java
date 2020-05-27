@@ -26,7 +26,6 @@ public class AddPlaceDialog extends AppCompatActivity {
 
     private AddPlaceController controller;
 
-    private List<Place> places;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +38,6 @@ public class AddPlaceDialog extends AppCompatActivity {
         addPlaceBtn = findViewById(R.id.updateDataBtn);
         closeBtn = findViewById(R.id.closeBtn);
 
-        places = (List<Place>) getIntent().getExtras().getSerializable("places");
-
-        if(places==null){
-            places = new ArrayList<>();
-        }
 
         controller = new AddPlaceController(this);
     }
@@ -67,9 +61,5 @@ public class AddPlaceDialog extends AppCompatActivity {
 
     public ImageButton getCloseBtn() {
         return closeBtn;
-    }
-
-    public List<Place> getPlaces() {
-        return places;
     }
 }
