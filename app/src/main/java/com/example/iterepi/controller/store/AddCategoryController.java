@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 public class AddCategoryController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener{
 
     private AddCategoryDialog activity;
@@ -59,7 +61,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                 String user_id = FirebaseAuth.getInstance().getUid();
                 String id = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").push().getKey();
                 String name = activity.getCategoryNameTF().getEditText().getText().toString();
-                Place place = seller.getPlaces()[activity.getPlaceOfProductSP().getSelectedItemPosition()];
+                Place place = (Place) activity.getPlaceOfProductSP().getSelectedItem();
 
 
                 if(id != null){
@@ -116,7 +118,7 @@ public class AddCategoryController implements View.OnClickListener, HTTPSWebUtil
                 activity.runOnUiThread(
                         ()->{
                             if(seller!=null){
-                                ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(this.activity, android.R.layout.simple_list_item_1, seller.getPlaces());
+                                ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(this.activity, android.R.layout.simple_list_item_1, (List<Place>) seller.getPlaces().values());
                                 adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 this.activity.getPlaceOfProductSP().setAdapter(adp1);
                             }
