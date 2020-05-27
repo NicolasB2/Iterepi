@@ -70,4 +70,12 @@ public class Place implements Serializable {
 
         this.categories = c;
     }
+
+    public int numCategories() {
+        if(categories==null){
+            return 0;
+        }else{
+            return categories.length;
+        }
+    }
 }

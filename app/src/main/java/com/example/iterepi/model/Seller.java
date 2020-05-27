@@ -90,4 +90,12 @@ public class Seller implements Serializable {
     public void setPlaces(Place[] places) {
         this.places = places;
     }
+
+    public int numPlaces(){
+        if(places==null){
+            return 0;
+        }else{
+            return places.length;
+        }
+    }
 }

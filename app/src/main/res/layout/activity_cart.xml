@@ -55,4 +55,19 @@
         app:layout_constraintTop_toTopOf="@+id/view2"
         app:srcCompat="@drawable/alt_logo" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/primaryDarkColor"
+        app:itemBackground="@color/primaryDarkColor"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/buttom_nav_menu" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

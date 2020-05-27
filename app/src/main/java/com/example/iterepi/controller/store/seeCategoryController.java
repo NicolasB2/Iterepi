@@ -27,8 +27,6 @@ public class seeCategoryController implements View.OnClickListener, HTTPSWebUtil
         this.activity = activity;
         this.utilDomi = new HTTPSWebUtilDomi();
         this.utilDomi.setListener(this);
-
-        this.activity.getAddMethodBtn().setOnClickListener(this);
         this.activity.getBackBtn().setOnClickListener(this);
         this.activity.getUpdateDataBtn().setOnClickListener(this);
 
@@ -55,10 +53,6 @@ public class seeCategoryController implements View.OnClickListener, HTTPSWebUtil
 
         switch (v.getId()) {
             case R.id.backBtn:
-                activity.finish();
-                break;
-
-            case R.id.addMethodBtn:
                 activity.finish();
                 break;
 

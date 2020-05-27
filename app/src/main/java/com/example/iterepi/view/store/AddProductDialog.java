@@ -8,6 +8,7 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.store.AddProductController;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class AddProductDialog extends AppCompatActivity {
@@ -24,6 +25,8 @@ public class AddProductDialog extends AppCompatActivity {
     private Spinner categoryOfProductSP;
 
     private Button addProductBtn;
+
+    private AddProductController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,77 +46,43 @@ public class AddProductDialog extends AppCompatActivity {
 
         addProductBtn = findViewById(R.id.addProductBtn);
 
+        controller = new AddProductController(this);
+
     }
 
     public ImageButton getCloseBtn() {
         return closeBtn;
     }
 
-    public void setCloseBtn(ImageButton closeBtn) {
-        this.closeBtn = closeBtn;
-    }
-
     public ImageButton getAddImageProductBtn() {
         return addImageProductBtn;
-    }
-
-    public void setAddImageProductBtn(ImageButton addImageProductBtn) {
-        this.addImageProductBtn = addImageProductBtn;
     }
 
     public TextInputLayout getNameProductTF() {
         return nameProductTF;
     }
 
-    public void setNameProductTF(TextInputLayout nameProductTF) {
-        this.nameProductTF = nameProductTF;
-    }
-
     public TextInputLayout getPriceProductTF() {
         return priceProductTF;
-    }
-
-    public void setPriceProductTF(TextInputLayout priceProductTF) {
-        this.priceProductTF = priceProductTF;
     }
 
     public TextInputLayout getInventoryQualityTF() {
         return inventoryQualityTF;
     }
 
-    public void setInventoryQualityTF(TextInputLayout inventoryQualityTF) {
-        this.inventoryQualityTF = inventoryQualityTF;
-    }
-
     public TextInputLayout getDescriptionProductTF() {
         return descriptionProductTF;
-    }
-
-    public void setDescriptionProductTF(TextInputLayout descriptionProductTF) {
-        this.descriptionProductTF = descriptionProductTF;
     }
 
     public Spinner getPlaceOfProductSP() {
         return placeOfProductSP;
     }
 
-    public void setPlaceOfProductSP(Spinner placeOfProductSP) {
-        this.placeOfProductSP = placeOfProductSP;
-    }
-
     public Spinner getCategoryOfProductSP() {
         return categoryOfProductSP;
     }
 
-    public void setCategoryOfProductSP(Spinner categoryOfProductSP) {
-        this.categoryOfProductSP = categoryOfProductSP;
-    }
-
     public Button getAddProductBtn() {
         return addProductBtn;
-    }
-
-    public void setAddProductBtn(Button addProductBtn) {
-        this.addProductBtn = addProductBtn;
     }
 }

@@ -26,7 +26,6 @@ public class seePlaceController implements View.OnClickListener, HTTPSWebUtilDom
         this.utilDomi = new HTTPSWebUtilDomi();
         this.utilDomi.setListener(this);
 
-        this.activity.getAddMethodBtn().setOnClickListener(this);
         this.activity.getBackBtn().setOnClickListener(this);
         this.activity.getUpdateDataBtn().setOnClickListener(this);
 
@@ -53,14 +52,6 @@ public class seePlaceController implements View.OnClickListener, HTTPSWebUtilDom
 
         switch (v.getId()) {
             case R.id.backBtn:
-                activity.finish();
-                break;
-
-            case R.id.addMethodBtn:
-                i = new Intent(activity, AddCategoryDialog.class);
-                i.putExtra("place", (Serializable) activity.getPlace());
-                i.putExtra("placePosition",activity.getPlacePosition());
-                activity.startActivity(i);
                 activity.finish();
                 break;
 

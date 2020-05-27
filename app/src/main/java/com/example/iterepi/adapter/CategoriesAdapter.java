@@ -1,7 +1,6 @@
 package com.example.iterepi.adapter;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,6 @@ import com.example.iterepi.R;
 import com.example.iterepi.model.Category;
 import com.example.iterepi.view.store.SeeCategoryActivity;
 import com.example.iterepi.view.store.SeePlaceActivity;
-import com.example.iterepi.view.store.StoreHomeActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CategoriesAdapter extends BaseAdapter {
 
@@ -52,15 +47,14 @@ public class CategoriesAdapter extends BaseAdapter {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.category_row,null,false);
 
-        try {
             TextView categoryNameTV = row.findViewById(R.id.categoryNameTV);
-            TextView categoryItemsTV = row.findViewById(R.id.categoryItemsTV);
+            TextView categoryItemsTV = row.findViewById(R.id.itemPriceTV);
 
             Category category = categories[position];
             if(category!=null){
 
                 categoryNameTV.setText(category.getName());
-                categoryItemsTV.setText(category.getItems().length+"");
+                categoryItemsTV.setText(category.numItems()+"");
 
                 row.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -73,9 +67,6 @@ public class CategoriesAdapter extends BaseAdapter {
                 });
             }
 
-        }catch (Exception e){
-            Log.e(">>>","error in trackAdapter");
-        }
         return row;
     }
 
