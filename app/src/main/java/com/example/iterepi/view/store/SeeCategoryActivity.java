@@ -1,7 +1,5 @@
 package com.example.iterepi.view.store;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,12 +10,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.iterepi.R;
-import com.example.iterepi.adapter.CategoriesAdapter;
 import com.example.iterepi.adapter.ItemsAdapter;
 import com.example.iterepi.controller.store.seeCategoryController;
-import com.example.iterepi.controller.store.seePlaceController;
 import com.example.iterepi.model.Category;
-import com.example.iterepi.model.Place;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
@@ -32,8 +27,8 @@ public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
     private ImageButton backBtn;
 
     private Category category;
-    private int placePosition;
-    private int categoryPosition;
+    private String placeId;
+    private String categoryId;
 
     private ItemsAdapter adapter;
 
@@ -45,8 +40,8 @@ public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
         View contentView = inflater.inflate(R.layout.activity_see_category, null, false);
         getDrawerLayout().addView(contentView, 0);
 
-        this.placePosition = (Integer) getIntent().getExtras().getSerializable("placePosition");
-        this.categoryPosition = (Integer) getIntent().getExtras().getSerializable("categoryPosition");
+        this.placeId = (String) getIntent().getExtras().getSerializable("placeId");
+        this.categoryId = (String) getIntent().getExtras().getSerializable("categoryId");
 
         this.myItemsList = findViewById(R.id.myItemsList);
         this.updateDataBtn = findViewById(R.id.updateDataBtn);
@@ -77,12 +72,12 @@ public class SeeCategoryActivity extends SellerNavigationDrawerActivity {
         return backBtn;
     }
 
-    public int getPlacePosition() {
-        return placePosition;
+    public String getPlaceId() {
+        return placeId;
     }
 
-    public int getCategoryPosition() {
-        return categoryPosition;
+    public String getCategoryId() {
+        return categoryId;
     }
 
     public Category getCategory() {

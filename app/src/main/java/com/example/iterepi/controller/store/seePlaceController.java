@@ -40,35 +40,31 @@ public class seePlaceController implements View.OnClickListener{
 
     public void loadPlace(){
         String user_id = FirebaseAuth.getInstance().getUid();
+        Query query = FirebaseDatabase.getInstance().getReference()
+                .child("sellers").child(user_id)
+                .child("places").child(activity.getPlaceId());
 
-        new Thread(
-                ()->{
-                    Query query = FirebaseDatabase.getInstance().getReference().child("sellers").child(user_id).child("places").child(activity.getPlaceId());
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Place place =  dataSnapshot.getValue(Place.class);
 
-                    query.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                           Place place =  dataSnapshot.getValue(Place.class);
+                activity.runOnUiThread(
+                        ()->{
+                            if(place!=null){
+                                activity.setPlace(place);
+                                activity.getPlaceNameTV().setText(place.getName());
+                                activity.getPlaceNameTF().getEditText().setText(place.getName());
+                                activity.getPlaceLocationTF().getEditText().setText(place.getLocation());
+                            }
+                        });
+            }
 
-                            activity.runOnUiThread(
-                                    ()->{
-                                        if(place!=null){
-                                            activity.setPlace(place);
-                                            activity.getPlaceNameTV().setText(place.getName());
-                                            activity.getPlaceNameTF().getEditText().setText(place.getName());
-                                            activity.getPlaceLocationTF().getEditText().setText(place.getLocation());
-                                        }
-                                    }
-                            );
-                        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-                }
-        ).start();
     }
 
 

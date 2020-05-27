@@ -9,32 +9,36 @@ import android.widget.TextView;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Category;
+import com.example.iterepi.model.Place;
 import com.example.iterepi.view.store.SeeCategoryActivity;
 import com.example.iterepi.view.store.SeePlaceActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class CategoriesAdapter extends BaseAdapter {
 
-    private Category[] categories;
+    private ArrayList<Category>categories;
     private SeePlaceActivity activity;
 
-    public CategoriesAdapter(SeePlaceActivity activity, Category[] categories) {
+    public CategoriesAdapter(SeePlaceActivity activity, HashMap<String,Category> categories) {
         this.activity = activity;
-        if(categories == null){
-            this.categories = new Category[0];
-        }else{
-            this.categories = categories;
+        this.categories = new ArrayList<>();
+
+        for (String id:categories.keySet()){
+            this.categories.add(categories.get(id));
         }
 
     }
 
     @Override
     public int getCount() {
-        return categories.length;
+        return categories.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return categories[position];
+        return categories.get(position);
     }
 
     @Override
@@ -50,18 +54,23 @@ public class CategoriesAdapter extends BaseAdapter {
             TextView categoryNameTV = row.findViewById(R.id.categoryNameTV);
             TextView categoryItemsTV = row.findViewById(R.id.itemPriceTV);
 
-            Category category = categories[position];
+            Category category = categories.get(position);
             if(category!=null){
 
                 categoryNameTV.setText(category.getName());
-                categoryItemsTV.setText(category.getId()+"");
+                if(category.getItems()==null){
+                    categoryItemsTV.setText(0+"");
+                }else{
+                    categoryItemsTV.setText(category.getItems().size());
+                }
+
 
                 row.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(row.getContext(), SeeCategoryActivity.class);
-                        i.putExtra("placePosition",activity.getPlaceId());
-                        i.putExtra("categoryPosition",position);
+                        i.putExtra("placeId",activity.getPlaceId());
+                        i.putExtra("categoryId",category.getId());
                         row.getContext().startActivity(i);
                     }
                 });

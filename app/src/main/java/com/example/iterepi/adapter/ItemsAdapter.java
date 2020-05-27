@@ -61,8 +61,8 @@ public class ItemsAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(row.getContext(), SeeProductActivity.class);
-                    i.putExtra("placePosition",activity.getPlacePosition());
-                    i.putExtra("categoryPosition",activity.getCategoryPosition());
+                    i.putExtra("placePosition",activity.getPlaceId());
+                    i.putExtra("categoryPosition",activity.getCategoryId());
                     i.putExtra("itemPosition",position);
                     row.getContext().startActivity(i);
                 }

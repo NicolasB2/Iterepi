@@ -4,29 +4,29 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.iterepi.R;
 import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
-import com.example.iterepi.view.store.AddCategoryDialog;
-import com.example.iterepi.view.store.MyPlacesActivity;
 import com.example.iterepi.view.store.SeeCategoryActivity;
 import com.example.iterepi.view.store.SeePlaceActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-import java.io.Serializable;
-
-public class seeCategoryController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener {
+public class seeCategoryController implements View.OnClickListener{
 
     private SeeCategoryActivity activity;
-    private HTTPSWebUtilDomi utilDomi;
 
 
     public seeCategoryController(SeeCategoryActivity activity) {
         this.activity = activity;
-        this.utilDomi = new HTTPSWebUtilDomi();
-        this.utilDomi.setListener(this);
         this.activity.getBackBtn().setOnClickListener(this);
         this.activity.getUpdateDataBtn().setOnClickListener(this);
 
@@ -37,14 +37,30 @@ public class seeCategoryController implements View.OnClickListener, HTTPSWebUtil
 
     private void loadCategory() {
         String user_id = FirebaseAuth.getInstance().getUid();
+        Query query = FirebaseDatabase.getInstance().getReference()
+                .child("sellers").child(user_id)
+                .child("places").child(activity.getPlaceId())
+                .child("categories").child(activity.getCategoryId());
 
-        new Thread(
-                ()->{
-                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id
-                            +"/places/"+activity.getPlacePosition()+"/categories/"+activity.getCategoryPosition()+".json";
-                    utilDomi.GETrequest(1,request);
-                }
-        ).start();
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Category category =  dataSnapshot.getValue(Category.class);
+
+                activity.runOnUiThread(
+                        ()->{
+                            if(category!=null){
+                                activity.setCategory(category);
+                                activity.getCategoryNameTV().setText(category.getName());
+                                activity.getCategoryNameTF().getEditText().setText(category.getName());
+                            }
+                        });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     @Override
@@ -72,19 +88,14 @@ public class seeCategoryController implements View.OnClickListener, HTTPSWebUtil
 
                         activity.getCategory().setName(name);
 
-                        new Thread(
-                                ()->{
-                                    String request = "https://iterepi.firebaseio.com/sellers/"+user_id
-                                            +"/places/"+activity.getPlacePosition()+"/categories/"+activity.getCategoryPosition()+".json";
-                                    Gson gson = new Gson();
-                                    String json = gson.toJson(activity.getCategory());
-                                    utilDomi.PUTrequest(1,request,json);
-                                }
-                        ).start();
+                        FirebaseDatabase.getInstance().getReference()
+                                .child("sellers").child(user_id)
+                                .child("places").child(activity.getPlaceId())
+                                .child("categories").child(activity.getCategoryId()).setValue(activity.getCategory());
 
                         Toast.makeText(activity,activity.getString(R.string.update_successful),Toast.LENGTH_LONG).show();
                         Intent s = new Intent(activity, SeePlaceActivity.class);
-                        s.putExtra("placePosition",activity.getPlacePosition());
+                        s.putExtra("placeId",activity.getPlaceId());
                         activity.startActivity(s);
                         activity.finish();
                     }
@@ -93,23 +104,4 @@ public class seeCategoryController implements View.OnClickListener, HTTPSWebUtil
         }
     }
 
-    @Override
-    public void onResponse(int callbackID, String response) {
-        switch (callbackID) {
-            case 1:
-                Gson gson = new Gson();
-                Category category = gson.fromJson(response, Category.class);
-
-                activity.runOnUiThread(
-                        ()->{
-                            if(category!=null){
-                                activity.setCategory(category);
-                                activity.getCategoryNameTV().setText(category.getName());
-                                activity.getCategoryNameTF().getEditText().setText(category.getName());
-                            }
-                        }
-                );
-                break;
-        }
-    }
 }

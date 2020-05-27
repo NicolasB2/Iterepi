@@ -81,7 +81,7 @@ public class SeePlaceActivity extends SellerNavigationDrawerActivity{
 
     public void setPlace(Place place) {
         this.place = place;
-        //this.adapter = new CategoriesAdapter(this,place.getCategories());
+        this.adapter = new CategoriesAdapter(this,place.getCategories());
         this.myCategoriesList.setAdapter(adapter);
     }
 
