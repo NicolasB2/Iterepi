@@ -23,10 +23,10 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        cartTL = findViewById(R.id.cartTL);
+        cartTL = findViewById(R.id.orderTL);
         tabCart = findViewById(R.id.tabCart);
         tabHistory = findViewById(R.id.tabHistory);
-        cartVP = findViewById(R.id.cartVP);
+        cartVP = findViewById(R.id.orderVP);
 
         this.controller = new CartController(this);
     }
