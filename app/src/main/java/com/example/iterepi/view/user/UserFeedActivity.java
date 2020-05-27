@@ -1,21 +1,23 @@
 package com.example.iterepi.view.user;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 
-import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iterepi.R;
+import com.example.iterepi.adapter.SellerAdapter;
 import com.example.iterepi.controller.user.UserFeedController;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class UserFeedActivity extends NavigationViewActivity {
 
     private UserFeedController controller;
+    private RecyclerView sellersList;
+    private SellerAdapter adapter;
 
 
     @Override
@@ -26,39 +28,25 @@ public class UserFeedActivity extends NavigationViewActivity {
         View contentView = inflater.inflate(R.layout.activity_user_feed, null, false);
         getDrawerLayout().addView(contentView, 0);
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
-        bottomNavigationView.setSelectedItemId(R.id.feed);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        adapter = new SellerAdapter();
 
-                switch (item.getItemId()) {
-
-                    case R.id.location:
-                        startActivity(new Intent(getApplicationContext(), LocationActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.feed:
-                        startActivity(new Intent(getApplicationContext(), UserFeedActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.cart:
-                        startActivity(new Intent(getApplicationContext(), CartActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-
-
-                return false;
-            }
-        });
-
+        sellersList = findViewById(R.id.sellersList);
+        sellersList.setLayoutManager(new LinearLayoutManager(this));
+        sellersList.setAdapter(adapter);
+        DividerItemDecoration dI = new DividerItemDecoration(sellersList.getContext(), LinearLayoutManager.VERTICAL);
+        sellersList.addItemDecoration(dI);
 
         controller = new UserFeedController(this);
+        adapter.setOnClickListener(controller);
 
     }
 
+    public RecyclerView getSellersList() {
+        return sellersList;
+    }
+
+    public SellerAdapter getAdapter() {
+        return adapter;
+    }
 }
