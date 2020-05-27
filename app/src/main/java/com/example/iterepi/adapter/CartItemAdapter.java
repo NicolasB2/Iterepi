@@ -86,7 +86,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
                     @Override
                     public void onClick(View v) {
                         if (b != null) {
-                            Toast.makeText(holder.itemView.getContext(), b.getName(), Toast.LENGTH_SHORT).show();
                             String id = cartItems.get(position).getId();
                             Item i = b.getCart().getItems().get(id);
                             int newQuantity = i.getQuantity() + 1;
@@ -104,7 +103,22 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
                 holder.minusBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if (b != null) {
+                            Toast.makeText(holder.itemView.getContext(), b.getName(), Toast.LENGTH_SHORT).show();
+                            String id = cartItems.get(position).getId();
+                            Item i = b.getCart().getItems().get(id);
 
+                            int newQuantity = i.getQuantity() - 1;
+                            if(newQuantity < 0 ){
+                                newQuantity = 0;
+                            }
+                            i.setQuantity(newQuantity);
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("buyers")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                                    .setValue(b);
+                            holder.quantityTV.setText("Cantidad: " + newQuantity);
+                        }
                     }
                 });
             }
@@ -114,8 +128,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
 
             }
         });
-
-
     }
 
     @Override
