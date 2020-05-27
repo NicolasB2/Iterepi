@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Item;
 import com.example.iterepi.view.store.SeeCategoryActivity;
-import com.example.iterepi.view.store.SeeProductDialog;
+import com.example.iterepi.view.store.SeeProductActivity;
 
 public class ItemsAdapter extends BaseAdapter {
 
@@ -60,7 +60,7 @@ public class ItemsAdapter extends BaseAdapter {
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(row.getContext(), SeeProductDialog.class);
+                    Intent i = new Intent(row.getContext(), SeeProductActivity.class);
                     i.putExtra("placePosition",activity.getPlacePosition());
                     i.putExtra("categoryPosition",activity.getCategoryPosition());
                     i.putExtra("itemPosition",position);

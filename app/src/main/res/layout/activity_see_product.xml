@@ -5,7 +5,7 @@ style="@style/textFieldNormal"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@drawable/alt_background"
-tools:context=".view.store.SeeProductDialog">
+tools:context=".view.store.SeeProductActivity">
 
 <ImageButton
     android:id="@+id/backBtn"
@@ -123,7 +123,8 @@ tools:context=".view.store.SeeProductDialog">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:textColor="#FFFFFF"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
