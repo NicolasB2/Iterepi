@@ -27,6 +27,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CartFragment extends Fragment implements View.OnClickListener {
 
@@ -81,10 +83,12 @@ public class CartFragment extends Fragment implements View.OnClickListener {
            b.setCart(new Cart("cartId",testItems));*/
             if (b.getCart() != null) {
                 if (b.getCart().getItems() != null) {
-                    if (b.getCart().getItems().length > 0) {
+                    if (b.getCart().getItems().size() > 0) {
                         emptyCartIV.setVisibility(View.GONE);
                         emptyCartTV.setVisibility(View.GONE);
-                        for (Item i : b.getCart().getItems()) {
+
+                        for(Map.Entry<String, Item> entry : b.getCart().getItems().entrySet()){
+                            Item i = entry.getValue();
                             cartItems.add(i);
                             cartItemAdapter = new CartItemAdapter(cartItems);
                             listCartRV.setAdapter(cartItemAdapter);

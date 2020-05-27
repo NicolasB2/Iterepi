@@ -1,16 +1,17 @@
 package com.example.iterepi.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Cart implements Serializable {
 
     private String id;
-    private Item[] items;
+    private HashMap<String, Item> items;
 
     public Cart() {
     }
 
-    public Cart(String id, Item[] items) {
+    public Cart(String id, HashMap<String, Item> items) {
         this.id = id;
         this.items = items;
     }
@@ -23,11 +24,11 @@ public class Cart implements Serializable {
         this.id = id;
     }
 
-    public Item[] getItems() {
+    public HashMap<String, Item> getItems() {
         return items;
     }
 
-    public void setItems(Item[] items) {
+    public void setItems(HashMap<String, Item> items) {
         this.items = items;
     }
 }
