@@ -10,14 +10,14 @@ public class Seller implements Serializable {
     private String nit;
     private String email;
     private String logo;
-    private String[] salesID;
+    private HashMap<String, String> salesID;
     private HashMap<String,Place> places;
-    private Card[] cards;
+    private HashMap<String, Card> cards;
 
     public Seller() {
     }
 
-    public Seller(String id, String name, String nit, String email, String logo, String[] salesID, HashMap<String,Place> places, Card[] cards) {
+    public Seller(String id, String name, String nit, String email, String logo, HashMap<String, String> salesID, HashMap<String, Place> places, HashMap<String, Card> cards) {
         this.id = id;
         this.name = name;
         this.nit = nit;
@@ -28,11 +28,19 @@ public class Seller implements Serializable {
         this.cards = cards;
     }
 
-    public Card[] getCards() {
+    public HashMap<String, String> getSalesID() {
+        return salesID;
+    }
+
+    public void setSalesID(HashMap<String, String> salesID) {
+        this.salesID = salesID;
+    }
+
+    public HashMap<String, Card> getCards() {
         return cards;
     }
 
-    public void setCards(Card[] cards) {
+    public void setCards(HashMap<String, Card> cards) {
         this.cards = cards;
     }
 
@@ -67,21 +75,12 @@ public class Seller implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
     public String getLogo() {
         return logo;
     }
 
     public void setLogo(String logo) {
         this.logo = logo;
-    }
-
-    public String[] getSalesID() {
-        return salesID;
-    }
-
-    public void setSalesID(String[] salesID) {
-        this.salesID = salesID;
     }
 
     public HashMap<String,Place>getPlaces() {

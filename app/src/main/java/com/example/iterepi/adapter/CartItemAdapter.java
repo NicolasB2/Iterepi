@@ -15,6 +15,7 @@ import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.model.Cart;
 import com.example.iterepi.model.Item;
+import com.example.iterepi.view.user.CartFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,9 +29,11 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
 
     private ArrayList<Item> cartItems;
     private View.OnClickListener listener;
+    CartFragment fragment;
 
-    public CartItemAdapter(ArrayList<Item> cartItems) {
+    public CartItemAdapter(ArrayList<Item> cartItems, CartFragment fragment) {
         this.cartItems = cartItems;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -54,6 +57,62 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
         holder.priceTV.setText(price);
         holder.quantityTV.setText(quantity);
         //TODO: Image missing
+
+
+        Query query = FirebaseDatabase.getInstance().getReference()
+                .child("buyers")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Buyer b = dataSnapshot.getValue(Buyer.class);
+                holder.closeBtn.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(holder.itemView.getContext(), b.getName(), Toast.LENGTH_SHORT).show();
+
+                        if (b != null) {
+                            Toast.makeText(holder.itemView.getContext(), b.getName(), Toast.LENGTH_SHORT).show();
+                            String id = cartItems.get(position).getId();
+                            b.getCart().getItems().remove(id);
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("buyers")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                                    .setValue(b);
+                        }
+                        fragment.getFragmentManager().beginTransaction().detach(fragment).attach(fragment) .commit();
+                    }
+                });
+
+                holder.plusBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseDatabase.getInstance().getReference()
+                                .child("buyers")
+                                .child(b.getId())
+                                .setValue(new Cart("cartId", null));
+                    }
+                });
+
+                holder.minusBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
     }
 
     @Override
@@ -90,50 +149,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             plusBtn = itemView.findViewById(R.id.plusBtn);
             minusBtn = itemView.findViewById(R.id.minusBtn);
             productIV = itemView.findViewById(R.id.productIV);
-
-            Query query = FirebaseDatabase.getInstance().getReference()
-                    .child("buyers")
-                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
-
-            query.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Buyer b = dataSnapshot.getValue(Buyer.class);
-                    closeBtn.setOnClickListener(new View.OnClickListener() {
-
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(itemView.getContext(), "CLOSE", Toast.LENGTH_SHORT).show();
-
-                            if (b != null) {
-                                Toast.makeText(itemView.getContext(), b.getName(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-
-                    plusBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            FirebaseDatabase.getInstance().getReference()
-                                    .child("buyers")
-                                    .child(b.getId())
-                                    .setValue(new Cart("cartId", null));
-                        }
-                    });
-
-                    minusBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                        }
-                    });
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
 
 
         }
