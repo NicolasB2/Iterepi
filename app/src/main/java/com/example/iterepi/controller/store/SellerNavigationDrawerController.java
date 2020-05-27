@@ -7,7 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
+import com.example.iterepi.model.Seller;
 import com.example.iterepi.view.login.MainActivity;
 import com.example.iterepi.view.store.MyPlacesActivity;
 import com.example.iterepi.view.store.SellerNavigationDrawerActivity;
@@ -41,15 +43,15 @@ public class SellerNavigationDrawerController implements NavigationView.OnNaviga
         FirebaseDatabase.getInstance().getReference().child("sellers").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Seller seller = dataSnapshot.getValue(Seller.class);
-//
-//                if(seller.getLogo()!= null){
-//
-//                    Glide.with(activity).load(seller.getLogo()).centerCrop().into(photo);
-//
-//                }
-//
-//                name.setText(seller.getName());
+                Seller seller = dataSnapshot.getValue(Seller.class);
+
+                if (seller.getLogo() != null) {
+
+                    Glide.with(activity).load(seller.getLogo()).centerCrop().into(photo);
+
+                }
+
+                name.setText(seller.getName());
 
             }
 
