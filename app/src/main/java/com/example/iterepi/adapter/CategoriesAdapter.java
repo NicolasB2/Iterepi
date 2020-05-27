@@ -1,5 +1,6 @@
 package com.example.iterepi.adapter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,6 +74,7 @@ public class CategoriesAdapter extends BaseAdapter {
                         i.putExtra("placeId",activity.getPlaceId());
                         i.putExtra("categoryId",category.getId());
                         row.getContext().startActivity(i);
+                        ((Activity)row.getContext()).finish();
                     }
                 });
             }
