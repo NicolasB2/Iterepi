@@ -22,7 +22,7 @@ public class TransactionItemAdapter extends RecyclerView.Adapter<TransactionItem
     private ArrayList<Transaction> transactions;
     private View.OnClickListener listener;
 
-    public TransactionItemAdapter(TransactionFragment fragment, ArrayList<Transaction> transactions) {
+    public TransactionItemAdapter( ArrayList<Transaction> transactions,TransactionFragment fragment) {
         this.fragment = fragment;
         this.transactions = transactions;
     }
@@ -48,8 +48,6 @@ public class TransactionItemAdapter extends RecyclerView.Adapter<TransactionItem
         holder.purchasePriceTV.setText(price);
         holder.purchaseStateTV.setText(state);
         holder.purchaseDateTV.setText(date);
-
-
     }
 
     @Override

@@ -39,6 +39,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
     private CartItemAdapter cartItemAdapter;
     private ArrayList<Item> cartItems;
     private RecyclerView listCartRV;
+
     private ImageView emptyCartIV;
     private TextView emptyCartTV;
     private Button finishOrderBtn;
