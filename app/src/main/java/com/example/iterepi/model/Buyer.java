@@ -15,6 +15,7 @@ public class Buyer implements Serializable{
     private String photo;
     private int gender;
     private String birthday;
+    private HashMap<String, Transaction> transactions;
     private HashMap<String, String> purchasesID;
     private Cart cart;
     private HashMap<String, Card> cards;
@@ -33,6 +34,14 @@ public class Buyer implements Serializable{
         this.purchasesID = purchasesID;
         this.cart = cart;
         this.cards = cards;
+    }
+
+    public HashMap<String, Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(HashMap<String, Transaction> transactions) {
+        this.transactions = transactions;
     }
 
     public HashMap<String, Card> getCards() {

@@ -1,4 +1,5 @@
 <resources>
+    <string name="finish_order">Realiza tu compra</string>
     <string name="welcome_feed">Bienvenido ¿Qué vas a pedir hoy?</string>
     <string name="empty_cart">¡Tu carrito está vacío!</string>
     <string name="app_name">Iterepi</string>
