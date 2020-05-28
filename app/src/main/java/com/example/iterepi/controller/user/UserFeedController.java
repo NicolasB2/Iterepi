@@ -49,8 +49,6 @@ public class UserFeedController implements View.OnClickListener {
             }
         });
 
-
-
         updateSellers();
         BottomNavigationView bottomNavigationView = (BottomNavigationView) activity.findViewById(R.id.navigation);
         bottomNavigationView.setSelectedItemId(R.id.feed);

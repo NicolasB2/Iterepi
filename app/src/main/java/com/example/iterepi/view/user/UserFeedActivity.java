@@ -27,8 +27,6 @@ public class UserFeedActivity extends NavigationViewActivity {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.activity_user_feed, null, false);
         getDrawerLayout().addView(contentView, 0);
-
-
         adapter = new SellerAdapter();
 
         sellersList = findViewById(R.id.sellersList);

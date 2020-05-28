@@ -62,10 +62,7 @@ public class LoginUserController implements View.OnClickListener {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(activity, gso);
-
         mCallbackManager = CallbackManager.Factory.create();
-
-
     }
 
     public CallbackManager getmCallbackManager() {
@@ -157,8 +154,6 @@ public class LoginUserController implements View.OnClickListener {
                         c.putExtra("PROVIDER", "FACEBOOK");
                         activity.startActivity(c);
                     }else{
-
-
                         Log.e("FACEBOOK", "I'm a old user");
                         Intent c = new Intent(activity, UserFeedActivity.class);
                         activity.startActivity(c);
