@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
+import com.example.iterepi.view.user.ChangesPassActivity;
 import com.example.iterepi.view.user.UserProfileActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
@@ -87,7 +88,8 @@ public class UserProfileController implements View.OnClickListener {
                 break;
 
             case R.id.changePassBtn:
-//                Intent i = new Intent(activity,)
+                Intent i = new Intent(activity, ChangesPassActivity.class);
+                activity.startActivity(i);
                 break;
 
             case R.id.photo:
@@ -261,6 +263,7 @@ public class UserProfileController implements View.OnClickListener {
 
                 } else {
 
+                    putError(activity.getUserEmailTF(), activity.getString(R.string.empty_field));
                     checkEmail = false;
                 }
             }

@@ -125,6 +125,8 @@
     <string name="restore_pass_sent">It has sent instructions to your email to restore your password</string>
     <string name="sellers">Sellers</string>
     <string name="info_updated">Your data has been updated</string>
+    <string name="pass_changed">It has changed your password successfully</string>
+    <string name="error_change_pass">The current password doesn\'t match</string>
 
 
 </resources>
