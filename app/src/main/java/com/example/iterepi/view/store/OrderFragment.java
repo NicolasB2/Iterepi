@@ -18,6 +18,7 @@ import com.example.iterepi.R;
 import com.example.iterepi.adapter.OrderIDAdapter;
 import com.example.iterepi.adapter.SaleIDAdapter;
 import com.example.iterepi.model.Seller;
+import com.example.iterepi.model.Transaction;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -82,11 +83,27 @@ public class OrderFragment extends Fragment {
 
                     for(Map.Entry<String,String> entry : s.getSalesID().entrySet()){
 
-                        String i = entry.getValue();
-                        saleIDs.add(i);
-                        orderItemAdapter = new OrderIDAdapter(saleIDs);
-                        listOrderRV.setAdapter(orderItemAdapter);
+                        Query query = FirebaseDatabase.getInstance().getReference().child("transactions").child(entry.getValue());
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Transaction state = dataSnapshot.getValue(Transaction.class);
+                                if(state.getState() != Transaction.TO_DELIVER){
 
+                                    String i = entry.getValue();
+                                    saleIDs.add(i);
+                                    orderItemAdapter = new OrderIDAdapter(saleIDs);
+                                    listOrderRV.setAdapter(orderItemAdapter);
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
 
                 }else{
