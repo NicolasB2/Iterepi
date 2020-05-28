@@ -14,8 +14,6 @@ import android.widget.DatePicker;
 import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
-import com.example.iterepi.model.Cart;
-import com.example.iterepi.model.Transaction;
 import com.example.iterepi.view.login.RegisterUserEmailActivity;
 import com.example.iterepi.view.user.UserFeedActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -27,7 +25,6 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.HashMap;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -206,12 +203,12 @@ public class RegisterUserEmailController implements View.OnClickListener {
                         photo = user.getPhotoUrl().toString();
                         photo.replace("/s96-c/", "/s800-c/");
 
-                        String transactionId = FirebaseDatabase.getInstance().getReference()
-                                .child(id)
-                                .push().getKey();
-                        HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
+//                        String transactionId = FirebaseDatabase.getInstance().getReference()
+//                                .child(id)
+//                                .push().getKey();
+//                        HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
 
-                        Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, transactions,new Cart("cart", null), null);
+                        Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
                         FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                         goToFeed();
@@ -236,12 +233,12 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
                                     photo = uri.toString();
 
-                                    String transactionId = FirebaseDatabase.getInstance().getReference()
-                                            .child(id)
-                                            .push().getKey();
-                                    HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
+//                                    String transactionId = FirebaseDatabase.getInstance().getReference()
+//                                            .child(id)
+//                                            .push().getKey();
+//                                    HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
 
-                                    Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, transactions, new Cart("cart", null), null);
+                                    Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
                                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                                     goToFeed();
@@ -253,13 +250,13 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
                     } else {
                         photo = user.getPhotoUrl().toString() + "?height=500";
-                        String transactionId = FirebaseDatabase.getInstance().getReference()
-                                .child(id)
-                                .push().toString();
-                        HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
+//                        String transactionId = FirebaseDatabase.getInstance().getReference()
+//                                .child(id)
+//                                .push().toString();
+//                        HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
 
 
-                        Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, transactions,  new Cart("cart", null), null);
+                        Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
                         FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                         goToFeed();
@@ -286,11 +283,11 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
                                     photo = uri.toString();
 
-                                    String transactionId = FirebaseDatabase.getInstance().getReference()
-                                            .child(id)
-                                            .push().toString();
-                                    HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
-                                    Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, transactions,  new Cart("cart", null), null);
+//                                    String transactionId = FirebaseDatabase.getInstance().getReference()
+//                                            .child(id)
+//                                            .push().toString();
+//                                    HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
+                                    Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
                                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
                                     goToFeed();
@@ -303,12 +300,12 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
                     } else {
 
-                        String transactionId = FirebaseDatabase.getInstance().getReference()
-                                .child(id)
-                                .push().toString();
-                        HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
+//                        String transactionId = FirebaseDatabase.getInstance().getReference()
+//                                .child(id)
+//                                .push().toString();
+//                        HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
 
-                        Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, transactions, new Cart("cart", null), null);
+                        Buyer buyer = new Buyer(id, bName, bCedula, email, photo, bGender, bBirthday, null, null, null);
                         FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
                         goToFeed();
 

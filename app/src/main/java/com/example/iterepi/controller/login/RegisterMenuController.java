@@ -9,8 +9,6 @@ import androidx.annotation.NonNull;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
-import com.example.iterepi.model.Cart;
-import com.example.iterepi.model.Transaction;
 import com.example.iterepi.view.login.CompleteRegisterActivity;
 import com.example.iterepi.view.login.LoginUserActivity;
 import com.example.iterepi.view.login.RegisterMenuActivity;
@@ -39,7 +37,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class RegisterMenuController implements View.OnClickListener {
 
@@ -156,12 +153,12 @@ public class RegisterMenuController implements View.OnClickListener {
                         Uri tempUri = Uri.parse(photo);
                         String email = user.getEmail();
 
-                        String transactionId = FirebaseDatabase.getInstance().getReference()
-                                .child(id)
-                                .push().getKey();
-                        HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
+//                        String transactionId = FirebaseDatabase.getInstance().getReference()
+//                                .child(id)
+//                                .push().getKey();
+//                        HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
 
-                        Buyer buyer = new Buyer(id, name, null, email, photo, -1, null, transactions, new Cart("cart", null), null);
+                        Buyer buyer = new Buyer(id, name, null, email, photo, -1, null, null, null, null);
 
                         FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
@@ -254,12 +251,12 @@ public class RegisterMenuController implements View.OnClickListener {
                                     // Better resolution.
                                     photo.replace("/s96-c/", "/s800-c/");
 
-                                    String transactionId = FirebaseDatabase.getInstance().getReference()
-                                            .child(id)
-                                            .push().toString();
-                                    HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
+//                                    String transactionId = FirebaseDatabase.getInstance().getReference()
+//                                            .child(id)
+//                                            .push().toString();
+//                                    HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
 
-                                    Buyer buyer = new Buyer(id, name, null, email, photo, -1, null, transactions, new Cart("cart", null), null);
+                                    Buyer buyer = new Buyer(id, name, null, email, photo, -1, null, null, null, null);
                                     FirebaseDatabase.getInstance().getReference().child("buyers").child(id).setValue(buyer);
 
 
