@@ -81,6 +81,7 @@ public class NavigationViewController implements NavigationView.OnNavigationItem
 
             case R.id.op_payment_methods:
                 i = new Intent(activity, PaymentMethodsActivity.class);
+                i.putExtra("type",PaymentMethodsActivity.BUYER);
                 activity.startActivity(i);
 
                 break;
