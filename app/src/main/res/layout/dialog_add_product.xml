@@ -58,6 +58,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:textColor="#FFFFFF"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="358dp" />
@@ -125,7 +126,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
             android:textColor="#FFFFFF"
+            android:singleLine="true"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="358dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -146,7 +149,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:textColor="#FFFFFF"
+            android:singleLine="true"
             tools:layout_editor_absoluteX="-1dp"
             tools:layout_editor_absoluteY="358dp" />
     </com.google.android.material.textfield.TextInputLayout>

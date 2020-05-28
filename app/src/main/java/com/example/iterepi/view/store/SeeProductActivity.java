@@ -1,12 +1,14 @@
 package com.example.iterepi.view.store;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
 import com.example.iterepi.controller.store.SeeProductController;
@@ -17,7 +19,7 @@ public class SeeProductActivity extends AppCompatActivity {
 
     private TextView itemName;
     private ImageButton backBtn3;
-    private ImageView purchaseImageIV;
+    private ImageView photo;
     private Button updateDataBtn;
 
     private TextInputLayout nameProductTF;
@@ -40,7 +42,7 @@ public class SeeProductActivity extends AppCompatActivity {
 
         backBtn3 = findViewById(R.id.backBtn);
         itemName = findViewById(R.id.placeNameTV);
-        purchaseImageIV = findViewById(R.id.purchaseImageIV);
+        photo = findViewById(R.id.photo);
         updateDataBtn = findViewById(R.id.updateDataBtn);
 
         nameProductTF = findViewById(R.id.nameProductTF);
@@ -55,6 +57,12 @@ public class SeeProductActivity extends AppCompatActivity {
         controller = new SeeProductController(this);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        controller.onActivityResult(requestCode, resultCode, data);
+    }
+
     public ImageButton getBackBtn3() {
         return backBtn3;
     }
@@ -67,8 +75,8 @@ public class SeeProductActivity extends AppCompatActivity {
         return itemName;
     }
 
-    public ImageView getPurchaseImageIV() {
-        return purchaseImageIV;
+    public ImageView getPhoto() {
+        return photo;
     }
 
     public TextInputLayout getNameProductTF() {

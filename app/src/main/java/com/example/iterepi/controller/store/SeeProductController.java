@@ -1,13 +1,16 @@
 package com.example.iterepi.controller.store;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
-import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Item;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.SeeCategoryActivity;
@@ -18,17 +21,26 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
+import com.google.firebase.storage.FirebaseStorage;
+
+import java.io.IOException;
+
+import static android.app.Activity.RESULT_OK;
 
 public class SeeProductController implements View.OnClickListener{
 
+    public static final int GALLERY_CALLBACK = 1;
+
     private SeeProductActivity activity;
     private HTTPSWebUtilDomi utilDomi;
+    private Uri tempUri;
+    private String photo;
 
     public SeeProductController(SeeProductActivity activity) {
         this.activity = activity;
         this.activity.getBackBtn3().setOnClickListener(this);
         this.activity.getUpdateDataBtn().setOnClickListener(this);
+        activity.getPhoto().setOnClickListener(this);
 
         if(activity.getItem()==null){
             loadItem();
@@ -102,39 +114,101 @@ public class SeeProductController implements View.OnClickListener{
                     break;
                 } else {
 
-                    activity.getItem().setName(name);
-                    activity.getItem().setDescription(description);
 
-                    try {
+                    if (tempUri != null) {
+
+                        activity.getItem().setName(name);
+                        activity.getItem().setDescription(description);
                         activity.getItem().setPrice(Double.parseDouble(price));
-                    } catch (Exception e) {
-                        Toast.makeText(activity, "Error: " + activity.getString(R.string.price), Toast.LENGTH_LONG).show();
-                        break;
-                    }
-
-                    try {
                         activity.getItem().setQuantity(Integer.parseInt(inventory));
-                    } catch (Exception e) {
-                        Toast.makeText(activity, "Error: " + activity.getString(R.string.price), Toast.LENGTH_LONG).show();
-                        break;
+
+
+                        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+                        storage.getReference().child("sellers").child(user_id)
+                                .child("places").child(activity.getPlaceId())
+                                .child("categories").child(activity.getCategoryId())
+                                .child("items").child(activity.getItemId()).child("photo").putFile(tempUri).addOnCompleteListener(task -> {
+
+                            if (task.isSuccessful()) {
+
+                                Toast.makeText(activity.getApplicationContext(), "Loading...", Toast.LENGTH_SHORT).show();
+
+                                storage.getReference().child("sellers").child(user_id)
+                                        .child("places").child(activity.getPlaceId())
+                                        .child("categories").child(activity.getCategoryId())
+                                        .child("items").child(activity.getItemId()).child("photo").getDownloadUrl().addOnSuccessListener(uri -> {
+
+
+                                    photo = uri.toString();
+
+                                    activity.getItem().setPhoto(photo);
+
+                                    FirebaseDatabase.getInstance().getReference()
+                                            .child("sellers").child(user_id)
+                                            .child("places").child(activity.getPlaceId())
+                                            .child("categories").child(activity.getCategoryId())
+                                            .child("items").child(activity.getItemId()).setValue(activity.getItem());
+
+
+                                    Toast.makeText(activity, activity.getString(R.string.update_successful), Toast.LENGTH_LONG).show();
+                                    Intent s = new Intent(activity, SeeCategoryActivity.class);
+                                    s.putExtra("placeId", activity.getPlaceId());
+                                    s.putExtra("categoryId", activity.getCategoryId());
+                                    activity.startActivity(s);
+                                    activity.finish();
+
+
+                                });
+
+
+                            }
+
+
+                        });
+
+
                     }
-
-                    FirebaseDatabase.getInstance().getReference()
-                            .child("sellers").child(user_id)
-                            .child("places").child(activity.getPlaceId())
-                            .child("categories").child(activity.getCategoryId())
-                            .child("items").child(activity.getItemId()).setValue(activity.getItem());
-
-                    Toast.makeText(activity, activity.getString(R.string.update_successful), Toast.LENGTH_LONG).show();
-                    Intent s = new Intent(activity, SeeCategoryActivity.class);
-                    s.putExtra("placeId", activity.getPlaceId());
-                    s.putExtra("categoryId", activity.getCategoryId());
-                    activity.startActivity(s);
-                    activity.finish();
-
                 }
                 break;
+
+            case R.id.photo:
+
+                Intent gal = new Intent(Intent.ACTION_GET_CONTENT);
+                gal.setType("image/*");
+                activity.startActivityForResult(gal, GALLERY_CALLBACK);
+
+                break;
         }
+
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+
+            switch (requestCode) {
+
+                case GALLERY_CALLBACK:
+                    tempUri = data.getData();
+
+                    try {
+                        Bitmap image = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), tempUri);
+//                        activity.getAddImageProductBtn().setImageBitmap(image);
+                        Glide.with(activity.getApplicationContext()).load(tempUri).centerCrop().into(activity.getPhoto());
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    break;
+
+            }
+
+
+        }
+
 
     }
 }
