@@ -1,23 +1,26 @@
 package com.example.iterepi.view.store;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.store.SellDetailControlle;
 
 public class SellDetailDialog extends AppCompatActivity {
 
     private TextView idSellTV;
     private TextView nameClientTV;
-    private TextView idClientTV;
     private TextView sellValueTV;
     private TextView showDateHourSaleTV;
-    private TextView showDateHourDeliveredTV;
     private TextView showPlaceStoreTV;
+    private ImageButton closeBtn;
     private RecyclerView listProductsSellRV;
+
+    private SellDetailControlle controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +29,18 @@ public class SellDetailDialog extends AppCompatActivity {
 
         idSellTV = findViewById(R.id.idSellTV);
         nameClientTV = findViewById(R.id.nameClientTV);
-        idClientTV = findViewById(R.id.idclientTV);
         sellValueTV = findViewById(R.id.sellValueTV);
         showDateHourSaleTV = findViewById(R.id.showDateHourSaleTV);
-        showDateHourDeliveredTV = findViewById(R.id.showDateHourDelivered);
         showPlaceStoreTV = findViewById(R.id.showPlaceStoreTV);
         listProductsSellRV = findViewById(R.id.listProductsSellRV);
+        closeBtn = findViewById(R.id.closeBtn);
+
+        this.controller = new SellDetailControlle(this);
+
+    }
+
+    public ImageButton getCloseBtn() {
+        return closeBtn;
     }
 
     public TextView getIdSellTV() {
@@ -50,14 +59,6 @@ public class SellDetailDialog extends AppCompatActivity {
         this.nameClientTV = nameClientTV;
     }
 
-    public TextView getIdClientTV() {
-        return idClientTV;
-    }
-
-    public void setIdClientTV(TextView idClientTV) {
-        this.idClientTV = idClientTV;
-    }
-
     public TextView getSellValueTV() {
         return sellValueTV;
     }
@@ -72,14 +73,6 @@ public class SellDetailDialog extends AppCompatActivity {
 
     public void setShowDateHourSaleTV(TextView showDateHourSaleTV) {
         this.showDateHourSaleTV = showDateHourSaleTV;
-    }
-
-    public TextView getShowDateHourDeliveredTV() {
-        return showDateHourDeliveredTV;
-    }
-
-    public void setShowDateHourDeliveredTV(TextView showDateHourDeliveredTV) {
-        this.showDateHourDeliveredTV = showDateHourDeliveredTV;
     }
 
     public TextView getShowPlaceStoreTV() {
