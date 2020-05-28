@@ -50,6 +50,10 @@ public class SectionStoreUser extends AppCompatActivity {
 
     }
 
+    public SectionStoreUserController getController() {
+        return controller;
+    }
+
     public Spinner getSpinnerPlaces() {
         return spinnerPlaces;
     }

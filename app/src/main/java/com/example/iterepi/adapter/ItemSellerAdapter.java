@@ -85,6 +85,8 @@ public class ItemSellerAdapter extends RecyclerView.Adapter<ItemSellerAdapter.Vi
 
             Log.e("ADDING", "ADDING TO CART " + item.getName());
 
+            activity.getController().addItemToCart(item, 1);
+
 
         });
 

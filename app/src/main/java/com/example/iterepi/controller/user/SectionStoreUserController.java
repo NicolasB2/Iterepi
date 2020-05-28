@@ -11,6 +11,9 @@ import com.example.iterepi.model.Item;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.model.Seller;
 import com.example.iterepi.view.user.SectionStoreUser;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -119,6 +122,18 @@ public class SectionStoreUserController implements View.OnClickListener {
                 }
             }
         }
+    }
+
+    public void addItemToCart(Item item, int quantity) {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        FirebaseDatabase.getInstance().getReference().child("buyers").child(user.getUid()).child("cart")
+                .child("items").child(item.getId()).setValue(item);
+
+        FirebaseDatabase.getInstance().getReference().child("buyers").child(user.getUid()).child("cart")
+                .child("items").child(item.getId()).child("quantity").setValue(quantity);
+
     }
 
 
