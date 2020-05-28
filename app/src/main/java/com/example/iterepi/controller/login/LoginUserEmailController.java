@@ -13,6 +13,7 @@ import com.example.iterepi.view.user.UserFeedActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginUserEmailController implements View.OnClickListener {
 
@@ -75,7 +76,6 @@ public class LoginUserEmailController implements View.OnClickListener {
 
         if (checkEmail && checkPass) {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnSuccessListener(s -> {
-                String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Intent i = new Intent(activity, UserFeedActivity.class);
                 activity.startActivity(i);
                 activity.finish();
