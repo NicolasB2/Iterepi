@@ -83,7 +83,7 @@ public class SaleFragment extends Fragment implements View.OnClickListener {
 
                         String i = entry.getValue();
                         saleIDs.add(i);
-                        saleItemAdapter = new SaleIDAdapter(this,saleIDs);
+                        saleItemAdapter = new SaleIDAdapter(saleIDs);
                         listSaleRV.setAdapter(saleItemAdapter);
 
                     }

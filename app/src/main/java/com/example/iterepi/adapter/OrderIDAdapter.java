@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Transaction;
-import com.example.iterepi.view.store.SaleFragment;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,14 +20,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class SaleIDAdapter extends RecyclerView.Adapter<SaleIDAdapter.ViewHolder> implements View.OnClickListener  {
+public class OrderIDAdapter extends RecyclerView.Adapter<OrderIDAdapter.ViewHolder> implements View.OnClickListener  {
 
 
 
     private ArrayList<String> saleIDs;
     private View.OnClickListener listener;
 
-    public SaleIDAdapter(ArrayList<String> saleIDs) {
+    public OrderIDAdapter(ArrayList<String> saleIDs) {
         this.saleIDs = saleIDs;
     }
 
@@ -40,7 +38,7 @@ public class SaleIDAdapter extends RecyclerView.Adapter<SaleIDAdapter.ViewHolder
 
 
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_store_sell, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_store_order, parent, false);
         view.setOnClickListener(this);
         ViewHolder holder = new ViewHolder(view);
         return holder;
@@ -57,14 +55,14 @@ public class SaleIDAdapter extends RecyclerView.Adapter<SaleIDAdapter.ViewHolder
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Transaction transaction = dataSnapshot.getValue(Transaction.class);
                 if(transaction!=null){
-                    if(transaction.getState()==Transaction.TO_DELIVER){
+                    if(transaction.getState()!=Transaction.TO_DELIVER){
+
                         holder.nameClientTV.setText(transaction.getBuyerName());
-                        holder.saleID.setText("Venta ID: "+transaction.getId());
+                        holder.orderID.setText("Pedido ID: "+transaction.getId());
                         holder.valueTV.setText("Valor: "+transaction.getValue());
-                        holder.dateTV.setText("Date: "+transaction.getPurchaseDate());
+                        holder.stateTV.setText("State: "+transaction.getState());
 
                         Glide.with(holder.itemView).load(transaction.getBuyerPhoto()).centerCrop().into(holder.imageClientIV);
-
                     }
 
                 }
@@ -96,16 +94,16 @@ public class SaleIDAdapter extends RecyclerView.Adapter<SaleIDAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView nameClientTV, valueTV, dateTV, saleID;
+        private TextView nameClientTV, valueTV, stateTV, orderID;
         private ImageView imageClientIV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            saleID = itemView.findViewById(R.id.saleIdTV);
+            orderID = itemView.findViewById(R.id.saleIdTV);
             nameClientTV = itemView.findViewById(R.id.nameClientTV);
             valueTV = itemView.findViewById(R.id.saleValueTV);
-            dateTV = itemView.findViewById(R.id.saleDateTV);
+            stateTV = itemView.findViewById(R.id.saleDateTV);
             imageClientIV = itemView.findViewById(R.id.imagePerfilClientIV);
 
 

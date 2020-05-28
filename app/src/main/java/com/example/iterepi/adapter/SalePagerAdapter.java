@@ -11,6 +11,10 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.iterepi.view.store.OrderFragment;
 import com.example.iterepi.view.store.SaleFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class SalePagerAdapter extends FragmentPagerAdapter {
 
