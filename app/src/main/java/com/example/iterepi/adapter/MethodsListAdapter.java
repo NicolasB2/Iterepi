@@ -22,6 +22,7 @@ public class MethodsListAdapter extends BaseAdapter {
     private ArrayList<Card> listOfCards;
 
     public MethodsListAdapter(HashMap<String,Card>listOfCards) {
+        this.listOfCards = new ArrayList<>();
         if(listOfCards!=null){
             for (String id:listOfCards.keySet()){
                 this.listOfCards.add(listOfCards.get(id));
@@ -58,7 +59,6 @@ public class MethodsListAdapter extends BaseAdapter {
                     (v)->{
                         Log.e(">>>","Para donde coño debo ir");
                         ((Activity)row.getContext()).finish();
-
                     }
             );
 

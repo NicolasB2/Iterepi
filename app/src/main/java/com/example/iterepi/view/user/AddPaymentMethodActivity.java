@@ -16,6 +16,9 @@ import java.util.List;
 
 public class AddPaymentMethodActivity extends AppCompatActivity {
 
+    public static final String SELLER = "seller";
+    public static final String BUYER = "buyer";
+
     private ImageButton backBtn;
 
     private TextInputLayout cardNumberTF;
@@ -28,7 +31,7 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
 
 
     private AddPaymentMethodController controller;
-
+    private String type;
     private List<Card> cards;
 
     @Override
@@ -46,7 +49,9 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
 
         addCardBtn = findViewById(R.id.addCardBtn);
 
-        cards = (List<Card>) getIntent().getExtras().getSerializable("cards");
+        this.type = (String) getIntent().getExtras().getSerializable("type");
+        this.cards = (List<Card>) getIntent().getExtras().getSerializable("cards");
+
         if(cards==null){
             cards = new ArrayList<>();
         }
@@ -59,63 +64,35 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
         return backBtn;
     }
 
-    public void setBackBtn(ImageButton backBtn) {
-        this.backBtn = backBtn;
-    }
-
     public TextInputLayout getCardNumberTF() {
         return cardNumberTF;
-    }
-
-    public void setCardNumberTF(TextInputLayout cardNumberTF) {
-        this.cardNumberTF = cardNumberTF;
     }
 
     public TextInputLayout getExpirationDateTF() {
         return expirationDateTF;
     }
 
-    public void setExpirationDateTF(TextInputLayout expirationDateTF) {
-        this.expirationDateTF = expirationDateTF;
-    }
-
     public TextInputLayout getSecurityCodTF() {
         return securityCodTF;
-    }
-
-    public void setSecurityCodTF(TextInputLayout securityCodTF) {
-        this.securityCodTF = securityCodTF;
     }
 
     public TextInputLayout getNameTF() {
         return nameTF;
     }
 
-    public void setNameTF(TextInputLayout nameTF) {
-        this.nameTF = nameTF;
-    }
-
     public TextInputLayout getLastNameTF() {
         return lastNameTF;
-    }
-
-    public void setLastNameTF(TextInputLayout lastNameTF) {
-        this.lastNameTF = lastNameTF;
     }
 
     public Button getAddCardBtn() {
         return addCardBtn;
     }
 
-    public void setAddCardBtn(Button addCardBtn) {
-        this.addCardBtn = addCardBtn;
+    public String getType() {
+        return type;
     }
 
     public List<Card> getCards() {
         return cards;
-    }
-
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
     }
 }
