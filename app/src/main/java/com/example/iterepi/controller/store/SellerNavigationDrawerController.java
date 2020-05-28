@@ -13,6 +13,7 @@ import com.example.iterepi.model.Seller;
 import com.example.iterepi.view.login.MainActivity;
 import com.example.iterepi.view.store.MyPlacesActivity;
 import com.example.iterepi.view.store.SellerNavigationDrawerActivity;
+import com.example.iterepi.view.user.PaymentMethodsActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -72,7 +73,9 @@ public class SellerNavigationDrawerController implements NavigationView.OnNaviga
         switch (item.getItemId()) {
 
             case R.id.store_item_accounts:
-
+                i = new Intent(activity, PaymentMethodsActivity.class);
+                i.putExtra("type",PaymentMethodsActivity.SELLER);
+                activity.startActivity(i);
                 break;
 
             case R.id.store_item_my_sales:

@@ -3,7 +3,7 @@ package com.example.iterepi.model;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Buyer implements Serializable {
+public class Buyer implements Serializable{
 
     public static final int WOMAN = 0;
     public static final int MAN = 1;

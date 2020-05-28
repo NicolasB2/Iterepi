@@ -1,6 +1,7 @@
 package com.example.iterepi.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Seller implements Serializable {
