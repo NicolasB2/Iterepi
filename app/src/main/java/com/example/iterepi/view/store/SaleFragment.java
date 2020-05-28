@@ -25,13 +25,14 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class SaleFragment extends Fragment implements View.OnClickListener {
 
     private View view;
     private SaleItemAdapter saleItemAdapter;
     private ArrayList<Seller> saleItems;
-    private RecyclerView listOrderRV;
+    private RecyclerView listSaleRV;
     private ImageView emptyOrderIV;
     private TextView emptyOrderTV;
 
@@ -40,8 +41,8 @@ public class SaleFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
 
         view = inflater.inflate(R.layout.fragment_store_order, container, false);
-        listOrderRV = view.findViewById(R.id.listOrderRV);
-        listOrderRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        listSaleRV = view.findViewById(R.id.listOrderRV);
+        listSaleRV.setLayoutManager(new LinearLayoutManager(getContext()));
         emptyOrderIV = view.findViewById(R.id.emptyOrder);
         emptyOrderTV = view.findViewById(R.id.emptyOrderTV);
         emptyOrderIV.setVisibility(View.GONE);
@@ -75,8 +76,31 @@ public class SaleFragment extends Fragment implements View.OnClickListener {
             Log.e(">>>","Cargo el vendedor"+s.getName());
             if(s.getSalesID()!=null){
                 Log.e(">>>","Id de su primer venta"+s.getSalesID());
+                if(s.getSalesID().size()>0){
+                    emptyOrderIV.setVisibility(View.GONE);
+                    emptyOrderTV.setVisibility(View.GONE);
+
+                    for(Map.Entry<String,String> entry : s.getSalesID().entrySet()){
+
+                        String i = entry.getValue();
+                        //saleItems.add(i);
+                        //saleItemAdapter = new SaleItemAdapter(saleItems,this);
+                        //listSaleRV.setAdapter(saleItemAdapter);
+
+                    }
+
+                }else{
+                    emptyOrderTV.setVisibility(View.VISIBLE);
+                    emptyOrderIV.setVisibility(View.VISIBLE);
+                }
+
+            }else{
+                emptyOrderTV.setVisibility(View.VISIBLE);
+                emptyOrderIV.setVisibility(View.VISIBLE);
             }
 
+        }else{
+            Seller sSeller = s;
         }
 
 
