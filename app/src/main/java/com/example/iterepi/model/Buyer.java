@@ -23,7 +23,7 @@ public class Buyer implements Serializable{
     public Buyer() {
     }
 
-    public Buyer(String id, String name, String identification, String email, String photo, int gender, String birthday, HashMap<String, String> purchasesID, Cart cart, HashMap<String, Card> cards) {
+    public Buyer(String id, String name, String identification, String email, String photo, int gender, String birthday, HashMap<String, Transaction> transactions, Cart cart, HashMap<String, Card> cards) {
         this.id = id;
         this.name = name;
         this.identification = identification;
@@ -31,7 +31,7 @@ public class Buyer implements Serializable{
         this.photo = photo;
         this.gender = gender;
         this.birthday = birthday;
-        this.purchasesID = purchasesID;
+        this.transactions = transactions;
         this.cart = cart;
         this.cards = cards;
     }

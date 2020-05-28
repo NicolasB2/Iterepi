@@ -93,15 +93,9 @@ public class CartFragment extends Fragment implements View.OnClickListener {
             if (b.getCart() != null) {
                 if (b.getTransactions() != null) {
 
+                    Toast.makeText(getContext(),"transactions not null",Toast.LENGTH_SHORT).show();
                 } else {
-                    Buyer current = b;
-                    String transactionId = FirebaseDatabase.getInstance().getReference()
-                            .child(b.getId())
-                            .push().toString();
-                    Transaction t = new Transaction(transactionId, current, current.getCart());
-                    HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
-                    transactions.put(transactionId, t);
-                    current.setTransactions(transactions);
+                    //Null transactions
                 }
             }
         } else {
@@ -116,6 +110,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
                     if (b.getCart().getItems().size() > 0) {
                         emptyCartIV.setVisibility(View.GONE);
                         emptyCartTV.setVisibility(View.GONE);
+                        finishOrderBtn.setVisibility(View.VISIBLE);
                         for (Map.Entry<String, Item> entry : b.getCart().getItems().entrySet()) {
                             Item i = entry.getValue();
                             cartItems.add(i);
@@ -125,22 +120,18 @@ public class CartFragment extends Fragment implements View.OnClickListener {
                     } else {
                         emptyCartIV.setVisibility(View.VISIBLE);
                         emptyCartTV.setVisibility(View.VISIBLE);
+                        finishOrderBtn.setVisibility(View.GONE);
                     }
                 } else {
                     emptyCartIV.setVisibility(View.VISIBLE);
                     emptyCartTV.setVisibility(View.VISIBLE);
+                    finishOrderBtn.setVisibility(View.GONE);
                 }
 
             } else {
-                Buyer bCart = b;
-                b.setCart(new Cart("cart", null));
-                FirebaseDatabase.getInstance().getReference()
-                        .child("buyers")
-                        .child(b.getId())
-                        .setValue(bCart);
-
                 emptyCartIV.setVisibility(View.VISIBLE);
                 emptyCartTV.setVisibility(View.VISIBLE);
+                finishOrderBtn.setVisibility(View.GONE);
             }
         } else {
             Log.e(">>>>", "CartFragment: Error loading user");
