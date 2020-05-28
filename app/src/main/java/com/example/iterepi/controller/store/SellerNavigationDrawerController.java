@@ -12,6 +12,7 @@ import com.example.iterepi.R;
 import com.example.iterepi.model.Seller;
 import com.example.iterepi.view.login.MainActivity;
 import com.example.iterepi.view.store.MyPlacesActivity;
+import com.example.iterepi.view.store.SaleActivity;
 import com.example.iterepi.view.store.SellerNavigationDrawerActivity;
 import com.example.iterepi.view.user.PaymentMethodsActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -79,7 +80,8 @@ public class SellerNavigationDrawerController implements NavigationView.OnNaviga
                 break;
 
             case R.id.store_item_my_sales:
-
+                i = new Intent(activity, SaleActivity.class);
+                activity.startActivity(i);
                 break;
 
 

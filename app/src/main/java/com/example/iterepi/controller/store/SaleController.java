@@ -1,5 +1,7 @@
 package com.example.iterepi.controller.store;
 
+import android.util.Log;
+
 import com.example.iterepi.adapter.SalePagerAdapter;
 import com.example.iterepi.view.store.SaleActivity;
 import com.google.android.material.tabs.TabLayout;
@@ -14,7 +16,6 @@ public class SaleController {
 
         adapter = new SalePagerAdapter(activity.getSupportFragmentManager(), activity.getOrderTL().getTabCount());
         activity.getOrderVP().setAdapter(adapter);
-
         activity.getOrderTL().addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

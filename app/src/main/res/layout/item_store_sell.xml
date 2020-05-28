@@ -36,7 +36,7 @@
             tools:srcCompat="@drawable/ic_product" />
 
         <TextView
-            android:id="@+id/saleStateTV"
+            android:id="@+id/saleValueTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameClientTV"
@@ -58,10 +58,10 @@
             android:textColor="@color/card_content_text" />
 
         <TextView
-            android:id="@+id/saleValueTV"
+            android:id="@+id/saleDateTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/saleStateTV"
+            android:layout_below="@+id/saleValueTV"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/imagePerfilClientIV"

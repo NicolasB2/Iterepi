@@ -16,11 +16,12 @@ public class Transaction {
     private String sellerID;
     private int state;
     private Cart cart;
+    private String buyerPhoto;
 
     public Transaction() {
     }
 
-    public Transaction(String id, double value, String purchaseDate, String buyerName, String buyerID, String sellerName, String sellerID, int state, Cart cart) {
+    public Transaction(String id, double value, String purchaseDate, String buyerName, String buyerID, String sellerName, String sellerID, int state, Cart cart, String photo) {
         this.id = id;
         this.value = value;
         this.purchaseDate = purchaseDate;
@@ -30,6 +31,15 @@ public class Transaction {
         this.sellerID = sellerID;
         this.state = state;
         this.cart = cart;
+        this.buyerPhoto = photo;
+    }
+
+    public String getBuyerPhoto() {
+        return buyerPhoto;
+    }
+
+    public void setBuyerPhoto(String buyerPhoto) {
+        this.buyerPhoto = buyerPhoto;
     }
 
     public String getId() {

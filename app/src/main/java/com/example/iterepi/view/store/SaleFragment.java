@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iterepi.R;
-import com.example.iterepi.adapter.SaleItemAdapter;
+import com.example.iterepi.adapter.SaleIDAdapter;
 import com.example.iterepi.model.Seller;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,25 +30,25 @@ import java.util.Map;
 public class SaleFragment extends Fragment implements View.OnClickListener {
 
     private View view;
-    private SaleItemAdapter saleItemAdapter;
-    private ArrayList<Seller> saleItems;
+    private SaleIDAdapter saleItemAdapter;
+    private ArrayList<String> saleIDs;
     private RecyclerView listSaleRV;
-    private ImageView emptyOrderIV;
-    private TextView emptyOrderTV;
+    private ImageView emptySaleIV;
+    private TextView emptySaleTV;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
 
-        view = inflater.inflate(R.layout.fragment_store_order, container, false);
-        listSaleRV = view.findViewById(R.id.listOrderRV);
+        view = inflater.inflate(R.layout.fragment_store_sell, container, false);
+        listSaleRV = view.findViewById(R.id.listSaleRV);
         listSaleRV.setLayoutManager(new LinearLayoutManager(getContext()));
-        emptyOrderIV = view.findViewById(R.id.emptyOrder);
-        emptyOrderTV = view.findViewById(R.id.emptyOrderTV);
-        emptyOrderIV.setVisibility(View.GONE);
-        emptyOrderTV.setVisibility(View.GONE);
+        emptySaleIV = view.findViewById(R.id.emptySale);
+        emptySaleTV = view.findViewById(R.id.emptySaleTV);
+        emptySaleIV.setVisibility(View.GONE);
+        emptySaleTV.setVisibility(View.GONE);
 
-        saleItems = new ArrayList<>();
+        saleIDs = new ArrayList<>();
 
         Query query= FirebaseDatabase.getInstance().getReference().child("sellers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -72,35 +72,36 @@ public class SaleFragment extends Fragment implements View.OnClickListener {
     public void loadItems(Seller s){
 
         if(s!=null){
-            //arreglo debe ser los clientes
-            Log.e(">>>","Cargo el vendedor"+s.getName());
             if(s.getSalesID()!=null){
+
                 Log.e(">>>","Id de su primer venta"+s.getSalesID());
                 if(s.getSalesID().size()>0){
-                    emptyOrderIV.setVisibility(View.GONE);
-                    emptyOrderTV.setVisibility(View.GONE);
+                    emptySaleIV.setVisibility(View.GONE);
+                    emptySaleTV.setVisibility(View.GONE);
 
                     for(Map.Entry<String,String> entry : s.getSalesID().entrySet()){
 
                         String i = entry.getValue();
-                        //saleItems.add(i);
-                        //saleItemAdapter = new SaleItemAdapter(saleItems,this);
-                        //listSaleRV.setAdapter(saleItemAdapter);
+                        saleIDs.add(i);
+                        saleItemAdapter = new SaleIDAdapter(this,saleIDs);
+                        listSaleRV.setAdapter(saleItemAdapter);
 
                     }
 
                 }else{
-                    emptyOrderTV.setVisibility(View.VISIBLE);
-                    emptyOrderIV.setVisibility(View.VISIBLE);
+                    emptySaleTV.setVisibility(View.VISIBLE);
+                    emptySaleIV.setVisibility(View.VISIBLE);
+
                 }
 
             }else{
-                emptyOrderTV.setVisibility(View.VISIBLE);
-                emptyOrderIV.setVisibility(View.VISIBLE);
+                emptySaleTV.setVisibility(View.VISIBLE);
+                emptySaleIV.setVisibility(View.VISIBLE);
+
             }
 
         }else{
-            Seller sSeller = s;
+            Log.e(">>>","Error: No Sale in SellFragment");
         }
 
 
