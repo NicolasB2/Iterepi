@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iterepi.R;
 import com.example.iterepi.model.Item;
@@ -24,13 +25,11 @@ public class ItemsAdapter extends BaseAdapter {
     public ItemsAdapter(SeeCategoryActivity activity, HashMap<String, Item> items) {
         this.activity = activity;
         this.items = new ArrayList<>();
-
         if(items!=null){
             for (String id:items.keySet()){
                 this.items.add(items.get(id));
             }
         }
-
     }
 
     @Override

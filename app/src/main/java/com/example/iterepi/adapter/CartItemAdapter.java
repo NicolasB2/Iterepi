@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHolder> implements View.OnClickListener {
 
-    CartFragment fragment;
+    private CartFragment fragment;
     private ArrayList<Item> cartItems;
     private View.OnClickListener listener;
 
