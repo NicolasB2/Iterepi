@@ -56,10 +56,11 @@ public class CartFragment extends Fragment implements View.OnClickListener {
         emptyCartTV.setVisibility(View.GONE);
         finishOrderBtn = view.findViewById(R.id.finishOrderBtn);
 
+
         cartItems = new ArrayList<>();
         Query query = FirebaseDatabase.getInstance().getReference()
                 .child("buyers")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
