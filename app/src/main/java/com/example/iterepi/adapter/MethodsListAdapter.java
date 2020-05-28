@@ -53,14 +53,7 @@ public class MethodsListAdapter extends BaseAdapter {
 
         try {
             TextView cardNumber =  row.findViewById(R.id.numCardTV);
-            cardNumber.setText(listOfCards.get(position).getCardNumber());
-
-            row.setOnClickListener(
-                    (v)->{
-                        Log.e(">>>","Para donde coño debo ir");
-                        ((Activity)row.getContext()).finish();
-                    }
-            );
+            cardNumber.setText("  "+listOfCards.get(position).getCardNumber());
 
         }catch (Exception e){
             Log.e(">>>","Error in MethodsListAdapter");
