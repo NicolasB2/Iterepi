@@ -1,5 +1,6 @@
 package com.example.iterepi.adapter;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +14,19 @@ import com.example.iterepi.view.user.PaymentMethodsActivity;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MethodsListAdapter extends BaseAdapter {
 
-    private List<Card> listOfCards;
+    private ArrayList<Card> listOfCards;
 
-    public MethodsListAdapter() {
-        listOfCards = new ArrayList<>();
+    public MethodsListAdapter(HashMap<String,Card>listOfCards) {
+        if(listOfCards!=null){
+            for (String id:listOfCards.keySet()){
+                this.listOfCards.add(listOfCards.get(id));
+            }
+        }
     }
 
     @Override
@@ -42,24 +48,24 @@ public class MethodsListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View item = inflater.inflate(R.layout.item_payment_method,null,false);
+        View row = inflater.inflate(R.layout.item_payment_method,null,false);
 
         try {
-            TextView cardNumber =  item.findViewById(R.id.numCardTV);
+            TextView cardNumber =  row.findViewById(R.id.numCardTV);
             cardNumber.setText(listOfCards.get(position).getCardNumber());
 
-            item.setOnClickListener(
+            row.setOnClickListener(
                     (v)->{
                         Log.e(">>>","Para donde coño debo ir");
+                        ((Activity)row.getContext()).finish();
+
                     }
-
-
             );
 
         }catch (Exception e){
             Log.e(">>>","Error in MethodsListAdapter");
         }
-        return item;
+        return row;
     }
 
 
@@ -76,7 +82,4 @@ public class MethodsListAdapter extends BaseAdapter {
         return listOfCards;
     }
 
-    public void setListOfCards(List<Card> listOfCards) {
-        this.listOfCards = listOfCards;
-    }
 }
