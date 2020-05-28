@@ -6,9 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Item;
 import com.example.iterepi.view.store.SeeCategoryActivity;
@@ -55,6 +56,8 @@ public class ItemsAdapter extends BaseAdapter {
         TextView itemNameTV = row.findViewById(R.id.itemNameTV);
         TextView itemPriceTV = row.findViewById(R.id.itemPriceTV);
         TextView itemInventoryTV = row.findViewById(R.id.itemInventoryTV);
+        ImageView photo = row.findViewById(R.id.photo);
+
 
         Item item = items.get(position);
         if(item!=null){
@@ -62,6 +65,12 @@ public class ItemsAdapter extends BaseAdapter {
             itemNameTV.setText(item.getName());
             itemPriceTV.setText(item.getPrice()+"");
             itemInventoryTV.setText(item.getQuantity()+"");
+
+            if (item.getPhoto() != null) {
+
+                Glide.with(itemInventoryTV).load(item.getPhoto()).centerCrop().into(photo);
+
+            }
 
             row.setOnClickListener(new View.OnClickListener() {
                 @Override

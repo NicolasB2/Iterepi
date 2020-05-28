@@ -11,7 +11,6 @@ import com.example.iterepi.R;
 import com.example.iterepi.model.Category;
 import com.example.iterepi.model.Place;
 import com.example.iterepi.model.Seller;
-import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.store.AddCategoryDialog;
 import com.example.iterepi.view.store.SeePlaceActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,10 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -57,13 +54,20 @@ public class AddCategoryController implements View.OnClickListener{
                 activity.runOnUiThread(
                         ()->{
                             ArrayList<Place> places = new ArrayList<>();
-                            HashMap<String,Place> ps = seller.getPlaces();
-                            for (String id:ps.keySet()){
-                                places.add(ps.get(id));
+                            if (seller.getPlaces() != null) {
+                                HashMap<String, Place> ps = seller.getPlaces();
+                                for (String id : ps.keySet()) {
+                                    places.add(ps.get(id));
+                                }
+                                ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(activity, android.R.layout.simple_list_item_1, (List<Place>) places);
+                                adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                activity.getPlaceOfProductSP().setAdapter(adp1);
+                            } else {
+
+                                Toast.makeText(activity.getApplicationContext(), "Aun no hay donde agregar la categoria", Toast.LENGTH_SHORT).show();
+                                activity.getAddCategoryBtn().setEnabled(false);
+
                             }
-                            ArrayAdapter<Place> adp1 = new ArrayAdapter<Place>(activity, android.R.layout.simple_list_item_1, (List<Place>) places);
-                            adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            activity.getPlaceOfProductSP().setAdapter(adp1);
                         });
 
             }
@@ -119,6 +123,7 @@ public class AddCategoryController implements View.OnClickListener{
                         s.putExtra("placeId",place.getId());
                         activity.startActivity(s);
                         activity.finish();
+
                         break;
                     }
                 }

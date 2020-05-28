@@ -129,6 +129,7 @@
     <string name="update_state">Actualizar estado</string>
     <string name="pass_changed">Se ha cambiado tu contraseña exitosamente</string>
     <string name="error_change_pass">La contraseña actual no coincide</string>
+    <string name="add_photo_item">Agrega una foto a tu producto</string>
     <string name="deafault_web_client_id" translatable="false">689800102571-hsetusct9sg41bum68gdd4ral7rpl9nk.apps.googleusercontent.com</string>
     <string name="facebook_app_id" translatable="false">3476076969087122</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb3476076969087122</string>

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.view.login.RegisterUserEmailActivity;
@@ -531,7 +532,7 @@ public class RegisterUserEmailController implements View.OnClickListener {
 
                     try {
                         Bitmap image = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), tempUri);
-                        activity.getProfileImage().setImageBitmap(image);
+                        Glide.with(activity.getRegisterBtn()).load(tempUri).centerCrop().into(activity.getProfileImage());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

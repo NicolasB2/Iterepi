@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Seller;
 import com.example.iterepi.view.login.RegisterStoreActivity;
@@ -246,7 +247,7 @@ public class RegisterStoreController implements View.OnClickListener {
 
                     try {
                         Bitmap image = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), tempUri);
-                        activity.getLogoIV().setImageBitmap(image);
+                        Glide.with(activity.getRegisterBtn()).load(tempUri).centerCrop().into(activity.getLogoIV());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

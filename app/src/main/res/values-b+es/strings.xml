@@ -127,5 +127,6 @@
     <string name="info_updated">Su información ha sido actualizada</string>
     <string name="pass_changed">Se ha cambiado tu contraseña exitosamente</string>
     <string name="error_change_pass">La contraseña actual no coincide</string>
+    <string name="add_photo_item">Agrega una foto a tu producto</string>
 
 </resources>

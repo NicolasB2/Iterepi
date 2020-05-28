@@ -127,6 +127,7 @@
     <string name="info_updated">Your data has been updated</string>
     <string name="pass_changed">It has changed your password successfully</string>
     <string name="error_change_pass">The current password doesn\'t match</string>
+    <string name="add_photo_item">Add a photo to your item</string>
 
 
 </resources>

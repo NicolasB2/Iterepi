@@ -49,7 +49,7 @@ public class SellerNavigationDrawerController implements NavigationView.OnNaviga
 
                 if (seller.getLogo() != null) {
 
-                    Glide.with(activity).load(seller.getLogo()).centerCrop().into(photo);
+                    Glide.with(activity.getApplicationContext()).load(seller.getLogo()).centerCrop().into(photo);
 
                 }
 

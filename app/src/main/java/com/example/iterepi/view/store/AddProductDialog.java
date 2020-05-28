@@ -1,10 +1,12 @@
 package com.example.iterepi.view.store;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
@@ -48,6 +50,12 @@ public class AddProductDialog extends AppCompatActivity {
 
         controller = new AddProductController(this);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        controller.onActivityResult(requestCode, resultCode, data);
     }
 
     public ImageButton getCloseBtn() {

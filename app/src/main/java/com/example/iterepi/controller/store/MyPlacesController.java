@@ -1,7 +1,6 @@
 package com.example.iterepi.controller.store;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -18,9 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
 public class MyPlacesController implements View.OnClickListener{
@@ -76,12 +73,11 @@ public class MyPlacesController implements View.OnClickListener{
 
         switch (v.getId()) {
             case R.id.backBtn:
-                activity.finish();
+                activity.onBackPressed();
                 break;
             case R.id.addMethodBtn:
                 i = new Intent(activity, AddPlaceDialog.class);
                 activity.startActivity(i);
-                activity.finish();
                 break;
         }
     }
