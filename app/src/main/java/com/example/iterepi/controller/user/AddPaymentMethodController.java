@@ -7,25 +7,33 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.DatePicker;
 
+import androidx.annotation.NonNull;
+
 import com.example.iterepi.R;
+import com.example.iterepi.model.Buyer;
 import com.example.iterepi.model.Card;
+import com.example.iterepi.model.Seller;
 import com.example.iterepi.util.HTTPSWebUtilDomi;
 import com.example.iterepi.view.user.AddPaymentMethodActivity;
 import com.example.iterepi.view.user.PaymentMethodsActivity;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class AddPaymentMethodController implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener {
+public class AddPaymentMethodController implements View.OnClickListener{
 
     private AddPaymentMethodActivity activity;
-    private HTTPSWebUtilDomi utilDomi;
 
     private boolean checkCardNumber;
     private boolean checkExpirationDate;
@@ -36,7 +44,6 @@ public class AddPaymentMethodController implements View.OnClickListener, HTTPSWe
 
     public AddPaymentMethodController( AddPaymentMethodActivity activity){
         this.activity = activity;
-        this.utilDomi = new HTTPSWebUtilDomi();
         activity.getAddCardBtn().setOnClickListener(this);
         activity.getBackBtn().setOnClickListener(this);
 
@@ -91,7 +98,6 @@ public class AddPaymentMethodController implements View.OnClickListener, HTTPSWe
             checkLastName = false;
         }
 
-
         //All data validated
         if(checkCardNumber && checkExpirationDate && checkSecurityCode && checkNameUser && checkLastName){
 
@@ -108,22 +114,64 @@ public class AddPaymentMethodController implements View.OnClickListener, HTTPSWe
             card.setLastNameUser(lastNameUser);
 
 
+            if(activity.getType().equals(activity.SELLER)){
+                loadSellerCards(id,card);
+            }else if (activity.getType().equals(activity.BUYER)){
+                loadBuyerCards(id,card);
+            }
 
-            new Thread(
-                    ()->{
-                        Gson gson = new Gson();
-                        String json = gson.toJson(card);
-                        utilDomi.PUTrequest(1,"https://iterepi.firebaseio.com/buyers/"+id+"/cards/"+activity.getCards().size()+"/.json",json);
-                    }
-
-            ).start();
             Intent a = new Intent(activity, PaymentMethodsActivity.class);
-            a.putExtra("cardPosition",activity.getCards().size());
+            a.putExtra("type",activity.getType());
             activity.startActivity(a);
             activity.finish();
         }
 
 
+    }
+
+    private void loadSellerCards(String id,Card card) {
+        Query query = FirebaseDatabase.getInstance().getReference()
+                .child("sellers").child(id);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Seller seller = dataSnapshot.getValue(Seller.class);
+                if(seller!=null){
+                    FirebaseDatabase.getInstance().getReference()
+                            .child("sellers").child(id)
+                            .child("cards").child(card.getIdCard()).setValue(card);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void loadBuyerCards(String id,Card card) {
+        Query query = FirebaseDatabase.getInstance().getReference()
+                .child("buyers").child(id);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Buyer buyer = dataSnapshot.getValue(Buyer.class);
+                if(buyer!=null){
+                    FirebaseDatabase.getInstance().getReference()
+                            .child("buyers").child(id)
+                            .child("cards").child(card.getIdCard()).setValue(card);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void openCalendar() {
@@ -271,9 +319,4 @@ public class AddPaymentMethodController implements View.OnClickListener, HTTPSWe
 
     }
 
-
-    @Override
-    public void onResponse(int callbackID, String response) {
-
-    }
 }

@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PaymentMethodsController  implements View.OnClickListener, HTTPSWebUtilDomi.OnResponseListener {
@@ -42,9 +43,9 @@ public class PaymentMethodsController  implements View.OnClickListener, HTTPSWeb
 
         String id = FirebaseAuth.getInstance().getUid();
 
-        if(activity.getType().equals(activity.SELLER)){
+        if(this.activity.getType().equals(activity.SELLER)){
             loadSellerCards(id);
-        }else {
+        }else if (this.activity.getType().equals(activity.BUYER)){
             loadBuyerCards(id);
         }
 
@@ -107,7 +108,11 @@ public class PaymentMethodsController  implements View.OnClickListener, HTTPSWeb
         switch (v.getId()) {
             case R.id.addMethodBtn:
                 i = new Intent(activity, AddPaymentMethodActivity.class);
-                i.putExtra("cards",(Serializable) activity.getAdapter().getListOfCards());
+                if(activity.getAdapter()!=null){
+                    i.putExtra("cards",(Serializable) activity.getAdapter().getListOfCards());
+                }
+                i.putExtra("cards", new ArrayList<Card>());
+                i.putExtra("type",activity.getType());
                 activity.startActivity(i);
                 activity.finish();
                 break;
