@@ -1,18 +1,18 @@
 package com.example.iterepi.controller.store;
 
-import com.example.iterepi.adapter.OrderPagerAdapter;
-import com.example.iterepi.view.store.OrderActivity;
+import com.example.iterepi.adapter.SalePagerAdapter;
+import com.example.iterepi.view.store.SaleActivity;
 import com.google.android.material.tabs.TabLayout;
 
-public class OrderController {
+public class SaleController {
 
-    private OrderActivity activity;
-    private OrderPagerAdapter adapter;
+    private SaleActivity activity;
+    private SalePagerAdapter adapter;
 
-    public OrderController(OrderActivity activity) {
+    public SaleController(SaleActivity activity) {
         this.activity = activity;
 
-        adapter = new OrderPagerAdapter(activity.getSupportFragmentManager(), activity.getOrderTL().getTabCount());
+        adapter = new SalePagerAdapter(activity.getSupportFragmentManager(), activity.getOrderTL().getTabCount());
         activity.getOrderVP().setAdapter(adapter);
 
         activity.getOrderTL().addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

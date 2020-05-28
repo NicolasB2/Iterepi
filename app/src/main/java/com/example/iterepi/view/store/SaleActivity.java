@@ -6,29 +6,30 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.store.SaleController;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-public class OrderActivity extends AppCompatActivity {
+public class SaleActivity extends AppCompatActivity {
 
 
     private TabLayout orderTL;
     private TabItem tabOrder;
     private TabItem tabSale;
     private ViewPager orderVP;
-    //private OrderController controller;
+    private SaleController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store_order);
+        setContentView(R.layout.activity_store_sale);
 
         orderTL = findViewById(R.id.orderTL);
         tabOrder = findViewById(R.id.tabOrder);
         tabSale = findViewById(R.id.tabSale);
         orderVP = findViewById(R.id.orderVP);
 
-        //this.controller = new OrderController (this);
+        this.controller = new SaleController(this);
 
 
     }

@@ -6,9 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.PagerAdapter;
 
-public class OrderPagerAdapter extends PagerAdapter {
+public class SalePagerAdapter extends PagerAdapter {
 
-    public OrderPagerAdapter(FragmentManager supportFragmentManager, int tabCount) {
+    public SalePagerAdapter(FragmentManager supportFragmentManager, int tabCount) {
     }
 
     @Override

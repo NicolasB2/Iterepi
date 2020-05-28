@@ -1,7 +1,7 @@
 package com.example.iterepi.view.store;
 
-import android.app.DownloadManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iterepi.R;
-import com.example.iterepi.adapter.CartItemAdapter;
-import com.example.iterepi.model.Cart;
-import com.example.iterepi.model.Item;
+import com.example.iterepi.adapter.SaleItemAdapter;
 import com.example.iterepi.model.Seller;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,11 +26,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class OrderFragment extends Fragment implements View.OnClickListener {
+public class SaleFragment extends Fragment implements View.OnClickListener {
 
     private View view;
-    //private OrderItemAdapter orderItemAdapter;
-    private ArrayList<Item> orderItems;
+    private SaleItemAdapter saleItemAdapter;
+    private ArrayList<Seller> saleItems;
     private RecyclerView listOrderRV;
     private ImageView emptyOrderIV;
     private TextView emptyOrderTV;
@@ -49,7 +47,7 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
         emptyOrderIV.setVisibility(View.GONE);
         emptyOrderTV.setVisibility(View.GONE);
 
-        orderItems = new ArrayList<>();
+        saleItems = new ArrayList<>();
 
         Query query= FirebaseDatabase.getInstance().getReference().child("sellers").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -74,6 +72,10 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
 
         if(s!=null){
             //arreglo debe ser los clientes
+            Log.e(">>>","Cargo el vendedor"+s.getName());
+            if(s.getSalesID()!=null){
+                Log.e(">>>","Id de su primer venta"+s.getSalesID());
+            }
 
         }
 
