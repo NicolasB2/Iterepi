@@ -58,9 +58,8 @@ public class MethodsListAdapter extends BaseAdapter {
                     (v)->{
                         Log.e(">>>","Para donde coño debo ir");
                         ((Activity)row.getContext()).finish();
+
                     }
-
-
             );
 
         }catch (Exception e){
