@@ -124,15 +124,15 @@ public class SectionStoreUserController implements View.OnClickListener {
         }
     }
 
-    public void addItemToCart(Item item) {
+    public void addItemToCart(Item item, int quantity) {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        String id = FirebaseDatabase.getInstance().getReference().child("buyers").child(user.getUid()).child("cart")
-                .child("items").push().getKey();
+        FirebaseDatabase.getInstance().getReference().child("buyers").child(user.getUid()).child("cart")
+                .child("items").child(item.getId()).setValue(item);
 
         FirebaseDatabase.getInstance().getReference().child("buyers").child(user.getUid()).child("cart")
-                .child("items").child(id).setValue(item);
+                .child("items").child(item.getId()).child("quantity").setValue(quantity);
 
     }
 
