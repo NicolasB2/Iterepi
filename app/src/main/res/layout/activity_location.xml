@@ -17,4 +17,32 @@
         app:menu="@menu/buttom_nav_menu"
         android:layout_alignParentBottom="true"/>
 
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="282dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="206dp"
+        android:layout_marginEnd="58dp"
+        android:gravity="center"
+        android:text="@string/coming_soon"
+        android:textColor="@color/primaryColor"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="161dp"
+        android:layout_height="157dp"
+        android:layout_below="@+id/textView15"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="123dp"
+        app:srcCompat="@drawable/megaphone" />
+
 </RelativeLayout>
