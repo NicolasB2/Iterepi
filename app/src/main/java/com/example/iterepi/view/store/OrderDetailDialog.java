@@ -11,26 +11,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.store.OrderDetailController;
 import com.example.iterepi.model.Transaction;
-
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class OrderDetailDialog extends AppCompatActivity {
 
     private ImageButton closeBtn;
+    private Button updateStateBtn;
 
     private TextView idOrderTV;
-    private TextView clientIdTV;
+    private TextView clientNameTV;
     private TextView orderValueTV;
     private TextView orderDateTV;
     private Spinner orderListSP;
 
     private RecyclerView listProductsRV;
 
-
+    private OrderDetailController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +36,9 @@ public class OrderDetailDialog extends AppCompatActivity {
 
 
         closeBtn = findViewById(R.id.closeBtn);
-
+        updateStateBtn = findViewById(R.id.updateStateBtn);
         idOrderTV = findViewById(R.id.idOrderTV);
-        clientIdTV = findViewById(R.id.clientIdTV);
+        clientNameTV = findViewById(R.id.clientNameTV);
         orderValueTV = findViewById(R.id.orderValueTV);
         orderDateTV = findViewById(R.id.orderDateTV);
         orderListSP = findViewById(R.id.stateListSP);
@@ -55,11 +52,21 @@ public class OrderDetailDialog extends AppCompatActivity {
         order[3] = Transaction.PICKED_UP;
 
 
+
         ArrayAdapter<String> sp1 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, order);
         orderListSP.setAdapter(sp1);
 
+        this.controller = new OrderDetailController(this);
 
+    }
+
+    public Button getUpdateStateBtn() {
+        return updateStateBtn;
+    }
+
+    public void setUpdateStateBtn(Button updateStateBtn) {
+        this.updateStateBtn = updateStateBtn;
     }
 
     public ImageButton getCloseBtn() {
@@ -78,12 +85,12 @@ public class OrderDetailDialog extends AppCompatActivity {
         this.idOrderTV = idOrderTV;
     }
 
-    public TextView getClientIdTV() {
-        return clientIdTV;
+    public TextView getClientNameTV() {
+        return clientNameTV;
     }
 
-    public void setClientIdTV(TextView clientIdTV) {
-        this.clientIdTV = clientIdTV;
+    public void setClientNameTV(TextView clientNameTV) {
+        this.clientNameTV = clientNameTV;
     }
 
     public TextView getOrderValueTV() {
@@ -116,5 +123,9 @@ public class OrderDetailDialog extends AppCompatActivity {
 
     public void setOrderStateTV(Spinner orderListSP) {
         this.orderListSP = orderListSP;
+    }
+
+    public Spinner getOrderListSP() {
+        return orderListSP;
     }
 }

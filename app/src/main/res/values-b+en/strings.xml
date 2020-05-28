@@ -121,6 +121,7 @@
     <string name="sales">Sales</string>
     <string name="empty_order">No orders</string>
     <string name="empty_sale">No Sales</string>
+    <string name="update_state">Update state</string>
     <string name="restore_pass_sent">It has sent instructions to your email to restore your password</string>
     <string name="sellers">Sellers</string>
 
