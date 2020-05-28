@@ -48,8 +48,8 @@
 
         <TextView
             android:id="@+id/loginWith"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_width="108dp"
+            android:layout_height="23dp"
             android:layout_marginTop="24dp"
             android:autoSizeTextType="uniform"
             android:text="@string/create_account"
