@@ -1,5 +1,15 @@
 package com.example.iterepi.model;
 
+import com.example.iterepi.adapter.CartItemAdapter;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Map;
+
 public class Transaction {
 
     public static final String TO_DELIVER = "to_deliver";
@@ -21,7 +31,22 @@ public class Transaction {
     public Transaction() {
     }
 
+    public Transaction(String id, Buyer b, Cart cart){
+        SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy 'at' HH:mm z");
+        Date date = new Date(System.currentTimeMillis());
+        this.id = id;
+        this.value = value;
+        this.purchaseDate = formatter.format(date);
+        this.buyerName = b.getName();
+        this.buyerID = b.getId();
+        this.state = TO_PICK;
+        this.cart = cart;
+        this.buyerPhoto = b.getPhoto();
+        this.value = cart.getTotalCart();
+    }
+
     public Transaction(String id, double value, String purchaseDate, String buyerName, String buyerID, String sellerName, String sellerID, String state, Cart cart, String photo) {
+
         this.id = id;
         this.value = value;
         this.purchaseDate = purchaseDate;

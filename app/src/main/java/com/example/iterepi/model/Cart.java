@@ -1,7 +1,10 @@
 package com.example.iterepi.model;
 
+import com.example.iterepi.adapter.CartItemAdapter;
+
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Cart implements Serializable {
 
@@ -30,5 +33,14 @@ public class Cart implements Serializable {
 
     public void setItems(HashMap<String, Item> items) {
         this.items = items;
+    }
+
+    public double getTotalCart(){
+        double total = 0;
+        for (Map.Entry<String, Item> entry : items.entrySet()) {
+            Item i = entry.getValue();
+            total += i.getPrice()*i.getQuantity();
+        }
+        return  total;
     }
 }

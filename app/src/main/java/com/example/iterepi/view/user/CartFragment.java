@@ -5,8 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +21,7 @@ import com.example.iterepi.adapter.CartItemAdapter;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.model.Cart;
 import com.example.iterepi.model.Item;
+import com.example.iterepi.model.Transaction;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,6 +41,8 @@ public class CartFragment extends Fragment implements View.OnClickListener {
     private RecyclerView listCartRV;
     private ImageView emptyCartIV;
     private TextView emptyCartTV;
+    private Button finishOrderBtn;
+    private Buyer current;
 
     @Nullable
     @Override
@@ -49,6 +54,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
         emptyCartTV = view.findViewById(R.id.emptyCartTV);
         emptyCartIV.setVisibility(View.GONE);
         emptyCartTV.setVisibility(View.GONE);
+        finishOrderBtn = view.findViewById(R.id.finishOrderBtn);
 
         cartItems = new ArrayList<>();
         Query query = FirebaseDatabase.getInstance().getReference()
@@ -60,6 +66,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Buyer b = dataSnapshot.getValue(Buyer.class);
                 loadItems(b);
+                current = b;
             }
 
             @Override
@@ -67,47 +74,66 @@ public class CartFragment extends Fragment implements View.OnClickListener {
 
             }
         });
+
+
+        finishOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addTransaction(current);
+            }
+        });
         return view;
     }
 
-    public void loadItems(Buyer b) {
+    private void addTransaction(Buyer b) {
+        Toast.makeText(getContext(), b.getName(), Toast.LENGTH_SHORT).show();
+
         if (b != null) {
-            //For testing
-            /*Item[] /*testItems = null;
-            testItems = new Item[]{
-                    new Item("id1", "name", "description", 10, 1, ""),
-                    new Item("id2", "name2", "description2", 20, 2, "")};
-           b.setCart(new Cart("cartId",testItems));*/
+
             if (b.getCart() != null) {
-                Log.e(">>>>>", "AQUI-1");
+                if (b.getTransactions() != null) {
+
+                } else {
+                    Buyer current = b;
+                    String transactionId = FirebaseDatabase.getInstance().getReference()
+                            .child(b.getId())
+                            .push().toString();
+                    Transaction t = new Transaction(transactionId, current, current.getCart());
+                    HashMap<String, Transaction> transactions = new HashMap<String, Transaction>();
+                    transactions.put(transactionId, t);
+                    current.setTransactions(transactions);
+                }
+            }
+        } else {
+            Log.e(">>>>", "CartFragment: Error loading user");
+        }
+    }
+
+    private void loadItems(Buyer b) {
+        if (b != null) {
+            if (b.getCart() != null) {
                 if (b.getCart().getItems() != null) {
-                    Log.e(">>>>>", "AQUI-2");
                     if (b.getCart().getItems().size() > 0) {
-                        Log.e(">>>>>", "AQUI-3");
                         emptyCartIV.setVisibility(View.GONE);
                         emptyCartTV.setVisibility(View.GONE);
-
-                        for(Map.Entry<String, Item> entry : b.getCart().getItems().entrySet()){
+                        for (Map.Entry<String, Item> entry : b.getCart().getItems().entrySet()) {
                             Item i = entry.getValue();
                             cartItems.add(i);
                             cartItemAdapter = new CartItemAdapter(cartItems, this);
                             listCartRV.setAdapter(cartItemAdapter);
                         }
                     } else {
-                        Log.e(">>>>>", "AQUI-4");
                         emptyCartIV.setVisibility(View.VISIBLE);
                         emptyCartTV.setVisibility(View.VISIBLE);
                     }
                 } else {
-                    Log.e(">>>>>", "AQUI-5");
                     emptyCartIV.setVisibility(View.VISIBLE);
                     emptyCartTV.setVisibility(View.VISIBLE);
                 }
 
             } else {
-                Log.e(">>>>>", "AQUI-6");
                 Buyer bCart = b;
-                b.setCart(new Cart("cart",null));
+                b.setCart(new Cart("cart", null));
                 FirebaseDatabase.getInstance().getReference()
                         .child("buyers")
                         .child(b.getId())
