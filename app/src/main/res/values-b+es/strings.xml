@@ -23,8 +23,8 @@
     <string name="confirm_pass">Confirmar contraseña</string>
     <string name="id">Identificación</string>
     <string name="gender">Género</string>
-    <string name="man">Hombre</string>
-    <string name="woman">Mujer</string>
+    <string name="man">Masculino</string>
+    <string name="woman">Femenino</string>
     <string name="other">Otro</string>
     <string name="phone_number">Número Celular</string>
     <string name="nit">NIT Tienda</string>
@@ -124,5 +124,6 @@
     <string name="update_state">Actualizar estado</string>
     <string name="restore_pass_sent">Se han enviado instrucciones a tu correo para restablecer la contraseña.</string>
     <string name="sellers">Vendedores</string>
+    <string name="info_updated">Su información ha sido actualizada</string>
 
 </resources>

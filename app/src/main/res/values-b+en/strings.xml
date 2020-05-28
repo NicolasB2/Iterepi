@@ -23,8 +23,8 @@
     <string name="confirm_pass">Confirm password</string>
     <string name="id">Identification</string>
     <string name="gender">Gender</string>
-    <string name="man">Man</string>
-    <string name="woman">Woman</string>
+    <string name="man">Male</string>
+    <string name="woman">Female</string>
     <string name="other">Other</string>
     <string name="phone_number">Phone number</string>
     <string name="nit">NIT Shop</string>
@@ -124,6 +124,7 @@
     <string name="update_state">Update state</string>
     <string name="restore_pass_sent">It has sent instructions to your email to restore your password</string>
     <string name="sellers">Sellers</string>
+    <string name="info_updated">Your data has been updated</string>
 
 
 </resources>

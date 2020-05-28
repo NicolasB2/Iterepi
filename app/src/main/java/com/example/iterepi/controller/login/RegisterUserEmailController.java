@@ -42,9 +42,6 @@ public class RegisterUserEmailController implements View.OnClickListener {
     private boolean checkGender;
     private Uri tempUri;
     private String photo;
-    private boolean toStorage = true;
-    private boolean toLogin = true;
-
 
     public RegisterUserEmailController(RegisterUserEmailActivity activity) {
 
