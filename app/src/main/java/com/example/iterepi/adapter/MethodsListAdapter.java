@@ -18,10 +18,8 @@ import java.util.List;
 public class MethodsListAdapter extends BaseAdapter {
 
     private List<Card> listOfCards;
-    private PaymentMethodsActivity activity;
 
-    public MethodsListAdapter(PaymentMethodsActivity activity) {
-        this.activity = activity;
+    public MethodsListAdapter() {
         listOfCards = new ArrayList<>();
     }
 
@@ -53,7 +51,6 @@ public class MethodsListAdapter extends BaseAdapter {
             item.setOnClickListener(
                     (v)->{
                         Log.e(">>>","Para donde coño debo ir");
-                        activity.finish();
                     }
 
 
