@@ -1,5 +1,6 @@
 package com.example.iterepi.view.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,9 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.iterepi.R;
 import com.example.iterepi.adapter.CartItemAdapter;
 import com.example.iterepi.model.Buyer;
-import com.example.iterepi.model.Cart;
 import com.example.iterepi.model.Item;
-import com.example.iterepi.model.Transaction;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,7 +29,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class CartFragment extends Fragment implements View.OnClickListener {
@@ -90,19 +88,24 @@ public class CartFragment extends Fragment implements View.OnClickListener {
     private void addTransaction(Buyer b) {
         Toast.makeText(getContext(), b.getName(), Toast.LENGTH_SHORT).show();
 
-        if (b != null) {
+        Intent i = new Intent(getActivity(), MakePurchaseActivity.class);
+        getActivity().startActivity(i);
 
-            if (b.getCart() != null) {
-                if (b.getTransactions() != null) {
-
-                    Toast.makeText(getContext(),"transactions not null",Toast.LENGTH_SHORT).show();
-                } else {
-                    //Null transactions
-                }
-            }
-        } else {
-            Log.e(">>>>", "CartFragment: Error loading user");
-        }
+//        if (b != null) {
+//
+//            if (b.getCart() != null) {
+//                if (b.getTransactions() != null) {
+//
+//                    Intent i = new Intent(getActivity(),MakePurchaseActivity.class);
+//                    getActivity().startActivity(i);
+//                    Toast.makeText(getContext(),"transactions not null",Toast.LENGTH_SHORT).show();
+//                } else {
+//                    //Null transactions
+//                }
+//            }
+//        } else {
+//            Log.e(">>>>", "CartFragment: Error loading user");
+//        }
     }
 
     private void loadItems(Buyer b) {

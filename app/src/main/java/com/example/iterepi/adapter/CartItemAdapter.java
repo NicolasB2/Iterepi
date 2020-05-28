@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Buyer;
 import com.example.iterepi.model.Item;
@@ -55,6 +56,9 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
         holder.nameProductTV.setText(nameProduct);
         holder.priceTV.setText(price);
         holder.quantityTV.setText(quantity);
+
+        Glide.with(fragment.getActivity().getApplicationContext()).load(cartItems.get(position).getPhoto()).into(holder.productIV);
+
         //TODO: Image missing
 
         Query query = FirebaseDatabase.getInstance().getReference()
@@ -167,5 +171,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
 
 
         }
+
     }
 }

@@ -1,14 +1,15 @@
 package com.example.iterepi.view.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.iterepi.R;
+import com.example.iterepi.controller.user.MakePurchaseController;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class MakePurchaseActivity extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
 
     private TextView purchaseValue;
     private Button payBtn;
+    private MakePurchaseController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
         purchaseValue = findViewById(R.id.purchaseValueTV);
         payBtn = findViewById(R.id.payBtn);
 
+        controller = new MakePurchaseController(this);
 
     }
 
