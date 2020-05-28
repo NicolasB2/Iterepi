@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.iterepi.R;
 
-public class PurchaseHistoryFragment extends Fragment {
+public class TransactionFragment extends Fragment {
 
     private View view;
 

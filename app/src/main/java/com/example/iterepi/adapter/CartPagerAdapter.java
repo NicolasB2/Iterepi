@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.iterepi.view.user.CartFragment;
-import com.example.iterepi.view.user.PurchaseHistoryFragment;
+import com.example.iterepi.view.user.TransactionFragment;
 
 public class CartPagerAdapter extends FragmentPagerAdapter {
 
@@ -25,7 +25,7 @@ public class CartPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new CartFragment();
             case 1:
-                return new PurchaseHistoryFragment();
+                return new TransactionFragment();
             default:
                 return null;
         }

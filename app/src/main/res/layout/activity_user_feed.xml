@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryColor"
+    android:background="@drawable/com_facebook_button_send_icon_white"
     tools:context=".view.user.UserFeedActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/primaryDarkColor"
+        android:layout_height="100dp"
+        android:background="@color/primaryLightColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,15 +32,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/buttom_nav_menu" />
 
+
+
     <ImageView
-        android:id="@+id/iterepi"
-        android:layout_width="189dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        android:id="@+id/imageView7"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:srcCompat="@drawable/alt_iterepi" />
+        app:srcCompat="@drawable/alt_logo" />
 
     <TextView
         android:id="@+id/textView44"
@@ -50,8 +52,8 @@
         android:layout_marginTop="8dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/rubik_light"
-        android:text="@string/sellers"
-        android:textSize="30sp"
+        android:text="@string/welcome_feed"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,10 +63,7 @@
         android:id="@+id/sellersList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
