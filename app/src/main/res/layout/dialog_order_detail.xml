@@ -54,25 +54,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/alt_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idOrderTV" />
-
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"
         android:text="@string/client_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/idOrderTV" />
 
     <TextView
         android:id="@+id/textView32"
@@ -154,19 +143,6 @@
         app:layout_constraintTop_toBottomOf="@+id/orderDateTV" />
 
     <TextView
-        android:id="@+id/orderStateTV"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/edit_text"
-        android:gravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView38" />
-
-    <TextView
         android:id="@+id/textView40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -175,7 +151,7 @@
         android:text="@string/products"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderStateTV" />
+        app:layout_constraintTop_toBottomOf="@+id/stateListSP" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listProductsRV"
@@ -189,6 +165,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+    <Spinner
+        android:id="@+id/stateListSP"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

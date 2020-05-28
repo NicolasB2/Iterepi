@@ -1,5 +1,6 @@
 package com.example.iterepi.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.iterepi.R;
 import com.example.iterepi.model.Transaction;
+import com.example.iterepi.view.store.OrderDetailDialog;
+import com.example.iterepi.view.store.SellDetailDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -55,7 +58,7 @@ public class OrderIDAdapter extends RecyclerView.Adapter<OrderIDAdapter.ViewHold
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Transaction transaction = dataSnapshot.getValue(Transaction.class);
                 if(transaction!=null){
-                    if(transaction.getState()!=Transaction.TO_DELIVER){
+                    if(!transaction.getState().equals(Transaction.TO_DELIVER)){
 
                         holder.nameClientTV.setText(transaction.getBuyerName());
                         holder.orderID.setText("Pedido ID: "+transaction.getId());
@@ -63,6 +66,15 @@ public class OrderIDAdapter extends RecyclerView.Adapter<OrderIDAdapter.ViewHold
                         holder.stateTV.setText("State: "+transaction.getState());
 
                         Glide.with(holder.itemView).load(transaction.getBuyerPhoto()).centerCrop().into(holder.imageClientIV);
+                        holder.itemView.setOnClickListener(
+                                (v)->{
+                                    Intent i = new Intent( holder.itemView.getContext(), OrderDetailDialog.class);
+                                    i.putExtra("transaction", transaction.getId());
+                                    holder.itemView.getContext().startActivity(i);
+                                }
+                        );
+
+
                     }
 
                 }

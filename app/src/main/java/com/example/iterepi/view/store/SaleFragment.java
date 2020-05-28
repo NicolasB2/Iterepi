@@ -87,7 +87,7 @@ public class SaleFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 Transaction state = dataSnapshot.getValue(Transaction.class);
-                                if(state.getState() == Transaction.TO_DELIVER){
+                                if(state.getState().equals(Transaction.TO_DELIVER)){
 
                                     String i = entry.getValue();
                                     saleIDs.add(i);

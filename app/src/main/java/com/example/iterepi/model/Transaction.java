@@ -2,10 +2,10 @@ package com.example.iterepi.model;
 
 public class Transaction {
 
-    public static final int TO_DELIVER = 0;
-    public static final int DELIVERED = 1;
-    public static final int TO_PICK = 2;
-    public static final int PICKED_UP = 3;
+    public static final String TO_DELIVER = "to_deliver";
+    public static final  String DELIVERED = "delivered";
+    public static final String TO_PICK = "to_pick";
+    public static final String PICKED_UP = "picked_up";
 
     private String id;
     private double value;
@@ -14,14 +14,14 @@ public class Transaction {
     private String buyerID;
     private String sellerName;
     private String sellerID;
-    private int state;
+    private String state;
     private Cart cart;
     private String buyerPhoto;
 
     public Transaction() {
     }
 
-    public Transaction(String id, double value, String purchaseDate, String buyerName, String buyerID, String sellerName, String sellerID, int state, Cart cart, String photo) {
+    public Transaction(String id, double value, String purchaseDate, String buyerName, String buyerID, String sellerName, String sellerID, String state, Cart cart, String photo) {
         this.id = id;
         this.value = value;
         this.purchaseDate = purchaseDate;
@@ -98,11 +98,11 @@ public class Transaction {
         this.sellerID = sellerID;
     }
 
-    public int getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(String state) {
         this.state = state;
     }
 

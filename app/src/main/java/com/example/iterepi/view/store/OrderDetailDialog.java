@@ -4,13 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.iterepi.R;
+import com.example.iterepi.model.Transaction;
 
 import org.w3c.dom.Text;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class OrderDetailDialog extends AppCompatActivity {
 
@@ -20,9 +26,10 @@ public class OrderDetailDialog extends AppCompatActivity {
     private TextView clientIdTV;
     private TextView orderValueTV;
     private TextView orderDateTV;
-    private TextView orderStateTV;
+    private Spinner orderListSP;
 
     private RecyclerView listProductsRV;
+
 
 
     @Override
@@ -37,9 +44,20 @@ public class OrderDetailDialog extends AppCompatActivity {
         clientIdTV = findViewById(R.id.clientIdTV);
         orderValueTV = findViewById(R.id.orderValueTV);
         orderDateTV = findViewById(R.id.orderDateTV);
-        orderStateTV = findViewById(R.id.orderStateTV);
+        orderListSP = findViewById(R.id.stateListSP);
 
         listProductsRV = findViewById(R.id.listProductsRV);
+
+        String [] order = new String [4];
+        order[0] = Transaction.TO_PICK;
+        order[1] = Transaction.TO_DELIVER;
+        order[2] = Transaction.DELIVERED;
+        order[3] = Transaction.PICKED_UP;
+
+
+        ArrayAdapter<String> sp1 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, order);
+        orderListSP.setAdapter(sp1);
 
 
     }
@@ -84,19 +102,19 @@ public class OrderDetailDialog extends AppCompatActivity {
         this.orderDateTV = orderDateTV;
     }
 
-    public TextView getOrderStateTV() {
-        return orderStateTV;
-    }
-
-    public void setOrderStateTV(TextView orderStateTV) {
-        this.orderStateTV = orderStateTV;
-    }
-
     public RecyclerView getListProductsRV() {
         return listProductsRV;
     }
 
     public void setListProductsRV(RecyclerView listProductsRV) {
         this.listProductsRV = listProductsRV;
+    }
+
+    public Spinner getOrderStateTV() {
+        return orderListSP;
+    }
+
+    public void setOrderStateTV(Spinner orderListSP) {
+        this.orderListSP = orderListSP;
     }
 }
