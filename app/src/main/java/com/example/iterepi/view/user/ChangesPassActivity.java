@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iterepi.R;
+import com.example.iterepi.controller.user.ChangePassController;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class ChangesPassActivity extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class ChangesPassActivity extends AppCompatActivity {
     private TextInputLayout confNewPass;
     private ImageButton backBtn;
     private Button changePassBtn;
+    private ChangePassController controller;
 
 
     @Override
@@ -28,6 +30,9 @@ public class ChangesPassActivity extends AppCompatActivity {
         confNewPass = findViewById(R.id.confirmNewPassTV);
         changePassBtn = findViewById(R.id.changePassBtn);
         backBtn = findViewById(R.id.backBtn6);
+
+
+        controller = new ChangePassController(this);
 
 
     }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.iterepi.R;
 import com.example.iterepi.view.user.ChangesPassActivity;
@@ -106,7 +107,7 @@ public class ChangePassController implements View.OnClickListener {
 
                     if (task.isSuccessful()) {
 
-                        Snackbar.make(activity.getChangePassBtn(), activity.getString(R.string.change_pass), Snackbar.LENGTH_SHORT).show();
+                        Toast.makeText(activity.getApplicationContext(), activity.getString(R.string.pass_changed), Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(activity, UserProfileActivity.class);
                         activity.startActivity(i);
                         activity.finishAffinity();
